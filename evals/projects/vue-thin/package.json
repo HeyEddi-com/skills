@@ -1,0 +1,8 @@
+{
+  "name": "eval-vue-thin",
+  "private": true,
+  "scripts": {
+    "build": "echo stub",
+    "test": "echo stub"
+  }
+}

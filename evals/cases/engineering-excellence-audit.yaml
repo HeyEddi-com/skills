@@ -1,0 +1,22 @@
+id: engineering-excellence-audit
+skills:
+  - engineering-excellence
+project_template: product-app
+prompt_file: prompts/engineering-excellence-audit.md
+verify_commands:
+  - python3 .agents/skills/engineering-excellence/scripts/audit_engineering.py --project-root .
+judge: |
+  @engineering-excellence completed audit workflow: init docs if missing, audit_engineering report
+  under .heyeddi/docs/engineering/, and append_decision ADR. No feature implementation.
+assertions:
+  - name: audit-runs
+    type: command
+    cmd:
+      - python3
+      - .agents/skills/engineering-excellence/scripts/audit_engineering.py
+      - --project-root
+      - "{project_root}"
+    expect_exit_zero: true
+  - name: engineering-docs-dir
+    type: file_exists
+    path: .heyeddi/docs/engineering/README.md

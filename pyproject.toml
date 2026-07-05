@@ -1,0 +1,171 @@
+[project]
+name = "heyeddi-skills"
+version = "0.1.0"
+description = "HeyEddi skills hub — smoke tests and agent eval harness"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+# Agent evals: run-evals.py (local agent CLI)
+evals = [
+    "pyyaml>=6.0",
+]
+# Quality gate: build/test/visual assertions (Playwright + Pillow)
+evals-quality = [
+    "playwright>=1.49.0",
+    "pillow>=11.0.0",
+]
+# Optional agent backends
+evals-pydantic = [
+    "pydantic-ai>=0.0.14",
+]
+evals-cursor = [
+    "cursor-sdk>=0.1.0",
+]
+# Hub scripts that generate fixtures
+hub-tools = [
+    "pillow>=11.0.0",
+]
+# Task runner (poe test, poe eval, …)
+dev = [
+    "poethepoet>=0.31.0",
+]
+
+[tool.uv]
+default-groups = []
+
+[tool.poe]
+include = []
+
+# --- Smoke tests (no agent) ---
+[tool.poe.tasks.test]
+help = "All skills: structure + smoke + cloud invoker"
+cmd = "python scripts/test-skills.py"
+
+[tool.poe.tasks.test-structure]
+help = "Manifest/structure checks only"
+cmd = "python scripts/test-skills.py --structure-only"
+
+[tool.poe.tasks.test-list]
+help = "List skill names"
+cmd = "python scripts/test-skills.py --list"
+
+[tool.poe.tasks.test-one]
+help = "Smoke-test one skill: uv run poe test-one <skill-name>"
+cmd = "python scripts/test-skills.py ${skill}"
+
+[[tool.poe.tasks.test-one.args]]
+name = "skill"
+help = "Skill folder name"
+positional = true
+required = true
+
+# --- Eval setup ---
+[tool.poe.tasks.setup]
+help = "uv sync eval deps + Playwright chromium"
+shell = "./scripts/setup-evals.sh"
+
+[tool.poe.tasks.verify-agent]
+help = "Check local agent CLI is installed and logged in"
+shell = "./scripts/verify-agent-cli.sh"
+
+# --- Agent evals ---
+[tool.poe.tasks.eval-list]
+help = "List eval case ids"
+cmd = "python scripts/run-evals.py --list"
+
+[tool.poe.tasks.eval-dry-run]
+help = "Show eval plan without running agent"
+cmd = "python scripts/run-evals.py --dry-run --all"
+
+[tool.poe.tasks.eval-design-handoff]
+help = "@design-handoff — mockups → /settings"
+cmd = "python scripts/run-evals.py --keep-sandbox --timeout 1200 design-handoff-only"
+
+[tool.poe.tasks.eval-heyeddi-design-scratch]
+help = "@heyeddi-design greenfield — DESIGN.md → /login"
+cmd = "python scripts/run-evals.py --keep-sandbox --timeout 1200 heyeddi-design-from-scratch"
+
+[tool.poe.tasks.eval-heyeddi-design-polish]
+help = "@heyeddi-design polish existing /login"
+cmd = "python scripts/run-evals.py --keep-sandbox --timeout 1200 heyeddi-design-polish-existing"
+
+[tool.poe.tasks.eval-scaffold]
+help = "Project-engineering scaffold-only eval"
+cmd = "python scripts/run-evals.py --keep-sandbox project-engineering-scaffold-vue"
+
+[tool.poe.tasks.eval-api]
+help = "Backend type bridger eval"
+cmd = "python scripts/run-evals.py --keep-sandbox backend-type-bridger-users"
+
+[tool.poe.tasks.eval-flutter]
+help = "Flutter engineering scaffold eval"
+cmd = "python scripts/run-evals.py --keep-sandbox flutter-engineering-scaffold"
+
+[tool.poe.tasks.eval-flutter-api]
+help = "Flutter dart-type-bridger + patterns eval"
+cmd = "python scripts/run-evals.py --keep-sandbox flutter-backend-bridger-users"
+
+[tool.poe.tasks.eval-translator]
+help = "@product-translator intake eval (product.md + routing + settings mockups)"
+cmd = "python scripts/run-evals.py --keep-sandbox --timeout 900 product-translator-intake"
+
+[tool.poe.tasks.eval-engineering]
+help = "@engineering-excellence audit + ADR eval"
+cmd = "python scripts/run-evals.py --keep-sandbox --timeout 600 engineering-excellence-audit"
+
+[tool.poe.tasks.eval-ux-flow]
+help = "@ux-flow-auditor init flows eval"
+cmd = "python scripts/run-evals.py --keep-sandbox --timeout 600 ux-flow-auditor-init"
+
+[tool.poe.tasks.eval-orchestrator]
+help = "@skill-orchestrator suggest skills eval"
+cmd = "python scripts/run-evals.py --keep-sandbox --timeout 600 skill-orchestrator-suggest"
+
+[tool.poe.tasks.eval-flutter-handoff]
+help = "@design-handoff-flutter settings eval"
+cmd = "python scripts/run-evals.py --keep-sandbox --timeout 900 design-handoff-flutter-settings"
+
+[tool.poe.tasks.eval-primevue]
+help = "@primevue-openprops-architect fix token violations"
+cmd = "python scripts/run-evals.py --keep-sandbox primevue-fix-violations"
+
+[tool.poe.tasks.eval-all]
+help = "Run all agent evals (slow)"
+cmd = "python scripts/run-evals.py --all --keep-sandbox"
+
+# --- Hub utilities ---
+[tool.poe.tasks.mockups]
+help = "Regenerate handoff PNG mockups for eval/fixture projects"
+cmd = "python scripts/generate-handoff-mockups.py --all"
+
+[tool.poe.tasks.scaffold-eval-vue]
+help = "Apply Vue scaffold to eval project templates"
+cmd = "python scripts/apply-eval-vue-scaffold.py --all-vue"
+
+[tool.poe.tasks.eval-integration]
+help = "Full product integration eval (13 skills, 7 turns, ~30+ min)"
+cmd = "python scripts/run-evals.py --keep-sandbox --timeout 1500 full-product-integration"
+
+[tool.poe.tasks.eval-pr]
+help = "PR review responder eval (fixture, no live gh)"
+cmd = "python scripts/run-evals.py --keep-sandbox pr-review-responder-workflow"
+
+[tool.poe.tasks.eval-clean]
+help = "Remove old eval sandboxes (keeps 1 recent): uv run poe eval-clean"
+cmd = "python scripts/clean-eval-runs.py --keep ${keep} -y"
+
+[[tool.poe.tasks.eval-clean.args]]
+name = "keep"
+options = ["--keep"]
+help = "Keep N most recent run folders"
+default = "1"
+
+[tool.poe.tasks.eval-clean-all]
+help = "Remove ALL eval sandboxes (no keep)"
+cmd = "python scripts/clean-eval-runs.py -y"
+
+[tool.poe.tasks.eval-clean-dry-run]
+help = "Show what eval-clean would delete"
+cmd = "python scripts/clean-eval-runs.py --dry-run"

@@ -1,0 +1,23 @@
+id: primevue-fix-violations
+skills:
+  - primevue-openprops-architect
+project_template: vue-violations
+prompt_file: prompts/primevue-fix-bad-panel.md
+verify_commands:
+  - python3 .agents/skills/primevue-openprops-architect/scripts/validate_vue.py --project-root .
+  - npm test
+  - npm run build
+judge: |
+  @primevue-openprops-architect completed full skill workflow: read VOCABULARY + ANTI_PATTERNS,
+  fixed BadPanel.vue (no hex colors, OpenProps tokens), ran validate_vue.py with output captured,
+  npm test and npm run build clean. Read all changes; command output clean.
+assertions:
+  - name: no-hex-in-panel
+    type: file_contains
+    path: src/components/BadPanel.vue
+    pattern: "#[0-9a-fA-F]{3,8}"
+    negate: true
+  - name: uses-openprops
+    type: file_contains
+    path: src/components/BadPanel.vue
+    pattern: "var\\(--"

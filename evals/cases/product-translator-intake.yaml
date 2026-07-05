@@ -1,0 +1,59 @@
+id: product-translator-intake
+skills:
+  - product-translator
+project_template: translator-thin
+agent_timeout: 900
+prompt_file: prompts/product-translator-intake.md
+judge: |
+  @product-translator completed full intake: product-translation.json, product.md via write_product,
+  translation log, skill-routing via build_routing, settings mockups + audience brief.
+  verify_intake --check passed. No Vue implementation.
+  Read all .heyeddi/ files.
+assertions:
+  - name: verify-intake
+    type: command
+    cmd:
+      - python3
+      - .agents/skills/product-translator/scripts/verify_intake.py
+      - --project-root
+      - "{project_root}"
+      - --check
+    expect_exit_zero: true
+  - name: product-json
+    type: file_exists
+    path: .heyeddi/docs/intake/product-translation.json
+  - name: product-personas
+    type: file_contains
+    path: .heyeddi/product.md
+    pattern: "## Personas"
+  - name: route-intent
+    type: file_contains
+    path: .heyeddi/product.md
+    pattern: "## Per-route intent"
+  - name: voice-tone
+    type: file_contains
+    path: .heyeddi/product.md
+    pattern: "## Voice & tone"
+  - name: competitors
+    type: file_contains
+    path: .heyeddi/product.md
+    pattern: "## Competitors"
+  - name: anti-audience
+    type: file_contains
+    path: .heyeddi/product.md
+    pattern: "## Anti-audience"
+  - name: skill-routing
+    type: file_exists
+    path: .heyeddi/docs/intake/skill-routing.json
+  - name: routing-has-settings
+    type: file_contains
+    path: .heyeddi/docs/intake/skill-routing.json
+    pattern: "design-handoff"
+  - name: settings-brief-audience
+    type: file_contains
+    path: .heyeddi/designs/settings/mockup-brief.md
+    pattern: "## Audience"
+  - name: brief-implementation-spec
+    type: file_contains
+    path: .heyeddi/designs/settings/mockup-brief.md
+    pattern: "Implementation spec"

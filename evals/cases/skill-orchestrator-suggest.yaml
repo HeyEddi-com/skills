@@ -1,0 +1,20 @@
+id: skill-orchestrator-suggest
+skills:
+  - skill-orchestrator
+project_template: product-app
+prompt_file: prompts/skill-orchestrator-suggest.md
+verify_commands: []
+judge: |
+  @skill-orchestrator ran load_catalog + suggest_skills for settings handoff prompt and wrote/refreshed
+  .heyeddi/skills-index.md with ordered @skill recommendations. No UI implementation.
+assertions:
+  - name: suggest-skills
+    type: command
+    cmd:
+      - python3
+      - .agents/skills/skill-orchestrator/scripts/suggest_skills.py
+      - --project-root
+      - "{project_root}"
+      - --user-prompt
+      - Build TaskFlow settings handoff from mockups
+    expect_exit_zero: true

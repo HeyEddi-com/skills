@@ -1,0 +1,115 @@
+id: full-product-integration
+project_template: product-app
+agent_timeout: 1200
+skills:
+  - product-translator
+  - skill-orchestrator
+  - project-engineering
+  - heyeddi-design
+  - design-handoff
+  - primevue-openprops-architect
+  - backend-type-bridger
+  - composable-patterns
+  - verify-build
+  - visual-auditor
+  - pre-merge-gate
+  - no-duplicate-ui
+  - design-system-generalizer
+steps:
+  - name: intake
+    skills: [product-translator, skill-orchestrator]
+    agent_timeout: 900
+    prompt_file: prompts/full-product/step-0-intake.md
+    judge_file: prompts/full-product/judge-0-intake.md
+
+  - name: scaffold
+    skills: [project-engineering]
+    prompt_file: prompts/full-product/step-1-scaffold.md
+    judge_file: prompts/full-product/judge-1-scaffold.md
+    verify_commands:
+      - npm test
+      - npm run build
+
+  - name: api-layer
+    skills: [backend-type-bridger, composable-patterns]
+    prompt_file: prompts/full-product/step-2-api.md
+    judge_file: prompts/full-product/judge-2-api.md
+    verify_commands:
+      - cd backend && poetry run pytest -q
+
+  - name: marketing-and-login
+    skills: [heyeddi-design, primevue-openprops-architect]
+    prompt_file: prompts/full-product/step-3-marketing.md
+    judge_file: prompts/full-product/judge-3-marketing.md
+    verify_commands:
+      - npm test
+      - npm run build
+    visual_audit:
+      routes: ["/", "/login"]
+      widths: [375, 1440]
+      hard_gates: visual
+
+  - name: dashboard
+    skills: [heyeddi-design, primevue-openprops-architect]
+    agent_timeout: 900
+    prompt_file: prompts/full-product/step-4-dashboard.md
+    judge_file: prompts/full-product/judge-4-dashboard.md
+    verify_commands:
+      - npm test
+      - npm run build
+    visual_audit:
+      routes: ["/dashboard"]
+      widths: [375, 1440]
+      hard_gates: visual
+
+  - name: settings
+    skills: [design-handoff, primevue-openprops-architect]
+    agent_timeout: 1200
+    prompt_file: prompts/full-product/step-5-settings.md
+    judge_file: prompts/full-product/judge-5-settings.md
+    verify_commands:
+      - npm test
+      - npm run build
+      - python3 .agents/skills/design-handoff/scripts/verify_handoff.py --route /settings --check
+      - python3 .agents/skills/design-handoff/scripts/verify_tokens.py --check
+      - python3 .agents/skills/design-handoff/scripts/verify_theme.py --check
+    visual_audit:
+      route: /settings
+      widths: [375, 768, 1440]
+      color_schemes: [light, dark]
+      hard_gates: handoff
+      references:
+        - .heyeddi/designs/settings/desktop.png
+        - .heyeddi/designs/settings/mobile.png
+      min_similarity: 0.12
+
+  - name: qa-ship
+    agent_timeout: 480
+    skills:
+      - verify-build
+      - pre-merge-gate
+      - no-duplicate-ui
+      - design-system-generalizer
+      - project-engineering
+    prompt_file: prompts/full-product/step-6-qa-ship.md
+    judge_file: prompts/full-product/judge-6-qa-ship.md
+    verify_commands:
+      - bash .agents/skills/verify-build/scripts/verify_build.sh --project-root .
+      - python .agents/skills/no-duplicate-ui/scripts/find_duplicate_ui.py --project-root .
+      - python .agents/skills/design-system-generalizer/scripts/scan_patterns.py --route /settings --project-root .
+      - python .agents/skills/design-system-generalizer/scripts/diff_violations.py --golden /settings --target /dashboard --project-root .
+      - python .agents/skills/design-system-generalizer/scripts/diff_violations.py --golden /settings --target /login --project-root .
+      - python .agents/skills/pre-merge-gate/scripts/pre_merge_gate.py --project-root . --skip-visual-audit
+      - npm test
+      - npm run build
+      - cd backend && poetry run pytest -q
+    visual_audit:
+      routes: ["/", "/login", "/dashboard", "/settings"]
+      widths: [375, 768, 1440]
+      color_schemes: [light, dark]
+      hard_gates: visual
+      references_by_route:
+        /settings:
+          - .heyeddi/designs/settings/desktop.png
+          - .heyeddi/designs/settings/mobile.png
+      min_similarity: 0.12

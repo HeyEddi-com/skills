@@ -1,0 +1,55 @@
+id: backend-type-bridger-users
+skills:
+  - project-engineering
+  - backend-type-bridger
+  - composable-patterns
+project_template: api-vue
+prompt_file: prompts/backend-type-bridger-users.md
+verify_commands:
+  - npm test
+  - npm run build
+  - cd backend && poetry run pytest -q
+judge: |
+  Skills must audit engineering baseline, sync OpenAPI types, implement useUsers() composable
+  per @composable-patterns (loading/error refs, validate_composable --check), and pass all
+  tests/builds. ensure_python must succeed without --no-root workarounds.
+  Read all changed files.
+assertions:
+  - name: api-types-file
+    type: file_exists
+    path: src/types/api.ts
+  - name: user-interface
+    type: file_contains
+    path: src/types/api.ts
+    pattern: "email"
+  - name: composable-exists
+    type: file_exists
+    path: src/composables/useUsers.ts
+  - name: fetch-users-export
+    type: file_contains
+    path: src/composables/useUsers.ts
+    pattern: "fetchUsers"
+  - name: composable-has-test
+    type: feature_test_exists
+    vue_path: src/composables/useUsers.ts
+  - name: composable-validates
+    type: command
+    cmd:
+      - python3
+      - .agents/skills/composable-patterns/scripts/validate_composable.py
+      - --path
+      - src/composables/useUsers.ts
+      - --project-root
+      - "{project_root}"
+      - --check
+    expect_exit_zero: true
+  - name: deps-installed
+    type: ensure_deps
+  - name: deps-hygiene
+    type: audit_dependencies
+  - name: frontend-builds
+    type: npm_build
+  - name: frontend-tests-pass
+    type: npm_test
+  - name: backend-tests-pass
+    type: pytest

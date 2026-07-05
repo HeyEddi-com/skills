@@ -1,0 +1,21 @@
+id: ux-flow-auditor-init
+skills:
+  - ux-flow-auditor
+project_template: product-app
+prompt_file: prompts/ux-flow-auditor-init.md
+verify_commands: []
+judge: |
+  @ux-flow-auditor initialized .heyeddi/docs/ux-flows/ with index.md and at least one flow doc
+  documenting friction + suggested fix. No Vue implementation required.
+assertions:
+  - name: init-flows
+    type: command
+    cmd:
+      - python3
+      - .agents/skills/ux-flow-auditor/scripts/init_ux_flows.py
+      - --project-root
+      - "{project_root}"
+    expect_exit_zero: true
+  - name: flows-index
+    type: file_exists
+    path: .heyeddi/docs/ux-flows/index.md

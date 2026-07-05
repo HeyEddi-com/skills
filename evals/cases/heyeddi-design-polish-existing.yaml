@@ -1,0 +1,16 @@
+# Independent agentic eval — @heyeddi-design on **existing** UI (polish / document).
+id: heyeddi-design-polish-existing
+project_template: vue-design-existing
+agent_timeout: 1200
+skills:
+  - heyeddi-design
+  - primevue-openprops-architect
+prompt_file: prompts/heyeddi-design/polish-existing-login.md
+judge_file: prompts/heyeddi-design/judge-polish-existing-login.md
+verify_commands:
+  - npm test
+  - npm run build
+visual_audit:
+  route: /login
+  widths: [375, 768, 1440]
+  min_similarity: 0.08

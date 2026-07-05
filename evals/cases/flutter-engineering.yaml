@@ -1,0 +1,35 @@
+id: flutter-engineering-scaffold
+skills:
+  - flutter-engineering
+  - project-engineering
+project_template: flutter-thin
+prompt_file: prompts/flutter-engineering-scaffold.md
+verify_commands:
+  - python3 .agents/skills/flutter-engineering/scripts/audit_scaffold.py --project-root .
+judge: |
+  Agent ran flutter-engineering audit + scaffold_stack workflow on thin template.
+  scaffold_stack --stack full must produce Flutter + FastAPI: backend/pyproject.toml,
+  backend/app/main.py, backend/tests/test_health.py, and openapi.json at repo root.
+  stack.json must declare frontend flutter and backends including fastapi.
+  dev_server_info must mention web_port 8085 and api_port 8090.
+  Read scaffold scripts output — no Tracebacks; no silently skipped PE layers.
+assertions:
+  - name: pubspec
+    type: file_exists
+    path: pubspec.yaml
+  - name: main-dart
+    type: file_exists
+    path: lib/main.dart
+  - name: app-shell
+    type: file_exists
+    path: lib/widgets/app_shell.dart
+  - name: stack-flutter
+    type: file_contains
+    path: .heyeddi/stack.json
+    pattern: '"frontend": "flutter"'
+  - name: backend-main
+    type: file_exists
+    path: backend/app/main.py
+  - name: openapi
+    type: file_exists
+    path: openapi.json

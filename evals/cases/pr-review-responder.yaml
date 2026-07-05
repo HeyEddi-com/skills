@@ -1,0 +1,16 @@
+id: pr-review-responder-workflow
+skills:
+  - pr-review-responder
+project_template: pr-review-fixture
+prompt_file: prompts/pr-review/handle-review.md
+verify_commands:
+  - python .agents/skills/pr-review-responder/scripts/fetch_pr_comments.py --pr 42 --fixture .pr-fixture/comments.json --project-root .
+judge: |
+  @pr-review-responder completed the team PR workflow on fixture PR #42:
+
+  - fetch_pr_comments run with --fixture (no gh required)
+  - .heyeddi/docs/pr-42-tracking.md lists EVERY comment ID from fixture (inline 9001001, 9001002; discussion DC_10001; reviews 8001, 8002)
+  - .heyeddi/docs/pr-42-replies.md has drafted reply per comment + summary last
+  - fix-vs-decline decisions are reasoned (pagination + Depends = fix; loading state = fix or plan)
+
+  Read all generated docs. Do not require live gh posts in eval.

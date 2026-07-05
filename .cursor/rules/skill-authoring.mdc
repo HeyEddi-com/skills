@@ -1,0 +1,53 @@
+---
+description: Standards for authoring installable skills in skills/. Hub .cursor/ is rules only.
+globs: skills/**/*
+alwaysApply: false
+---
+
+# Skill authoring (HeyEddi collection)
+
+## Layout — installable triad
+
+Each skill lives under `skills/<skill-name>/` — same structure as its standalone GitHub repo:
+
+```
+skills/<skill-name>/
+├── SKILL.md
+├── manifest.json
+├── context/
+│   ├── VOCABULARY.md
+│   ├── ANTI_PATTERNS.md
+│   └── EXAMPLES.md
+├── reference/
+└── scripts/
+    ├── _skill_cli.py
+    └── *.py / *.sh
+```
+
+**Do not** put distributable skills under `.cursor/skills/`. Consumers install via `npx skills add`.
+
+## Distribution
+
+- Subtree prefix: `skills/<name>/`
+- Install locally: `./scripts/install-skills.sh <name> --project <app>`
+- Publish: `./scripts/push-skill-subtree.sh <name> <remote>`
+- Register remotes in `skills-registry.json`
+
+## `.heyeddi/` in consumer projects
+
+Skills read/write product and design context under `.heyeddi/` in the **app repo** (not this hub). See [docs/heyeddi-folder.md](../../docs/heyeddi-folder.md). `project-engineering` scaffolds `.heyeddi/README.md` via `scaffold_heyeddi`.
+
+## Cloud
+
+- `manifest.json` → `python3 scripts/cloud/register_tools.py .`
+- Scripts use `_skill_cli.py`, `--project-root`, return text on failure
+
+## Subagents
+
+Skills that orchestrate multi-step work **delegate by default** via Cursor Task tool. Each skill may ship `reference/subagents.md`. Hub spec: [docs/subagent-delegation.md](../../docs/subagent-delegation.md). Cloud backend: same prompt shape as `delegate_to_skill` (Phase 7 roadmap).
+
+## References
+
+- `skills/README.md` — install instructions
+- `docs/distribution.md` — subtrees
+- `docs/skills-roadmap.md` — full plan

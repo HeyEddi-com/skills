@@ -1,0 +1,32 @@
+id: project-engineering-scaffold-vue
+skills:
+  - project-engineering
+project_template: vue-thin
+prompt_file: prompts/project-engineering-scaffold-vue.md
+verify_commands:
+  - npm test
+  - npm run build
+judge: |
+  @project-engineering completed full scaffold workflow on thin template: vite, vitest,
+  router, real npm scripts (not stubs), deps, tests. Read all files; no command warnings.
+assertions:
+  - name: vite-config
+    type: file_exists
+    path: vite.config.ts
+  - name: vitest-config
+    type: file_exists
+    path: vitest.config.ts
+  - name: router
+    type: file_exists
+    path: src/router/index.ts
+  - name: deps-installed
+    type: ensure_deps
+  - name: deps-hygiene
+    type: audit_dependencies
+  - name: frontend-builds
+    type: npm_build
+  - name: frontend-tests-pass
+    type: npm_test
+  - name: app-test-exists
+    type: file_exists
+    path: tests/unit/App.spec.ts

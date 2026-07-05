@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DesignHandoffBrief",
+  "type": "object",
+  "required": ["screen", "route", "mode", "frames"],
+  "properties": {
+    "screen": { "type": "string", "description": "Screen identifier e.g. settings" },
+    "route": { "type": "string", "description": "App route e.g. /settings" },
+    "mode": { "enum": ["screenshot", "penpot-export", "penpot-api", "penpot-mcp"] },
+    "frames": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "path"],
+        "properties": {
+          "name": { "type": "string" },
+          "path": { "type": "string" },
+          "width": { "type": "integer" }
+        }
+      }
+    },
+    "notes": { "type": "array", "items": { "type": "string" } },
+    "design_context": {
+      "type": "object",
+      "properties": {
+        "design_md": { "type": "string" },
+        "product_md": { "type": "string" }
+      }
+    },
+    "penpot": {
+      "type": "object",
+      "properties": {
+        "file_id": { "type": "string" },
+        "frame_id": { "type": "string" }
+      }
+    }
+  }
+}

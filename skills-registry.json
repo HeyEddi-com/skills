@@ -1,0 +1,24 @@
+{
+  "skills": [
+    { "name": "skill-orchestrator", "description": "Discover available @skills and suggest which to invoke; reads skill-routing.json" },
+    { "name": "product-translator", "description": "User prompt → product.md, mockups, briefs, skill-routing for downstream agents" },
+    { "name": "project-engineering", "description": "Vue + FastAPI + Firebase scaffold, deps, dev servers, tests" },
+    { "name": "flutter-engineering", "description": "Flutter + FastAPI + Firebase scaffold, flutter test/analyze, dev servers" },
+    { "name": "flutter-patterns", "description": "Riverpod repositories — FastAPI Dio + Firebase client patterns" },
+    { "name": "dart-type-bridger", "description": "OpenAPI / Firestore → Dart model stubs" },
+    { "name": "design-handoff-flutter", "description": "Screenshot-first Material 3 Flutter implementation" },
+    { "name": "primevue-openprops-architect", "description": "PrimeVue + OpenProps guardrails" },
+    { "name": "verify-build", "description": "Vite static build validator" },
+    { "name": "visual-auditor", "description": "Responsive screenshot audit (Vue or Flutter web)" },
+    { "name": "design-handoff", "description": "Screenshot-first design implementation (Vue)" },
+    { "name": "pre-merge-gate", "description": "QA merge readiness checklist" },
+    { "name": "pr-review-responder", "description": "Team PR review response workflow" },
+    { "name": "design-system-generalizer", "description": "Spread golden page patterns" },
+    { "name": "no-duplicate-ui", "description": "Detect duplicate Vue UI" },
+    { "name": "backend-type-bridger", "description": "FastAPI OpenAPI / Firestore types (TypeScript)" },
+    { "name": "composable-patterns", "description": "FastAPI JWT + Firebase composables (Vue)" },
+    { "name": "heyeddi-design", "description": "Design from scratch (replaces impeccable)" },
+    { "name": "engineering-excellence", "description": "KISS/YAGNI/DRY/SOLID audits + .heyeddi/docs/engineering/" },
+    { "name": "ux-flow-auditor", "description": "Task flow traces — click depth, friction — .heyeddi/docs/ux-flows/" }
+  ]
+}

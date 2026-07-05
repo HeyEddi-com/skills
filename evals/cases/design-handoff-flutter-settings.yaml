@@ -1,0 +1,46 @@
+id: design-handoff-flutter-settings
+skills:
+  - design-handoff-flutter
+project_template: flutter-thin
+prompt_file: prompts/design-handoff-flutter-settings.md
+judge_file: prompts/design-handoff-flutter/judge-settings.md
+verify_commands:
+  - python3 .agents/skills/design-handoff-flutter/scripts/verify_handoff.py --route /settings --project-root .
+  - python3 .agents/skills/design-handoff-flutter/scripts/verify_theme.py --project-root .
+judge: |
+  @design-handoff-flutter implemented /settings with mockup-brief, Material 3 theme, app shell, and
+  settings screen. verify_handoff, verify_tokens, and verify_theme --check must pass.
+  Do not require Vue-style Decision log in design.md.
+assertions:
+  - name: settings-screen
+    type: file_exists
+    path: lib/screens/settings_screen.dart
+  - name: verify-handoff
+    type: command
+    cmd:
+      - python3
+      - .agents/skills/design-handoff-flutter/scripts/verify_handoff.py
+      - --route
+      - /settings
+      - --project-root
+      - "{project_root}"
+      - --check
+    expect_exit_zero: true
+  - name: verify-tokens
+    type: command
+    cmd:
+      - python3
+      - .agents/skills/design-handoff-flutter/scripts/verify_tokens.py
+      - --project-root
+      - "{project_root}"
+      - --check
+    expect_exit_zero: true
+  - name: verify-theme
+    type: command
+    cmd:
+      - python3
+      - .agents/skills/design-handoff-flutter/scripts/verify_theme.py
+      - --project-root
+      - "{project_root}"
+      - --check
+    expect_exit_zero: true

@@ -1,0 +1,12 @@
+{
+  "route": "/dashboard",
+  "app": "SecureVault",
+  "mode": "wireframe",
+  "fidelity": "wireframe",
+  "mockup_contract": "layout_only",
+  "notes": [
+    "ASCII wireframe only — no PNGs",
+    "Agent must write mockup-brief.md from wireframe.md before Vue",
+    "Reuse AppShell if already in project"
+  ]
+}

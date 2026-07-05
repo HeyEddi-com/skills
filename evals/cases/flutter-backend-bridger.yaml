@@ -1,0 +1,24 @@
+id: flutter-backend-bridger-users
+skills:
+  - flutter-engineering
+  - dart-type-bridger
+  - flutter-patterns
+project_template: flutter-product-app
+prompt_file: prompts/flutter-backend-bridger.md
+verify_commands: []
+judge: |
+  Skills sync OpenAPI to Dart models, add users repository + Riverpod provider per flutter-patterns,
+  and pass verify_build or leave analyze-ready code. Read lib/models, repositories, providers.
+assertions:
+  - name: api-models
+    type: file_exists
+    path: lib/models/api_models.dart
+  - name: users-repo
+    type: file_exists
+    path: lib/repositories/users_repository.dart
+  - name: users-provider
+    type: file_exists
+    path: lib/providers/users_provider.dart
+  - name: openapi-root
+    type: file_exists
+    path: openapi.json

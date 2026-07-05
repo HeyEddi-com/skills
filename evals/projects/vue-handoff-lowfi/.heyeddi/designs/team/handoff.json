@@ -1,0 +1,11 @@
+{
+  "route": "/team",
+  "app": "SecureVault",
+  "mode": "wireframe",
+  "fidelity": "wireframe",
+  "mockup_contract": "layout_only",
+  "notes": [
+    "ASCII wireframe only — interpret wireframe.md",
+    "DataTable or card list for members"
+  ]
+}

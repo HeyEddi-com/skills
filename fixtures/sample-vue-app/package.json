@@ -1,0 +1,8 @@
+{
+  "name": "skill-test-fixture",
+  "private": true,
+  "scripts": {
+    "test": "echo \"fixture tests ok\"",
+    "build": "echo \"fixture build ok\""
+  }
+}
