@@ -8,9 +8,11 @@ There is **no deploy step** and **no submission form**. Distribution is GitHub +
 
 | Channel | How consumers get skills | Maintainer action |
 |---------|--------------------------|-------------------|
-| **CLI** (`npx skills`) | `npx skills add HeyEddi-com/skills -a cursor -y --all` | Keep repo public; tag releases |
+| **CLI** (`npx skills`) | `npx skills add HeyEddi-com/skills -a cursor -y --skill '*'` | Keep repo public; tag releases |
 | **skills.sh** | Same install command; leaderboard from install telemetry | Promote install command; badge in README |
-| **Pinned version** | `npx skills add https://github.com/HeyEddi-com/skills/tree/v1.0.0 -a cursor -y --all` | Tag `v1.0.0`, `v1.1.0`, … on GitHub |
+| **Pinned version** | `npx skills add https://github.com/HeyEddi-com/skills/tree/v1.0.0 -a cursor -y --skill '*'` | Tag `v1.0.0`, `v1.1.0`, … on GitHub |
+
+**CLI flag trap:** `--all` = all skills **and all agents** (creates `agent/skills/` for Eve, etc.). For Cursor-only, use `-a cursor --skill '*'`, not `--all`.
 
 **Repo requirements (v1.0.0):** public GitHub repo, `skills/<name>/SKILL.md` layout, `LICENSE`, README with install commands. No Vercel project or hosting needed.
 

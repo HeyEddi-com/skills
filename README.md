@@ -19,14 +19,16 @@ Curated [Cursor Agent Skills](https://cursor.com/docs/context/skills) for HeyEdd
 Into your **project** (`.agents/skills/` — shared with other agents):
 
 ```bash
-npx skills add HeyEddi-com/skills -a cursor -y --all
+npx skills add HeyEddi-com/skills -a cursor -y --skill '*'
 ```
 
 Into **global** Cursor skills (`~/.cursor/skills/`):
 
 ```bash
-npx skills add HeyEddi-com/skills -a cursor -g -y --all
+npx skills add HeyEddi-com/skills -a cursor -g -y --skill '*'
 ```
+
+> **Note:** Do **not** use `--all` with `-a cursor`. In the Vercel CLI, `--all` means *all skills **and** all 72 agents* (including Eve → `agent/skills/`). Use `--skill '*'` to install every skill for Cursor only.
 
 From a local clone of this hub:
 
@@ -49,7 +51,7 @@ List names in [skills-registry.json](skills-registry.json) or the catalog below.
 ### Pin a release tag
 
 ```bash
-npx skills add https://github.com/HeyEddi-com/skills/tree/v1.0.0 -a cursor -y --all
+npx skills add https://github.com/HeyEddi-com/skills/tree/v1.0.0 -a cursor -y --skill '*'
 ```
 
 ### Cursor Team Marketplace (teams / enterprise)

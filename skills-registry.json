@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "repository": "https://github.com/HeyEddi-com/skills",
-  "install": "npx skills add HeyEddi-com/skills -a cursor -y --all",
+  "install": "npx skills add HeyEddi-com/skills -a cursor -y --skill '*'",
   "skills": [
     { "name": "skill-orchestrator", "description": "Discover available @skills and suggest which to invoke; reads skill-routing.json" },
     { "name": "product-translator", "description": "User prompt → product.md, mockups, briefs, skill-routing for downstream agents" },

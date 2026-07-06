@@ -5,7 +5,7 @@ Cursor Marketplace bundle for all 20 HeyEddi agent skills. Skill sources are sym
 ## Install via CLI (consumers)
 
 ```bash
-npx skills add HeyEddi-com/skills -a cursor -y --all
+npx skills add HeyEddi-com/skills -a cursor -y --skill '*'
 ```
 
 ## Install via Cursor
