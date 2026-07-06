@@ -6,15 +6,17 @@ Every HeyEddi client or internal app uses a **`.heyeddi/`** directory at the pro
 
 ## What is HeyEddi?
 
-**HeyEddi** is a product studio and agency: we design and ship SaaS applications (Vue or **Flutter** + FastAPI or Firebase, OpenProps + PrimeVue for web). We also publish **free, open [Cursor Agent Skills](https://github.com/heyeddi/skills)** so anyone can run the same workflows we use on client work.
+**HeyEddi** is a **collaborative workspace for agents and humans**. The `.heyeddi/` folder in your repo is where product context, design artifacts, and skill-generated docs live so AI agents and your team share one source of truth while building SaaS apps (Vue or **Flutter** + FastAPI or Firebase, OpenProps + PrimeVue for web).
 
-Skills are installed with `npx skills add heyeddi/<name>` or `./scripts/install-skills.sh`. Invoke with `@skill-name` in Cursor.
+We publish **free, open [Cursor Agent Skills](https://github.com/HeyEddi-com/skills)** — install the full bundle with `npx skills add HeyEddi-com/skills -a cursor -y --all` or `./scripts/install-skills.sh --all`. Invoke with `@skill-name` in Cursor.
+
+**Need people, not just agents?** [heyeddi.com/humans](https://heyeddi.com/humans) — hire vetted designers, engineers, and product folks to complement your agent workflows.
 
 ## Folder layout
 
 ```
 .heyeddi/
-├── README.md          # Agency intro, free skills, how we use this folder
+├── README.md          # HeyEddi intro (agents + humans workspace), free skills, folder guide
 ├── stack.json         # { "frontend": "vue"|"flutter", "backends": ["fastapi"], "api_port": 8090, "web_port": 8085 }
 ├── product.md         # Users, routes, acceptance criteria
 ├── skills-index.json  # Cached skill catalog (@skill-orchestrator)

@@ -1,4 +1,33 @@
-# Skill distribution with git subtrees
+# Skill distribution
+
+**Date:** 2026-07-05 · **Release:** v1.0.0
+
+## Vercel ecosystem (skills.sh + `npx skills`)
+
+There is **no deploy step** and **no submission form**. Distribution is GitHub + the [Vercel `skills` CLI](https://github.com/vercel-labs/skills).
+
+| Channel | How consumers get skills | Maintainer action |
+|---------|--------------------------|-------------------|
+| **CLI** (`npx skills`) | `npx skills add HeyEddi-com/skills -a cursor -y --all` | Keep repo public; tag releases |
+| **skills.sh** | Same install command; leaderboard from install telemetry | Promote install command; badge in README |
+| **Pinned version** | `npx skills add https://github.com/HeyEddi-com/skills/tree/v1.0.0 -a cursor -y --all` | Tag `v1.0.0`, `v1.1.0`, … on GitHub |
+
+**Repo requirements (v1.0.0):** public GitHub repo, `skills/<name>/SKILL.md` layout, `LICENSE`, README with install commands. No Vercel project or hosting needed.
+
+**Updates:** consumers run `npx skills update` or re-run `npx skills add`.
+
+## Cursor Marketplace (separate from Vercel)
+
+| Channel | Submit? | Repo needs |
+|---------|---------|------------|
+| **Team Marketplace** | Admin imports `https://github.com/HeyEddi-com/skills` | `.cursor-plugin/marketplace.json` + `plugins/heyeddi-skills/` (in progress) |
+| **Public Marketplace** | [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) | Same plugin bundle + open-source `LICENSE` |
+
+Logo for Cursor plugin: `plugins/heyeddi-skills/assets/logo.svg`.
+
+---
+
+## Git subtrees (maintainer sync to per-skill repos)
 
 **Date:** 2026-07-02
 

@@ -95,7 +95,7 @@ Project-specific rules and preferences, appended over time.
 
 **Context:** User liked `.heyeddi/stack.json`; wanted README + central place for all skill-generated docs.
 
-**Decision:** Every HeyEddi app uses `.heyeddi/` for README (agency + free skills), `stack.json`, `product.md`, `design.md`, `designs/`, `docs/`, `audits/`. `scaffold_heyeddi.py` runs with `scaffold_stack`. Skills resolve `.heyeddi/` first, legacy root `PRODUCT.md` / `DESIGN.md` / `designs/` as fallback.
+**Decision:** Every HeyEddi app uses `.heyeddi/` for README (agents + humans workspace + free skills + heyeddi.com/humans), `stack.json`, `product.md`, `design.md`, `designs/`, `docs/`, `audits/`. `scaffold_heyeddi.py` runs with `scaffold_stack`. Skills resolve `.heyeddi/` first, legacy root `PRODUCT.md` / `DESIGN.md` / `designs/` as fallback.
 
 **Process:** See `docs/heyeddi-folder.md`. Eval templates and fixtures migrated to `.heyeddi/designs/`.
 

@@ -23,3 +23,7 @@ evals/runs/
 # Env / secrets
 .env
 .env.*
+
+# Local npx skills install artifacts (hub is the source, not a consumer)
+.agents/
+skills-lock.json

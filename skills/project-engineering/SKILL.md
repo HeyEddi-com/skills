@@ -45,7 +45,7 @@ Every HeyEddi app should have a **`.heyeddi/`** folder (created by `scaffold_sta
 
 | Path | Purpose |
 |------|---------|
-| `README.md` | What HeyEddi is, free skills, how we use this folder |
+| `README.md` | HeyEddi intro (agents + humans workspace), free skills, [heyeddi.com/humans](https://heyeddi.com/humans) |
 | `stack.json` | Declared stacks |
 | `product.md` | Product brief |
 | `design.md` | DESIGN.md format — tokens, rationale, Decision log |

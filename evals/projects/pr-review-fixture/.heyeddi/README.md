@@ -1,21 +1,24 @@
 # HeyEddi
 
-**HeyEddi** is a product studio and agency: we design and ship SaaS applications for clients — Vue frontends, FastAPI or Firebase backends, and a consistent design system (OpenProps + PrimeVue).
+**HeyEddi** is a **collaborative workspace for agents and humans**. Product context, design artifacts, and skill-generated reports live in `.heyeddi/` so AI agents and your team share one source of truth while building SaaS applications — Vue or Flutter frontends, FastAPI or Firebase backends, OpenProps + PrimeVue on web.
 
-This folder is the **HeyEddi workspace** in your repository. Skills read and write here so product context, design artifacts, and reports stay in one place.
+This folder is that workspace **inside your repository**. Skills read and write here; humans review, decide, and merge like any other contributor.
 
 ## Skills (free to use)
 
-Our [Cursor Agent Skills](https://github.com/heyeddi/skills) are **free and open**. Install into any project:
+Our [Cursor Agent Skills](https://github.com/HeyEddi-com/skills) are **free and open**. Install the full set into any project:
 
 ```bash
-npx skills add heyeddi/project-engineering -a cursor
-./scripts/install-skills.sh --all --project .
+npx skills add HeyEddi-com/skills -a cursor -y --all
 ```
 
-Skills are invoked with `@skill-name` in Cursor or wired into our Cloud Run agent. They automate engineering scaffold, design, handoff, API types, QA gates, and PR workflows — the same steps our team runs on client work.
+Invoke with `@skill-name` in Cursor (e.g. `@product-translator`, `@design-handoff`) or wire the same skills into a Cloud Run agent. They automate intake, design, engineering scaffold, handoff, API types, QA gates, and PR workflows.
 
-**You own your code.** Skills suggest and generate; you review and merge like any other contributor.
+**You own your code.** Skills suggest and generate; you review and merge.
+
+## Need humans?
+
+Agents handle repeatable workflow; some work still needs people. **[heyeddi.com/humans](https://heyeddi.com/humans)** — hire vetted designers, engineers, and product folks to complement your agents.
 
 ## How we use this folder
 
@@ -26,7 +29,9 @@ Skills are invoked with `@skill-name` in Cursor or wired into our Cloud Run agen
 | `design.md` | DESIGN.md format — tokens, rationale, Decision log |
 | `designs/<feature>/` | Per-feature artifacts: handoff PNGs, briefs, wireframes, research |
 | `docs/` | Skill-generated reports (ship checklist, PR tracking, drift audits, gate output) |
-| `audits/` | Visual audit summaries, pre-merge snapshots (optional) |
+| `docs/engineering/` | Architecture, reuse catalog, engineering ADRs (`@engineering-excellence`) |
+| `docs/ux-flows/` | Task flow traces — click depth, friction (`@ux-flow-auditor`) |
+| `audits/` | Visual audit summaries, pre-merge snapshots, UX flow screenshots (optional) |
 
 **Convention:** When a skill creates documentation, save it under `.heyeddi/docs/` or the relevant subfolder above — not scattered at repo root. Root `PRODUCT.md` / `DESIGN.md` / `designs/` are legacy fallbacks; prefer this folder for new work.
 
@@ -36,8 +41,10 @@ Skills are invoked with `@skill-name` in Cursor or wired into our Cloud Run agen
 2. `@heyeddi-design` or `@design-handoff` — product + design docs, then UI
 3. `@backend-type-bridger` + `@composable-patterns` — API types and composables
 4. `@verify-build` + `@visual-auditor` + `@pre-merge-gate` — ship checklist
+5. `@engineering-excellence` — architecture notes under `docs/engineering/`
+6. `@ux-flow-auditor` — task flows under `docs/ux-flows/`
 
-See [HeyEddi skills hub](https://github.com/heyeddi/skills) for the full cheat sheet.
+See [HeyEddi skills hub](https://github.com/HeyEddi-com/skills) for the full cheat sheet.
 
 ---
-*Last updated: 2026-07-02 — maintained by project-engineering scaffold*
+*Last updated: 2026-07-04 — maintained by project-engineering scaffold*
