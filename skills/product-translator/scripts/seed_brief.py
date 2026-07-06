@@ -100,6 +100,13 @@ def main() -> None:
         return
 
     handoff_path = feature_dir / "handoff.json"
+    designer_read = args.designer_read
+    wireframe_path = feature_dir / "wireframe.md"
+    if wireframe_path.is_file() and "## Regions" in wireframe_path.read_text(errors="replace"):
+        designer_read = (
+            args.designer_read
+            + " Wireframe in wireframe.md — expand Implementation spec regions to match ASCII, not generic settings cards."
+        )
     if handoff_path.is_file():
         try:
             meta = json.loads(handoff_path.read_text())
@@ -116,7 +123,7 @@ def main() -> None:
         feature_title=args.feature.replace("-", " ").title(),
         app_name=args.app_name,
         audience_block=audience_block,
-        designer_read=args.designer_read,
+        designer_read=designer_read,
         route=route,
         feature=args.feature,
     )

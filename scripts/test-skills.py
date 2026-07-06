@@ -191,7 +191,7 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
         pass
     if tool_name in ("scaffold_vue", "scaffold_stack", "scaffold_fastapi", "scaffold_firebase", "scaffold_flutter"):
         args["dry_run"] = True
-    if tool_name in ("write_product", "write_translation", "write_routing", "generate_mockups", "seed_brief", "build_routing"):
+    if tool_name in ("write_product", "write_translation", "write_routing", "generate_wireframe", "prepare_mockup_prompts", "seed_brief", "build_routing"):
         args["dry_run"] = True
     if tool_name == "write_product":
         args["json"] = json.dumps(
@@ -252,8 +252,12 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
         args["summary"] = "Test product for skill smoke"
     if tool_name == "write_routing":
         args["json"] = '{"routes":[{"route":"/settings","skill":"design-handoff"}]}'
-    if tool_name == "generate_mockups":
+    if tool_name == "prepare_mockup_prompts":
         args["feature"] = "settings"
+        args["route"] = "/settings"
+    if tool_name == "generate_wireframe":
+        args["feature"] = "settings"
+        args["route"] = "/settings"
     if tool_name == "seed_brief":
         args["feature"] = "settings"
     if tool_name == "suggest_skills":

@@ -193,7 +193,7 @@ def main() -> None:
             "json_path": str(json_dest.relative_to(root)),
             "personas": len(data.get("personas") or []),
             "route_intent": len(data.get("route_intent") or []),
-            "next": "write_translation → generate_mockups → seed_brief → build_routing --write",
+            "next": "write_translation → generate_wireframe or ingest_mockups → seed_brief → build_routing --write",
         }
     )
 

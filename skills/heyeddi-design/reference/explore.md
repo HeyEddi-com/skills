@@ -16,7 +16,9 @@ Do not ask the user to install image APIs.
 
 ## Phase A — Visual direction probes (when available)
 
-Generate **2–4** distinct direction probes differing in hierarchy, density, nav topology, typographic voice, or color strategy — not just palette swaps.
+Generate **2–4** distinct direction probes differing in hierarchy, density, nav topology, typographic voice, or color strategy — **not** palette swaps or the same layout with different hues.
+
+Each probe should answer: *Would this feel like a different product identity, or the same template recolored?* Reject lanes that only change primary color.
 
 Base probes on:
 

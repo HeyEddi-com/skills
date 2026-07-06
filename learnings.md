@@ -361,3 +361,35 @@ Project-specific rules and preferences, appended over time.
 - `scaffold_fastapi.py`: patch CORS from `stack.json`; merge `fastapi` into `backends`
 
 **Verify:** `python3 scripts/test-skills.py` (210/210) + `pytest tests/test_spec_compliance_fixes.py`
+
+## 2026-07-06 — Product-translator mockups: wireframe-first, not cookie-cutter PNGs
+
+**Context:** `@product-translator` always called `generate_mockups` → identical settings-app-shell PNG with only product name changed. Wrong for varied products/routes.
+
+**Decision:**
+- **User images** → `ingest_mockups` (screenshots, sketches, competitor refs)
+- **No images (default)** → `generate_wireframe` — layout from `product-translation.json` page purpose (marketing, login, dashboard table, settings, generic)
+- **PNG preset** → `generate_mockups --confirm-preset-match` only as last resort when preset matches route
+- `generate_mockups` without `--confirm-preset-match` **refuses** with hint
+
+**Docs:** `reference/mockup-strategy.md`, updated `mockup-quality.md`, pipeline, SKILL v1.2.0.
+
+## 2026-07-06 — Product-translator: no PNGs in skill package
+
+**Context:** Skill should not ship sample PNGs or Pillow template drawers. Testing PNGs belong in hub eval tooling (`poe mockups`), not distributable skills.
+
+**Decision:**
+- Removed `generate_mockups.py` and `_layout_mockups.py` from `skills/product-translator/`
+- Added `prepare_mockup_prompts.py` + `reference/ai-mockup-images.md` — agent generates PNGs with native image tool when needed
+- Hub `scripts/generate-handoff-mockups.py` remains eval/fixture-only
+- SKILL v1.3.0
+
+**Verify:** `python3 scripts/test-skills.py` product-translator passes; no `.png` under `skills/`.
+
+## 2026-07-06 — HeyEddi-design: project-specific ambition bar
+
+**Context:** Designer on test projects only pushed harder when user explicitly asked for "artistic / top notch" design.
+
+**Decision:** `reference/design-ambition.md` — impressive craft is **default** for flagship routes. Brief requires **Design signature** section; craft ends with ambition checklist; audience-fit adds **Visual distinction** dimension (≥4 when high fidelity). User saying "make it artistic" confirms the bar, does not replace `shape`/signature work.
+
+**Verify:** shape → craft on flagship route; Decision log cites memorable detail per project.

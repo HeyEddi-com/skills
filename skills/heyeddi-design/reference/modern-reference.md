@@ -8,6 +8,8 @@ Read this during **`research`**, **`shape`**, **`craft`**, and **`polish`**. Tie
 
 **Audience first:** read `reference/audience-design.md` + `product.md` **Personas** before picking references from the table below.
 
+**Ambition:** read `reference/design-ambition.md` — impressive craft is the default for flagship routes; borrow techniques below into a **project-specific signature**, not a reusable template.
+
 ## The problem we are fixing
 
 | Plain (avoid) | Modern (target) |
@@ -98,7 +100,7 @@ Before calling a screen done:
 - [ ] Is there one clear primary action per viewport?
 - [ ] Do cards have padding ≥ 16px and visible separation from background?
 - [ ] Does dark mode look intentional (not inverted gray mush)?
-- [ ] Decision log entry cites which reference pattern you borrowed
+- [ ] Decision log entry cites which reference pattern you borrowed **and this project's memorable detail** (`design-ambition.md`)
 
 ## When plain is OK
 

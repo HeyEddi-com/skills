@@ -106,9 +106,14 @@ def main() -> None:
             record("routing-coverage", not missing, f"missing routes: {missing}" if missing else "all pages routed")
 
     settings = designs_dir(root) / "settings"
+    has_wireframe = (settings / "wireframe.md").is_file()
+    has_png_pair = (settings / "desktop.png").is_file() and (settings / "mobile.png").is_file()
+    record(
+        "settings-handoff-visual",
+        has_wireframe or has_png_pair,
+        "wireframe.md or desktop.png+mobile.png required",
+    )
     for artifact, label in (
-        (settings / "desktop.png", "settings-desktop-png"),
-        (settings / "mobile.png", "settings-mobile-png"),
         (settings / "mockup-brief.md", "settings-brief"),
         (settings / "handoff.json", "settings-handoff-json"),
     ):

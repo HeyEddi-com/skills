@@ -90,8 +90,12 @@ def main() -> None:
     if not list(intake.glob("translation-*.md")):
         gaps.append("missing translation-*.md — run write_translation")
     settings = designs_dir(root) / "settings"
-    if not (settings / "desktop.png").is_file():
-        gaps.append("missing designs/settings mockups — run generate_mockups for handoff routes")
+    has_wireframe = (settings / "wireframe.md").is_file()
+    has_png_pair = (settings / "desktop.png").is_file() and (settings / "mobile.png").is_file()
+    if not has_wireframe and not has_png_pair:
+        gaps.append(
+            "missing designs/settings handoff — run generate_wireframe, ingest_mockups, or prepare_mockup_prompts + AI PNGs"
+        )
 
     emit(
         json.dumps(
@@ -110,7 +114,7 @@ def main() -> None:
                     "1. Draft product-translation.json (see reference/audience-intake.md)",
                     "2. write_product --json .heyeddi/docs/intake/product-translation.json --force",
                     "3. write_translation",
-                    "4. generate_mockups + seed_brief per handoff feature",
+                    "4. generate_wireframe or ingest_mockups + seed_brief per handoff feature",
                     "5. build_routing --write",
                     "6. verify_intake --check",
                 ],

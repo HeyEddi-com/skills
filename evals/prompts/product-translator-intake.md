@@ -7,7 +7,7 @@ Read `USER_PROMPT.md` and run the **full mandatory pipeline** (`reference/pipeli
    - ≥2 **personas**, **route_intent** for every page route, **competitors**, **competitive_edge**, **anti_audience**, **voice_tone**, pages, stack_note, design_references
 3. **`write_product --json .heyeddi/docs/intake/product-translation.json --force`** — never hand-write product.md
 4. `write_translation` — summary + decisions JSON array
-5. `generate_mockups --feature settings --app-name TaskFlow --route /settings --page-title Settings`
+5. `generate_wireframe --feature settings --route /settings --force` — refine `wireframe.md` for TaskFlow if needed
 6. `seed_brief --feature settings --app-name TaskFlow --force`
 7. **`build_routing --write --save-input`**
 8. **`verify_intake --check`** — must exit 0

@@ -39,9 +39,13 @@ def feature_slug(route: str, view: str) -> str:
     return slug or view.replace("View", "").lower()
 
 
-def has_handoff_mockups(root: Path, feature: str) -> bool:
+def has_handoff_artifacts(root: Path, feature: str) -> bool:
     folder = designs_dir(root) / feature
-    return folder.is_dir() and (folder / "desktop.png").is_file()
+    if not folder.is_dir():
+        return False
+    if (folder / "wireframe.md").is_file():
+        return True
+    return (folder / "desktop.png").is_file()
 
 
 def build_routing(root: Path, data: dict) -> dict:
@@ -57,7 +61,7 @@ def build_routing(root: Path, data: dict) -> dict:
         feature = feature_slug(route, view)
         register = "brand" if route in ("/", "/login") else "product"
 
-        if route == "/settings" or has_handoff_mockups(root, feature):
+        if route == "/settings" or has_handoff_artifacts(root, feature):
             feat = "settings" if "settings" in route else feature
             routes_out.append(
                 {
