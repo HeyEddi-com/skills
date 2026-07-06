@@ -1,0 +1,5 @@
+{
+  "frontend": "vue",
+  "backends": ["fastapi"],
+  "api_port": 8090
+}
