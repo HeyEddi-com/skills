@@ -60,7 +60,7 @@ Admins can import this repo as a **Team Marketplace** plugin source (Cursor 2.6+
 2. Paste `https://github.com/HeyEddi-com/skills`
 3. Assign plugins to access groups; members install from **Customize**
 
-Requires `.cursor-plugin/marketplace.json` in this repo (see [docs/distribution.md](docs/distribution.md)).
+Plugin bundle: `.cursor-plugin/marketplace.json` + `plugins/heyeddi-skills/`. See [docs/distribution.md](docs/distribution.md).
 
 Invoke skills in chat with `@skill-name` (e.g. `@product-translator`, `@design-handoff`).
 

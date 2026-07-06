@@ -22,7 +22,9 @@ evals/runs/
 
 # Env / secrets
 .env
+.env.local
 .env.*
+!.env*.example
 
 # Local npx skills install artifacts (hub is the source, not a consumer)
 .agents/

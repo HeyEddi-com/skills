@@ -20,8 +20,8 @@ There is **no deploy step** and **no submission form**. Distribution is GitHub +
 
 | Channel | Submit? | Repo needs |
 |---------|---------|------------|
-| **Team Marketplace** | Admin imports `https://github.com/HeyEddi-com/skills` | `.cursor-plugin/marketplace.json` + `plugins/heyeddi-skills/` (in progress) |
-| **Public Marketplace** | [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) | Same plugin bundle + open-source `LICENSE` |
+| **Team Marketplace** | Admin imports `https://github.com/HeyEddi-com/skills` | `.cursor-plugin/marketplace.json` + `plugins/heyeddi-skills/` ✅ |
+| **Public Marketplace** | [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) | Same plugin bundle + `LICENSE` ✅ |
 
 Logo for Cursor plugin: `plugins/heyeddi-skills/assets/logo.svg`.
 

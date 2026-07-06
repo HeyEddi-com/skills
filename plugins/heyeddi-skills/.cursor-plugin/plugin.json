@@ -1,0 +1,33 @@
+{
+  "name": "heyeddi-skills",
+  "displayName": "HeyEddi Skills",
+  "version": "1.0.0",
+  "description": "HeyEddi agent skills for collaborative agents and humans — product intake, design, engineering, QA, and merge workflows.",
+  "author": {
+    "name": "HeyEddi",
+    "email": "eddi@heyeddi.com"
+  },
+  "homepage": "https://github.com/HeyEddi-com/skills",
+  "repository": "https://github.com/HeyEddi-com/skills",
+  "license": "MIT",
+  "logo": "assets/logo.svg",
+  "keywords": [
+    "heyeddi-skills",
+    "agent-skills",
+    "cursor",
+    "vue",
+    "flutter",
+    "design-handoff",
+    "product",
+    "engineering"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "skills",
+    "product",
+    "design",
+    "engineering",
+    "qa"
+  ],
+  "skills": "./skills/"
+}
