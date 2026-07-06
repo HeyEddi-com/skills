@@ -1,0 +1,1 @@
+"""HeyEddi FastAPI application."""

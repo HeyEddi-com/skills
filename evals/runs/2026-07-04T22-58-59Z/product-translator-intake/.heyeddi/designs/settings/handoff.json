@@ -1,0 +1,10 @@
+{
+  "route": "/settings",
+  "app": "TaskFlow",
+  "mockup_contract": "layout_professional",
+  "generated_by": "product-translator",
+  "notes": [
+    "Professional layout reference \u2014 colors from .heyeddi/design.md tokens at implement time",
+    "mockup-brief.md seeded by seed_brief.py; refine before @design-handoff if needed"
+  ]
+}

@@ -18,7 +18,6 @@ venv/
 dist/
 build/
 *.log
-evals/runs/
 
 # Env / secrets
 .env
@@ -26,6 +25,5 @@ evals/runs/
 .env.*
 !.env*.example
 
-# Local npx skills install artifacts (hub is the source, not a consumer)
+# Local npx skills install copy (regenerable; hub source is skills/)
 .agents/
-skills-lock.json
