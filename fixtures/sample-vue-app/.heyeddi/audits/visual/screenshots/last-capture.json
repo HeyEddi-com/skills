@@ -1,0 +1,8 @@
+{
+  "route": "/settings",
+  "artifacts": [
+    ".heyeddi/audits/visual/screenshots/settings_375px.png",
+    ".heyeddi/audits/visual/screenshots/settings_768px.png",
+    ".heyeddi/audits/visual/screenshots/settings_1440px.png"
+  ]
+}

@@ -393,3 +393,31 @@ Project-specific rules and preferences, appended over time.
 **Decision:** `reference/design-ambition.md` — impressive craft is **default** for flagship routes. Brief requires **Design signature** section; craft ends with ambition checklist; audience-fit adds **Visual distinction** dimension (≥4 when high fidelity). User saying "make it artistic" confirms the bar, does not replace `shape`/signature work.
 
 **Verify:** shape → craft on flagship route; Decision log cites memorable detail per project.
+
+## 2026-07-06 — Visual-auditor v2: WCAG contrast + motion-over-text
+
+**Context:** Auditor only captured screenshots — missed green-on-green text and light gray copy over animated gradients.
+
+**Decision:** `audit_contrast.py` + in-page `contrast_probe.js` — WCAG AA ratios, same-hue detection, motion/background-image behind text. Reports under `.heyeddi/audits/visual/`. `pre-merge-gate` runs contrast audit with `--check`. `capture_screenshots --check` chains contrast.
+
+**Verify:** `pytest tests/test_contrast_audit.py`; fixture `contrast-violations.html` must report errors.
+
+## 2026-07-06 — Visual-auditor paths under `.heyeddi/audits/visual/`
+
+**Context:** Screenshots wrote to repo-root `.visual-audit/` while contrast reports used `.heyeddi/audits/visual/`.
+
+**Decision:** All `@visual-auditor` artifacts under `.heyeddi/audits/visual/` — screenshots in `screenshots/` subdirectory. Eval harness mirrors to same path. Repo-root `.visual-audit/` is legacy read-only.
+
+## 2026-07-06 — Visual-auditor v3: review, fix, document
+
+**Context:** User wanted auditor to review screenshots against product + design spec, fix issues immediately, not only report them.
+
+**Decision:** v3.0.0 — `load_visual_context`, `append_fix_log`, `finalize_visual_review`; `reference/visual-review.md` + `fix-loop.md`. Removed `disable-model-invocation`. Agent reads PNGs, edits Vue/CSS, logs each fix, re-verifies contrast.
+
+## 2026-07-06 — Product-manager skill (holistic PM orchestrator)
+
+**Context:** User wanted PM beyond backlog — verify product works, is useful, suggest better alternatives; delegate UX, design, engineering research in code.
+
+**Decision:** New `@product-manager` — `load_product_context`, `audit_product`, `write_feature_spec`, `check_features`, `write_review_plan`, `verify_product`. Artifacts under `.heyeddi/docs/product/`. Delegates to `@ux-flow-auditor`, `@heyeddi-design critique`, `@visual-auditor`, `@engineering-excellence` per `reference/delegation.md`.
+
+**Chain:** `@product-translator` → `@product-manager` audit + specs → design/engineering → PM review → `@pre-merge-gate`.

@@ -48,6 +48,7 @@ verify_intake --check
 ## After intake (not this skill)
 
 ```
+@product-manager       init_product_docs → audit_product → write_feature_spec (per route)
 @skill-orchestrator  write_skills_index
 @project-engineering scaffold_stack
 @heyeddi-design document → shape → craft (per routing)

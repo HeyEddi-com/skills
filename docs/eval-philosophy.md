@@ -68,7 +68,7 @@ Env: `EVAL_JUDGE_TIMEOUT` (default 300s), `EVAL_JUDGE_MODEL` (optional).
 Design/handoff turns may declare `visual_audit` in the case YAML. After `npm test` / `build`, the harness:
 
 1. Starts `npm run preview` and captures `/route` at 375 / 768 / 1440 via Playwright
-2. Saves PNGs to `.heyeddi/audits/eval-capture/` (and mirrors `.visual-audit/`)
+2. Saves PNGs to `.heyeddi/audits/eval-capture/` (and mirrors `.heyeddi/audits/visual/screenshots/`)
 3. Compares captures to reference mockup PNGs (similarity hint — layout only; colors from design system)
 4. Passes paths + instructions to the **agentic judge**, which must **open and read the PNGs** and fail missing shell, black inputs, flat unstyled layout — **not** button hue vs mockup PNG
 

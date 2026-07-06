@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "20 agent skills for product intake, design, engineering, and QA",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "pluginRoot": "plugins"
   },
   "plugins": [
     {
       "name": "heyeddi-skills",
       "source": "heyeddi-skills",
-      "description": "Full HeyEddi skill bundle — install all 20 skills for Cursor"
+      "description": "Full HeyEddi skill bundle — install all 21 skills for Cursor"
     }
   ]
 }

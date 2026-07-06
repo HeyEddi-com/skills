@@ -26,10 +26,15 @@ We publish **free, open [Cursor Agent Skills](https://github.com/HeyEddi-com/ski
 │   └── <feature>/     # Handoff PNGs, briefs, wireframes, research
 ├── docs/              # Skill-generated reports (ship, PR, drift, gates)
 │   ├── intake/        # @product-translator — translation-*.md, skill-routing.json
+│   ├── product/       # @product-manager — backlog, features/, review plans
 │   ├── ux-flows.md    # Index of traced user tasks (@ux-flow-auditor)
 │   ├── engineering/   # architecture, reuse-catalog, decisions (@engineering-excellence)
 │   └── ux-flows/      # Per-task .flow.json + reports (@ux-flow-auditor)
-└── audits/            # Optional visual / merge / ux-flow snapshots
+└── audits/            # Visual / merge / ux-flow snapshots
+    ├── visual/        # @visual-auditor — screenshots/, reviews/, fix-log, contrast
+    │   ├── screenshots/
+    │   ├── reviews/
+    │   └── fix-log.md
     └── eval-process/  # Multi-turn eval proof (integration): manifest.json + per-step PNGs
 ```
 
@@ -37,13 +42,15 @@ We publish **free, open [Cursor Agent Skills](https://github.com/HeyEddi-com/ski
 
 1. **`scaffold_stack`** (via `@project-engineering` for Vue or `@flutter-engineering` for Flutter) creates `.heyeddi/` if missing, including `README.md`.
 2. **`@product-translator`** (greenfield) writes `product.md`, optional mockups/briefs, and `docs/intake/skill-routing.json` before other skills.
-3. **Design skills** write to `.heyeddi/design.md` and `.heyeddi/designs/` (product.md often from translator first).
+3. **`@product-manager`** reviews intake, writes feature specs (stories + AC), delegates UX/design/engineering research, and synthesizes review plans under `docs/product/`.
+4. **Design skills** write to `.heyeddi/design.md` and `.heyeddi/designs/` (product.md often from translator first).
 4. **QA / PR skills** write reports to `.heyeddi/docs/` (e.g. `ship-report.md`, `pr-42-tracking.md`).
 5. **Engineering excellence** maintains `.heyeddi/docs/engineering/` and audit reports (`engineering-audit-<date>.md`).
 6. **UX flow auditor** maintains `.heyeddi/docs/ux-flows/` and index `ux-flows.md`.
-7. **Skill orchestrator** writes `.heyeddi/skills-index.json` + `skills-index.md` — read these instead of every SKILL.md at session start. Refresh after skill installs.
-8. **Audience-driven design** — `product.md` Personas + Per-route intent drive `@heyeddi-design`; see `docs/design-excellence.md`.
-9. **Legacy paths** at repo root (`PRODUCT.md`, `DESIGN.md`, `designs/`) still work — `load_context` and `load_handoff` check `.heyeddi/` first.
+7. **Visual auditor** writes contrast reports and screenshots to `.heyeddi/audits/visual/` (not repo-root `.visual-audit/`).
+8. **Skill orchestrator** writes `.heyeddi/skills-index.json` + `skills-index.md` — read these instead of every SKILL.md at session start. Refresh after skill installs.
+9. **Audience-driven design** — `product.md` Personas + Per-route intent drive `@heyeddi-design`; see `docs/design-excellence.md`.
+10. **Legacy paths** at repo root (`PRODUCT.md`, `DESIGN.md`, `designs/`, `.visual-audit/`) still readable — skills write to `.heyeddi/` first.
 
 ## Path resolution
 

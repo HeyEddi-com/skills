@@ -2,9 +2,9 @@
 
 [![skills.sh](https://skills.sh/b/HeyEddi-com/skills)](https://skills.sh/HeyEddi-com/skills)
 
-Curated [Cursor Agent Skills](https://cursor.com/docs/context/skills) for HeyEddi product workflows — intake, design, engineering, QA, and merge. **All 20 skills ship as one package** from this repo; install the full set into your app or Cursor global skills with a single command.
+Curated [Cursor Agent Skills](https://cursor.com/docs/context/skills) for HeyEddi product workflows — intake, design, engineering, QA, and merge. **All 21 skills ship as one package** from this repo; install the full set into your app or Cursor global skills with a single command.
 
-**Status:** **v1.3.0** · 20 skills · agent eval suite **15/15 pass** (2026-07-04) · [HeyEddi-com/skills](https://github.com/HeyEddi-com/skills) · [Release v1.3.0](https://github.com/HeyEddi-com/skills/releases/tag/v1.3.0)
+**Status:** **v1.4.0** · 21 skills · agent eval suite **15/15 pass** (2026-07-04) · [HeyEddi-com/skills](https://github.com/HeyEddi-com/skills) · [Release v1.4.0](https://github.com/HeyEddi-com/skills/releases/tag/v1.4.0)
 
 ## About HeyEddi
 
@@ -51,7 +51,7 @@ List names in [skills-registry.json](skills-registry.json) or the catalog below.
 ### Pin a release tag
 
 ```bash
-npx skills add https://github.com/HeyEddi-com/skills/tree/v1.3.0 -a cursor -y --skill '*'
+npx skills add https://github.com/HeyEddi-com/skills/tree/v1.4.0 -a cursor -y --skill '*'
 ```
 
 ### Cursor Team Marketplace (teams / enterprise)
@@ -72,6 +72,7 @@ Invoke skills in chat with `@skill-name` (e.g. `@product-translator`, `@design-h
 |-------|------|
 | `skill-orchestrator` | Discover @skills and suggest pipelines from `skill-routing.json` |
 | `product-translator` | User prompt → `product.md`, mockups, intake JSON, routing |
+| `product-manager` | PM review — stories, AC, usefulness; orchestrates UX/design/engineering research |
 | `heyeddi-design` | Design from scratch — briefs, wireframes, craft (Vue) |
 | `design-handoff` | Screenshot-first Vue implementation (PrimeVue + tokens) |
 | `design-handoff-flutter` | Screenshot-first Flutter / Material 3 implementation |
@@ -84,7 +85,7 @@ Invoke skills in chat with `@skill-name` (e.g. `@product-translator`, `@design-h
 | `flutter-patterns` | Riverpod repositories — Dio + Firebase patterns |
 | `engineering-excellence` | KISS/YAGNI/DRY/SOLID audits + `.heyeddi/docs/engineering/` |
 | `ux-flow-auditor` | Task-flow traces — friction, click depth — `.heyeddi/docs/ux-flows/` |
-| `visual-auditor` | Responsive screenshot audit (Vue or Flutter web) |
+| `visual-auditor` | Review screenshots vs spec, fix visual issues, document fixes |
 | `verify-build` | Vite static build validator |
 | `pre-merge-gate` | QA merge-readiness checklist |
 | `pr-review-responder` | PR review comment workflow |

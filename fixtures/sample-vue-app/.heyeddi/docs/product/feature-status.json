@@ -1,0 +1,12 @@
+{
+  "status": "ok",
+  "routes": 0,
+  "implemented": 0,
+  "placeholder": 0,
+  "missing": 0,
+  "matrix": [],
+  "pm_questions": [
+    "Routes exist \u2014 delegate @ux-flow-auditor: do tasks complete with acceptable friction?",
+    "Delegate @heyeddi-design critique: would a different layout serve the job better?"
+  ]
+}

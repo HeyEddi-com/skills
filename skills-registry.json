@@ -4,6 +4,7 @@
   "install": "npx skills add HeyEddi-com/skills -a cursor -y --skill '*'",
   "skills": [
     { "name": "skill-orchestrator", "description": "Discover available @skills and suggest which to invoke; reads skill-routing.json" },
+    { "name": "product-manager", "description": "PM review — stories, AC, usefulness; orchestrates UX/design/engineering research" },
     { "name": "product-translator", "description": "User prompt → product.md, mockups, briefs, skill-routing for downstream agents" },
     { "name": "project-engineering", "description": "Vue + FastAPI + Firebase scaffold, deps, dev servers, tests" },
     { "name": "flutter-engineering", "description": "Flutter + FastAPI + Firebase scaffold, flutter test/analyze, dev servers" },
@@ -12,7 +13,7 @@
     { "name": "design-handoff-flutter", "description": "Screenshot-first Material 3 Flutter implementation" },
     { "name": "primevue-openprops-architect", "description": "PrimeVue + OpenProps guardrails" },
     { "name": "verify-build", "description": "Vite static build validator" },
-    { "name": "visual-auditor", "description": "Responsive screenshot audit (Vue or Flutter web)" },
+    { "name": "visual-auditor", "description": "Screenshot review vs product/design spec, contrast audit, fix + document visual issues" },
     { "name": "design-handoff", "description": "Screenshot-first design implementation (Vue)" },
     { "name": "pre-merge-gate", "description": "QA merge readiness checklist" },
     { "name": "pr-review-responder", "description": "Team PR review response workflow" },

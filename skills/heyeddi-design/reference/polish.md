@@ -9,10 +9,10 @@
 1. Run `load_context.py` — DESIGN.md + PRODUCT.md (check `audience_ready`).
 2. **Read the critique** — `.heyeddi/docs/<feature>-critique.md`. If missing, run **critique** before changing code.
 3. Re-check `reference/audience-fit.md` — tone and persona alignment, not just spacing.
-4. Run `@visual-auditor` on the target route at 375/768/1440 (when available).
-5. Fix issues in priority order: P0 → P1 → P2 from critique; align tokens/components with `design.md`.
+4. Run **`@visual-auditor`** full fix loop: capture → review vs product + design → fix code → `append_fix_log` → `finalize_visual_review --check`.
+5. Fix remaining P0/P1 from critique not covered by visual auditor; align tokens with `design.md`.
 6. Re-run `@primevue-openprops-architect` validation.
-7. Re-run `@visual-auditor` to confirm improvement (when available).
+7. Re-run `@visual-auditor` `finalize_visual_review --check` if tokens/CSS changed again.
 8. **Append** to **Decision log** in `.heyeddi/design.md` — reference critique findings + what you fixed (`reference/design-talk.md`).
 
 ## Boundaries

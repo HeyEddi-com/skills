@@ -1,0 +1,51 @@
+{
+  "route": "/settings",
+  "url": "http://localhost:5173/settings",
+  "results": [
+    {
+      "scanned": 2,
+      "violationCount": 1,
+      "errorCount": 1,
+      "warnCount": 0,
+      "violations": [
+        {
+          "severity": "error",
+          "code": "low-contrast",
+          "selector": "a.skip-link",
+          "text": "Skip to content",
+          "ratio": 1.07,
+          "required": 3,
+          "foreground": "rgb(255,255,255)",
+          "background": "rgb(246,246,250)",
+          "fontSizePx": 17,
+          "fontWeight": "700"
+        }
+      ],
+      "viewport": 375,
+      "url": "http://localhost:5173/settings"
+    },
+    {
+      "scanned": 5,
+      "violationCount": 1,
+      "errorCount": 1,
+      "warnCount": 0,
+      "violations": [
+        {
+          "severity": "error",
+          "code": "low-contrast",
+          "selector": "a.skip-link",
+          "text": "Skip to content",
+          "ratio": 1.07,
+          "required": 3,
+          "foreground": "rgb(255,255,255)",
+          "background": "rgb(246,246,250)",
+          "fontSizePx": 17,
+          "fontWeight": "700"
+        }
+      ],
+      "viewport": 1440,
+      "url": "http://localhost:5173/settings"
+    }
+  ],
+  "report": ".heyeddi/audits/visual/settings-contrast-2026-07-06.md"
+}

@@ -154,6 +154,9 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
     if tool_name in {
         "capture_screenshots",
         "extract_layout",
+        "audit_contrast",
+        "load_visual_context",
+        "finalize_visual_review",
         "load_handoff",
         "describe_handoff",
         "verify_handoff",
@@ -166,6 +169,21 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
         "trace_flow",
     }:
         args["route"] = "/settings"
+    if tool_name == "audit_contrast":
+        fixture = REPO_ROOT / "skills" / "visual-auditor" / "fixtures" / "contrast-violations.html"
+        if fixture.is_file():
+            args["fixture"] = str(fixture)
+            args["route"] = "/"
+            args["widths"] = "375"
+    if tool_name == "load_visual_context":
+        args["write_review"] = True
+    if tool_name == "append_fix_log":
+        args["issue"] = "Smoke test contrast issue"
+        args["fix"] = "Adjusted token in fixture"
+        args["spec_ref"] = "design.md semantic text"
+        args["files"] = "src/views/SettingsView.vue"
+    if tool_name == "finalize_visual_review":
+        args["skip_recapture"] = True
     if tool_name == "trace_flow":
         args["task_id"] = "update-profile"
     if tool_name == "append_decision":
@@ -260,6 +278,21 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
         args["route"] = "/settings"
     if tool_name == "seed_brief":
         args["feature"] = "settings"
+    if tool_name == "write_feature_spec":
+        args["dry_run"] = True
+        args["json"] = json.dumps(
+            {
+                "route": "/settings",
+                "title": "Settings",
+                "user_stories": ["As a user, I want to save profile so that my team sees updates."],
+                "acceptance_criteria": ["Save button persists changes"],
+            }
+        )
+    if tool_name == "write_review_plan":
+        args["title"] = "Smoke review"
+        args["force"] = True
+    if tool_name == "verify_product":
+        args["skip_features"] = True
     if tool_name == "suggest_skills":
         args["user_prompt"] = "Build TaskFlow Vue app with settings handoff"
     if tool_name == "write_skills_index":
@@ -337,7 +370,7 @@ def smoke_test_tool(skill_dir: Path, tool: dict[str, Any], fixture_root: Path, r
 
 
 def fixture_for_skill(skill_name: str) -> Path:
-    if skill_name == "product-translator":
+    if skill_name in ("product-translator", "product-manager"):
         return PRODUCT_TRANSLATOR_FIXTURE if PRODUCT_TRANSLATOR_FIXTURE.is_dir() else FIXTURE_ROOT
     if skill_name in FLUTTER_SKILLS and FLUTTER_FIXTURE_ROOT.is_dir():
         return FLUTTER_FIXTURE_ROOT

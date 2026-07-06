@@ -35,7 +35,7 @@ Do not run visual capture inline during craft/handoff turns.
 3f. Read `reference/design-ambition.md` when shaping, crafting, or polishing **flagship routes** — project-specific signature and impressive craft bar (default; do not wait for user to ask).
 4. After **craft**, **polish**, **critique** (when leading to polish), or **shape** (brief confirmed), append to **Decision log** in `.heyeddi/design.md` per `reference/design-talk.md` — **cite primary persona + pattern borrowed + memorable detail for this project**.
 5. After implementation, run `reference/audience-fit.md` on flagship routes before calling done.
-6. Chain `@primevue-openprops-architect` validation and `@visual-auditor` at 375/768/1440.
+6. Chain `@primevue-openprops-architect` validation and full **`@visual-auditor`** fix loop (review vs spec → fix → document) at 375/768/1440.
 
 ## Commands
 

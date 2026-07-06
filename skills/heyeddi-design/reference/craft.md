@@ -22,7 +22,7 @@ If user invokes craft with only a vague prompt and no brief, **stop and run `sha
 3. Implement Vue SFCs following project structure (`src/views/`, `src/components/`).
 4. Cover key states from brief: default, empty, loading, error where in scope.
 5. Run `@primevue-openprops-architect` validation (`validate_vue` if available).
-6. Run `@visual-auditor` at 375, 768, 1440 for the route.
+6. Run full **`@visual-auditor`** loop on the route: `load_visual_context --write-review` → capture → contrast → **fix issues** → `append_fix_log` → `finalize_visual_review --check`.
 7. Compare against wireframes in `designs/<feature>/wireframes/` if present.
 8. **Append** to **Decision log** in `.heyeddi/design.md` — persona + pattern borrowed (`reference/design-talk.md`).
 9. Run `reference/audience-fit.md` rubric — append to critique doc or chat summary.

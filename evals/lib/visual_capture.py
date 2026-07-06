@@ -548,18 +548,18 @@ def run_visual_audit(
             "detail": detail,
         })
 
-    # Also mirror to .visual-audit for skill compatibility
-    legacy_dir = sandbox / ".visual-audit"
-    legacy_dir.mkdir(parents=True, exist_ok=True)
+    # Mirror captures to skill screenshot dir under .heyeddi/
+    skill_shots = sandbox / ".heyeddi" / "audits" / "visual" / "screenshots"
+    skill_shots.mkdir(parents=True, exist_ok=True)
     manifest = {"route": route, "artifacts": []}
     for art in artifacts:
-        dest = legacy_dir / Path(art).name
+        dest = skill_shots / Path(art).name
         try:
             dest.write_bytes(Path(art).read_bytes())
-            manifest["artifacts"].append(str(dest))
+            manifest["artifacts"].append(str(dest.relative_to(sandbox)))
         except OSError:
             pass
-    (legacy_dir / "last-capture.json").write_text(json.dumps(manifest, indent=2))
+    (skill_shots / "last-capture.json").write_text(json.dumps(manifest, indent=2) + "\n")
 
     capture_ok = bool(artifacts) and not errors
     spacing_ok = not spacing_checks or all(row.get("ok") for row in spacing_checks)

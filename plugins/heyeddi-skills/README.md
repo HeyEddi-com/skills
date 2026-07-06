@@ -1,6 +1,6 @@
 # HeyEddi Skills (Cursor plugin)
 
-Cursor Marketplace bundle for all 20 HeyEddi agent skills. Skill sources are symlinked from `skills/` at the repo root (single source of truth).
+Cursor Marketplace bundle for all 21 HeyEddi agent skills. Skill sources are symlinked from `skills/` at the repo root (single source of truth).
 
 ## Install via CLI (consumers)
 
@@ -15,4 +15,4 @@ npx skills add HeyEddi-com/skills -a cursor -y --skill '*'
 
 ## Components
 
-20 skills under `skills/` — see [skills-registry.json](../../skills-registry.json) and the [hub README](../../README.md).
+21 skills under `skills/` — see [skills-registry.json](../../skills-registry.json) and the [hub README](../../README.md).
