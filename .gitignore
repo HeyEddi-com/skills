@@ -29,3 +29,6 @@ build/
 .agents/
 !.agents/skills/
 .agents/**/__pycache__/
+
+# Orchestrator sync artifact on the skills hub (consumer apps track .heyeddi/)
+/.heyeddi/

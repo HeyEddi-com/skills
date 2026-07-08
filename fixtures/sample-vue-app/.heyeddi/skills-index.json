@@ -1,7 +1,7 @@
 {
   "hub_root": "/home/eddi/Projects/heyeddi/skills",
   "project_root": "/home/eddi/Projects/heyeddi/skills/fixtures/sample-vue-app",
-  "skill_count": 22,
+  "skill_count": 30,
   "skills": [
     {
       "name": "backend-type-bridger",
@@ -40,16 +40,19 @@
       "triggers": []
     },
     {
-      "name": "heyeddi-handoff",
-      "description": "Implements screens from designer screenshots and handoff notes. Two-pass workflow \u2014 designer writes mockup-brief with Implementation spec, implementer builds shell then route, verify_handoff checks tokens and layout. Use when approved mockups exist \u2014 not for greenfield design.",
-      "scoring_text": "Screenshot-first design implementation (Vue) Implements screens from designer screenshots and handoff notes. Two-pass workflow \u2014 designer writes mockup-brief with Implementation spec, implementer builds shell then route, verify_handoff checks tokens and layout. Use when approved mockups exist \u2014 not for greenfield design.",
+      "name": "design-handoff",
+      "description": "Deprecated alias for @heyeddi-handoff. Use @heyeddi-handoff \u2014 renamed in v2.0.0.",
+      "scoring_text": "Deprecated alias for @heyeddi-handoff. Use @heyeddi-handoff \u2014 renamed in v2.0.0.",
       "version": "",
       "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-handoff/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-handoff",
-      "invoke_as": "@heyeddi-handoff",
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/design-handoff/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/design-handoff",
+      "invoke_as": "@design-handoff",
       "has_triggers_file": false,
-      "triggers": []
+      "triggers": [],
+      "alias_of": "heyeddi-handoff",
+      "deprecated": true,
+      "source": "local-only"
     },
     {
       "name": "design-handoff-flutter",
@@ -115,7 +118,7 @@
       "name": "heyeddi-design",
       "description": "End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens \u2014 OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend \u2014 e.g. \"enterprise view\", \"critique the login page\", \"this UI looks bad\", \"settings page\". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff \u2014 use heyeddi-handoff instead.",
       "scoring_text": "Design from scratch (replaces impeccable) End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens \u2014 OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend \u2014 e.g. \"enterprise view\", \"critique the login page\", \"this UI looks bad\", \"settings page\". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff \u2014 use heyeddi-handoff instead.",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "installed": true,
       "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-design/SKILL.md",
       "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-design",
@@ -124,71 +127,22 @@
       "triggers": []
     },
     {
-      "name": "impeccable",
-      "description": "Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing pages, dashboards, product UI, app shells, components, forms, settings, onboarding, and empty states. Handles UX review, visual hierarchy, information architecture, cognitive load, accessibility, performance, responsive behavior, theming, anti-patterns, typography, fonts, spacing, layout, alignment, color, motion, micro-interactions, UX copy, error states, edge cases, i18n, and reusable design systems or tokens. Also use for bland designs that need to become bolder or more delightful, loud designs that should become quieter, live browser iteration on UI elements, or ambitious visual effects that should feel technically extraordinary. Not for backend-only or non-UI tasks.",
-      "scoring_text": "Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing pages, dashboards, product UI, app shells, components, forms, settings, onboarding, and empty states. Handles UX review, visual hierarchy, information architecture, cognitive load, accessibility, performance, responsive behavior, theming, anti-patterns, typography, fonts, spacing, layout, alignment, color, motion, micro-interactions, UX copy, error states, edge cases, i18n, and reusable design systems or tokens. Also use for bland designs that need to become bolder or more delightful, loud designs that should become quieter, live browser iteration on UI elements, or ambitious visual effects that should feel technically extraordinary. Not for backend-only or non-UI tasks.",
-      "version": "3.8.0",
-      "installed": true,
-      "skill_md": "/home/eddi/.cursor/skills/impeccable/SKILL.md",
-      "skill_dir": "/home/eddi/.cursor/skills/impeccable",
-      "invoke_as": "@impeccable",
-      "has_triggers_file": false,
-      "triggers": [],
-      "source": "local-only"
-    },
-    {
-      "name": "no-duplicate-ui",
-      "description": "Scans Vue files for duplicate component names and similar template overlap. Use during PR review or when refactoring UI to enforce DRY architecture.",
-      "scoring_text": "Detect duplicate Vue UI Scans Vue files for duplicate component names and similar template overlap. Use during PR review or when refactoring UI to enforce DRY architecture.",
+      "name": "heyeddi-handoff",
+      "description": "Implements screens from designer screenshots and handoff notes. Two-pass workflow \u2014 designer writes mockup-brief with Implementation spec, implementer builds shell then route, verify_handoff checks tokens and layout. Use when approved mockups exist \u2014 not for greenfield design.",
+      "scoring_text": "Screenshot-first design implementation (Vue) Implements screens from designer screenshots and handoff notes. Two-pass workflow \u2014 designer writes mockup-brief with Implementation spec, implementer builds shell then route, verify_handoff checks tokens and layout. Use when approved mockups exist \u2014 not for greenfield design.",
       "version": "",
       "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/no-duplicate-ui/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/no-duplicate-ui",
-      "invoke_as": "@no-duplicate-ui",
-      "has_triggers_file": false,
-      "triggers": []
-    },
-    {
-      "name": "heyeddi-pr-respond",
-      "description": "Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR review feedback with fix-vs-decline rules \u2014 stricter than built-in /babysit.",
-      "scoring_text": "Team PR review response workflow Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR review feedback with fix-vs-decline rules \u2014 stricter than built-in /babysit.",
-      "version": "",
-      "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-pr-respond/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-pr-respond",
-      "invoke_as": "@heyeddi-pr-respond",
-      "has_triggers_file": false,
-      "triggers": []
-    },
-    {
-      "name": "pre-merge-gate",
-      "description": "Runs pre-merge checks (tests, build, types, optional UI audit) and returns a markdown pass/fail report. Use when QA approves a PR or before merge to main.",
-      "scoring_text": "QA merge readiness checklist Runs pre-merge checks (tests, build, types, optional UI audit) and returns a markdown pass/fail report. Use when QA approves a PR or before merge to main.",
-      "version": "",
-      "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/pre-merge-gate/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/pre-merge-gate",
-      "invoke_as": "@pre-merge-gate",
-      "has_triggers_file": false,
-      "triggers": []
-    },
-    {
-      "name": "primevue-openprops-architect",
-      "description": "Enforces PrimeVue + project design tokens when editing Vue or CSS. OpenProps rules apply only when the project already uses open-props. Runs vue-tsc and stylelint when available.",
-      "scoring_text": "PrimeVue + OpenProps guardrails Enforces PrimeVue + project design tokens when editing Vue or CSS. OpenProps rules apply only when the project already uses open-props. Runs vue-tsc and stylelint when available.",
-      "version": "",
-      "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/primevue-openprops-architect/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/primevue-openprops-architect",
-      "invoke_as": "@primevue-openprops-architect",
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-handoff/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-handoff",
+      "invoke_as": "@heyeddi-handoff",
       "has_triggers_file": false,
       "triggers": []
     },
     {
       "name": "heyeddi-intake",
-      "description": "Translates vague user prompts into HeyEddi product docs, professional layout mockups, mockup briefs, and skill-routing manifests under .heyeddi/. Use first on new projects or when the user describes what they want to build \u2014 before @heyeddi-design, @heyeddi-handoff, or @flutter-engineering. Ingests user PNGs when provided; otherwise generates professional layout mockups and seeds briefs.",
-      "scoring_text": "User prompt \u2192 product.md, mockups, briefs, skill-routing for downstream agents Translates vague user prompts into HeyEddi product docs, professional layout mockups, mockup briefs, and skill-routing manifests under .heyeddi/. Use first on new projects or when the user describes what they want to build \u2014 before @heyeddi-design, @heyeddi-handoff, or @flutter-engineering. Ingests user PNGs when provided; otherwise generates professional layout mockups and seeds briefs.",
-      "version": "",
+      "description": "Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), route-specific handoff artifacts (wireframes, user mockups, or briefs), and skill-routing under .heyeddi/. Use first on new projects before @heyeddi-design, @heyeddi-handoff, or @flutter-engineering. Never hand-write product.md \u2014 use write_product.",
+      "scoring_text": "User prompt \u2192 product.md, mockups, briefs, skill-routing for downstream agents Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), route-specific handoff artifacts (wireframes, user mockups, or briefs), and skill-routing under .heyeddi/. Use first on new projects before @heyeddi-design, @heyeddi-handoff, or @flutter-engineering. Never hand-write product.md \u2014 use write_product.",
+      "version": "1.3.0",
       "installed": true,
       "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-intake/SKILL.md",
       "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-intake",
@@ -197,22 +151,10 @@
       "triggers": []
     },
     {
-      "name": "project-engineering",
-      "description": "Ensures HeyEddi projects have the right engineering stack \u2014 Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, installs deps, runs tests, documents local dev servers. Use when the repo is thin or before design/feature work on any HeyEddi app.",
-      "scoring_text": "Vue + FastAPI + Firebase scaffold, deps, dev servers, tests Ensures HeyEddi projects have the right engineering stack \u2014 Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, installs deps, runs tests, documents local dev servers. Use when the repo is thin or before design/feature work on any HeyEddi app.",
-      "version": "",
-      "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/project-engineering/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/project-engineering",
-      "invoke_as": "@project-engineering",
-      "has_triggers_file": false,
-      "triggers": []
-    },
-    {
       "name": "heyeddi-orchestrator",
-      "description": "Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @heyeddi-intake when present.",
-      "scoring_text": "Discover available @skills and suggest which to invoke; reads skill-routing.json Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @heyeddi-intake when present.",
-      "version": "1.1.0",
+      "description": "Discover HeyEddi skills, auto-sync .heyeddi/ (skill names + index), cross-pillar opinions, and suggest @skills. Use at session start, after reinstalling skills, or when connecting heyeddi-product, ux-flow-auditor, and heyeddi-design on a route.",
+      "scoring_text": "Discover available @skills and suggest which to invoke; reads skill-routing.json Discover HeyEddi skills, auto-sync .heyeddi/ (skill names + index), cross-pillar opinions, and suggest @skills. Use at session start, after reinstalling skills, or when connecting heyeddi-product, ux-flow-auditor, and heyeddi-design on a route.",
+      "version": "2.0.0",
       "installed": true,
       "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-orchestrator/SKILL.md",
       "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-orchestrator",
@@ -244,6 +186,203 @@
           "regex": false
         }
       ]
+    },
+    {
+      "name": "heyeddi-pr-respond",
+      "description": "Addresses PR review feedback \u2014 fetch all comment types, fix-vs-decline decisions, apply fixes, re-run pre-merge gate, threaded replies. Use when responding to human review comments as the PR author. For reviewing a submitted PR use heyeddi-pr-review.",
+      "scoring_text": "Respond to PR review comments \u2014 fix vs decline, re-gate, threaded replies Addresses PR review feedback \u2014 fetch all comment types, fix-vs-decline decisions, apply fixes, re-run pre-merge gate, threaded replies. Use when responding to human review comments as the PR author. For reviewing a submitted PR use heyeddi-pr-review.",
+      "version": "",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-pr-respond/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-pr-respond",
+      "invoke_as": "@heyeddi-pr-respond",
+      "has_triggers_file": false,
+      "triggers": []
+    },
+    {
+      "name": "heyeddi-pr-review",
+      "description": "Reviews submitted PRs using only committed changes \u2014 product fit, docs drift, engineering quality, test coverage, and pre-merge gate. Use when approving a PR, doing reviewer QA, or self-checking before requesting review. Not for replying to review comments (use heyeddi-pr-respond).",
+      "scoring_text": "Review submitted PR \u2014 committed diff, product fit, docs drift, engineering, tests Reviews submitted PRs using only committed changes \u2014 product fit, docs drift, engineering quality, test coverage, and pre-merge gate. Use when approving a PR, doing reviewer QA, or self-checking before requesting review. Not for replying to review comments (use heyeddi-pr-respond).",
+      "version": "1.0.0",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-pr-review/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-pr-review",
+      "invoke_as": "@heyeddi-pr-review",
+      "has_triggers_file": false,
+      "triggers": []
+    },
+    {
+      "name": "heyeddi-product",
+      "description": "Product leadership \u2014 user stories, acceptance criteria, backlog, holistic reviews. Verifies the product works and is useful; delegates UX flow, design critique, visual contrast, and engineering audits; synthesizes plans and change recommendations. Use after @heyeddi-intake, before ship, or when the user asks for PM review, user stories, acceptance criteria, or \"is this feature good enough?\"",
+      "scoring_text": "PM review \u2014 stories, AC, usefulness; orchestrates UX/design/engineering research Product leadership \u2014 user stories, acceptance criteria, backlog, holistic reviews. Verifies the product works and is useful; delegates UX flow, design critique, visual contrast, and engineering audits; synthesizes plans and change recommendations. Use after @heyeddi-intake, before ship, or when the user asks for PM review, user stories, acceptance criteria, or \"is this feature good enough?\"",
+      "version": "1.0.0",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-product/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-product",
+      "invoke_as": "@heyeddi-product",
+      "has_triggers_file": false,
+      "triggers": []
+    },
+    {
+      "name": "impeccable",
+      "description": "Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing pages, dashboards, product UI, app shells, components, forms, settings, onboarding, and empty states. Handles UX review, visual hierarchy, information architecture, cognitive load, accessibility, performance, responsive behavior, theming, anti-patterns, typography, fonts, spacing, layout, alignment, color, motion, micro-interactions, UX copy, error states, edge cases, i18n, and reusable design systems or tokens. Also use for bland designs that need to become bolder or more delightful, loud designs that should become quieter, live browser iteration on UI elements, or ambitious visual effects that should feel technically extraordinary. Not for backend-only or non-UI tasks.",
+      "scoring_text": "Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing pages, dashboards, product UI, app shells, components, forms, settings, onboarding, and empty states. Handles UX review, visual hierarchy, information architecture, cognitive load, accessibility, performance, responsive behavior, theming, anti-patterns, typography, fonts, spacing, layout, alignment, color, motion, micro-interactions, UX copy, error states, edge cases, i18n, and reusable design systems or tokens. Also use for bland designs that need to become bolder or more delightful, loud designs that should become quieter, live browser iteration on UI elements, or ambitious visual effects that should feel technically extraordinary. Not for backend-only or non-UI tasks.",
+      "version": "3.8.0",
+      "installed": true,
+      "skill_md": "/home/eddi/.cursor/skills/impeccable/SKILL.md",
+      "skill_dir": "/home/eddi/.cursor/skills/impeccable",
+      "invoke_as": "@impeccable",
+      "has_triggers_file": false,
+      "triggers": [],
+      "source": "local-only"
+    },
+    {
+      "name": "no-duplicate-ui",
+      "description": "Scans Vue files for duplicate component names and similar template overlap. Use during PR review or when refactoring UI to enforce DRY architecture.",
+      "scoring_text": "Detect duplicate Vue UI Scans Vue files for duplicate component names and similar template overlap. Use during PR review or when refactoring UI to enforce DRY architecture.",
+      "version": "",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/no-duplicate-ui/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/no-duplicate-ui",
+      "invoke_as": "@no-duplicate-ui",
+      "has_triggers_file": false,
+      "triggers": []
+    },
+    {
+      "name": "pr-review-responder",
+      "description": "Deprecated alias for @heyeddi-pr-respond. Use @heyeddi-pr-respond \u2014 renamed in v2.0.0.",
+      "scoring_text": "Deprecated alias for @heyeddi-pr-respond. Use @heyeddi-pr-respond \u2014 renamed in v2.0.0.",
+      "version": "",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/pr-review-responder/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/pr-review-responder",
+      "invoke_as": "@pr-review-responder",
+      "has_triggers_file": false,
+      "triggers": [],
+      "alias_of": "heyeddi-pr-respond",
+      "deprecated": true,
+      "source": "local-only"
+    },
+    {
+      "name": "pr-submission-review",
+      "description": "Deprecated alias for @heyeddi-pr-review. Use @heyeddi-pr-review \u2014 renamed in v2.0.0.",
+      "scoring_text": "Deprecated alias for @heyeddi-pr-review. Use @heyeddi-pr-review \u2014 renamed in v2.0.0.",
+      "version": "",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/pr-submission-review/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/pr-submission-review",
+      "invoke_as": "@pr-submission-review",
+      "has_triggers_file": false,
+      "triggers": [],
+      "alias_of": "heyeddi-pr-review",
+      "deprecated": true,
+      "source": "local-only"
+    },
+    {
+      "name": "pre-merge-gate",
+      "description": "Runs pre-merge checks (tests, build, types, optional UI audit) and returns a markdown pass/fail report. Use when QA approves a PR or before merge to main.",
+      "scoring_text": "QA merge readiness checklist Runs pre-merge checks (tests, build, types, optional UI audit) and returns a markdown pass/fail report. Use when QA approves a PR or before merge to main.",
+      "version": "",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/pre-merge-gate/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/pre-merge-gate",
+      "invoke_as": "@pre-merge-gate",
+      "has_triggers_file": false,
+      "triggers": []
+    },
+    {
+      "name": "primevue-openprops-architect",
+      "description": "Enforces PrimeVue + project design tokens when editing Vue or CSS. OpenProps rules apply only when the project already uses open-props. Runs vue-tsc and stylelint when available.",
+      "scoring_text": "PrimeVue + OpenProps guardrails Enforces PrimeVue + project design tokens when editing Vue or CSS. OpenProps rules apply only when the project already uses open-props. Runs vue-tsc and stylelint when available.",
+      "version": "",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/primevue-openprops-architect/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/primevue-openprops-architect",
+      "invoke_as": "@primevue-openprops-architect",
+      "has_triggers_file": false,
+      "triggers": []
+    },
+    {
+      "name": "product-manager",
+      "description": "Deprecated alias for @heyeddi-product. Use @heyeddi-product \u2014 renamed in v2.0.0.",
+      "scoring_text": "Deprecated alias for @heyeddi-product. Use @heyeddi-product \u2014 renamed in v2.0.0.",
+      "version": "",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/product-manager/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/product-manager",
+      "invoke_as": "@product-manager",
+      "has_triggers_file": false,
+      "triggers": [],
+      "alias_of": "heyeddi-product",
+      "deprecated": true,
+      "source": "local-only"
+    },
+    {
+      "name": "product-translator",
+      "description": "Deprecated alias for @heyeddi-intake. Use @heyeddi-intake \u2014 renamed in v2.0.0.",
+      "scoring_text": "Deprecated alias for @heyeddi-intake. Use @heyeddi-intake \u2014 renamed in v2.0.0.",
+      "version": "",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/product-translator/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/product-translator",
+      "invoke_as": "@product-translator",
+      "has_triggers_file": false,
+      "triggers": [],
+      "alias_of": "heyeddi-intake",
+      "deprecated": true,
+      "source": "local-only"
+    },
+    {
+      "name": "project-engineering",
+      "description": "Ensures HeyEddi projects have the right engineering stack \u2014 Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, installs deps, runs tests, documents local dev servers. Use when the repo is thin or before design/feature work on any HeyEddi app.",
+      "scoring_text": "Vue + FastAPI + Firebase scaffold, deps, dev servers, tests Ensures HeyEddi projects have the right engineering stack \u2014 Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, installs deps, runs tests, documents local dev servers. Use when the repo is thin or before design/feature work on any HeyEddi app.",
+      "version": "",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/project-engineering/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/project-engineering",
+      "invoke_as": "@project-engineering",
+      "has_triggers_file": false,
+      "triggers": []
+    },
+    {
+      "name": "skill-orchestrator",
+      "description": "Deprecated alias for @heyeddi-orchestrator. Use @heyeddi-orchestrator \u2014 renamed in v2.0.0.",
+      "scoring_text": "Deprecated alias for @heyeddi-orchestrator. Use @heyeddi-orchestrator \u2014 renamed in v2.0.0.",
+      "version": "",
+      "installed": true,
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/skill-orchestrator/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/skill-orchestrator",
+      "invoke_as": "@skill-orchestrator",
+      "has_triggers_file": true,
+      "triggers": [
+        {
+          "pattern": "which skill",
+          "regex": false
+        },
+        {
+          "pattern": "what skill",
+          "regex": false
+        },
+        {
+          "pattern": "available skills",
+          "regex": false
+        },
+        {
+          "pattern": "route to",
+          "regex": false
+        },
+        {
+          "pattern": "orchestrat",
+          "regex": false
+        },
+        {
+          "pattern": "skill catalog",
+          "regex": false
+        }
+      ],
+      "alias_of": "heyeddi-orchestrator",
+      "deprecated": true,
+      "source": "local-only"
     },
     {
       "name": "update-pitches",
@@ -284,9 +423,9 @@
     },
     {
       "name": "visual-auditor",
-      "description": "Captures responsive screenshots via Playwright when available, or extracts a layout JSON tree as fallback. Use when checking mobile/desktop layout, spacing, or comparing UI to a reference image.",
-      "scoring_text": "Responsive screenshot audit (Vue or Flutter web) Captures responsive screenshots via Playwright when available, or extracts a layout JSON tree as fallback. Use when checking mobile/desktop layout, spacing, or comparing UI to a reference image.",
-      "version": "",
+      "description": "Captures screenshots, reviews UI against product.md and design.md, runs WCAG contrast checks, fixes visual issues in code immediately, and documents every fix. Use after craft/handoff or when UI looks wrong \u2014 not report-only QA.",
+      "scoring_text": "Screenshot review vs product/design spec, contrast audit, fix + document visual issues Captures screenshots, reviews UI against product.md and design.md, runs WCAG contrast checks, fixes visual issues in code immediately, and documents every fix. Use after craft/handoff or when UI looks wrong \u2014 not report-only QA.",
+      "version": "3.0.0",
       "installed": true,
       "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/visual-auditor/SKILL.md",
       "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/visual-auditor",
@@ -296,7 +435,7 @@
     }
   ],
   "index_version": 1,
-  "generated_at": "2026-07-04T00:54:43Z",
-  "generator": "heyeddi-orchestrator@1.0.0",
-  "installed_count": 22
+  "generated_at": "2026-07-08T22:46:43Z",
+  "generator": "heyeddi-orchestrator@2.0.0",
+  "installed_count": 30
 }

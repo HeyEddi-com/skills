@@ -4,7 +4,7 @@
   "groupings": [
     {
       "title": "Pipeline",
-      "description": "HeyEddi spine — intake, product, orchestration, design, handoff, and PR workflows.",
+      "description": "HeyEddi spine — shared .heyeddi/ context from vague prompt through product, design, implementation, and PR review.",
       "skills": [
         "heyeddi-intake",
         "heyeddi-product",
@@ -17,7 +17,7 @@
     },
     {
       "title": "Engineering",
-      "description": "Scaffold, types, patterns, audits, and merge gates.",
+      "description": "Vue + FastAPI + Firebase (and Flutter) scaffold, types, patterns, engineering audits, and merge gates.",
       "skills": [
         "project-engineering",
         "flutter-engineering",
@@ -33,13 +33,25 @@
     },
     {
       "title": "Design & QA",
-      "description": "Handoff, design system, UX flows, and visual review.",
+      "description": "Flutter handoff, PrimeVue tokens, design-system spread, UX flow traces, and visual review with WCAG contrast.",
       "skills": [
         "design-handoff-flutter",
         "primevue-openprops-architect",
         "design-system-generalizer",
         "ux-flow-auditor",
         "visual-auditor"
+      ]
+    },
+    {
+      "title": "Deprecated v1 aliases",
+      "description": "Backward-compat stubs — use the heyeddi-* names above. Removed in v3.0.0.",
+      "skills": [
+        "product-translator",
+        "product-manager",
+        "skill-orchestrator",
+        "design-handoff",
+        "pr-submission-review",
+        "pr-review-responder"
       ]
     }
   ]

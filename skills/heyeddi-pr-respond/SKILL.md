@@ -4,7 +4,9 @@ description: Addresses PR review feedback — fetch all comment types, fix-vs-de
 disable-model-invocation: true
 ---
 
-# PR Review Responder
+# HeyEddi PR Respond
+
+**PR author response workflow** — fetch every review comment, decide fix vs decline, apply fixes, re-run pre-merge gate, and reply in thread.
 
 ## Subagents (default)
 

@@ -4,7 +4,9 @@ description: End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semant
 version: 2.1.0
 ---
 
-Designs and builds production UI within PrimeVue, project `DESIGN.md`, and semantic CSS tokens. **OpenProps is the HeyEddi scaffold default but not mandatory** — detect token source per `reference/token-strategy.md`.
+# HeyEddi Design
+
+**End-to-end UI design for HeyEddi apps** — discovery, briefs, critique, craft, and polish within PrimeVue, `.heyeddi/design.md`, and semantic CSS tokens. **OpenProps is the HeyEddi scaffold default but not mandatory** — detect token source per `reference/token-strategy.md`.
 
 **You do not need design vocabulary from the user.** Plain intent ("enterprise view for our app") is enough — ask questions until direction is clear.
 

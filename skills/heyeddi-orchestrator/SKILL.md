@@ -4,9 +4,9 @@ description: Discover HeyEddi skills, auto-sync .heyeddi/ (skill names + index),
 version: 2.0.0
 ---
 
-# Skill Orchestrator
+# HeyEddi Orchestrator
 
-Routes work to the right HeyEddi skill — and **keeps product, UX, and design pillars in sync**.
+**Skill discovery and workspace sync** — routes work to the right `@skill`, refreshes `.heyeddi/`, and **keeps product, UX, and design pillars in sync**.
 
 ## When to use
 

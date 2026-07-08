@@ -5,9 +5,9 @@ version: 1.0.0
 disable-model-invocation: true
 ---
 
-# PR Submission Review
+# HeyEddi PR Review
 
-**Review what was committed — not local WIP.**
+**Submitted PR review workflow** — judges only committed changes (`base...head`), not local WIP.
 
 You are the **reviewer** workflow. Scope every judgment to the PR diff (`base...head`). Ignore uncommitted files.
 

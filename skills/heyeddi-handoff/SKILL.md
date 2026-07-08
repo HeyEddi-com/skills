@@ -5,9 +5,9 @@ disable-model-invocation: true
 ---
 
 
-# Design Handoff
+# HeyEddi Handoff
 
-**Designer then implementer** — same agent, two explicit passes. See `reference/handoff-to-code.md`.
+**Screenshot-first Vue implementation** — designer then implementer in two explicit passes (mockup-brief → shell → route). See `reference/handoff-to-code.md`.
 
 ## Subagents (default)
 
