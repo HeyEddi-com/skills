@@ -4,7 +4,7 @@
 
 Curated [Cursor Agent Skills](https://cursor.com/docs/context/skills) for HeyEddi product workflows — intake, design, engineering, QA, and merge. **All 22 skills ship as one package** from this repo; install the full set into your app or Cursor global skills with a single command.
 
-**Status:** **v2.0.3** · 22 canonical skills + 6 deprecated aliases · [Release v2.0.3](https://github.com/HeyEddi-com/skills/releases/tag/v2.0.3)
+**Status:** **v2.0.4** · 22 canonical skills + 6 deprecated aliases · [Release v2.0.4](https://github.com/HeyEddi-com/skills/releases/tag/v2.0.4)
 
 ## About HeyEddi
 
@@ -51,7 +51,7 @@ List names in [skills-registry.json](skills-registry.json) or the catalog below.
 ### Pin a release tag
 
 ```bash
-npx skills add https://github.com/HeyEddi-com/skills/tree/v2.0.3 -a cursor -y --skill '*'
+npx skills add https://github.com/HeyEddi-com/skills/tree/v2.0.4 -a cursor -y --skill '*'
 ```
 
 ### Cursor Team Marketplace (teams / enterprise)
@@ -65,6 +65,10 @@ Admins can import this repo as a **Team Marketplace** plugin source (Cursor 2.6+
 Plugin bundle: `.cursor-plugin/marketplace.json` + `plugins/heyeddi-skills/`. See [docs/distribution.md](docs/distribution.md).
 
 Invoke skills in chat with `@skill-name` (e.g. `@heyeddi-intake`, `@heyeddi-handoff`).
+
+### skills.sh listing
+
+Browse the bundle at [skills.sh/heyeddi-com/skills](https://www.skills.sh/heyeddi-com/skills). Install counts on the leaderboard come from the Vercel CLI's own [install telemetry](https://www.skills.sh/privacy) — nothing is collected by this repo.
 
 ## Skills catalog
 
@@ -170,4 +174,4 @@ Evals give the agent a **goal**, not a script. Each skill must run its real work
 
 ---
 
-**HeyEddi-com** · MIT License · Last updated: 2026-07-07
+**HeyEddi-com** · MIT License · Last updated: 2026-07-08

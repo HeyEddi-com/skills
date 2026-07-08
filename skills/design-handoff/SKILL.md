@@ -4,6 +4,8 @@ description: Deprecated alias for @heyeddi-handoff. Use @heyeddi-handoff — ren
 disable-model-invocation: true
 deprecated: true
 canonical: heyeddi-handoff
+metadata:
+  internal: true
 ---
 
 # design-handoff (deprecated)

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Pipeline",
+      "description": "HeyEddi spine — intake, product, orchestration, design, handoff, and PR workflows.",
+      "skills": [
+        "heyeddi-intake",
+        "heyeddi-product",
+        "heyeddi-orchestrator",
+        "heyeddi-design",
+        "heyeddi-handoff",
+        "heyeddi-pr-review",
+        "heyeddi-pr-respond"
+      ]
+    },
+    {
+      "title": "Engineering",
+      "description": "Scaffold, types, patterns, audits, and merge gates.",
+      "skills": [
+        "project-engineering",
+        "flutter-engineering",
+        "backend-type-bridger",
+        "dart-type-bridger",
+        "composable-patterns",
+        "flutter-patterns",
+        "engineering-excellence",
+        "verify-build",
+        "pre-merge-gate",
+        "no-duplicate-ui"
+      ]
+    },
+    {
+      "title": "Design & QA",
+      "description": "Handoff, design system, UX flows, and visual review.",
+      "skills": [
+        "design-handoff-flutter",
+        "primevue-openprops-architect",
+        "design-system-generalizer",
+        "ux-flow-auditor",
+        "visual-auditor"
+      ]
+    }
+  ]
+}

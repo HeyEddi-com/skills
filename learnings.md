@@ -487,3 +487,14 @@ Project-specific rules and preferences, appended over time.
 **Decision:** Extract `scaffold_workflow(root, force=)` in `init_workflow_sync.py`; `sync.py` imports and calls it in-process. Orchestrator now has **zero** subprocess/urllib/eval. Cross-*skill* spawns elsewhere keep `sys.executable` (needed for isolation).
 
 **Note:** skills.sh scan lags releases — capability-only flags (Socket on handoff/intake, Gen on pre-merge-gate) are benign and irreducible without `# nosec`.
+
+## 2026-07-08 — skills.sh page polish — v2.0.4
+
+**Context:** skills.sh org page GitHub button points at `github.com/heyeddi-com` (not `/skills`); 28 skills listed due to v1 alias stubs.
+
+**Decision:**
+- Root `skills.sh.json` — Pipeline / Engineering / Design & QA groupings on [skills.sh/heyeddi-com/skills](https://www.skills.sh/heyeddi-com/skills).
+- v1 alias folders (`design-handoff`, `product-translator`, …) → `metadata.internal: true` in SKILL.md (hidden from `npx skills add --list`).
+- Canonical install command in docs: `npx skills add HeyEddi-com/skills --skill <name>` (hub, not per-skill standalone repos).
+
+**Process:** Install counts = Vercel `npx skills add` only. Share repo page URL, not org page. Re-run `npx skills add` after release to refresh skills.sh cache. No custom HeyEddi usage telemetry in skills.

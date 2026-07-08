@@ -4,6 +4,8 @@ description: Deprecated alias for @heyeddi-intake. Use @heyeddi-intake — renam
 disable-model-invocation: true
 deprecated: true
 canonical: heyeddi-intake
+metadata:
+  internal: true
 ---
 
 # product-translator (deprecated)

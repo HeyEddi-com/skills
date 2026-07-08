@@ -4,6 +4,8 @@ description: Deprecated alias for @heyeddi-orchestrator. Use @heyeddi-orchestrat
 disable-model-invocation: true
 deprecated: true
 canonical: heyeddi-orchestrator
+metadata:
+  internal: true
 ---
 
 # skill-orchestrator (deprecated)

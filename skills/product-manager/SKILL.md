@@ -4,6 +4,8 @@ description: Deprecated alias for @heyeddi-product. Use @heyeddi-product — ren
 disable-model-invocation: true
 deprecated: true
 canonical: heyeddi-product
+metadata:
+  internal: true
 ---
 
 # product-manager (deprecated)

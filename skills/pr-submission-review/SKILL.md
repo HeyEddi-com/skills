@@ -4,6 +4,8 @@ description: Deprecated alias for @heyeddi-pr-review. Use @heyeddi-pr-review —
 disable-model-invocation: true
 deprecated: true
 canonical: heyeddi-pr-review
+metadata:
+  internal: true
 ---
 
 # pr-submission-review (deprecated)

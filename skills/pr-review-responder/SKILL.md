@@ -4,6 +4,8 @@ description: Deprecated alias for @heyeddi-pr-respond. Use @heyeddi-pr-respond â
 disable-model-invocation: true
 deprecated: true
 canonical: heyeddi-pr-respond
+metadata:
+  internal: true
 ---
 
 # pr-review-responder (deprecated)

@@ -275,3 +275,59 @@ Append-only log. Each entry: route, opinion, docs updated, sibling requests.
 **Docs updated:** `.heyeddi/docs/product/features/settings.md`
 
 **Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-08T12:47:50 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-08T12:47:50 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-08T12:48:24 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-08T12:48:24 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-08T13:14:17 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-08T13:14:17 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-08T13:14:43 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-08T13:14:43 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
