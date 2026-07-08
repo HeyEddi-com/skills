@@ -21,9 +21,10 @@ Answers: *Was this designed for our persona, or generic SaaS?*
 | **Trust (brand routes)** | Template / scam vibes | Credible for persona's buying context |
 | **Tone** | Lorem / wrong register | Matches voice & tone; no jargon mismatch |
 | **Differentiation** | Clone of competitor | Clear why us vs competitors table |
+| **Visual distinction** | Template / last-project swap | Memorable craft for **this** product only |
 | **Anti-audience** | Appeals to wrong user | Would not confuse excluded segment |
 
-**Ship bar:** no dimension below **3** on flagship routes; average **≥ 4**.
+**Ship bar:** no dimension below **3** on flagship routes; average **≥ 4**. **Visual distinction** must be **≥ 4** when user asked for impressive/artistic craft or brief sets high fidelity.
 
 ## Report section (append to critique)
 
@@ -40,6 +41,7 @@ Answers: *Was this designed for our persona, or generic SaaS?*
 | Trust | /5 | … | … |
 | Tone | /5 | … | … |
 | Differentiation | /5 | … | … |
+| Visual distinction | /5 | … | … |
 | Anti-audience | /5 | … | … |
 
 **Verdict:** PASS / REVISE  

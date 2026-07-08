@@ -46,6 +46,7 @@ Cover what's missing from `PRODUCT.md` / `DESIGN.md` / the user's prompt:
 - **Color strategy:** Restrained / Committed / Full palette / Drenched
 - **Theme scene sentence:** one sentence — who, where, ambient light, mood (forces light vs dark)
 - **2–3 named anchor references** (specific products/brands, not "minimal")
+- **Ambition:** what should feel memorable vs competitors? What aesthetic energy fits this product?
 
 ### Scope
 - **Fidelity:** sketch / mid-fi / high-fi / production-ready

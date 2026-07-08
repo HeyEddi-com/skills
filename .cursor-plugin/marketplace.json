@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "22 agent skills for product intake, design, engineering, and QA",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "pluginRoot": "plugins"
   },
   "plugins": [

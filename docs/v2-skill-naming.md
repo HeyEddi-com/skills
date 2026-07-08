@@ -3,7 +3,7 @@
 **Date:** 2026-07-07  
 **Status:** Planned → **Implemented in v2.0.0** (2026-07-07)  
 **Target release:** v2.0.0  
-**Current release:** v1.5.0 (22 skills)
+**Current release:** v2.0.0 (22 canonical skills + 6 deprecated aliases)
 
 ## Goal
 

@@ -1,7 +1,7 @@
 ---
 name: heyeddi-design
 description: End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens — OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend — e.g. "enterprise view", "critique the login page", "this UI looks bad", "settings page". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff — use heyeddi-handoff instead.
-version: 2.0.0
+version: 2.1.0
 ---
 
 Designs and builds production UI within PrimeVue, project `DESIGN.md`, and semantic CSS tokens. **OpenProps is the HeyEddi scaffold default but not mandatory** — detect token source per `reference/token-strategy.md`.
@@ -22,6 +22,17 @@ Designs and builds production UI within PrimeVue, project `DESIGN.md`, and seman
 
 Do not run visual capture inline during craft/handoff turns.
 
+## Cross-pillar sync (mandatory)
+
+Read **`reference/cross-pillar-handoff.md`**. Bookend **craft**, **critique**, **polish**, **shape** (confirmed brief):
+
+```
+@heyeddi-orchestrator  load_workflow_context --route /path
+… design work + Decision log in design.md …
+@heyeddi-orchestrator  append_pillar_opinion --pillar design …
+→ @heyeddi-product scope check; @ux-flow-auditor flow note if IA affects tasks
+```
+
 ## Setup (every session)
 
 1. Run `python scripts/load_context.py --project-root <root>` once per session (skip if output is already in the conversation).
@@ -32,9 +43,10 @@ Do not run visual capture inline during craft/handoff turns.
 3c. Read `reference/token-strategy.md` when styling — detect OpenProps vs custom tokens before writing CSS.
 3d. Read `reference/modern-reference.md` when shaping or crafting **marketing, dashboard, or settings** routes — avoid plain admin-template output.
 3e. Read `reference/audience-design.md` when shaping, crafting, or polishing **any user-facing route** — tie direction to `product.md` personas.
-4. After **craft**, **polish**, **critique** (when leading to polish), or **shape** (brief confirmed), append to **Decision log** in `.heyeddi/design.md` per `reference/design-talk.md` — **cite primary persona + pattern borrowed**.
+3f. Read `reference/design-ambition.md` when shaping, crafting, or polishing **flagship routes** — project-specific signature and impressive craft bar (default; do not wait for user to ask).
+4. After **craft**, **polish**, **critique** (when leading to polish), or **shape** (brief confirmed), append to **Decision log** in `.heyeddi/design.md` per `reference/design-talk.md` — **cite primary persona + pattern borrowed + memorable detail for this project**.
 5. After implementation, run `reference/audience-fit.md` on flagship routes before calling done.
-6. Chain `@primevue-openprops-architect` validation and `@visual-auditor` at 375/768/1440.
+6. Chain `@primevue-openprops-architect` validation and full **`@visual-auditor`** fix loop (review vs spec → fix → document) at 375/768/1440.
 
 ## Commands
 

@@ -1,5 +1,5 @@
 {
-  "skill": "heyeddi-handoff",
+  "skill": "design-handoff",
   "version": "1.2.0",
   "tools": [
     {
@@ -84,7 +84,10 @@
           },
           "phase": {
             "type": "string",
-            "enum": ["shell", "full"],
+            "enum": [
+              "shell",
+              "full"
+            ],
             "description": "shell after layout components; full after route"
           },
           "check": {
@@ -148,5 +151,7 @@
       "script": "scripts/verify_theme.py",
       "readonly": true
     }
-  ]
+  ],
+  "alias_of": "heyeddi-handoff",
+  "deprecated": true
 }

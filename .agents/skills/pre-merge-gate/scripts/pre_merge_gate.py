@@ -92,22 +92,24 @@ def main() -> None:
         rows.append(("duplicate-ui", status_from_output(out), out[:200]))
 
     if not args.skip_visual_audit:
-        audit_script = find_skill_script(root, "visual-auditor", "scripts/audit_ui.py")
-        if audit_script and shutil.which("python3"):
+        contrast_script = find_skill_script(root, "visual-auditor", "scripts/audit_contrast.py")
+        if contrast_script and shutil.which("python3"):
             for route in routes_for_visual_audit(root):
                 out = run_skill_script(
                     root,
                     "visual-auditor",
-                    "scripts/audit_ui.py",
-                    ["--route", route, "--widths", "375", "1440"],
+                    "scripts/audit_contrast.py",
+                    ["--route", route, "--widths", "375,1440", "--check"],
                 )
-                label = f"visual-audit{route}"
+                label = f"contrast-audit{route}"
                 st = status_from_output(out)
                 if st == "FAIL" and "playwright" in out.lower():
                     st = "SKIP"
+                if st == "PASS" and '"status": "fail"' in out:
+                    st = "FAIL"
                 rows.append((label, st, out[:200]))
         else:
-            rows.append(("visual-audit", "SKIP", "visual-auditor not installed"))
+            rows.append(("contrast-audit", "SKIP", "visual-auditor not installed"))
 
     lines = ["# Pre-merge Gate Report", "", "| Check | Status | Summary |", "|-------|--------|---------|"]
     for name, st, summary in rows:

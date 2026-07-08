@@ -11,6 +11,18 @@ Task-oriented UX — how many clicks to achieve a goal, where users get stuck.
 
 **All artifacts go under `.heyeddi/docs/` and `.heyeddi/audits/`** — never repo root.
 
+## Cross-pillar sync (mandatory)
+
+Read **`reference/cross-pillar-handoff.md`**. Bookend every flow trace:
+
+```
+@heyeddi-orchestrator  load_workflow_context --route /path
+trace_flow …
+update ux-flows report + friction notes
+@heyeddi-orchestrator  append_pillar_opinion --pillar ux …
+→ @heyeddi-product updates AC if needed; @heyeddi-design notes layout friction
+```
+
 ## When to use
 
 - "How many clicks to update settings?"

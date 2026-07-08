@@ -1,11 +1,14 @@
-# Subagent delegation — visual-auditor
+# Subagent delegation — visual-auditor v3
 
-This skill is **usually invoked as a subagent**, not run inline in a long design turn.
+| Phase | Who | Tool |
+|-------|-----|------|
+| Load spec context | `shell` | `load_visual_context --write-review` |
+| Capture + contrast | `shell` | `capture_screenshots`, `audit_contrast` |
+| **Review screenshots** | **main agent** | Read PNGs vs product.md + design.md |
+| **Fix code** | **main agent** | Edit views/CSS — same turn |
+| Log each fix | `shell` | `append_fix_log` |
+| Re-verify | `shell` | `finalize_visual_review --check` |
 
-| Step | Subagent | Readonly | Notes |
-|------|----------|----------|-------|
-| Start preview + Playwright capture | `shell` | yes | `audit_ui.py` or harness equivalent |
-| Layout tree fallback | `shell` | yes | `layout_tree.py` when no Playwright |
-| Compare to reference PNGs | `generalPurpose` | yes | Read captures + mockups; layout hierarchy only |
+Parent skills (`heyeddi-design`, `heyeddi-handoff`, `heyeddi-product`) may invoke the full loop inline or delegate capture/contrast to Task `shell` then fix in main chat.
 
-Parent skill (`heyeddi-handoff`, `heyeddi-design`) launches this via Task with route, widths, artifact paths.
+**Anti-pattern:** Task subagent that only returns issue bullets without code changes.

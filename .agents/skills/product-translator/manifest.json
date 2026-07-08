@@ -1,6 +1,6 @@
 {
-  "skill": "heyeddi-intake",
-  "version": "1.1.0",
+  "skill": "product-translator",
+  "version": "1.3.0",
   "tools": [
     {
       "name": "load_intake",
@@ -8,11 +8,19 @@
       "parameters": {
         "type": "object",
         "properties": {
-          "project_root": { "type": "string" },
-          "user_prompt": { "type": "string" },
-          "prompt_file": { "type": "string" }
+          "project_root": {
+            "type": "string"
+          },
+          "user_prompt": {
+            "type": "string"
+          },
+          "prompt_file": {
+            "type": "string"
+          }
         },
-        "required": ["project_root"]
+        "required": [
+          "project_root"
+        ]
       },
       "script": "scripts/load_intake.py",
       "readonly": true
@@ -23,12 +31,23 @@
       "parameters": {
         "type": "object",
         "properties": {
-          "project_root": { "type": "string" },
-          "json": { "type": "string" },
-          "force": { "type": "boolean" },
-          "dry_run": { "type": "boolean" }
+          "project_root": {
+            "type": "string"
+          },
+          "json": {
+            "type": "string"
+          },
+          "force": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
         },
-        "required": ["project_root", "json"]
+        "required": [
+          "project_root",
+          "json"
+        ]
       },
       "script": "scripts/write_product.py",
       "readonly": false
@@ -39,14 +58,30 @@
       "parameters": {
         "type": "object",
         "properties": {
-          "project_root": { "type": "string" },
-          "user_prompt": { "type": "string" },
-          "summary": { "type": "string" },
-          "decisions": { "type": "string" },
-          "open_questions": { "type": "string" },
-          "dry_run": { "type": "boolean" }
+          "project_root": {
+            "type": "string"
+          },
+          "user_prompt": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "decisions": {
+            "type": "string"
+          },
+          "open_questions": {
+            "type": "string"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
         },
-        "required": ["project_root", "user_prompt", "summary"]
+        "required": [
+          "project_root",
+          "user_prompt",
+          "summary"
+        ]
       },
       "script": "scripts/write_translation.py",
       "readonly": false
@@ -57,35 +92,94 @@
       "parameters": {
         "type": "object",
         "properties": {
-          "project_root": { "type": "string" },
-          "feature": { "type": "string" },
-          "route": { "type": "string" },
-          "app_name": { "type": "string" },
-          "source": { "type": "array", "items": { "type": "string" } },
-          "source_dir": { "type": "string" }
+          "project_root": {
+            "type": "string"
+          },
+          "feature": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "app_name": {
+            "type": "string"
+          },
+          "source": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source_dir": {
+            "type": "string"
+          }
         },
-        "required": ["project_root", "feature"]
+        "required": [
+          "project_root",
+          "feature"
+        ]
       },
       "script": "scripts/ingest_mockups.py",
       "readonly": false
     },
     {
-      "name": "generate_mockups",
-      "description": "Generate professional layout PNGs when user did not supply images.",
+      "name": "prepare_mockup_prompts",
+      "description": "Write mockup-prompts.json for AI image generation. Skill does not ship or draw PNGs \u2014 agent generates desktop.png/mobile.png or use ingest_mockups.",
       "parameters": {
         "type": "object",
         "properties": {
-          "project_root": { "type": "string" },
-          "feature": { "type": "string" },
-          "preset": { "type": "string" },
-          "route": { "type": "string" },
-          "app_name": { "type": "string" },
-          "page_title": { "type": "string" },
-          "dry_run": { "type": "boolean" }
+          "project_root": {
+            "type": "string"
+          },
+          "feature": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "force": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
         },
-        "required": ["project_root"]
+        "required": [
+          "project_root",
+          "feature"
+        ]
       },
-      "script": "scripts/generate_mockups.py",
+      "script": "scripts/prepare_mockup_prompts.py",
+      "readonly": false
+    },
+    {
+      "name": "generate_wireframe",
+      "description": "Generate product-specific wireframe.md from product-translation.json (default when user supplied no images).",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "project_root": {
+            "type": "string"
+          },
+          "feature": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "force": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "project_root",
+          "feature"
+        ]
+      },
+      "script": "scripts/generate_wireframe.py",
       "readonly": false
     },
     {
@@ -94,15 +188,32 @@
       "parameters": {
         "type": "object",
         "properties": {
-          "project_root": { "type": "string" },
-          "feature": { "type": "string" },
-          "route": { "type": "string" },
-          "app_name": { "type": "string" },
-          "designer_read": { "type": "string" },
-          "force": { "type": "boolean" },
-          "dry_run": { "type": "boolean" }
+          "project_root": {
+            "type": "string"
+          },
+          "feature": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "app_name": {
+            "type": "string"
+          },
+          "designer_read": {
+            "type": "string"
+          },
+          "force": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
         },
-        "required": ["project_root", "feature"]
+        "required": [
+          "project_root",
+          "feature"
+        ]
       },
       "script": "scripts/seed_brief.py",
       "readonly": false
@@ -113,13 +224,25 @@
       "parameters": {
         "type": "object",
         "properties": {
-          "project_root": { "type": "string" },
-          "json": { "type": "string" },
-          "write": { "type": "boolean" },
-          "save_input": { "type": "boolean" },
-          "dry_run": { "type": "boolean" }
+          "project_root": {
+            "type": "string"
+          },
+          "json": {
+            "type": "string"
+          },
+          "write": {
+            "type": "boolean"
+          },
+          "save_input": {
+            "type": "boolean"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
         },
-        "required": ["project_root"]
+        "required": [
+          "project_root"
+        ]
       },
       "script": "scripts/build_routing.py",
       "readonly": false
@@ -130,11 +253,20 @@
       "parameters": {
         "type": "object",
         "properties": {
-          "project_root": { "type": "string" },
-          "json": { "type": "string" },
-          "dry_run": { "type": "boolean" }
+          "project_root": {
+            "type": "string"
+          },
+          "json": {
+            "type": "string"
+          },
+          "dry_run": {
+            "type": "boolean"
+          }
         },
-        "required": ["project_root", "json"]
+        "required": [
+          "project_root",
+          "json"
+        ]
       },
       "script": "scripts/write_routing.py",
       "readonly": false
@@ -145,13 +277,21 @@
       "parameters": {
         "type": "object",
         "properties": {
-          "project_root": { "type": "string" },
-          "check": { "type": "boolean" }
+          "project_root": {
+            "type": "string"
+          },
+          "check": {
+            "type": "boolean"
+          }
         },
-        "required": ["project_root"]
+        "required": [
+          "project_root"
+        ]
       },
       "script": "scripts/verify_intake.py",
       "readonly": true
     }
-  ]
+  ],
+  "alias_of": "heyeddi-intake",
+  "deprecated": true
 }

@@ -12,3 +12,6 @@
 - NEVER ship **default PrimeVue admin** look on marketing or flagship app routes — read `reference/modern-reference.md` and add typography, surfaces, and hierarchy.
 - NEVER craft flagship routes without **Personas + Per-route intent** in `product.md` — run `@heyeddi-intake` or `discover` first.
 - NEVER skip **audience-fit** critique on marketing, dashboard, or settings — see `reference/audience-fit.md`.
+- NEVER ship flagship routes that look like **the last project with a name swap** — define and implement **Design signature** per `reference/design-ambition.md`.
+- NEVER treat "make it artistic / top notch" as optional polish — that is the **default ambition bar** unless brief scopes minimal/wireframe.
+- NEVER hand off to `@heyeddi-handoff` to fix missing visual ambition — run `craft` / `polish` with ambition checklist first.
