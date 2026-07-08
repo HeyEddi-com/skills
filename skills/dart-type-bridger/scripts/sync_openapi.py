@@ -8,8 +8,27 @@ import re
 import urllib.error
 import urllib.request
 from pathlib import Path
+from urllib.parse import urlparse
 
 from _skill_cli import emit, resolve_project_root
+
+ALLOWED_URL_SCHEMES = ("http", "https")
+
+
+def validate_fetch_url(url: str) -> str | None:
+    """Return an error string if the URL is unsafe to fetch, else None.
+
+    Guards against SSRF vectors: only http/https, no embedded credentials,
+    and a host must be present. Blocks file://, ftp://, gopher:// and similar.
+    """
+    parsed = urlparse(url)
+    if parsed.scheme not in ALLOWED_URL_SCHEMES:
+        return f"refusing URL scheme '{parsed.scheme or '(none)'}': only http/https allowed"
+    if not parsed.hostname:
+        return "refusing URL without a host"
+    if parsed.username or parsed.password:
+        return "refusing URL with embedded credentials"
+    return None
 
 
 def dart_type(openapi_type: str | None, fmt: str | None = None) -> str:
@@ -72,8 +91,13 @@ def main() -> None:
         spec = json.loads(local.read_text())
         source = str(local)
     elif args.url:
+        url_error = validate_fetch_url(args.url)
+        if url_error:
+            emit(json.dumps({"error": url_error, "hint": "Pass an http(s) URL such as http://localhost:8090/openapi.json"}, indent=2))
+            return
         try:
-            with urllib.request.urlopen(args.url, timeout=10) as resp:
+            request = urllib.request.Request(args.url, method="GET")
+            with urllib.request.urlopen(request, timeout=10) as resp:
                 spec = json.loads(resp.read().decode())
             source = args.url
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:

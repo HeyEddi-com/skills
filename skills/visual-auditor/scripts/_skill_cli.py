@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -29,18 +30,28 @@ def resolve_project_root(arg: str | None) -> Path:
 
 
 def run_command(cmd: list[str], cwd: Path, timeout: int = 600) -> str:
+    """Run a fixed argv command without a shell.
+
+    The executable is resolved to an absolute path via ``shutil.which`` so the
+    call never depends on a relative PATH lookup, and ``shell`` is always off —
+    there is no string interpolation into a shell.
+    """
+    if not cmd:
+        return "[error] empty command"
+    executable = shutil.which(cmd[0])
+    if executable is None:
+        return f"[error] command not found: {cmd[0]}"
     try:
         result = subprocess.run(
-            cmd,
+            [executable, *cmd[1:]],
             cwd=cwd,
             capture_output=True,
             text=True,
             timeout=timeout,
+            shell=False,
         )
-    except FileNotFoundError as exc:
-        return f"[error] command not found: {cmd[0]}\n{exc}"
     except subprocess.TimeoutExpired:
-        return f"[error] command timed out after {timeout}s: {' '.join(cmd)}"
+        return f"[error] command timed out after {timeout}s: {cmd[0]}"
 
     output = (result.stdout or "") + (result.stderr or "")
     if result.returncode != 0:

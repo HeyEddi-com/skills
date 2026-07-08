@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -41,13 +42,17 @@ def _check_repo_buildable(root: Path) -> tuple[bool, str]:
         return True, "no package.json — skip build gate"
     if not (root / "node_modules").is_dir():
         return True, "node_modules missing — skip build gate"
+    npm = shutil.which("npm")
+    if npm is None:
+        return True, "npm not found — skip build gate"
     try:
         proc = subprocess.run(
-            ["npm", "run", "build"],
+            [npm, "run", "build"],
             cwd=root,
             capture_output=True,
             text=True,
             timeout=180,
+            shell=False,
         )
     except (OSError, subprocess.TimeoutExpired) as exc:
         return False, f"npm run build failed: {exc}"

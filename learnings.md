@@ -469,3 +469,13 @@ Project-specific rules and preferences, appended over time.
 **Decision:** `_auto_sync.ensure_heyeddi()` runs from every spine skill's `resolve_project_root()` (orchestrator, intake, product, handoff, design, pr-review, pr-respond). Renamed `sync_heyeddi_workspace` → `sync` (`sync.py`).
 
 **Process:** Reinstall skills → use any `@heyeddi-*` skill normally; migration + index refresh happen automatically. Optional explicit full sync: `@heyeddi-orchestrator` `sync`.
+
+## 2026-07-08 — Scanner hardening (Snyk/Socket) — v2.0.2
+
+**Context:** skills.sh scanners flagged SSRF (urllib on caller URL) and subprocess-spawn capability on several skills.
+
+**Decision:** No `# nosec`. Real mitigations only:
+- `sync_openapi.py` (dart + backend type-bridgers): `validate_fetch_url()` sanitizer gate — http/https only, no embedded creds, host required; use explicit `urllib.request.Request(url, method="GET")`.
+- `run_command()` (all `_skill_cli.py`) + direct `npm` call: resolve exe via `shutil.which()` to absolute path, `shell=False` explicit. Python spawns already use `sys.executable` (absolute) — left as-is.
+
+**Also fixed:** `heyeddi-pr-respond` / `heyeddi-pr-review` `_skill_cli.py` had lost `run_command` when the auto-sync variant was copied over them — re-added (hardened). This restored 8 failing PR-fetch smoke tests → 392/392.

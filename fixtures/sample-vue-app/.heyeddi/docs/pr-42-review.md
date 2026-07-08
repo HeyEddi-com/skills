@@ -1,6 +1,6 @@
 # PR #42 submission review — Add users composable and list endpoint
 
-**Date:** 2026-07-07
+**Date:** 2026-07-08
 **Scope:** committed changes only (`main` → `feat/users-api`)
 **Author:** feature-dev
 

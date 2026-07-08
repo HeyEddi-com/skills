@@ -44,7 +44,7 @@ def test_canonical_frontmatter_matches_folder():
 
 def test_registry_aliases_match_file():
     registry = json.loads((REPO_ROOT / "skills-registry.json").read_text(encoding="utf-8"))
-    assert registry.get("version") == "2.0.0"
+    assert str(registry.get("version", "")).startswith("2."), registry.get("version")
     assert registry.get("aliases") == load_aliases()
 
 

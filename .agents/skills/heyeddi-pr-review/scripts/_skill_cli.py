@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -32,3 +34,33 @@ def resolve_project_root(arg: str | None, *, auto_sync: bool = True) -> Path:
         except Exception as exc:  # noqa: BLE001 — never block skill tools on sync
             print(f"heyeddi auto-sync skipped: {exc}", file=sys.stderr)
     return root
+
+
+def run_command(cmd: list[str], cwd: Path, timeout: int = 600) -> str:
+    """Run a fixed argv command without a shell.
+
+    The executable is resolved to an absolute path via ``shutil.which`` so the
+    call never depends on a relative PATH lookup, and ``shell`` is always off —
+    there is no string interpolation into a shell.
+    """
+    if not cmd:
+        return "[error] empty command"
+    executable = shutil.which(cmd[0])
+    if executable is None:
+        return f"[error] command not found: {cmd[0]}"
+    try:
+        result = subprocess.run(
+            [executable, *cmd[1:]],
+            cwd=cwd,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            shell=False,
+        )
+    except subprocess.TimeoutExpired:
+        return f"[error] command timed out after {timeout}s: {cmd[0]}"
+
+    output = (result.stdout or "") + (result.stderr or "")
+    if result.returncode != 0:
+        return f"[exit {result.returncode}]\n{output}".strip()
+    return output.strip() or "(success, no output)"
