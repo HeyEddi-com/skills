@@ -479,3 +479,11 @@ Project-specific rules and preferences, appended over time.
 - `run_command()` (all `_skill_cli.py`) + direct `npm` call: resolve exe via `shutil.which()` to absolute path, `shell=False` explicit. Python spawns already use `sys.executable` (absolute) — left as-is.
 
 **Also fixed:** `heyeddi-pr-respond` / `heyeddi-pr-review` `_skill_cli.py` had lost `run_command` when the auto-sync variant was copied over them — re-added (hardened). This restored 8 failing PR-fetch smoke tests → 392/392.
+
+## 2026-07-08 — Orchestrator: remove in-skill subprocess spawn — v2.0.3
+
+**Context:** `heyeddi-orchestrator` `sync.py` spawned its own `init_workflow_sync.py` via `subprocess.run([sys.executable, ...])` → Snyk Med Risk.
+
+**Decision:** Extract `scaffold_workflow(root, force=)` in `init_workflow_sync.py`; `sync.py` imports and calls it in-process. Orchestrator now has **zero** subprocess/urllib/eval. Cross-*skill* spawns elsewhere keep `sys.executable` (needed for isolation).
+
+**Note:** skills.sh scan lags releases — capability-only flags (Socket on handoff/intake, Gen on pre-merge-gate) are benign and irreducible without `# nosec`.

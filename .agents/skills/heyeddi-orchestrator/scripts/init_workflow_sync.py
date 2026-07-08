@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 from datetime import date
+from pathlib import Path
 
 from _skill_cli import emit, resolve_project_root
 from _workflow_paths import (
@@ -54,12 +55,12 @@ Append-only log. Each entry: route, opinion, docs updated, sibling requests.
 """
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Init cross-pillar workflow docs")
-    parser.add_argument("--project-root", default=None)
-    parser.add_argument("--force", action="store_true")
-    args = parser.parse_args()
-    root = resolve_project_root(args.project_root)
+def scaffold_workflow(root: Path, *, force: bool = False) -> dict:
+    """Create the cross-pillar workflow docs under `.heyeddi/docs/workflow/`.
+
+    Importable so callers (e.g. `sync.py`) run it in-process — no child
+    process is spawned.
+    """
     out = workflow_dir(root)
     out.mkdir(parents=True, exist_ok=True)
     opinions_dir(root).mkdir(parents=True, exist_ok=True)
@@ -68,30 +69,39 @@ def main() -> None:
     today = date.today().isoformat()
 
     readme = readme_path(root)
-    if not readme.is_file() or args.force:
+    if not readme.is_file() or force:
         readme.write_text(README.format(today=today), encoding="utf-8")
         created.append(str(readme.relative_to(root)))
 
     for pillar in PILLARS:
         path = opinion_path(root, pillar)
-        if not path.is_file() or args.force:
+        if not path.is_file() or force:
             path.write_text(OPINION_HEADER.format(pillar=pillar.title()), encoding="utf-8")
             created.append(str(path.relative_to(root)))
 
     log = sync_log_path(root)
-    if not log.is_file() or args.force:
+    if not log.is_file() or force:
         log.write_text(f"# Workflow sync log\n\n**Started:** {today}\n\n", encoding="utf-8")
         created.append(str(log.relative_to(root)))
 
     ctx = active_context_path(root)
-    if not ctx.is_file() or args.force:
+    if not ctx.is_file() or force:
         ctx.write_text(
             json.dumps({"route": None, "feature": None, "last_pillar": None, "updated": today}, indent=2) + "\n",
             encoding="utf-8",
         )
         created.append(str(ctx.relative_to(root)))
 
-    emit({"status": "ok", "created": created, "workflow_dir": str(out.relative_to(root))})
+    return {"status": "ok", "created": created, "workflow_dir": str(out.relative_to(root))}
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Init cross-pillar workflow docs")
+    parser.add_argument("--project-root", default=None)
+    parser.add_argument("--force", action="store_true")
+    args = parser.parse_args()
+    root = resolve_project_root(args.project_root)
+    emit(scaffold_workflow(root, force=args.force))
 
 
 if __name__ == "__main__":
