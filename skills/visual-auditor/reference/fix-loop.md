@@ -29,7 +29,7 @@ finalize_visual_review --route /settings --check
 
 ## What to escalate (do not guess)
 
-- IA change (merge routes, new nav) → `@product-manager` + `@heyeddi-design shape`
+- IA change (merge routes, new nav) → `@heyeddi-product` + `@heyeddi-design shape`
 - New component not in design.md → update design.md Decision log first
 - Backend missing for AC → `@project-engineering`
 

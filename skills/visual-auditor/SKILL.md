@@ -12,10 +12,10 @@ You are a **visual QA implementer** — not a screenshot-only subagent. You read
 
 ## When to use
 
-- After `@heyeddi-design craft` or `@design-handoff` on a route
+- After `@heyeddi-design craft` or `@heyeddi-handoff` on a route
 - Green-on-green, illegible text, layout drift vs brief
 - Pre-merge visual gate with **fixes**, not a issue list alone
-- `@product-manager` delegated legibility research — you fix, they synthesize
+- `@heyeddi-product` delegated legibility research — you fix, they synthesize
 
 ## Mandatory pipeline
 

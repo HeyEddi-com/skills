@@ -51,7 +51,7 @@ Answers: *Was this designed for our persona, or generic SaaS?*
 ## Verdict rules
 
 - **PASS** — all ≥ 3, avg ≥ 4 → `@heyeddi-design polish` for P1 visual issues only
-- **REVISE** — any ≤ 2 → `shape` or persona update in `@product-translator`; do not polish over wrong IA/tone
+- **REVISE** — any ≤ 2 → `shape` or persona update in `@heyeddi-intake`; do not polish over wrong IA/tone
 
 ## Eval / integration
 

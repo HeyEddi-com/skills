@@ -16,11 +16,11 @@ Task-oriented UX — how many clicks to achieve a goal, where users get stuck.
 Read **`reference/cross-pillar-handoff.md`**. Bookend every flow trace:
 
 ```
-@skill-orchestrator  load_workflow_context --route /path
+@heyeddi-orchestrator  load_workflow_context --route /path
 trace_flow …
 update ux-flows report + friction notes
-@skill-orchestrator  append_pillar_opinion --pillar ux …
-→ @product-manager updates AC if needed; @heyeddi-design notes layout friction
+@heyeddi-orchestrator  append_pillar_opinion --pillar ux …
+→ @heyeddi-product updates AC if needed; @heyeddi-design notes layout friction
 ```
 
 ## When to use
@@ -80,6 +80,6 @@ agent adds friction notes to report
 
 ## Chain
 
-- After `@design-handoff` / `@heyeddi-design` — verify tasks are completable
+- After `@heyeddi-handoff` / `@heyeddi-design` — verify tasks are completable
 - `@visual-auditor` — layout proof; this skill — interaction proof
 - `@engineering-excellence` — separate concern (code structure)

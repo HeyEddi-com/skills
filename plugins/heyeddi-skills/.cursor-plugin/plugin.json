@@ -1,7 +1,7 @@
 {
   "name": "heyeddi-skills",
   "displayName": "HeyEddi Skills",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "HeyEddi agent skills for collaborative agents and humans — product intake, design, engineering, QA, and merge workflows.",
   "author": {
     "name": "HeyEddi",
@@ -17,7 +17,7 @@
     "cursor",
     "vue",
     "flutter",
-    "design-handoff",
+    "heyeddi-handoff",
     "product",
     "engineering"
   ],

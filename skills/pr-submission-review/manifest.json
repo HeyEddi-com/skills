@@ -21,7 +21,10 @@
             "description": "Optional fixture JSON path (eval/CI without gh)"
           }
         },
-        "required": ["pr", "project_root"]
+        "required": [
+          "pr",
+          "project_root"
+        ]
       },
       "script": "scripts/fetch_pr_context.py",
       "readonly": true
@@ -49,7 +52,10 @@
             "description": "Optional fixture for fetch_pr_context when context omitted"
           }
         },
-        "required": ["pr", "project_root"]
+        "required": [
+          "pr",
+          "project_root"
+        ]
       },
       "script": "scripts/check_doc_drift.py",
       "readonly": true
@@ -77,7 +83,10 @@
             "description": "Optional fixture for fetch_pr_context when context omitted"
           }
         },
-        "required": ["pr", "project_root"]
+        "required": [
+          "pr",
+          "project_root"
+        ]
       },
       "script": "scripts/audit_pr_changes.py",
       "readonly": true
@@ -117,7 +126,10 @@
             "description": "Overwrite existing review report"
           }
         },
-        "required": ["pr", "project_root"]
+        "required": [
+          "pr",
+          "project_root"
+        ]
       },
       "script": "scripts/write_pr_review.py",
       "readonly": false
@@ -141,10 +153,15 @@
             "description": "Exit 1 when report incomplete"
           }
         },
-        "required": ["pr", "project_root"]
+        "required": [
+          "pr",
+          "project_root"
+        ]
       },
       "script": "scripts/verify_pr_review.py",
       "readonly": true
     }
-  ]
+  ],
+  "alias_of": "heyeddi-pr-review",
+  "deprecated": true
 }

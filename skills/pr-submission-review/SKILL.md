@@ -1,74 +1,18 @@
 ---
 name: pr-submission-review
-description: Reviews submitted PRs using only committed changes — product fit, docs drift, engineering quality, test coverage, and pre-merge gate. Use when approving a PR, doing reviewer QA, or self-checking before requesting review. Not for replying to review comments (use pr-review-responder).
-version: 1.0.0
+description: Deprecated alias for @heyeddi-pr-review. Use @heyeddi-pr-review — renamed in v2.0.0.
 disable-model-invocation: true
+deprecated: true
+canonical: heyeddi-pr-review
 ---
 
-# PR Submission Review
+# pr-submission-review (deprecated)
 
-**Review what was committed — not local WIP.**
+**Renamed to `@heyeddi-pr-review` in HeyEddi Skills v2.0.0.**
 
-You are the **reviewer** workflow. Scope every judgment to the PR diff (`base...head`). Ignore uncommitted files.
+When this alias is invoked:
 
-**Artifacts:** `.heyeddi/docs/pr-<N>-review.md` — never repo root.
+1. Read and follow **`heyeddi-pr-review/SKILL.md`** from the same skills install root.
+2. Do not write new docs or routing JSON using `pr-submission-review`.
 
-## When to use
-
-| Situation | Who |
-|-----------|-----|
-| Reviewer approving a teammate's PR | QA / lead |
-| Author self-check before requesting review | Author |
-| PM/eng sign-off on product + docs alignment | `@product-manager` delegates here for PR scope |
-
-**Not this skill:** responding to human review comments → `@pr-review-responder`.
-
-## Subagents (default)
-
-See `reference/subagents.md`. Main chat owns the verdict; delegate fetches and scans via **Task `shell`**.
-
-## Mandatory pipeline
-
-Read **`reference/review-checklist.md`**.
-
-```
-fetch_pr_context --pr <N>              → committed diff + changed files
-check_doc_drift --pr <N>               → product.md / design.md / engineering docs
-audit_pr_changes --pr <N>              → engineering + test gaps on changed files only
-load_product_context                   → @product-manager (read JSON; scope to touched routes)
-check_features                         → AC vs code when routes touched
-conditional delegates (changed paths):
-  **/*.vue                             → @visual-auditor, @no-duplicate-ui, @primevue-openprops-architect
-  **/composables/**                    → @composable-patterns
-  backend/**                           → @engineering-excellence audit_engineering
-pre_merge_gate                         → tests, build, types (hard gate)
-write_pr_review --pr <N> --force       → scaffold + merge tool JSON into report
-→ YOU fill: Summary verdict, Product fit, PM judgment
-verify_pr_review --pr <N> --check      → report complete before posting
-```
-
-## Verdict (you write)
-
-| Verdict | When |
-|---------|------|
-| **Approve** | Gates pass; docs aligned; new behavior tested; no blockers |
-| **Request changes** | Docs drift, missing tests, product/AC gaps, gate failures |
-| **Block** | Breaks flagship route, security concern, or contradicts `product.md` |
-
-Optional: post GitHub review via `gh pr review` when user asks — default is report in `.heyeddi/docs/` only.
-
-## Never
-
-- Review uncommitted working tree changes
-- Approve without `pre_merge_gate` on required checks
-- Skip doc drift when PR changes routes or public API
-- Approve new user-facing behavior without test evidence (unit, integration, or documented manual AC)
-
-## Related skills
-
-| Skill | Role in this workflow |
-|-------|----------------------|
-| `@product-manager` | Product context, feature matrix, AC |
-| `@engineering-excellence` | Deeper audit when `audit_pr_changes` flags issues |
-| `@pre-merge-gate` | Final hard gate |
-| `@pr-review-responder` | **After** review — address human feedback |
+This folder exists for backward compatibility only. It will be removed in v3.0.0.

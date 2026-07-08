@@ -52,7 +52,7 @@ def suggest_next(product_exists: bool, design_exists: bool, features: list[str],
     if not product_exists:
         return "Run @heyeddi-design init — .heyeddi/product.md missing"
     if not audience_ready:
-        return "Run @product-translator or discover — add Personas + Per-route intent to product.md"
+        return "Run @heyeddi-intake or discover — add Personas + Per-route intent to product.md"
     if not design_exists:
         return "Run @heyeddi-design document — .heyeddi/design.md missing"
     if features:
@@ -88,7 +88,7 @@ def main() -> None:
                 "product_exists": product_exists,
                 "audience": audience,
                 "audience_blocker": (
-                    "Run @product-translator or @heyeddi-design discover — product.md needs Personas + Per-route intent"
+                    "Run @heyeddi-intake or @heyeddi-design discover — product.md needs Personas + Per-route intent"
                     if product_exists and not audience["audience_ready"]
                     else None
                 ),

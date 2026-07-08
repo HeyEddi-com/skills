@@ -9,6 +9,6 @@
 | Log each fix | `shell` | `append_fix_log` |
 | Re-verify | `shell` | `finalize_visual_review --check` |
 
-Parent skills (`heyeddi-design`, `design-handoff`, `product-manager`) may invoke the full loop inline or delegate capture/contrast to Task `shell` then fix in main chat.
+Parent skills (`heyeddi-design`, `heyeddi-handoff`, `heyeddi-product`) may invoke the full loop inline or delegate capture/contrast to Task `shell` then fix in main chat.
 
 **Anti-pattern:** Task subagent that only returns issue bullets without code changes.

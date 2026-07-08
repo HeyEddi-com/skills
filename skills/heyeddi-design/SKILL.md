@@ -1,6 +1,6 @@
 ---
 name: heyeddi-design
-description: End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens — OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend — e.g. "enterprise view", "critique the login page", "this UI looks bad", "settings page". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff — use design-handoff instead.
+description: End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens — OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend — e.g. "enterprise view", "critique the login page", "this UI looks bad", "settings page". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff — use heyeddi-handoff instead.
 version: 2.1.0
 ---
 
@@ -27,10 +27,10 @@ Do not run visual capture inline during craft/handoff turns.
 Read **`reference/cross-pillar-handoff.md`**. Bookend **craft**, **critique**, **polish**, **shape** (confirmed brief):
 
 ```
-@skill-orchestrator  load_workflow_context --route /path
+@heyeddi-orchestrator  load_workflow_context --route /path
 … design work + Decision log in design.md …
-@skill-orchestrator  append_pillar_opinion --pillar design …
-→ @product-manager scope check; @ux-flow-auditor flow note if IA affects tasks
+@heyeddi-orchestrator  append_pillar_opinion --pillar design …
+→ @heyeddi-product scope check; @ux-flow-auditor flow note if IA affects tasks
 ```
 
 ## Setup (every session)
@@ -71,10 +71,10 @@ Visual proof always delegates to `@visual-auditor` via **Task** (`shell` subagen
 2. **No sub-command, vague greenfield** ("enterprise view", "design the settings area" with no existing screen): load `reference/discover.md`. Do not jump to code.
 3. **Sub-command matches table above**: load `reference/<command>.md` and follow it. Remaining words are the target/brief.
 4. **`craft` without a confirmed design brief**: pause and run `shape` (full flow) first; resume `craft` only after explicit brief confirmation.
-4b. **`craft` on flagship routes** (`/`, `/login`, `/dashboard`, `/settings`): if `load_context` reports `audience_ready: false`, stop — `@product-translator` or `discover` first.
+4b. **`craft` on flagship routes** (`/`, `/login`, `/dashboard`, `/settings`): if `load_context` reports `audience_ready: false`, stop — `@heyeddi-intake` or `discover` first.
 5. **`polish` without critique this session**: run **critique** first, then polish.
 6. **`init` blocker**: if `load_context` reports missing `PRODUCT.md` and the task is net-new or strategic, complete `init` then resume the original command.
-7. **Screenshots / approved mockups provided**: stop — tell the user to use `@design-handoff` instead.
+7. **Screenshots / approved mockups provided**: stop — tell the user to use `@heyeddi-handoff` instead.
 8. **Never invoke impeccable** — this skill replaces it for the HeyEddi stack.
 
 ## Artifacts

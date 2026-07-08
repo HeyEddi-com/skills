@@ -67,7 +67,7 @@ After `modern-reference` anti-slop and before audience-fit:
 - [ ] **Decision log** cites persona + **specific** borrowed pattern + **this project's** memorable detail
 - [ ] Screenshot test: would a designer say "template" or "crafted for {product_name}"?
 
-If any fail → `@heyeddi-design polish` or revise in craft; do not hand off to `@design-handoff` with generic chrome.
+If any fail → `@heyeddi-design polish` or revise in craft; do not hand off to `@heyeddi-handoff` with generic chrome.
 
 ## Polish & critique
 
@@ -79,9 +79,9 @@ When user asks to "make it more artistic" or "top of the line":
 
 ## Handoff boundary
 
-- **`@product-translator` wireframes** = layout intent only (ASCII, diagrams)
+- **`@heyeddi-intake` wireframes** = layout intent only (ASCII, diagrams)
 - **`@heyeddi-design` shape/craft** = where ambition and visual signature live
-- **`@design-handoff`** = implement approved mockups/briefs — not a substitute for skipping ambition in design phase
+- **`@heyeddi-handoff`** = implement approved mockups/briefs — not a substitute for skipping ambition in design phase
 
 ## Related
 

@@ -12,7 +12,7 @@ Our [Cursor Agent Skills](https://github.com/HeyEddi-com/skills) are **free and 
 npx skills add HeyEddi-com/skills -a cursor -y --all
 ```
 
-Invoke with `@skill-name` in Cursor (e.g. `@product-translator`, `@design-handoff`) or wire the same skills into a Cloud Run agent. They automate intake, design, engineering scaffold, handoff, API types, QA gates, and PR workflows.
+Invoke with `@skill-name` in Cursor (e.g. `@heyeddi-intake`, `@heyeddi-handoff`) or wire the same skills into a Cloud Run agent. They automate intake, design, engineering scaffold, handoff, API types, QA gates, and PR workflows.
 
 **You own your code.** Skills suggest and generate; you review and merge.
 
@@ -38,7 +38,7 @@ Agents handle repeatable workflow; some work still needs people. **[heyeddi.com/
 ## Typical flow
 
 1. `@project-engineering` — audit scaffold, install deps, declare `stack.json`
-2. `@heyeddi-design` or `@design-handoff` — product + design docs, then UI
+2. `@heyeddi-design` or `@heyeddi-handoff` — product + design docs, then UI
 3. `@backend-type-bridger` + `@composable-patterns` — API types and composables
 4. `@verify-build` + `@visual-auditor` + `@pre-merge-gate` — ship checklist
 5. `@engineering-excellence` — architecture notes under `docs/engineering/`
