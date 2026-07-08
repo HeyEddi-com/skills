@@ -152,6 +152,10 @@ cmd = "python scripts/run-evals.py --keep-sandbox --timeout 1500 full-product-in
 help = "PR review responder eval (fixture, no live gh)"
 cmd = "python scripts/run-evals.py --keep-sandbox pr-review-responder-workflow"
 
+[tool.poe.tasks.eval-pr-submission]
+help = "PR submission review eval (fixture diff, no live gh)"
+cmd = "python scripts/run-evals.py --keep-sandbox pr-submission-review-workflow"
+
 [tool.poe.tasks.eval-clean]
 help = "Remove old eval sandboxes (keeps 1 recent): uv run poe eval-clean"
 cmd = "python scripts/clean-eval-runs.py --keep ${keep} -y"

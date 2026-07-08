@@ -1,0 +1,19 @@
+id: pr-submission-review-workflow
+skills:
+  - pr-submission-review
+project_template: pr-review-fixture
+prompt_file: prompts/pr-review/review-submission.md
+verify_commands:
+  - python .agents/skills/pr-submission-review/scripts/fetch_pr_context.py --pr 42 --fixture .pr-fixture/diff.json --project-root .
+  - python .agents/skills/pr-submission-review/scripts/check_doc_drift.py --pr 42 --fixture .pr-fixture/diff.json --project-root .
+  - python .agents/skills/pr-submission-review/scripts/audit_pr_changes.py --pr 42 --fixture .pr-fixture/diff.json --project-root .
+judge: |
+  @pr-submission-review completed submission review on fixture PR #42:
+
+  - fetch_pr_context, check_doc_drift, audit_pr_changes run with --fixture
+  - .heyeddi/docs/pr-42-review.md exists with all sections (Summary, Product fit, Docs drift, Engineering, Tests, Gate results, Verdict)
+  - Verdict is set (not placeholder) — Request changes expected (no tests, doc drift)
+  - Product fit mentions dashboard / useUsers / pagination or AC
+  - verify_pr_review --check passes
+
+  Read generated report. Do not require live gh or pre_merge_gate in eval.

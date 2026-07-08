@@ -2,9 +2,9 @@
 
 [![skills.sh](https://skills.sh/b/HeyEddi-com/skills)](https://skills.sh/HeyEddi-com/skills)
 
-Curated [Cursor Agent Skills](https://cursor.com/docs/context/skills) for HeyEddi product workflows — intake, design, engineering, QA, and merge. **All 21 skills ship as one package** from this repo; install the full set into your app or Cursor global skills with a single command.
+Curated [Cursor Agent Skills](https://cursor.com/docs/context/skills) for HeyEddi product workflows — intake, design, engineering, QA, and merge. **All 22 skills ship as one package** from this repo; install the full set into your app or Cursor global skills with a single command.
 
-**Status:** **v1.4.0** · 21 skills · agent eval suite **15/15 pass** (2026-07-04) · [HeyEddi-com/skills](https://github.com/HeyEddi-com/skills) · [Release v1.4.0](https://github.com/HeyEddi-com/skills/releases/tag/v1.4.0)
+**Status:** **v1.5.0** · 22 skills · agent eval suite **16/16 pass** (2026-07-07) · [HeyEddi-com/skills](https://github.com/HeyEddi-com/skills) · [Release v1.5.0](https://github.com/HeyEddi-com/skills/releases/tag/v1.5.0)
 
 ## About HeyEddi
 
@@ -51,7 +51,7 @@ List names in [skills-registry.json](skills-registry.json) or the catalog below.
 ### Pin a release tag
 
 ```bash
-npx skills add https://github.com/HeyEddi-com/skills/tree/v1.4.0 -a cursor -y --skill '*'
+npx skills add https://github.com/HeyEddi-com/skills/tree/v1.5.0 -a cursor -y --skill '*'
 ```
 
 ### Cursor Team Marketplace (teams / enterprise)
@@ -88,7 +88,8 @@ Invoke skills in chat with `@skill-name` (e.g. `@product-translator`, `@design-h
 | `visual-auditor` | Review screenshots vs spec, fix visual issues, document fixes |
 | `verify-build` | Vite static build validator |
 | `pre-merge-gate` | QA merge-readiness checklist |
-| `pr-review-responder` | PR review comment workflow |
+| `pr-submission-review` | Review submitted PR — diff, product, docs, engineering, tests |
+| `pr-review-responder` | Respond to PR review comments — fix vs decline, re-gate |
 | `design-system-generalizer` | Spread golden-page patterns across routes |
 | `no-duplicate-ui` | Detect duplicate Vue UI |
 
@@ -154,6 +155,7 @@ Evals give the agent a **goal**, not a script. Each skill must run its real work
 |-----|--------|
 | [docs/skills-roadmap.md](docs/skills-roadmap.md) | Build plan |
 | [docs/distribution.md](docs/distribution.md) | Single-package install + marketplaces |
+| [docs/pr-workflows.md](docs/pr-workflows.md) | Two PR workflows — submission review vs respond |
 | [docs/team-cheat-sheet.md](docs/team-cheat-sheet.md) | Designer + QA reference |
 | [docs/cloud-agent-integration.md](docs/cloud-agent-integration.md) | Pydantic AI / LangChain |
 | [docs/testing-skills.md](docs/testing-skills.md) | Script smoke tests |
@@ -167,4 +169,4 @@ Evals give the agent a **goal**, not a script. Each skill must run its real work
 
 ---
 
-**HeyEddi-com** · MIT License · Last updated: 2026-07-05
+**HeyEddi-com** · MIT License · Last updated: 2026-07-07

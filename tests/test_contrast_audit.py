@@ -6,12 +6,14 @@ import subprocess
 import sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+from _skill_loader import REPO, load_skill_script
 
 
 def test_contrast_math_green_on_green_fails_aa() -> None:
-    sys.path.insert(0, str(REPO / "skills" / "visual-auditor" / "scripts"))
-    from _contrast_math import contrast_ratio, parse_css_color, required_ratio  # type: ignore
+    cm = load_skill_script("visual-auditor", "_contrast_math")
+    contrast_ratio = cm.contrast_ratio
+    parse_css_color = cm.parse_css_color
+    required_ratio = cm.required_ratio
 
     fg = parse_css_color("#16a34a")
     bg = parse_css_color("#22c55e")
@@ -21,8 +23,10 @@ def test_contrast_math_green_on_green_fails_aa() -> None:
 
 
 def test_contrast_math_black_on_white_passes() -> None:
-    sys.path.insert(0, str(REPO / "skills" / "visual-auditor" / "scripts"))
-    from _contrast_math import contrast_ratio, parse_css_color, required_ratio  # type: ignore
+    cm = load_skill_script("visual-auditor", "_contrast_math")
+    contrast_ratio = cm.contrast_ratio
+    parse_css_color = cm.parse_css_color
+    required_ratio = cm.required_ratio
 
     fg = parse_css_color("#111827")
     bg = parse_css_color("#ffffff")

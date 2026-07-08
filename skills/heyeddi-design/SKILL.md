@@ -22,6 +22,17 @@ Designs and builds production UI within PrimeVue, project `DESIGN.md`, and seman
 
 Do not run visual capture inline during craft/handoff turns.
 
+## Cross-pillar sync (mandatory)
+
+Read **`reference/cross-pillar-handoff.md`**. Bookend **craft**, **critique**, **polish**, **shape** (confirmed brief):
+
+```
+@skill-orchestrator  load_workflow_context --route /path
+… design work + Decision log in design.md …
+@skill-orchestrator  append_pillar_opinion --pillar design …
+→ @product-manager scope check; @ux-flow-auditor flow note if IA affects tasks
+```
+
 ## Setup (every session)
 
 1. Run `python scripts/load_context.py --project-root <root>` once per session (skip if output is already in the conversation).

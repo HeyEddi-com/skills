@@ -199,6 +199,29 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
         fixture = REPO_ROOT / "skills" / skill_name / "fixtures" / "sample-pr-comments.json"
         if fixture.is_file():
             args["fixture"] = str(fixture)
+    if tool_name == "fetch_pr_context":
+        args["pr"] = 42
+        fixture = REPO_ROOT / "skills" / skill_name / "fixtures" / "sample-pr-diff.json"
+        if fixture.is_file():
+            args["fixture"] = str(fixture)
+    if tool_name in ("check_doc_drift", "audit_pr_changes"):
+        args["pr"] = 42
+        fixture = REPO_ROOT / "skills" / "pr-submission-review" / "fixtures" / "sample-pr-diff.json"
+        if fixture.is_file():
+            args["fixture"] = str(fixture)
+    if tool_name == "write_pr_review":
+        args["pr"] = 42
+        args["force"] = True
+        fixture = REPO_ROOT / "skills" / "pr-submission-review" / "fixtures" / "sample-pr-diff.json"
+        if fixture.is_file():
+            args["fixture"] = str(fixture)
+    if tool_name == "verify_pr_review":
+        args["pr"] = 42
+    if tool_name == "verify_response":
+        args["pr"] = 42
+        fixture = REPO_ROOT / "skills" / "pr-review-responder" / "fixtures" / "sample-pr-comments.json"
+        if fixture.is_file():
+            args["fixture"] = str(fixture)
     if tool_name == "validate_composable":
         args["path"] = "src/composables/useApi.ts"
     if tool_name == "write_test_stub":
@@ -295,6 +318,15 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
         args["skip_features"] = True
     if tool_name == "suggest_skills":
         args["user_prompt"] = "Build TaskFlow Vue app with settings handoff"
+    if tool_name == "init_workflow_sync":
+        pass
+    if tool_name == "load_workflow_context":
+        args["route"] = "/settings"
+    if tool_name == "append_pillar_opinion":
+        args["pillar"] = "product"
+        args["route"] = "/settings"
+        args["opinion"] = "Smoke test — settings AC look complete"
+        args["docs_updated"] = ".heyeddi/docs/product/features/settings.md"
     if tool_name == "write_skills_index":
         args["dry_run"] = True
     if tool_name == "validate_provider":

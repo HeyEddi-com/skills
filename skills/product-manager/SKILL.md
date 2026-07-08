@@ -12,6 +12,18 @@ You are the PM orchestrator. You **do not** replace `@heyeddi-design`, `@ux-flow
 
 **All artifacts under `.heyeddi/docs/product/`** — never repo root.
 
+## Cross-pillar sync (mandatory)
+
+Read **`reference/cross-pillar-handoff.md`**. Use `@skill-orchestrator`:
+
+```
+init_workflow_sync
+load_workflow_context --route /path
+… PM work …
+append_pillar_opinion --pillar product …
+→ @ux-flow-auditor + @heyeddi-design must opine on same route
+```
+
 ## When to use
 
 | Situation | Mode |

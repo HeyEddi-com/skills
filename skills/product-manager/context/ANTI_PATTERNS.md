@@ -6,3 +6,4 @@
 - NEVER skip contrast audit on user-facing routes before release
 - NEVER implement fixes — write recommendations and route to owner skills
 - NEVER treat `product.md` as immutable — propose changes when research shows better direction
+- NEVER close a route without `@skill-orchestrator` sibling opinions (UX + design)

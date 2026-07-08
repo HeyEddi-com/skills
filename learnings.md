@@ -421,3 +421,21 @@ Project-specific rules and preferences, appended over time.
 **Decision:** New `@product-manager` — `load_product_context`, `audit_product`, `write_feature_spec`, `check_features`, `write_review_plan`, `verify_product`. Artifacts under `.heyeddi/docs/product/`. Delegates to `@ux-flow-auditor`, `@heyeddi-design critique`, `@visual-auditor`, `@engineering-excellence` per `reference/delegation.md`.
 
 **Chain:** `@product-translator` → `@product-manager` audit + specs → design/engineering → PM review → `@pre-merge-gate`.
+
+## 2026-07-07 — Cross-pillar workflow sync (product · UX · design)
+
+**Context:** User wanted product, UX, and design flows connected — when one runs, others opine and maintain docs.
+
+**Decision:** `@skill-orchestrator` v1.2.0 — `init_workflow_sync`, `load_workflow_context`, `append_pillar_opinion`. Artifacts under `.heyeddi/docs/workflow/opinions/`. Mandatory bookends in `@product-manager`, `@ux-flow-auditor`, `@heyeddi-design`. Hub `docs/cross-pillar-workflow.md`.
+
+## 2026-07-07 — Two PR workflows (submission review vs respond)
+
+**Context:** User needed distinct skills: (1) review submitted PR on committed diff only — product, docs, engineering, tests; (2) respond to human review comments with fix-vs-decline and re-gate.
+
+**Decision:**
+- **`@pr-submission-review`** (new) — `fetch_pr_context`, `check_doc_drift`, `audit_pr_changes`, `write_pr_review`, `verify_pr_review` → `.heyeddi/docs/pr-<N>-review.md`
+- **`@pr-review-responder`** (v1.1) — adds `verify_response`, `reference/workflow.md`, mandatory `pre_merge_gate` before summary
+
+**Process:** See `docs/pr-workflows.md`. Evals: `uv run poe eval-pr-submission`, `uv run poe eval-pr`.
+
+**Notes:** Submission review = reviewer/QA; responder = PR author after feedback. Default output is `.heyeddi/docs/` — post `gh pr review` only when user asks.

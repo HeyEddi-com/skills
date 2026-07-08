@@ -55,11 +55,14 @@ Place reference images in `designs/<feature>/` or attach in chat.
 
 | I want to… | Skill | How to invoke |
 |------------|-------|---------------|
-| Approve a PR (single pass/fail report) | `pre-merge-gate` | `@pre-merge-gate` |
-| Fix AI PR review comments (team rules) | `pr-review-responder` | `@pr-review-responder` + PR number |
+| **Review a submitted PR** (committed diff, product, docs, eng, tests) | `pr-submission-review` | `@pr-submission-review` + PR number |
+| Approve a PR (CI pass/fail report) | `pre-merge-gate` | `@pre-merge-gate` |
+| **Respond to PR review comments** (fix vs decline, re-gate) | `pr-review-responder` | `@pr-review-responder` + PR number |
 | Verify production build | `verify-build` | `@verify-build` or automatic in CI context |
 | Visual regression on a route | `visual-auditor` | `@visual-auditor` + route |
 | Find duplicate UI components | `no-duplicate-ui` | `@no-duplicate-ui` |
+
+**Two PR workflows:** See [pr-workflows.md](./pr-workflows.md) — `@pr-submission-review` (reviewer) vs `@pr-review-responder` (author responding).
 
 **PR review vs `/babysit`:** Use built-in `/babysit` for quick merge-ready loops. Use `@pr-review-responder` when you need team rules: reply to every comment, fix-vs-decline matrix, threaded inline replies.
 

@@ -1,15 +1,13 @@
 """Tests for spec-compliance fixes (verify_intake, verify_theme)."""
 from __future__ import annotations
 
-import sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parent.parent
+from _skill_loader import load_skill_script
 
 
 def test_verify_intake_allows_baseline_app_vue_only(tmp_path: Path) -> None:
-    sys.path.insert(0, str(REPO / "skills" / "product-translator" / "scripts"))
-    import verify_intake as vi  # type: ignore
+    vi = load_skill_script("product-translator", "verify_intake")
 
     (tmp_path / "src").mkdir()
     (tmp_path / "src" / "App.vue").write_text("<template><router-view /></template>\n")
@@ -17,8 +15,7 @@ def test_verify_intake_allows_baseline_app_vue_only(tmp_path: Path) -> None:
 
 
 def test_verify_intake_blocks_feature_views(tmp_path: Path) -> None:
-    sys.path.insert(0, str(REPO / "skills" / "product-translator" / "scripts"))
-    import verify_intake as vi  # type: ignore
+    vi = load_skill_script("product-translator", "verify_intake")
 
     (tmp_path / "src" / "views").mkdir(parents=True)
     (tmp_path / "src" / "App.vue").write_text("<template><router-view /></template>\n")
@@ -27,8 +24,7 @@ def test_verify_intake_blocks_feature_views(tmp_path: Path) -> None:
 
 
 def test_verify_theme_rejects_raw_aura_with_brand(tmp_path: Path) -> None:
-    sys.path.insert(0, str(REPO / "skills" / "design-handoff" / "scripts"))
-    import verify_theme as vt  # type: ignore
+    vt = load_skill_script("design-handoff", "verify_theme")
 
     (tmp_path / "src").mkdir()
     (tmp_path / "src" / "main.ts").write_text(
@@ -47,8 +43,7 @@ def test_verify_theme_rejects_raw_aura_with_brand(tmp_path: Path) -> None:
 
 
 def test_verify_theme_accepts_define_preset(tmp_path: Path) -> None:
-    sys.path.insert(0, str(REPO / "skills" / "design-handoff" / "scripts"))
-    import verify_theme as vt  # type: ignore
+    vt = load_skill_script("design-handoff", "verify_theme")
 
     (tmp_path / "src").mkdir()
     (tmp_path / "src" / "main.ts").write_text(

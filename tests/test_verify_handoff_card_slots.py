@@ -1,13 +1,10 @@
 """Unit tests for PrimeVue Card slot verification in design-handoff."""
 from __future__ import annotations
 
-import sys
-from pathlib import Path
+from _skill_loader import load_skill_script
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(REPO_ROOT / "skills" / "design-handoff" / "scripts"))
-
-from verify_handoff import find_primevue_card_slot_issues  # noqa: E402
+_vh = load_skill_script("design-handoff", "verify_handoff")
+find_primevue_card_slot_issues = _vh.find_primevue_card_slot_issues
 
 
 GOOD_CARD = """

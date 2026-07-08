@@ -10,6 +10,8 @@ This eval uses **fixture comments** — do not call live `gh api` to post replie
    - Inline comments: one reply block per comment ID (as you would post via `gh api .../comments/ID/replies`)
    - Discussion + review comments: drafted `@mention` responses
 4. For comments marked **fix**: apply the code fix in this repo if the referenced files exist (`src/composables/useUsers.ts`, `backend/app/routers/users.py`); otherwise document the fix in the tracking table.
-5. End with a **summary** section in `.heyeddi/docs/pr-42-replies.md` (only after all individual replies are drafted).
+5. Run `pre_merge_gate` (or document SKIP if no package.json tests).
+6. Run `verify_response --pr 42 --fixture .pr-fixture/comments.json --check --project-root .` after tracking and replies are complete.
+7. End with a **summary** section in `.heyeddi/docs/pr-42-replies.md` (only after all individual replies are drafted).
 
 Team rules: reply to **every** comment; no comment left without a response plan.

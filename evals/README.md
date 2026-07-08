@@ -24,6 +24,7 @@ One command per eval — no generic `eval-case`, no composite bundles.
 | `uv run poe eval-api` | backend-type-bridger, composable-patterns |
 | `uv run poe eval-primevue` | primevue-openprops-architect |
 | `uv run poe eval-pr` | pr-review-responder |
+| `uv run poe eval-pr-submission` | pr-submission-review |
 | `uv run poe eval-engineering` | engineering-excellence |
 | `uv run poe eval-ux-flow` | ux-flow-auditor |
 | `uv run poe eval-flutter` | flutter-engineering |
@@ -80,6 +81,7 @@ cd evals/runs/<latest>/design-handoff-only && npm ci && npm run dev
 | `eval-api` | `backend-type-bridger-users` |
 | `eval-primevue` | `primevue-fix-violations` |
 | `eval-pr` | `pr-review-responder-workflow` |
+| `eval-pr-submission` | `pr-submission-review-workflow` |
 | `eval-engineering` | `engineering-excellence-audit` |
 | `eval-ux-flow` | `ux-flow-auditor-init` |
 | `eval-flutter` | `flutter-engineering-scaffold` |

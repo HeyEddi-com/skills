@@ -1,6 +1,6 @@
 {
   "skill": "skill-orchestrator",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "tools": [
     {
       "name": "write_skills_index",
@@ -50,6 +50,54 @@
       },
       "script": "scripts/suggest_skills.py",
       "readonly": true
+    },
+    {
+      "name": "init_workflow_sync",
+      "description": "Scaffold .heyeddi/docs/workflow/ for product+UX+design cross-pillar opinions.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "project_root": { "type": "string" },
+          "force": { "type": "boolean" }
+        },
+        "required": ["project_root"]
+      },
+      "script": "scripts/init_workflow_sync.py",
+      "readonly": false
+    },
+    {
+      "name": "load_workflow_context",
+      "description": "Load sibling pillar opinions and checklist for a route.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "project_root": { "type": "string" },
+          "route": { "type": "string" },
+          "feature": { "type": "string" }
+        },
+        "required": ["project_root"]
+      },
+      "script": "scripts/load_workflow_context.py",
+      "readonly": true
+    },
+    {
+      "name": "append_pillar_opinion",
+      "description": "Record pillar opinion and request sibling product/UX/design responses.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "project_root": { "type": "string" },
+          "pillar": { "type": "string", "enum": ["product", "ux", "design"] },
+          "route": { "type": "string" },
+          "opinion": { "type": "string" },
+          "docs_updated": { "type": "string" },
+          "request_pillars": { "type": "string" },
+          "feature": { "type": "string" }
+        },
+        "required": ["project_root", "pillar", "route", "opinion"]
+      },
+      "script": "scripts/append_pillar_opinion.py",
+      "readonly": false
     }
   ]
 }

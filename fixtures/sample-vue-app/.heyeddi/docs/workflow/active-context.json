@@ -1,0 +1,10 @@
+{
+  "route": "/settings",
+  "feature": "settings",
+  "last_pillar": "product",
+  "updated": "2026-07-07",
+  "pending_pillars": [
+    "ux",
+    "design"
+  ]
+}
