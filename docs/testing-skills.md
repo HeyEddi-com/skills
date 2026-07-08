@@ -11,7 +11,7 @@ Skills are **installable packages** in `skills/` — they are tested here agains
 ./scripts/test-skills.py
 
 # One skill
-./scripts/test-skills.py design-handoff
+./scripts/test-skills.py heyeddi-handoff
 
 # Structure only (no script execution)
 ./scripts/test-skills.py --structure-only
@@ -52,8 +52,8 @@ Some behaviour needs a **real app** or **live services** — run these in a Vue 
 | `primevue-openprops-architect` | `python skills/.../validate_vue.py --project-root .` after `npm install` |
 | `verify-build` | Real `npm run build` on a Vite app |
 | `visual-auditor` | Dev server running + `pip install playwright && playwright install chromium` |
-| `design-handoff` | Attach real screenshots in Cursor `@design-handoff` |
-| `pr-review-responder` | `gh auth login` + open PR number |
+| `heyeddi-handoff` | Attach real screenshots in Cursor `@heyeddi-handoff` |
+| `heyeddi-pr-respond` | `gh auth login` + open PR number |
 | `pre-merge-gate` | Full CI project with passing tests |
 
 ## Adding tests for a new skill

@@ -144,7 +144,7 @@ def _extract_section(text: str, heading: str) -> str:
 def _design_scaffold(app_name: str) -> str:
     return f"""# Design
 
-Draft — `@design-handoff` syncs layout from mockup briefs.
+Draft — `@heyeddi-handoff` syncs layout from mockup briefs.
 
 ## System
 

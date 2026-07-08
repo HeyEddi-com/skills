@@ -1,4 +1,4 @@
-@design-handoff-flutter — Material 3 settings handoff (not Vue `@design-handoff`).
+@design-handoff-flutter — Material 3 settings handoff (not Vue `@heyeddi-handoff`).
 
 ## Required (Flutter skill spec)
 

@@ -2,7 +2,7 @@
 
 **Goal:** Design and build a **production-quality login screen** for SecureVault (see `.heyeddi/product.md`).
 
-No designer mockups — **heyeddi-design from scratch**, not `@design-handoff`.
+No designer mockups — **heyeddi-design from scratch**, not `@heyeddi-handoff`.
 
 Read **`reference/surface-completeness.md`** — design a **complete** sign-in surface (sign-in archetype); stub unwired backend; document **Deferred wiring**.
 

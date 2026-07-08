@@ -68,5 +68,5 @@ fi
 echo ""
 echo "Ready:"
 echo "  uv run poe test              # smoke tests"
-echo "  uv run poe eval-design-handoff   # agent eval"
+echo "  uv run poe eval-heyeddi-handoff   # agent eval"
 echo "  uv run poe eval-list"

@@ -56,8 +56,8 @@ def main() -> None:
         "mockup_contract": "user_provided",
         "sources_ingested": copied,
         "notes": [
-            "User-provided mockups ingested by @product-translator",
-            "mockup-brief.md may be seeded via seed_brief.py or refined by @design-handoff",
+            "User-provided mockups ingested by @heyeddi-intake",
+            "mockup-brief.md may be seeded via seed_brief.py or refined by @heyeddi-handoff",
         ],
     }
     handoff.write_text(json.dumps(meta, indent=2) + "\n")

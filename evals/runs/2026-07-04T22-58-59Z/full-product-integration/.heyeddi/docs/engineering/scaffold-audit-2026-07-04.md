@@ -64,7 +64,7 @@ From `.heyeddi/product.md` and `skill-routing.json`:
 | `/` | `HomeView` | `@heyeddi-design` craft (brand) |
 | `/login` | `LoginView` | `@heyeddi-design` craft (brand) |
 | `/dashboard` | `DashboardView` | `@heyeddi-design` craft (product) |
-| `/settings` | `SettingsView` | `@design-handoff` (mockups in `.heyeddi/designs/settings/`) |
+| `/settings` | `SettingsView` | `@heyeddi-handoff` (mockups in `.heyeddi/designs/settings/`) |
 
 ## Gaps (by owner)
 
@@ -75,7 +75,7 @@ From `.heyeddi/product.md` and `skill-routing.json`:
 - [ ] Run `document` to complete `.heyeddi/design.md` (currently draft)
 - [ ] Dashboard: fetch and display `GET /api/users`
 
-### `@design-handoff` — Settings
+### `@heyeddi-handoff` — Settings
 
 - [ ] Implement `/settings` from `.heyeddi/designs/settings/` mockups + brief
 
@@ -115,7 +115,7 @@ Vite proxies `/api/*` to the API on port 8090.
 
 1. `@heyeddi-design document` — fill design system in `.heyeddi/design.md`
 2. `@heyeddi-design craft` — flagship routes per `skill-routing.json` order (`/` → `/login` → `/dashboard`)
-3. `@design-handoff` — `/settings` from existing mockups
+3. `@heyeddi-handoff` — `/settings` from existing mockups
 4. `@backend-type-bridger` — sync OpenAPI → TypeScript after API expands
 
 ---

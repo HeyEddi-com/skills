@@ -6,4 +6,4 @@
 | Trace | `shell` | Dev server must be up; `trace_flow.py --check` |
 | Friction write-up | `generalPurpose` | Edit `.heyeddi/docs/ux-flows/<task>.md` |
 
-Parent skills chain this after route ships (`@design-handoff`, `@heyeddi-design`).
+Parent skills chain this after route ships (`@heyeddi-handoff`, `@heyeddi-design`).

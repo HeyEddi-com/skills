@@ -1,6 +1,6 @@
 # Design (eval handoff)
 
-Draft — `@design-handoff` should align implementation with this file and update component/layout notes.
+Draft — `@heyeddi-handoff` should align implementation with this file and update component/layout notes.
 
 ## System
 

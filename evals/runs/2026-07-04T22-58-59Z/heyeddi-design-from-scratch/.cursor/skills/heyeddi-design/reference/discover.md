@@ -12,7 +12,7 @@
 - Treat `PRODUCT.md` and `DESIGN.md` as anchors; skip questions they already answer.
 - **Assert-then-confirm:** when one answer is obvious from context, state it and ask to confirm or override — don't offer four-option menus for settled choices.
 - At least **one user-answer round** unless repo docs fully answer purpose, audience, personas, and scope.
-- If `product.md` lacks **Personas** or **Per-route intent**, cover those in this interview (or route to `@product-translator`).
+- If `product.md` lacks **Personas** or **Per-route intent**, cover those in this interview (or route to `@heyeddi-intake`).
 
 ## Translate plain language
 

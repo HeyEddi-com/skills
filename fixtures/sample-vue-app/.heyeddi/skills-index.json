@@ -40,14 +40,14 @@
       "triggers": []
     },
     {
-      "name": "design-handoff",
+      "name": "heyeddi-handoff",
       "description": "Implements screens from designer screenshots and handoff notes. Two-pass workflow \u2014 designer writes mockup-brief with Implementation spec, implementer builds shell then route, verify_handoff checks tokens and layout. Use when approved mockups exist \u2014 not for greenfield design.",
       "scoring_text": "Screenshot-first design implementation (Vue) Implements screens from designer screenshots and handoff notes. Two-pass workflow \u2014 designer writes mockup-brief with Implementation spec, implementer builds shell then route, verify_handoff checks tokens and layout. Use when approved mockups exist \u2014 not for greenfield design.",
       "version": "",
       "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/design-handoff/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/design-handoff",
-      "invoke_as": "@design-handoff",
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-handoff/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-handoff",
+      "invoke_as": "@heyeddi-handoff",
       "has_triggers_file": false,
       "triggers": []
     },
@@ -113,8 +113,8 @@
     },
     {
       "name": "heyeddi-design",
-      "description": "End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens \u2014 OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend \u2014 e.g. \"enterprise view\", \"critique the login page\", \"this UI looks bad\", \"settings page\". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff \u2014 use design-handoff instead.",
-      "scoring_text": "Design from scratch (replaces impeccable) End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens \u2014 OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend \u2014 e.g. \"enterprise view\", \"critique the login page\", \"this UI looks bad\", \"settings page\". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff \u2014 use design-handoff instead.",
+      "description": "End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens \u2014 OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend \u2014 e.g. \"enterprise view\", \"critique the login page\", \"this UI looks bad\", \"settings page\". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff \u2014 use heyeddi-handoff instead.",
+      "scoring_text": "Design from scratch (replaces impeccable) End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens \u2014 OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend \u2014 e.g. \"enterprise view\", \"critique the login page\", \"this UI looks bad\", \"settings page\". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff \u2014 use heyeddi-handoff instead.",
       "version": "2.0.0",
       "installed": true,
       "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-design/SKILL.md",
@@ -149,14 +149,14 @@
       "triggers": []
     },
     {
-      "name": "pr-review-responder",
+      "name": "heyeddi-pr-respond",
       "description": "Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR review feedback with fix-vs-decline rules \u2014 stricter than built-in /babysit.",
       "scoring_text": "Team PR review response workflow Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR review feedback with fix-vs-decline rules \u2014 stricter than built-in /babysit.",
       "version": "",
       "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/pr-review-responder/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/pr-review-responder",
-      "invoke_as": "@pr-review-responder",
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-pr-respond/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-pr-respond",
+      "invoke_as": "@heyeddi-pr-respond",
       "has_triggers_file": false,
       "triggers": []
     },
@@ -185,14 +185,14 @@
       "triggers": []
     },
     {
-      "name": "product-translator",
-      "description": "Translates vague user prompts into HeyEddi product docs, professional layout mockups, mockup briefs, and skill-routing manifests under .heyeddi/. Use first on new projects or when the user describes what they want to build \u2014 before @heyeddi-design, @design-handoff, or @flutter-engineering. Ingests user PNGs when provided; otherwise generates professional layout mockups and seeds briefs.",
-      "scoring_text": "User prompt \u2192 product.md, mockups, briefs, skill-routing for downstream agents Translates vague user prompts into HeyEddi product docs, professional layout mockups, mockup briefs, and skill-routing manifests under .heyeddi/. Use first on new projects or when the user describes what they want to build \u2014 before @heyeddi-design, @design-handoff, or @flutter-engineering. Ingests user PNGs when provided; otherwise generates professional layout mockups and seeds briefs.",
+      "name": "heyeddi-intake",
+      "description": "Translates vague user prompts into HeyEddi product docs, professional layout mockups, mockup briefs, and skill-routing manifests under .heyeddi/. Use first on new projects or when the user describes what they want to build \u2014 before @heyeddi-design, @heyeddi-handoff, or @flutter-engineering. Ingests user PNGs when provided; otherwise generates professional layout mockups and seeds briefs.",
+      "scoring_text": "User prompt \u2192 product.md, mockups, briefs, skill-routing for downstream agents Translates vague user prompts into HeyEddi product docs, professional layout mockups, mockup briefs, and skill-routing manifests under .heyeddi/. Use first on new projects or when the user describes what they want to build \u2014 before @heyeddi-design, @heyeddi-handoff, or @flutter-engineering. Ingests user PNGs when provided; otherwise generates professional layout mockups and seeds briefs.",
       "version": "",
       "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/product-translator/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/product-translator",
-      "invoke_as": "@product-translator",
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-intake/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-intake",
+      "invoke_as": "@heyeddi-intake",
       "has_triggers_file": false,
       "triggers": []
     },
@@ -209,14 +209,14 @@
       "triggers": []
     },
     {
-      "name": "skill-orchestrator",
-      "description": "Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @product-translator when present.",
-      "scoring_text": "Discover available @skills and suggest which to invoke; reads skill-routing.json Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @product-translator when present.",
+      "name": "heyeddi-orchestrator",
+      "description": "Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @heyeddi-intake when present.",
+      "scoring_text": "Discover available @skills and suggest which to invoke; reads skill-routing.json Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @heyeddi-intake when present.",
       "version": "1.1.0",
       "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/skill-orchestrator/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/skill-orchestrator",
-      "invoke_as": "@skill-orchestrator",
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-orchestrator/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-orchestrator",
+      "invoke_as": "@heyeddi-orchestrator",
       "has_triggers_file": true,
       "triggers": [
         {
@@ -297,6 +297,6 @@
   ],
   "index_version": 1,
   "generated_at": "2026-07-04T00:54:43Z",
-  "generator": "skill-orchestrator@1.0.0",
+  "generator": "heyeddi-orchestrator@1.0.0",
   "installed_count": 22
 }

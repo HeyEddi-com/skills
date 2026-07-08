@@ -7,7 +7,7 @@ from _skill_loader import load_skill_script
 
 
 def test_verify_intake_allows_baseline_app_vue_only(tmp_path: Path) -> None:
-    vi = load_skill_script("product-translator", "verify_intake")
+    vi = load_skill_script("heyeddi-intake", "verify_intake")
 
     (tmp_path / "src").mkdir()
     (tmp_path / "src" / "App.vue").write_text("<template><router-view /></template>\n")
@@ -15,7 +15,7 @@ def test_verify_intake_allows_baseline_app_vue_only(tmp_path: Path) -> None:
 
 
 def test_verify_intake_blocks_feature_views(tmp_path: Path) -> None:
-    vi = load_skill_script("product-translator", "verify_intake")
+    vi = load_skill_script("heyeddi-intake", "verify_intake")
 
     (tmp_path / "src" / "views").mkdir(parents=True)
     (tmp_path / "src" / "App.vue").write_text("<template><router-view /></template>\n")
@@ -24,7 +24,7 @@ def test_verify_intake_blocks_feature_views(tmp_path: Path) -> None:
 
 
 def test_verify_theme_rejects_raw_aura_with_brand(tmp_path: Path) -> None:
-    vt = load_skill_script("design-handoff", "verify_theme")
+    vt = load_skill_script("heyeddi-handoff", "verify_theme")
 
     (tmp_path / "src").mkdir()
     (tmp_path / "src" / "main.ts").write_text(
@@ -43,7 +43,7 @@ def test_verify_theme_rejects_raw_aura_with_brand(tmp_path: Path) -> None:
 
 
 def test_verify_theme_accepts_define_preset(tmp_path: Path) -> None:
-    vt = load_skill_script("design-handoff", "verify_theme")
+    vt = load_skill_script("heyeddi-handoff", "verify_theme")
 
     (tmp_path / "src").mkdir()
     (tmp_path / "src" / "main.ts").write_text(

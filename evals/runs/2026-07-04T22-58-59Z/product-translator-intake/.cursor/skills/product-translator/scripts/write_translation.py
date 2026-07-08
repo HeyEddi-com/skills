@@ -63,7 +63,7 @@ def main() -> None:
     path.write_text(body)
     index = out_base / "index.md"
     if not index.is_file():
-        index.write_text("# Intake translations\n\nSession notes from `@product-translator`.\n\n")
+        index.write_text("# Intake translations\n\nSession notes from `@heyeddi-intake`.\n\n")
     emit(json.dumps({"status": "ok", "path": str(path)}, indent=2))
 
 

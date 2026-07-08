@@ -19,10 +19,10 @@
       "skillPath": "skills/dart-type-bridger/SKILL.md",
       "computedHash": "6c6de5ff0b0a3de5933c3e8f31376794dcd272998e5ba7e597c3d8f060aae011"
     },
-    "design-handoff": {
+    "heyeddi-handoff": {
       "source": "HeyEddi-com/skills",
       "sourceType": "github",
-      "skillPath": "skills/design-handoff/SKILL.md",
+      "skillPath": "skills/heyeddi-handoff/SKILL.md",
       "computedHash": "09fec4ee1db1813e186b420707694a80dea3009adf4e40652867b4246f4b952d"
     },
     "design-handoff-flutter": {
@@ -67,10 +67,10 @@
       "skillPath": "skills/no-duplicate-ui/SKILL.md",
       "computedHash": "aeee51a5209e8e2629ff8443fb2ce3381e9c2fb885f581fa9e3bc6e6bfb7a4e8"
     },
-    "pr-review-responder": {
+    "heyeddi-pr-respond": {
       "source": "HeyEddi-com/skills",
       "sourceType": "github",
-      "skillPath": "skills/pr-review-responder/SKILL.md",
+      "skillPath": "skills/heyeddi-pr-respond/SKILL.md",
       "computedHash": "cf6bb82dbd7f05824af62517b4565fb8d4fb1fa84b8295418b34b5a48c1d8019"
     },
     "pre-merge-gate": {
@@ -85,10 +85,10 @@
       "skillPath": "skills/primevue-openprops-architect/SKILL.md",
       "computedHash": "efad515500a84b2e862341733fb9e2261c1d14a61d5232017b5b41c517ffd19e"
     },
-    "product-translator": {
+    "heyeddi-intake": {
       "source": "HeyEddi-com/skills",
       "sourceType": "github",
-      "skillPath": "skills/product-translator/SKILL.md",
+      "skillPath": "skills/heyeddi-intake/SKILL.md",
       "computedHash": "d99e853280c7865a6370fa3e829576a1b10fa21656a67173c9e0eee8a9c65100"
     },
     "project-engineering": {
@@ -97,10 +97,10 @@
       "skillPath": "skills/project-engineering/SKILL.md",
       "computedHash": "a3cecc73a94399890ba8e414b9d9a7537c2807683abb61ec14875f991517d87b"
     },
-    "skill-orchestrator": {
+    "heyeddi-orchestrator": {
       "source": "HeyEddi-com/skills",
       "sourceType": "github",
-      "skillPath": "skills/skill-orchestrator/SKILL.md",
+      "skillPath": "skills/heyeddi-orchestrator/SKILL.md",
       "computedHash": "4a340925d9813434abfefc3fc87e52ead6cb51ced1faa291eef2c7742b56ee35"
     },
     "ux-flow-auditor": {

@@ -63,7 +63,7 @@ def build_routing(root: Path, data: dict) -> dict:
                 {
                     "route": route,
                     "register": register,
-                    "skill": "design-handoff",
+                    "skill": "heyeddi-handoff",
                     "feature": feat,
                     "mockups": f".heyeddi/designs/{feat}/",
                     "brief": f".heyeddi/designs/{feat}/mockup-brief.md",
@@ -90,7 +90,7 @@ def build_routing(root: Path, data: dict) -> dict:
         "routes": routes_out,
         "scaffold": [scaffold_skill, "scaffold_stack --stack full"],
         "post_intake": [
-            "@skill-orchestrator write_skills_index",
+            "@heyeddi-orchestrator write_skills_index",
             "@heyeddi-design document",
         ],
     }

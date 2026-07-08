@@ -71,7 +71,7 @@ def run_design_handoff_hard_gates(
     """Deterministic gates before agentic judge.
 
     mode:
-      - ``handoff`` — full design-handoff checks (verify_handoff, content gates)
+      - ``handoff`` — full heyeddi-handoff checks (verify_handoff, content gates)
       - ``visual`` — captures + tokens only (integration UI turns)
     """
     issues: list[str] = []
@@ -93,7 +93,7 @@ def run_design_handoff_hard_gates(
     if mode == "handoff":
         code, out = _run_script(
             sandbox,
-            ".agents/skills/design-handoff/scripts/verify_handoff.py",
+            ".agents/skills/heyeddi-handoff/scripts/verify_handoff.py",
             "--route",
             route,
             "--check",
@@ -103,7 +103,7 @@ def run_design_handoff_hard_gates(
 
         code, out = _run_script(
             sandbox,
-            ".agents/skills/design-handoff/scripts/verify_tokens.py",
+            ".agents/skills/heyeddi-handoff/scripts/verify_tokens.py",
             "--check",
         )
         if code != 0:

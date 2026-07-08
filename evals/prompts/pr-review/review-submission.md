@@ -1,4 +1,4 @@
-@pr-submission-review
+@heyeddi-pr-review
 
 ## Review submitted PR #42 (fixture mode)
 

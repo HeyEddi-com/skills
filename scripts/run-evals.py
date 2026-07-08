@@ -15,8 +15,8 @@ Backends:
 Usage:
   python3 scripts/run-evals.py --list
   python3 scripts/run-evals.py --dry-run
-  python3 scripts/run-evals.py design-handoff-only
-  python3 scripts/run-evals.py --deterministic design-handoff-only  # legacy gates
+  python3 scripts/run-evals.py heyeddi-handoff-only
+  python3 scripts/run-evals.py --deterministic heyeddi-handoff-only  # legacy gates
 """
 from __future__ import annotations
 

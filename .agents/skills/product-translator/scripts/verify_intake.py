@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify complete @product-translator intake artifacts."""
+"""Verify complete @heyeddi-intake intake artifacts."""
 from __future__ import annotations
 
 import argparse
@@ -58,7 +58,7 @@ def _check_repo_buildable(root: Path) -> tuple[bool, str]:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Verify product-translator intake")
+    parser = argparse.ArgumentParser(description="Verify heyeddi-intake intake")
     parser.add_argument("--project-root", default=None)
     parser.add_argument("--check", action="store_true", help="Exit 1 if any check fails")
     args = parser.parse_args()

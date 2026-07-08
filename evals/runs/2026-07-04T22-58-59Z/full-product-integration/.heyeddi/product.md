@@ -64,4 +64,4 @@ Plain, confident, no buzzwords. Verb-first buttons (Start free trial, Sign in). 
 
 See `.heyeddi/docs/intake/skill-routing.json` for which `@skill` runs per route.
 
-_Authored by `@product-translator` via `write_product.py` — do not edit structure by hand._
+_Authored by `@heyeddi-intake` via `write_product.py` — do not edit structure by hand._

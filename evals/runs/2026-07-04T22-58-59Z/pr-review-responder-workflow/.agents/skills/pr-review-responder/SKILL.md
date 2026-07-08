@@ -1,5 +1,5 @@
 ---
-name: pr-review-responder
+name: heyeddi-pr-respond
 description: Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR review feedback with fix-vs-decline rules — stricter than built-in /babysit.
 disable-model-invocation: true
 ---

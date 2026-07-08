@@ -21,7 +21,7 @@ Uses your installed `agent` CLI — default backend, no SDK, no cloud VM.
 ./scripts/verify-agent-cli.sh
 ./scripts/setup-evals.sh              # uv: pyyaml + playwright + pillow + chromium
 uv run python scripts/run-evals.py --dry-run --all
-uv run python scripts/run-evals.py design-handoff-only
+uv run python scripts/run-evals.py heyeddi-handoff-only
 ```
 
 See [evals/README.md](../evals/README.md) for case format, backends, and adding new evals.
@@ -54,7 +54,7 @@ Assertions must be **objective** — for default evals the **agentic judge** rea
 | 2 | `@backend-type-bridger` `@composable-patterns` | types, composables, pytest |
 | 3 | `@heyeddi-design` | marketing home + login + nav |
 | 4 | `@heyeddi-design` | dashboard wired to API |
-| 5 | `@design-handoff` `@project-engineering` | settings + build/test ship check |
+| 5 | `@heyeddi-handoff` `@project-engineering` | settings + build/test ship check |
 
 Each turn must pass its gate before the next agent run starts.
 
@@ -62,6 +62,6 @@ Each turn must pass its gate before the next agent run starts.
 uv run poe eval-integration    # 20+ min; --timeout 1200
 ```
 
-`design-handoff-only` is the dedicated `@design-handoff` case (pre-scaffolded template). Combined scaffold+handoff lives in `eval-integration`.
+`heyeddi-handoff-only` is the dedicated `@heyeddi-handoff` case (pre-scaffolded template). Combined scaffold+handoff lives in `eval-integration`.
 
 Single-shot cases remain for narrow skills (e.g. `primevue-fix-violations`).

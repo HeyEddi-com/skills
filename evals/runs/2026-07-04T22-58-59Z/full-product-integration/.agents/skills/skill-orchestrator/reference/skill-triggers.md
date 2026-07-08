@@ -3,7 +3,7 @@
 The orchestrator scores **every installed skill** from:
 
 1. **SKILL.md `description`** — token and phrase overlap with the user prompt
-2. **Skill name** — hyphen segments (`design-handoff` → `design`, `handoff`)
+2. **Skill name** — hyphen segments (`heyeddi-handoff` → `design`, `handoff`)
 3. **`reference/triggers.md`** (optional) — extra phrases owned by each skill
 
 No central hardcoded map. New skills work automatically if they have a good description.
@@ -30,7 +30,7 @@ Also supported: `reference/triggers.txt`, root `triggers.txt`.
 
 ## Priority order
 
-1. **`skill-routing.json`** (score 100) — from `@product-translator`
+1. **`skill-routing.json`** (score 100) — from `@heyeddi-intake`
 2. **Description + triggers** — dynamic per installed skill
 
 ## Tips for descriptions

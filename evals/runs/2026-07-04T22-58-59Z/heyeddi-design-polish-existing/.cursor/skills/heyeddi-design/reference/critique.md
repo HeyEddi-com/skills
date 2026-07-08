@@ -59,7 +59,7 @@ Run `reference/audience-fit.md` — include rubric table and PASS/REVISE verdict
 
 ## Boundaries
 
-- **Not** for approved designer mockups → `@design-handoff` (`interpret` = critique of **target** mockups, then brief).
+- **Not** for approved designer mockups → `@heyeddi-handoff` (`interpret` = critique of **target** mockups, then brief).
 - **Not** a linter dump — designer voice, tied to `design.md` tokens and PrimeVue catalog.
 - Do not rewrite IA in critique without flagging `shape` first.
 

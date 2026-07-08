@@ -104,7 +104,7 @@
 
 **Open questions:** none
 
-### 2026-07-04 — settings `/settings` (@design-handoff)
+### 2026-07-04 — settings `/settings` (@heyeddi-handoff)
 
 **Context:** Riley needs clear profile and notification controls with one obvious save action — sidebar app chrome from handoff mockups.
 

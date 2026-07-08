@@ -4,7 +4,7 @@
 
 Curated [Cursor Agent Skills](https://cursor.com/docs/context/skills) for HeyEddi product workflows — intake, design, engineering, QA, and merge. **All 22 skills ship as one package** from this repo; install the full set into your app or Cursor global skills with a single command.
 
-**Status:** **v1.5.0** · 22 skills · agent eval suite **16/16 pass** (2026-07-07) · [HeyEddi-com/skills](https://github.com/HeyEddi-com/skills) · [Release v1.5.0](https://github.com/HeyEddi-com/skills/releases/tag/v1.5.0)
+**Status:** **v2.0.0** · 22 canonical skills + 6 deprecated aliases · [Release v2.0.0](https://github.com/HeyEddi-com/skills/releases/tag/v2.0.0)
 
 ## About HeyEddi
 
@@ -42,8 +42,8 @@ cd skills
 ### Install one skill from the bundle
 
 ```bash
-npx skills add HeyEddi-com/skills -a cursor --skill design-handoff -y
-npx skills add HeyEddi-com/skills -a cursor --skill product-translator -g -y
+npx skills add HeyEddi-com/skills -a cursor --skill heyeddi-handoff -y
+npx skills add HeyEddi-com/skills -a cursor --skill heyeddi-intake -g -y
 ```
 
 List names in [skills-registry.json](skills-registry.json) or the catalog below.
@@ -51,7 +51,7 @@ List names in [skills-registry.json](skills-registry.json) or the catalog below.
 ### Pin a release tag
 
 ```bash
-npx skills add https://github.com/HeyEddi-com/skills/tree/v1.5.0 -a cursor -y --skill '*'
+npx skills add https://github.com/HeyEddi-com/skills/tree/v2.0.0 -a cursor -y --skill '*'
 ```
 
 ### Cursor Team Marketplace (teams / enterprise)
@@ -64,17 +64,17 @@ Admins can import this repo as a **Team Marketplace** plugin source (Cursor 2.6+
 
 Plugin bundle: `.cursor-plugin/marketplace.json` + `plugins/heyeddi-skills/`. See [docs/distribution.md](docs/distribution.md).
 
-Invoke skills in chat with `@skill-name` (e.g. `@product-translator`, `@design-handoff`).
+Invoke skills in chat with `@skill-name` (e.g. `@heyeddi-intake`, `@heyeddi-handoff`).
 
 ## Skills catalog
 
 | Skill | Role |
 |-------|------|
-| `skill-orchestrator` | Discover @skills and suggest pipelines from `skill-routing.json` |
-| `product-translator` | User prompt → `product.md`, mockups, intake JSON, routing |
-| `product-manager` | PM review — stories, AC, usefulness; orchestrates UX/design/engineering research |
+| `heyeddi-orchestrator` | Discover @skills and suggest pipelines from `skill-routing.json` |
+| `heyeddi-intake` | User prompt → `product.md`, mockups, intake JSON, routing |
+| `heyeddi-product` | PM review — stories, AC, usefulness; orchestrates UX/design/engineering research |
 | `heyeddi-design` | Design from scratch — briefs, wireframes, craft (Vue) |
-| `design-handoff` | Screenshot-first Vue implementation (PrimeVue + tokens) |
+| `heyeddi-handoff` | Screenshot-first Vue implementation (PrimeVue + tokens) |
 | `design-handoff-flutter` | Screenshot-first Flutter / Material 3 implementation |
 | `primevue-openprops-architect` | PrimeVue + OpenProps guardrails for Vue/CSS edits |
 | `project-engineering` | Vue + FastAPI + Firebase scaffold, deps, dev servers |
@@ -88,8 +88,8 @@ Invoke skills in chat with `@skill-name` (e.g. `@product-translator`, `@design-h
 | `visual-auditor` | Review screenshots vs spec, fix visual issues, document fixes |
 | `verify-build` | Vite static build validator |
 | `pre-merge-gate` | QA merge-readiness checklist |
-| `pr-submission-review` | Review submitted PR — diff, product, docs, engineering, tests |
-| `pr-review-responder` | Respond to PR review comments — fix vs decline, re-gate |
+| `heyeddi-pr-review` | Review submitted PR — diff, product, docs, engineering, tests |
+| `heyeddi-pr-respond` | Respond to PR review comments — fix vs decline, re-gate |
 | `design-system-generalizer` | Spread golden-page patterns across routes |
 | `no-duplicate-ui` | Detect duplicate Vue UI |
 
@@ -104,7 +104,7 @@ uv sync --group dev --group evals
 
 uv run poe test                    # smoke tests (no agent API)
 uv run poe eval-list               # list eval cases
-uv run poe eval-design-handoff     # one agent eval
+uv run poe eval-heyeddi-handoff     # one agent eval
 
 # Full suite (~50 min; use --model auto on usage limits)
 uv run python scripts/run-evals.py --all --keep-sandbox --timeout 1500 --model auto
@@ -155,6 +155,7 @@ Evals give the agent a **goal**, not a script. Each skill must run its real work
 |-----|--------|
 | [docs/skills-roadmap.md](docs/skills-roadmap.md) | Build plan |
 | [docs/distribution.md](docs/distribution.md) | Single-package install + marketplaces |
+| [docs/v2-skill-naming.md](docs/v2-skill-naming.md) | v2 `heyeddi-*` spine renames + alias migration |
 | [docs/pr-workflows.md](docs/pr-workflows.md) | Two PR workflows — submission review vs respond |
 | [docs/team-cheat-sheet.md](docs/team-cheat-sheet.md) | Designer + QA reference |
 | [docs/cloud-agent-integration.md](docs/cloud-agent-integration.md) | Pydantic AI / LangChain |

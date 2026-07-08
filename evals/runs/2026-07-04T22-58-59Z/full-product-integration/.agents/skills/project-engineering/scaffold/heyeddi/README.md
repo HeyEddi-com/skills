@@ -35,7 +35,7 @@ Skills are invoked with `@skill-name` in Cursor or wired into our Cloud Run agen
 ## Typical flow
 
 1. `@project-engineering` — audit scaffold, install deps, declare `stack.json`
-2. `@heyeddi-design` or `@design-handoff` — product + design docs, then UI
+2. `@heyeddi-design` or `@heyeddi-handoff` — product + design docs, then UI
 3. `@backend-type-bridger` + `@composable-patterns` — API types and composables
 4. `@verify-build` + `@visual-auditor` + `@pre-merge-gate` — ship checklist
 5. `@engineering-excellence` — architecture notes under `docs/engineering/`

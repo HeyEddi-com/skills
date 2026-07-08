@@ -19,15 +19,16 @@ We publish **free, open [Cursor Agent Skills](https://github.com/HeyEddi-com/ski
 ├── README.md          # HeyEddi intro (agents + humans workspace), free skills, folder guide
 ├── stack.json         # { "frontend": "vue"|"flutter", "backends": ["fastapi"], "api_port": 8090, "web_port": 8085 }
 ├── product.md         # Users, routes, acceptance criteria
-├── skills-index.json  # Cached skill catalog (@skill-orchestrator)
+├── sync-state.json    # @heyeddi-orchestrator — last skill-name migration (v2)
+├── skills-index.json  # Cached skill catalog (@heyeddi-orchestrator)
 ├── skills-index.md    # Human-readable catalog table
 ├── design.md          # DESIGN.md format — tokens + rationale + Decision log
 ├── designs/
 │   └── <feature>/     # Handoff PNGs, briefs, wireframes, research
 ├── docs/              # Skill-generated reports (ship, PR, drift, gates)
-│   ├── intake/        # @product-translator — translation-*.md, skill-routing.json
-│   ├── product/       # @product-manager — backlog, features/, review plans
-│   ├── workflow/      # @skill-orchestrator — cross-pillar opinions (product·UX·design)
+│   ├── intake/        # @heyeddi-intake — translation-*.md, skill-routing.json
+│   ├── product/       # @heyeddi-product — backlog, features/, review plans
+│   ├── workflow/      # @heyeddi-orchestrator — cross-pillar opinions (product·UX·design)
 │   │   └── opinions/
 │   ├── ux-flows.md    # Index of traced user tasks (@ux-flow-auditor)
 │   ├── engineering/   # architecture, reuse-catalog, decisions (@engineering-excellence)
@@ -43,15 +44,15 @@ We publish **free, open [Cursor Agent Skills](https://github.com/HeyEddi-com/ski
 ## Conventions
 
 1. **`scaffold_stack`** (via `@project-engineering` for Vue or `@flutter-engineering` for Flutter) creates `.heyeddi/` if missing, including `README.md`.
-2. **`@product-translator`** (greenfield) writes `product.md`, optional mockups/briefs, and `docs/intake/skill-routing.json` before other skills.
-3. **`@product-manager`** reviews intake, writes feature specs (stories + AC), delegates UX/design/engineering research, and synthesizes review plans under `docs/product/`.
-4. **Cross-pillar sync** — `@skill-orchestrator` `init_workflow_sync` + `opinions/`; product, UX, and design pillars opine on each route (see `docs/cross-pillar-workflow.md`).
+2. **`@heyeddi-intake`** (greenfield) writes `product.md`, optional mockups/briefs, and `docs/intake/skill-routing.json` before other skills.
+3. **`@heyeddi-product`** reviews intake, writes feature specs (stories + AC), delegates UX/design/engineering research, and synthesizes review plans under `docs/product/`.
+4. **Cross-pillar sync** — `@heyeddi-orchestrator` `init_workflow_sync` + `opinions/`; product, UX, and design pillars opine on each route (see `docs/cross-pillar-workflow.md`).
 5. **Design skills** write to `.heyeddi/design.md` and `.heyeddi/designs/` (product.md often from translator first).
 6. **QA / PR skills** write reports to `.heyeddi/docs/` (e.g. `ship-report.md`, `pr-42-tracking.md`).
 7. **Engineering excellence** maintains `.heyeddi/docs/engineering/` and audit reports (`engineering-audit-<date>.md`).
 8. **UX flow auditor** maintains `.heyeddi/docs/ux-flows/` and index `ux-flows.md`.
 9. **Visual auditor** writes contrast reports and screenshots to `.heyeddi/audits/visual/` (not repo-root `.visual-audit/`).
-10. **Skill orchestrator** writes `.heyeddi/skills-index.json` + `skills-index.md` — read these instead of every SKILL.md at session start. Refresh after skill installs.
+10. **Skill orchestrator** — `.heyeddi/` stays current **automatically** when any HeyEddi skill tool runs (migrates v1 skill names to v2 `heyeddi-*`, refreshes `skills-index.*`). Optional explicit full sync: `@heyeddi-orchestrator` `sync`.
 11. **Audience-driven design** — `product.md` Personas + Per-route intent drive `@heyeddi-design`; see `docs/design-excellence.md`.
 12. **Legacy paths** at repo root (`PRODUCT.md`, `DESIGN.md`, `designs/`, `.visual-audit/`) still readable — skills write to `.heyeddi/` first.
 

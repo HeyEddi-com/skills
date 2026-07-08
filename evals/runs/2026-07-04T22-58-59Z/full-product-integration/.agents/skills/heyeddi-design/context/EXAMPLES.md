@@ -62,7 +62,7 @@ Route: /settings — tighten mobile spacing
 ## Wrong skill (has mockups)
 
 ```
-@design-handoff
+@heyeddi-handoff
 Route: /settings
 Attachments: desktop.png, mobile.png
 ```

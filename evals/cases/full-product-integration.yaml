@@ -2,11 +2,11 @@ id: full-product-integration
 project_template: product-app
 agent_timeout: 1200
 skills:
-  - product-translator
-  - skill-orchestrator
+  - heyeddi-intake
+  - heyeddi-orchestrator
   - project-engineering
   - heyeddi-design
-  - design-handoff
+  - heyeddi-handoff
   - primevue-openprops-architect
   - backend-type-bridger
   - composable-patterns
@@ -17,7 +17,7 @@ skills:
   - design-system-generalizer
 steps:
   - name: intake
-    skills: [product-translator, skill-orchestrator]
+    skills: [heyeddi-intake, heyeddi-orchestrator]
     agent_timeout: 900
     prompt_file: prompts/full-product/step-0-intake.md
     judge_file: prompts/full-product/judge-0-intake.md
@@ -63,16 +63,16 @@ steps:
       hard_gates: visual
 
   - name: settings
-    skills: [design-handoff, primevue-openprops-architect]
+    skills: [heyeddi-handoff, primevue-openprops-architect]
     agent_timeout: 1200
     prompt_file: prompts/full-product/step-5-settings.md
     judge_file: prompts/full-product/judge-5-settings.md
     verify_commands:
       - npm test
       - npm run build
-      - python3 .agents/skills/design-handoff/scripts/verify_handoff.py --route /settings --check
-      - python3 .agents/skills/design-handoff/scripts/verify_tokens.py --check
-      - python3 .agents/skills/design-handoff/scripts/verify_theme.py --check
+      - python3 .agents/skills/heyeddi-handoff/scripts/verify_handoff.py --route /settings --check
+      - python3 .agents/skills/heyeddi-handoff/scripts/verify_tokens.py --check
+      - python3 .agents/skills/heyeddi-handoff/scripts/verify_theme.py --check
     visual_audit:
       route: /settings
       widths: [375, 768, 1440]

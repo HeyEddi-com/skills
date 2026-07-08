@@ -62,7 +62,7 @@ Without Playwright, visual assertions with `allow_skip: true` pass as skipped.
 | Case | Quality checks |
 |------|----------------|
 | `project-engineering-scaffold-vue` | build, test, deps, scaffold files |
-| `design-handoff-only` | + feature test, page load, visual similarity |
+| `heyeddi-handoff-only` | + feature test, page load, visual similarity |
 | `backend-type-bridger-users` | build, test, pytest |
 
 Quality phase runs `npm install` if needed — slower but proves robust delivery.

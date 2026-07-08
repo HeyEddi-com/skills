@@ -1,4 +1,4 @@
-# Subagent delegation — pr-review-responder
+# Subagent delegation — heyeddi-pr-respond
 
 | Step | Subagent | Readonly | Worker prompt |
 |------|----------|----------|---------------|

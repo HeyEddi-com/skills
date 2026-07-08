@@ -1,4 +1,4 @@
-@design-handoff @primevue-openprops-architect
+@heyeddi-handoff @primevue-openprops-architect
 
 ## Settings handoff
 

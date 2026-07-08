@@ -30,7 +30,7 @@ verify_intake --check
 | ≥2 personas | Buyer + daily user minimum |
 | route_intent covers every page route | `@heyeddi-design` audience gates |
 | `seed_brief` after mockups | Fills Audience from product.md |
-| `build_routing` after product + mockups | Settings → design-handoff when PNGs exist |
+| `build_routing` after product + mockups | Settings → heyeddi-handoff when PNGs exist |
 | `verify_intake --check` last | Single pass/fail for eval and CI |
 | No feature Vue in intake | Block `src/views/**` and components — **keep** baseline `src/App.vue` shell |
 | Repo must build | When `node_modules` exists, `verify_intake` runs `npm run build` |
@@ -43,8 +43,8 @@ verify_intake --check
 ## After intake (not this skill)
 
 ```
-@skill-orchestrator  write_skills_index
+@heyeddi-orchestrator  write_skills_index
 @project-engineering scaffold_stack
 @heyeddi-design document → shape → craft (per routing)
-@design-handoff (settings)
+@heyeddi-handoff (settings)
 ```

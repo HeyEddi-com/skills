@@ -87,16 +87,16 @@ Each `manifest.json` tool entry:
 | `primevue-openprops-architect` | 1 | Auto | Everyone | Guardrails during any Vue work |
 | `verify-build` | 1 | Auto / explicit | QA, CI loop | Vite static build gate |
 | `visual-auditor` | 2 | Explicit | Designer, QA | Impeccable `audit`; Cursor preview pane |
-| `design-handoff` | 2 | Explicit | Designer | Figma MCP (deferred); screenshot-first |
+| `heyeddi-handoff` | 2 | Explicit | Designer | Figma MCP (deferred); screenshot-first |
 | `heyeddi-design` | 5 | Explicit | Designer | **Replaces impeccable** |
 | `pre-merge-gate` | 3 | Explicit | QA | Manual merge checklist |
-| `pr-review-responder` | 3 | Explicit | QA | Built-in `/babysit` (stricter, team rules) |
+| `heyeddi-pr-respond` | 3 | Explicit | QA | Built-in `/babysit` (stricter, team rules) |
 | `design-system-generalizer` | 4 | Explicit | Designer, architect | Spread golden pages app-wide |
 | `no-duplicate-ui` | 4 | Auto (narrow) | Engineering | DRY / architecture enforcement |
 | `backend-type-bridger` | 4 | Auto (narrow) | AI during FE work | Guessed API shapes |
 | `composable-patterns` | 4 | Auto (narrow) | AI | FastAPI JWT + Firebase client consistency |
-| `product-translator` | 0 | Explicit | PM, architect | Upstream intake — personas, routing, mockups |
-| `skill-orchestrator` | 0 | Auto | Everyone | Discover and suggest @skills from catalog |
+| `heyeddi-intake` | 0 | Explicit | PM, architect | Upstream intake — personas, routing, mockups |
+| `heyeddi-orchestrator` | 0 | Auto | Everyone | Discover and suggest @skills from catalog |
 | `engineering-excellence` | 4 | Explicit | Engineering | KISS/YAGNI/DRY/SOLID audits + ADRs |
 | `ux-flow-auditor` | 4 | Explicit | Designer, QA | Task flow traces — click depth, friction |
 | `flutter-engineering` | 1 | Auto | Mobile | Flutter + FastAPI/Firebase scaffold |
@@ -187,7 +187,7 @@ Each `manifest.json` tool entry:
 
 **Cloud:** Upload screenshots to GCS; return signed URLs in tool response.
 
-### 4. `design-handoff` (v1 — screenshot mode)
+### 4. `heyeddi-handoff` (v1 — screenshot mode)
 
 **Purpose:** Implement screens from designer screenshots without Figma MCP.
 
@@ -210,7 +210,7 @@ Each `manifest.json` tool entry:
 **Designer input:**
 
 ```
-@design-handoff
+@heyeddi-handoff
 Route: /settings
 Attachments: desktop.png, mobile.png
 Notes: reuse SettingsSection; empty state on mobile
@@ -247,7 +247,7 @@ Notes: reuse SettingsSection; empty state on mobile
 
 **Cursor / Cloud:** `disable-model-invocation: true` — QA runs `@pre-merge-gate`.
 
-### 6. `pr-review-responder`
+### 6. `heyeddi-pr-respond`
 
 **Purpose:** Team PR review loop (stricter than built-in `/babysit`).
 
@@ -266,7 +266,7 @@ Notes: reuse SettingsSection; empty state on mobile
 
 - QA gets pass/fail markdown from `pre-merge-gate` without reading raw logs.
 - PR skill fetches inline + review + discussion comments in one call.
-- Documented when to use `@pr-review-responder` vs Cursor `/babysit`.
+- Documented when to use `@heyeddi-pr-respond` vs Cursor `/babysit`.
 
 ---
 
@@ -367,9 +367,9 @@ Notes: reuse SettingsSection; empty state on mobile
 |---------|-------|------|
 | **v2** | Penpot PNG/SVG export | `load_handoff.py` accepts `designs/*.svg` + `handoff.json` |
 | **v3** | Penpot REST API | Fetch frames/export without MCP |
-| **v4** | **Penpot MCP** (custom) | New skill or `design-handoff` adapter: live tokens, components, spacing |
+| **v4** | **Penpot MCP** (custom) | New skill or `heyeddi-handoff` adapter: live tokens, components, spacing |
 
-**Do not rebuild Figma MCP.** Penpot is open-source — MCP can live in a separate repo (`heyeddi/penpot-mcp`) and plug into `design-handoff` via `reference/penpot-mode.md` + manifest tool `fetch_penpot_frame`.
+**Do not rebuild Figma MCP.** Penpot is open-source — MCP can live in a separate repo (`heyeddi/penpot-mcp`) and plug into `heyeddi-handoff` via `reference/penpot-mode.md` + manifest tool `fetch_penpot_frame`.
 
 ### Phase 7 — Cloud agent skill orchestration
 
@@ -390,7 +390,7 @@ Notes: reuse SettingsSection; empty state on mobile
 | Item | Decision |
 |------|----------|
 | Figma MCP | Skip — screenshots + Penpot path instead |
-| `/babysit` | Use for quick PR loops; `pr-review-responder` for team rules |
+| `/babysit` | Use for quick PR loops; `heyeddi-pr-respond` for team rules |
 | `/review-security` | Use builtin unless stack-specific rules needed |
 | Generic impeccable | Retire after Phase 5 |
 
@@ -403,10 +403,10 @@ Notes: reuse SettingsSection; empty state on mobile
 | `primevue-openprops-architect` | Auto | Router auto on Vue/CSS paths |
 | `verify-build` | Auto in CI context | Explicit or CI webhook |
 | `visual-auditor` | Explicit | Explicit |
-| `design-handoff` | Explicit | Explicit |
+| `heyeddi-handoff` | Explicit | Explicit |
 | `heyeddi-design` | Explicit | Explicit |
 | `pre-merge-gate` | Explicit | Explicit (QA webhook) |
-| `pr-review-responder` | Explicit | Explicit |
+| `heyeddi-pr-respond` | Explicit | Explicit |
 | `design-system-generalizer` | Explicit | Explicit |
 | `no-duplicate-ui` | Auto (narrow) | Auto on PR diff |
 | `backend-type-bridger` | Auto (narrow) | Auto when API files touched |
@@ -423,9 +423,9 @@ Phase 0  Foundation + cloud contract
     ↓
 Phase 1  primevue-openprops-architect, verify-build
     ↓
-Phase 2  visual-auditor, design-handoff (screenshot v1)
+Phase 2  visual-auditor, heyeddi-handoff (screenshot v1)
     ↓
-Phase 3  pre-merge-gate, pr-review-responder
+Phase 3  pre-merge-gate, heyeddi-pr-respond
     ↓
 Phase 4  design-system-generalizer, no-duplicate-ui, backend-type-bridger, composable-patterns
     ↓
@@ -455,12 +455,12 @@ When a skill exits a phase:
 
 | I want to… | Skill |
 |------------|-------|
-| Implement from screenshots | `@design-handoff` |
+| Implement from screenshots | `@heyeddi-handoff` |
 | Design a new screen from scratch | `@heyeddi-design craft` |
 | Explore vague UI intent (research + wireframes) | `@heyeddi-design shape` or plain language |
 | Check mobile/desktop looks right | `@visual-auditor` |
 | Approve a PR | `@pre-merge-gate` |
-| Fix AI PR review comments | `@pr-review-responder` |
+| Fix AI PR review comments | `@heyeddi-pr-respond` |
 | Spread a good page across the app | `@design-system-generalizer` |
 
 Guardrails (`primevue-openprops-architect`, etc.) run automatically — no action needed.

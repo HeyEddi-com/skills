@@ -1,6 +1,6 @@
 # Skills index
 
-**Generated:** 2026-07-05T00:08:12Z · **Maintained by:** `@skill-orchestrator`
+**Generated:** 2026-07-05T00:08:12Z · **Maintained by:** `@heyeddi-orchestrator`
 
 Cached catalog — read this instead of every `SKILL.md` at session start. Refresh after installing skills: `write_skills_index --project-root .`
 
@@ -11,7 +11,7 @@ Cached catalog — read this instead of every `SKILL.md` at session start. Refre
 | backend-type-bridger | @backend-type-bridger | yes | Syncs FastAPI OpenAPI schema to TypeScript types and reads Firestore schema hints. Use when writing Vue composables a... |
 | composable-patterns | @composable-patterns | yes | Provides FastAPI JWT and Firebase client composable patterns for consistent auth and data layers. Context-first skill... |
 | dart-type-bridger | @dart-type-bridger | yes | Syncs FastAPI OpenAPI schema to Dart model stubs and reads Firestore schema hints for Flutter projects. Use when writ... |
-| design-handoff | @design-handoff | yes | Implements screens from designer screenshots and handoff notes. Two-pass workflow — designer writes mockup-brief with... |
+| heyeddi-handoff | @heyeddi-handoff | yes | Implements screens from designer screenshots and handoff notes. Two-pass workflow — designer writes mockup-brief with... |
 | design-handoff-flutter | @design-handoff-flutter | yes | Implements Flutter screens from designer screenshots and handoff notes using Material 3. Two-pass workflow — mockup-b... |
 | design-system-generalizer | @design-system-generalizer | yes | Scans token and component usage patterns from a golden reference page and diffs violations on other routes. Use when ... |
 | engineering-excellence | @engineering-excellence | yes | Audits code for KISS, YAGNI, DRY, SOLID, and testability; maintains living engineering notes under .heyeddi/docs/engi... |
@@ -20,12 +20,12 @@ Cached catalog — read this instead of every `SKILL.md` at session start. Refre
 | heyeddi-design | @heyeddi-design | yes | End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens — OpenProps on scaffold default). Use wh... |
 | impeccable | @impeccable | yes | Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adap... |
 | no-duplicate-ui | @no-duplicate-ui | yes | Scans Vue files for duplicate component names and similar template overlap. Use during PR review or when refactoring ... |
-| pr-review-responder | @pr-review-responder | yes | Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR... |
+| heyeddi-pr-respond | @heyeddi-pr-respond | yes | Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR... |
 | pre-merge-gate | @pre-merge-gate | yes | Runs pre-merge checks (tests, build, types, optional UI audit) and returns a markdown pass/fail report. Use when QA a... |
 | primevue-openprops-architect | @primevue-openprops-architect | yes | Enforces PrimeVue + project design tokens when editing Vue or CSS. OpenProps rules apply only when the project alread... |
-| product-translator | @product-translator | yes | Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), professional mockups, mockup... |
+| heyeddi-intake | @heyeddi-intake | yes | Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), professional mockups, mockup... |
 | project-engineering | @project-engineering | yes | Ensures HeyEddi projects have the right engineering stack — Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. ... |
-| skill-orchestrator | @skill-orchestrator | yes | Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session s... |
+| heyeddi-orchestrator | @heyeddi-orchestrator | yes | Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session s... |
 | update-pitches | @update-pitches | yes | Audits backend pitch stories in docs/_pitches/ against app/{models,routers,services}/ and syncs Summary.md and priori... |
 | ux-flow-auditor | @ux-flow-auditor | yes | Traces user task flows with Playwright — click depth, step success, friction — and writes reports to .heyeddi/docs/ux... |
 | verify-build | @verify-build | yes | Runs npm run build to catch Vite/Rollup failures before merge. Use when validating frontend changes or in CI pre-merg... |

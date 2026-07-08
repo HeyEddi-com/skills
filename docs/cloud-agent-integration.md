@@ -41,7 +41,7 @@ HeyEddi skills must behave identically whether the agent runs in **Cursor** (loc
 
 At container startup (or per-request with cache):
 
-1. Read `skills-registry.json` (or env `ENABLED_SKILLS=visual-auditor,design-handoff`).
+1. Read `skills-registry.json` (or env `ENABLED_SKILLS=visual-auditor,heyeddi-handoff`).
 2. For each skill, load:
    - `SKILL.md` body → system / skill context block
    - `context/*.md` → on-demand via skill instructions
@@ -186,7 +186,7 @@ Use the **same** `invoke_skill_tool` underneath — one script, two frameworks.
 Cloud Run jobs typically:
 
 1. Clone app repo (or receive tarball) into `/workspace`.
-2. Optionally start Vite dev server sidecar for `visual-auditor` / `design-handoff`.
+2. Optionally start Vite dev server sidecar for `visual-auditor` / `heyeddi-handoff`.
 3. Run agent with `PROJECT_ROOT=/workspace`.
 4. Upload artifacts to GCS; return signed URLs in tool responses.
 
@@ -211,7 +211,7 @@ subprocess.run(["npm", "run", "build"], cwd=project_root, ...)
 
 ## Normalized handoff brief
 
-`design-handoff` and future Penpot adapter produce the same JSON shape:
+`heyeddi-handoff` and future Penpot adapter produce the same JSON shape:
 
 ```json
 {
@@ -249,7 +249,7 @@ async def delegate_to_skill(
     ...
 ```
 
-Orchestrator parent agent calls this between phases (e.g. design-handoff interpret → verify gate → implement). See [subagent-delegation.md](./subagent-delegation.md).
+Orchestrator parent agent calls this between phases (e.g. heyeddi-handoff interpret → verify gate → implement). See [subagent-delegation.md](./subagent-delegation.md).
 
 ---
 

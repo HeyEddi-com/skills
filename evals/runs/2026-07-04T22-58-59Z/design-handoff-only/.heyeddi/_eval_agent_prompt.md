@@ -13,7 +13,7 @@ You receive evidence from a skill eval turn: user goal, worker agent output, **a
    - `Deprecated since` only if it indicates wrong component usage causing broken UI
 3. Read **all changed files** in the evidence — unstyled UI, stub scripts, missing imports, and empty views are failures.
 4. If `.heyeddi/design.md` was incomplete, the design skill should have updated documentation or created `.heyeddi/designs/<feature>/brief.md` before crafting UI.
-5. **Design talk:** `@heyeddi-design` and `@design-handoff` must append to **Decision log** in `.heyeddi/design.md` — conversational rationale (we chose / we rejected). Fail if UI shipped with no new Decision log entry for that feature.
+5. **Design talk:** `@heyeddi-design` and `@heyeddi-handoff` must append to **Decision log** in `.heyeddi/design.md` — conversational rationale (we chose / we rejected). Fail if UI shipped with no new Decision log entry for that feature.
 6. Skill-generated reports belong under `.heyeddi/docs/` — flag if expected reports are missing.
 7. **Untracked files are staged before you judge** — if `SettingsView.vue` appears in changed files, evaluate it. Design PNGs may exist from the eval template baseline under `designs/` or `.heyeddi/designs/` — check "Design / handoff assets on disk" before claiming screenshots are missing.
 8. `@visual-auditor` is required only when the turn prompt or judge criteria explicitly asks for it; do not fail solely for missing `.visual-audit/` if the turn did not require visual audit.
@@ -31,12 +31,12 @@ Reply with **only** a JSON object (no markdown fence):
 
 ---
 
-## Eval case: design-handoff-only
+## Eval case: heyeddi-handoff-only
 ## Turn: single
-## Skills invoked: @design-handoff, @primevue-openprops-architect
+## Skills invoked: @heyeddi-handoff, @primevue-openprops-architect
 
 ## User goal (worker prompt)
-@design-handoff @primevue-openprops-architect
+@heyeddi-handoff @primevue-openprops-architect
 
 **Goal:** Implement `/settings` from mockups in `.heyeddi/designs/settings/`.
 
@@ -58,7 +58,7 @@ Reply with **only** a JSON object (no markdown fence):
 **Scope:** `npm test` + `npm run build` pass. No Playwright/dev in agent turn.
 
 ## Success criteria for this turn
-Independent **@design-handoff** eval.
+Independent **@heyeddi-handoff** eval.
 
 ## Pipeline
 - Agent-authored `mockup-brief.md` with **`## Implementation spec`** (measurable tokens/CSS — not prose only)
@@ -73,7 +73,7 @@ Independent **@design-handoff** eval.
 - Tests/build clean
 
 ## Worker agent output
-Starting Pass 1 (Designer): exploring the project and design-handoff workflow.
+Starting Pass 1 (Designer): exploring the project and heyeddi-handoff workflow.
 Writing `mockup-brief.md` from the mockup analysis (Pass 1).
 **Designer pass complete** — `mockup-brief.md` written with Implementation spec; synced to `design.md`. Starting implementer pass.
 Pass 1 complete — starting Pass 2 (implementer). Building shell components and SettingsView.
@@ -126,7 +126,7 @@ diff --git a/.heyeddi/design.md b/.heyeddi/design.md
 index f907b89..cad0b25 100644
 --- a/.heyeddi/design.md
 +++ b/.heyeddi/design.md
-@@ -17,3 +17,83 @@ Draft — `@design-handoff` should align implementation with this file and updat
+@@ -17,3 +17,83 @@ Draft — `@heyeddi-handoff` should align implementation with this file and updat
  **The skill authors `mockup-brief.md`** by interpreting the PNGs (`reference/interpret-mockups.md`), then syncs layout into this file via `describe_handoff --sync-design`.
  
  **Mockup contract:** PNGs show **where** regions go. **Colors** come from this file and `tokens.css` — do not sample hues from PNG pixels.
@@ -256,7 +256,7 @@ index 87856b0..a4e7315 100644
  <template>
 -  <section class="settings-placeholder">
 -    <h1>Settings</h1>
--    <p>Placeholder — @design-handoff implements from mockups.</p>
+-    <p>Placeholder — @heyeddi-handoff implements from mockups.</p>
 +  <section class="settings">
 +    <header class="settings__header">
 +      <h1 class="settings__title">Settings</h1>
@@ -495,7 +495,7 @@ index d917aa4..b06de80 100644
 ```
 # Design (eval handoff)
 
-Draft — `@design-handoff` should align implementation with this file and update component/layout notes.
+Draft — `@heyeddi-handoff` should align implementation with this file and update component/layout notes.
 
 ## System
 
@@ -863,7 +863,7 @@ exit_code: 0
 > vitest run
 
 
- RUN  v3.2.6 /home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only
+ RUN  v3.2.6 /home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only
 
  ✓ tests/unit/App.spec.ts (1 test) 154ms
  ✓ tests/unit/src/views/SettingsView.spec.ts (2 tests) 224ms
@@ -897,7 +897,7 @@ dist/assets/index-CCrGvbnS.js          263.89 kB │ gzip: 70.01 kB
 
 ```
 
-### $ python3 .agents/skills/design-handoff/scripts/verify_handoff.py --route /settings --check
+### $ python3 .agents/skills/heyeddi-handoff/scripts/verify_handoff.py --route /settings --check
 exit_code: 0
 ```
 {
@@ -1037,7 +1037,7 @@ exit_code: 0
       "name": "Sidebar width token",
       "ok": true,
       "files": [
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/styles/tokens.css"
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/styles/tokens.css"
       ],
       "patterns": [
         "--sidebar-width"
@@ -1047,7 +1047,7 @@ exit_code: 0
       "name": "Sidebar flex column + user pinned",
       "ok": true,
       "files": [
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/components/layout/AppSidebar.vue"
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/components/layout/AppSidebar.vue"
       ],
       "patterns": [
         "flex-direction:\\s*column",
@@ -1058,7 +1058,7 @@ exit_code: 0
       "name": "Nav active brand pill",
       "ok": true,
       "files": [
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/components/layout/AppSidebar.vue"
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/components/layout/AppSidebar.vue"
       ],
       "patterns": [
         "brand-subtle",
@@ -1069,7 +1069,7 @@ exit_code: 0
       "name": "App shell layout",
       "ok": true,
       "files": [
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/components/layout/AppShell.vue"
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/components/layout/AppShell.vue"
       ],
       "patterns": [
         "AppSidebar",
@@ -1080,8 +1080,8 @@ exit_code: 0
       "name": "Top bar height token",
       "ok": true,
       "files": [
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/styles/tokens.css",
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/components/layout/AppTopBar.vue"
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/styles/tokens.css",
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/components/layout/AppTopBar.vue"
       ],
       "patterns": [
         "--topbar-height"
@@ -1091,7 +1091,7 @@ exit_code: 0
       "name": "Settings cards use Card",
       "ok": true,
       "files": [
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/views/SettingsView.vue"
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/views/SettingsView.vue"
       ],
       "patterns": [
         "Card",
@@ -1102,7 +1102,7 @@ exit_code: 0
       "name": "Settings Card body uses #content slot",
       "ok": true,
       "files": [
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/views/SettingsView.vue"
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/views/SettingsView.vue"
       ],
       "patterns": [
         "<template\\s+#content>",
@@ -1113,7 +1113,7 @@ exit_code: 0
       "name": "Card stack gap",
       "ok": true,
       "files": [
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/views/SettingsView.vue"
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/views/SettingsView.vue"
       ],
       "patterns": [
         "gap:\\s*var\\(--size-"
@@ -1123,7 +1123,7 @@ exit_code: 0
       "name": "Save CTA outside cards",
       "ok": true,
       "files": [
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/views/SettingsView.vue"
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/views/SettingsView.vue"
       ],
       "patterns": [
         "Save changes",
@@ -1134,8 +1134,8 @@ exit_code: 0
       "name": "Content max-width",
       "ok": true,
       "files": [
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/styles/tokens.css",
-        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/views/SettingsView.vue"
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/styles/tokens.css",
+        "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/views/SettingsView.vue"
       ],
       "patterns": [
         "--content-max-width|max-width"
@@ -1154,18 +1154,18 @@ exit_code: 0
 
 ```
 
-### $ python3 .agents/skills/design-handoff/scripts/verify_tokens.py --check
+### $ python3 .agents/skills/heyeddi-handoff/scripts/verify_tokens.py --check
 exit_code: 0
 ```
 {
   "ok": true,
   "circular_aliases": [],
-  "path": "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/design-handoff-only/src/styles/tokens.css"
+  "path": "/home/eddi/Projects/heyeddi/skills/evals/runs/2026-07-04T22-58-59Z/heyeddi-handoff-only/src/styles/tokens.css"
 }
 
 ```
 
-### $ python3 .agents/skills/design-handoff/scripts/verify_theme.py --check
+### $ python3 .agents/skills/heyeddi-handoff/scripts/verify_theme.py --check
 exit_code: 0
 ```
 Theme verification OK — semantic light/dark tokens and PrimeVue surfaces aligned.

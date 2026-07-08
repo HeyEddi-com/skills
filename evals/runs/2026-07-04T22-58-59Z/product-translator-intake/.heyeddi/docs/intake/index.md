@@ -1,4 +1,4 @@
 # Intake translations
 
-Session notes from `@product-translator`.
+Session notes from `@heyeddi-intake`.
 

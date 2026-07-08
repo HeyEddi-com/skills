@@ -5,7 +5,7 @@
 ```
 @project-engineering
 audit_scaffold → scaffold_vue → ensure_npm → dev_server_info
-@design-handoff implement /settings
+@heyeddi-handoff implement /settings
 write_test_stub for src/views/SettingsView.vue
 run_tests
 # Human: npm run dev → http://localhost:5173/settings

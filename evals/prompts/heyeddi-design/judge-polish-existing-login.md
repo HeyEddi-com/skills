@@ -11,4 +11,4 @@ Independent **@heyeddi-design** eval — **existing UI**, not greenfield.
 - Playwright captures in `.heyeddi/audits/eval-capture/` — fail if still looks like broken baseline
 - Tests/build clean
 
-Do not require @design-handoff or mockup PNGs.
+Do not require @heyeddi-handoff or mockup PNGs.

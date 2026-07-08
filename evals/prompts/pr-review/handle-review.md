@@ -1,4 +1,4 @@
-@pr-review-responder
+@heyeddi-pr-respond
 
 ## Handle PR #42 review (fixture mode)
 

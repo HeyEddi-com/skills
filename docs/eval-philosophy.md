@@ -35,7 +35,7 @@ update documentation if anything is missing, then build home and login.
 | Skill | Process eval checks | Outcome eval checks |
 |-------|---------------------|---------------------|
 | **heyeddi-design** | `load_context`; `DESIGN.md` present/updated; `designs/<feature>/brief.md` or research for new surfaces | Views exist, styled UI, tokens, tests |
-| **design-handoff** | `load_handoff`; read `DESIGN.md` + mockups | Layout regions match handoff (shell, cards, CTA); PrimeVue + tokens; visual gate — **not** mockup pixel colors |
+| **heyeddi-handoff** | `load_handoff`; read `DESIGN.md` + mockups | Layout regions match handoff (shell, cards, CTA); PrimeVue + tokens; visual gate — **not** mockup pixel colors |
 | **project-engineering** | `audit_scaffold` run; gaps addressed | vite/vitest, deps, build, tests |
 | **backend-type-bridger** | `sync_openapi` | `src/types/api.ts` matches schema |
 | **composable-patterns** | context docs followed | `useApi` / composable patterns, tests |
@@ -83,7 +83,7 @@ Turn 1 @project-engineering  → audit/scaffold
 Turn 2 @backend-type-bridger → types/composables
 Turn 3 @heyeddi-design       → home/login + visual-auditor
 Turn 4 @heyeddi-design       → dashboard
-Turn 5 @design-handoff       → settings + visual-auditor
+Turn 5 @heyeddi-handoff       → settings + visual-auditor
 Turn 6 @verify-build …       → QA ship pipeline (pre-merge-gate, etc.)
 ```
 
@@ -94,7 +94,7 @@ Failure on turn *N* stops the case — the skill did not finish its job before m
 | Layer | Coverage |
 |-------|----------|
 | Smoke (`poe test`) | All 12 skills — structure + CLI |
-| Agent eval | All 12 — chained in integration/design cases + dedicated `pr-review-responder-workflow` |
+| Agent eval | All 12 — chained in integration/design cases + dedicated `heyeddi-pr-respond-workflow` |
 
 Pipeline skills (`verify-build`, `visual-auditor`, `pre-merge-gate`, `no-duplicate-ui`, `design-system-generalizer`) are invoked in **turn 6** of `full-product-integration` and chained in design evals — not isolated one-off cases.
 
@@ -102,14 +102,14 @@ Pipeline skills (`verify-build`, `visual-auditor`, `pre-merge-gate`, `no-duplica
 
 | Case | Skill | Scenario |
 |------|-------|----------|
-| `design-handoff-only` | `@design-handoff` | Mockups → implement `/settings` |
+| `heyeddi-handoff-only` | `@heyeddi-handoff` | Mockups → implement `/settings` |
 | `heyeddi-design-from-scratch` | `@heyeddi-design` | No UI yet — shape/document → craft `/login` |
 | `heyeddi-design-polish-existing` | `@heyeddi-design` | **Ugly existing** `/login` — visual audit, document drift, polish |
 
 All use agentic judge + Playwright. Handoff compares to PNGs; heyeddi-design judges captures for production quality.
 
 ```bash
-uv run poe eval-design-handoff
+uv run poe eval-heyeddi-handoff
 uv run poe eval-heyeddi-design-scratch
 uv run poe eval-heyeddi-design-polish
 ```

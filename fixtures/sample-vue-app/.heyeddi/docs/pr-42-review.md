@@ -12,7 +12,7 @@
 
 ## Product fit
 
-_Delegate `@product-manager` `check_features` for touched routes. Answer: does committed code meet AC and persona jobs?_
+_Delegate `@heyeddi-product` `check_features` for touched routes. Answer: does committed code meet AC and persona jobs?_
 
 ## Docs drift
 

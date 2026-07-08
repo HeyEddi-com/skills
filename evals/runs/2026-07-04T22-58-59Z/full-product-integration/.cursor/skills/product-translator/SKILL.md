@@ -1,6 +1,6 @@
 ---
-name: product-translator
-description: Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), professional mockups, mockup briefs, and skill-routing under .heyeddi/. Use first on new projects before @heyeddi-design, @design-handoff, or @flutter-engineering. Never hand-write product.md — use write_product.
+name: heyeddi-intake
+description: Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), professional mockups, mockup briefs, and skill-routing under .heyeddi/. Use first on new projects before @heyeddi-design, @heyeddi-handoff, or @flutter-engineering. Never hand-write product.md — use write_product.
 paths:
   - ".heyeddi/**"
   - "PRODUCT.md"
@@ -18,7 +18,7 @@ You are **not** the implementer. You interpret, document, produce mockups/briefs
 - New project or empty / thin `.heyeddi/product.md`
 - User describes an app in plain language
 - User attaches mockups → `ingest_mockups`; **no mockups** → `generate_mockups` + `seed_brief`
-- Before any `@heyeddi-design` / `@design-handoff` / scaffold work
+- Before any `@heyeddi-design` / `@heyeddi-handoff` / scaffold work
 
 ## Mandatory pipeline
 
@@ -60,4 +60,4 @@ Read `reference/clarify-before-act.md`. One round if personas/competitors missin
 - `reference/audience-intake.md` — JSON schema
 - `reference/downstream-routing.md` — routing examples
 - `reference/mockup-quality.md` — PNG quality bar
-- `@skill-orchestrator` — `write_skills_index` after intake (integration eval)
+- `@heyeddi-orchestrator` — `write_skills_index` after intake (integration eval)

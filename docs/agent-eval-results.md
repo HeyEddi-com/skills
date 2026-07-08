@@ -17,10 +17,10 @@
 |---|---------|----------|--------|----------|---------|
 | 1 | project-engineering-scaffold-vue | eval-scaffold | ✅ PASS | 2m 52s | `…/01-25-51Z/project-engineering-scaffold-vue` |
 | 2 | engineering-excellence-audit | eval-engineering | ✅ PASS | 2m 7s | `…/01-28-46Z/engineering-excellence-audit` |
-| 3 | product-translator-intake | eval-translator | ✅ PASS | 2m 0s | `…/01-30-56Z/product-translator-intake` |
-| 4 | skill-orchestrator-suggest | eval-orchestrator | ✅ PASS | 2m 3s | `…/01-33-01Z/skill-orchestrator-suggest` |
+| 3 | heyeddi-intake-intake | eval-translator | ✅ PASS | 2m 0s | `…/01-30-56Z/heyeddi-intake-intake` |
+| 4 | heyeddi-orchestrator-suggest | eval-orchestrator | ✅ PASS | 2m 3s | `…/01-33-01Z/heyeddi-orchestrator-suggest` |
 | 5 | ux-flow-auditor-init | eval-ux-flow | ✅ PASS | 2m 9s | `…/01-35-09Z/ux-flow-auditor-init` |
-| 6 | pr-review-responder-workflow | eval-pr | ✅ PASS | 2m 20s | `…/01-37-22Z/pr-review-responder-workflow` |
+| 6 | heyeddi-pr-respond-workflow | eval-pr | ✅ PASS | 2m 20s | `…/01-37-22Z/heyeddi-pr-respond-workflow` |
 | 7 | primevue-fix-violations | eval-primevue | ✅ PASS | 1m 12s | `…/01-39-44Z/primevue-fix-violations` |
 | 8 | backend-type-bridger-users | eval-api | ❌ FAIL | 4m 22s | `…/01-40-57Z/backend-type-bridger-users` |
 | 9 | flutter-engineering-scaffold | eval-flutter | ✅ PASS | 2m 7s | `…/01-45-22Z/flutter-engineering-scaffold` |
@@ -28,7 +28,7 @@
 | 11 | design-handoff-flutter-settings | eval-flutter-handoff | ❌ FAIL | 2m 36s | `…/01-49-30Z/design-handoff-flutter-settings` |
 | 12 | heyeddi-design-from-scratch | eval-heyeddi-design-scratch | ❌ FAIL | 4m 19s | `…/01-52-10Z/heyeddi-design-from-scratch` |
 | 13 | heyeddi-design-polish-existing | eval-heyeddi-design-polish | ✅ PASS | 4m 41s | `…/01-56-33Z/heyeddi-design-polish-existing` |
-| 14 | design-handoff-only | eval-design-handoff | ✅ PASS | 4m 41s | `…/02-01-16Z/design-handoff-only` |
+| 14 | heyeddi-handoff-only | eval-heyeddi-handoff | ✅ PASS | 4m 41s | `…/02-01-16Z/heyeddi-handoff-only` |
 | 15 | full-product-integration | eval-integration | ❌ FAIL (turn 1/7) | 2m 47s | `…/02-05-59Z/full-product-integration` |
 
 ---
@@ -108,15 +108,15 @@
 |------|-------|
 | project-engineering-scaffold-vue | Judge flagged tsbuildinfo artifacts staged; empty router routes acceptable for scaffold-only. |
 | engineering-excellence-audit | Assertion fix (README.md) confirmed working. Audit report path is `.heyeddi/docs/engineering-audit-*.md` not under `engineering/`. |
-| product-translator-intake | Standalone intake passes; integration intake behaves differently (App.vue deletion). |
-| skill-orchestrator-suggest | 22 skills indexed; no implementation artifacts — correct scope. |
+| heyeddi-intake-intake | Standalone intake passes; integration intake behaves differently (App.vue deletion). |
+| heyeddi-orchestrator-suggest | 22 skills indexed; no implementation artifacts — correct scope. |
 | ux-flow-auditor-init | Full flow docs + friction notes; trace pending as expected. |
-| pr-review-responder-workflow | All 5 fixture comments tracked; code fixes applied. |
+| heyeddi-pr-respond-workflow | All 5 fixture comments tracked; code fixes applied. |
 | primevue-fix-violations | Fastest eval (~72s); token replacement clean. |
 | flutter-engineering-scaffold | `ensure_flutter` fail (no SDK); agent symlinked project-engineering for FastAPI; CORS still points at :5173. |
 | flutter-backend-bridger-users | verify_build skipped (no Flutter); data layer correct. |
 | heyeddi-design-polish-existing | Critique → polish pipeline; visual hard gates passed. |
-| design-handoff-only | Gold standard — two-pass handoff, Playwright proof, dark mode capture. |
+| heyeddi-handoff-only | Gold standard — two-pass handoff, Playwright proof, dark mode capture. |
 
 ---
 
@@ -128,10 +128,10 @@ All 20 registry skills are exercised across the 15 cases (+ integration chains t
 |-------|----------------|
 | project-engineering | scaffold, api, integration |
 | engineering-excellence | engineering |
-| product-translator | translator, integration |
-| skill-orchestrator | orchestrator, integration |
+| heyeddi-intake | translator, integration |
+| heyeddi-orchestrator | orchestrator, integration |
 | ux-flow-auditor | ux-flow |
-| pr-review-responder | pr |
+| heyeddi-pr-respond | pr |
 | primevue-openprops-architect | primevue, design scratch/polish, handoff, integration |
 | backend-type-bridger | api, integration |
 | composable-patterns | api, integration |
@@ -141,7 +141,7 @@ All 20 registry skills are exercised across the 15 cases (+ integration chains t
 | no-duplicate-ui | integration |
 | design-system-generalizer | integration |
 | heyeddi-design | design scratch/polish, integration |
-| design-handoff | handoff, integration |
+| heyeddi-handoff | handoff, integration |
 | flutter-engineering | flutter, flutter-api |
 | dart-type-bridger | flutter-api |
 | flutter-patterns | flutter-api |
@@ -188,7 +188,7 @@ All 20 registry skills are exercised across the 15 cases (+ integration chains t
 | flutter-handoff | FAIL | **~95%** | **Judge too strict:** flutter SKILL has no Decision log requirement. All `--check` scripts pass when re-run. Agent skipped `phase shell` evidence |
 | design-scratch | FAIL | ~85% | Agent did not wire Aura `primary` to brand (`definePreset` / preset API). `--p-primary-color` CSS alone insufficient. **Verify gap:** `verify_theme.py` does not gate brand color |
 | design-polish | PASS | ~90% | Critique→polish pipeline correct. Same preset gap may exist; judge does not check brand color on primary CTA |
-| design-handoff | PASS | **100%** | Two-pass workflow, Decision log, all verify scripts exit 0, Playwright hard gates |
+| heyeddi-handoff | PASS | **100%** | Two-pass workflow, Decision log, all verify scripts exit 0, Playwright hard gates |
 | integration | FAIL | N/A (turn 1) | **Skill bug:** `verify_intake` `no-vue-implementation` deletes baseline `App.vue` path; returns `ok: true` while `npm run build` fails |
 
 ### Systemic skill / eval issues (not agent-only)
@@ -203,13 +203,13 @@ All 20 registry skills are exercised across the 15 cases (+ integration chains t
 
 5. **Eval prompt vs composable-patterns skill** — `backend-type-bridger-users.md` specifies `fetchUsers()` function; skill expects `useUsers()` with loading/error refs.
 
-6. **Flutter vs Vue handoff judge drift** — `design-handoff-flutter` `describe_handoff.py` syncs layout block only (by design); Vue `design-handoff` requires Decision log. Agentic judge applied Vue criteria to Flutter eval.
+6. **Flutter vs Vue handoff judge drift** — `design-handoff-flutter` `describe_handoff.py` syncs layout block only (by design); Vue `heyeddi-handoff` requires Decision log. Agentic judge applied Vue criteria to Flutter eval.
 
 ### Verdict: did skills work to 100% spec?
 
 | Category | Count | Cases |
 |----------|-------|-------|
-| **100% spec** (for eval scope) | 6 | engineering, translator, orchestrator, pr, primevue, design-handoff |
+| **100% spec** (for eval scope) | 6 | engineering, translator, orchestrator, pr, primevue, heyeddi-handoff |
 | **Spec-compliant, eval scope reduced** | 2 | ux-flow (init-only), flutter-api (no SDK) |
 | **Mostly compliant, minor agent gaps** | 2 | scaffold, design-polish |
 | **Agent followed skill but skill/eval broken** | 2 | integration (verify_intake bug), api (template + prompt mismatch) |
@@ -225,9 +225,9 @@ All 20 registry skills are exercised across the 15 cases (+ integration chains t
 
 | Fix | Files |
 |-----|-------|
-| `verify_intake`: allow `src/App.vue` shell; block `src/views/**`; add `repo-buildable` (`npm run build`) | `skills/product-translator/scripts/verify_intake.py`, SKILL.md, `reference/pipeline.md` |
+| `verify_intake`: allow `src/App.vue` shell; block `src/views/**`; add `repo-buildable` (`npm run build`) | `skills/heyeddi-intake/scripts/verify_intake.py`, SKILL.md, `reference/pipeline.md` |
 | Poetry `package-mode = false` | `scaffold/fastapi/pyproject.toml`, eval `backend/pyproject.toml` ×3 |
-| `verify_theme`: reject raw Aura + `--brand` without `definePreset` | `skills/design-handoff/scripts/verify_theme.py` |
+| `verify_theme`: reject raw Aura + `--brand` without `definePreset` | `skills/heyeddi-handoff/scripts/verify_theme.py` |
 | Eval Vue `main.ts`: `definePreset` indigo primary | eval templates + `scaffold/vue/src/main.ts` |
 | API eval: `useUsers()` composable + `validate_composable --check` | `evals/prompts/backend-type-bridger-users.md`, `evals/cases/backend-type-bridger.yaml` |
 | Flutter handoff judge: no Vue Decision log | `evals/prompts/design-handoff-flutter/judge-settings.md`, case yaml |
@@ -270,18 +270,18 @@ All 20 registry skills are exercised across the 15 cases (+ integration chains t
 |---|------|------|-----------------|
 | 1 | backend-type-bridger-users | ✅ PASS | OK — `useUsers` + `validate_composable --check` |
 | 2 | design-handoff-flutter-settings | ✅ PASS | OK — flutter verify scripts |
-| 3 | design-handoff-only | ❌ FAIL | ISSUES — agent left SettingsView placeholder; `verify_handoff` 0/N |
+| 3 | heyeddi-handoff-only | ❌ FAIL | ISSUES — agent left SettingsView placeholder; `verify_handoff` 0/N |
 | 4 | engineering-excellence-audit | ✅ PASS | OK — engineering docs |
 | 5 | flutter-backend-bridger-users | ✅ PASS | OK — api_models + home_screen |
 | 6 | flutter-engineering-scaffold | ✅ PASS | OK — pubspec + main.dart |
 | 7 | full-product-integration | ❌ FAIL (turn 1/7) | OK* — `npm test` + `pre_merge_gate --skip-visual-audit` pass after setup fix |
 | 8 | heyeddi-design-from-scratch | ✅ PASS | OK — LoginView + definePreset |
 | 9 | heyeddi-design-polish-existing | ✅ PASS | OK — LoginView |
-| 10 | pr-review-responder-workflow | ✅ PASS | OK — pr-42-tracking doc |
+| 10 | heyeddi-pr-respond-workflow | ✅ PASS | OK — pr-42-tracking doc |
 | 11 | primevue-fix-violations | ✅ PASS | OK — no raw hex/px |
-| 12 | product-translator-intake | ✅ PASS | OK — verify_intake 13/13 |
+| 12 | heyeddi-intake-intake | ✅ PASS | OK — verify_intake 13/13 |
 | 13 | project-engineering-scaffold-vue | ❌ FAIL | OK* — build + test pass after setup fix |
-| 14 | skill-orchestrator-suggest | ✅ PASS | OK — skills-index.json |
+| 14 | heyeddi-orchestrator-suggest | ✅ PASS | OK — skills-index.json |
 | 15 | ux-flow-auditor-init | ✅ PASS | OK — ux-flows index |
 
 **Score:** **12 / 15 PASS** (80%)  
@@ -289,7 +289,7 @@ All 20 registry skills are exercised across the 15 cases (+ integration chains t
 
 ### Root causes (3 failures)
 
-1. **design-handoff-only** — Agent incomplete Pass 2: `SettingsView.vue` still placeholder (`.settings-placeholder`), missing AppShell/sidebar. Flaky agent run (same case passed on prior isolated run).
+1. **heyeddi-handoff-only** — Agent incomplete Pass 2: `SettingsView.vue` still placeholder (`.settings-placeholder`), missing AppShell/sidebar. Flaky agent run (same case passed on prior isolated run).
 
 2. **full-product-integration (intake)** — Judge failed on pre-existing `App.spec.ts` vs global `RouterView` stub in `tests/unit/setup.ts` (`route-stub` vs `router-view-stub`). Intake pipeline itself was correct (verify_intake 13/13).
 
@@ -309,7 +309,7 @@ Removed global `RouterView` stub from `evals/projects/product-app/tests/unit/set
 |------|------|-----------|
 | backend-type-bridger-users | ✅ PASS | OK |
 | design-handoff-flutter-settings | ✅ PASS | OK |
-| design-handoff-only | ✅ PASS | OK — verify_handoff full pass (confirms prior failure was flaky) |
+| heyeddi-handoff-only | ✅ PASS | OK — verify_handoff full pass (confirms prior failure was flaky) |
 | engineering-excellence-audit | ✅ PASS | OK |
 | flutter-backend-bridger-users | ✅ PASS | OK |
 | flutter-engineering-scaffold | ⏸ not judged | sandbox exists |
@@ -329,11 +329,11 @@ Removed global `RouterView` stub from `evals/projects/product-app/tests/unit/set
 | full-product-integration | ✅ **PASS 7/7** | OK | Intake + all turns; setup.ts fix confirmed |
 | heyeddi-design-from-scratch | ✅ PASS | OK | |
 | heyeddi-design-polish-existing | ✅ PASS | OK | |
-| pr-review-responder-workflow | ✅ PASS | OK | |
+| heyeddi-pr-respond-workflow | ✅ PASS | OK | |
 | primevue-fix-violations | ❌ FAIL | OK | BadPanel fixed; agent skipped `validate_vue.py` per skill workflow |
-| product-translator-intake | ✅ PASS | OK | verify_intake 13/13 |
+| heyeddi-intake-intake | ✅ PASS | OK | verify_intake 13/13 |
 | project-engineering-scaffold-vue | ✅ PASS | OK | npm test + build pass (setup.ts fix) |
-| skill-orchestrator-suggest | ✅ PASS | OK | |
+| heyeddi-orchestrator-suggest | ✅ PASS | OK | |
 | ux-flow-auditor-init | ✅ PASS | OK | |
 
 **Missing batch score:** **8 / 10 PASS**  
@@ -354,7 +354,7 @@ Removed global `RouterView` stub from `evals/projects/product-app/tests/unit/set
 **Command:** `uv run python scripts/run-evals.py --all --keep-sandbox --timeout 1500 --model auto`  
 **Sandbox:** `evals/runs/2026-07-04T22-58-59Z/`
 
-First pass (~57 min): **9/15** completed before judge timeout on `product-translator-intake` (300s default). Two agentic fails in that pass (`design-handoff-only` mobile layout, `engineering-excellence-audit` audit report path).
+First pass (~57 min): **9/15** completed before judge timeout on `heyeddi-intake-intake` (300s default). Two agentic fails in that pass (`heyeddi-handoff-only` mobile layout, `engineering-excellence-audit` audit report path).
 
 Remainder re-run (6 cases, `--judge-timeout 900`): **6/6 PASS**.
 
@@ -362,18 +362,18 @@ Remainder re-run (6 cases, `--judge-timeout 900`): **6/6 PASS**.
 |------|------------|-----------|
 | backend-type-bridger-users | ✅ | — |
 | design-handoff-flutter-settings | ✅ | — |
-| design-handoff-only | ❌ mobile | ✅ |
+| heyeddi-handoff-only | ❌ mobile | ✅ |
 | engineering-excellence-audit | ❌ audit path | ✅ |
 | flutter-backend-bridger-users | ✅ | — |
 | flutter-engineering-scaffold | ✅ | — |
 | full-product-integration | ✅ 7/7 | — |
 | heyeddi-design-from-scratch | ✅ | — |
 | heyeddi-design-polish-existing | ✅ | — |
-| pr-review-responder-workflow | ✅ | — |
+| heyeddi-pr-respond-workflow | ✅ | — |
 | primevue-fix-violations | ✅ | — |
-| product-translator-intake | ⏸ judge timeout | ✅ |
+| heyeddi-intake-intake | ⏸ judge timeout | ✅ |
 | project-engineering-scaffold-vue | not reached | ✅ |
-| skill-orchestrator-suggest | not reached | ✅ |
+| heyeddi-orchestrator-suggest | not reached | ✅ |
 | ux-flow-auditor-init | not reached | ✅ |
 
 **Combined: 15 / 15 PASS** in single timestamp folder.

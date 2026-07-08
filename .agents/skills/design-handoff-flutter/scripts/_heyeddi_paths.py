@@ -1,4 +1,4 @@
-"""HeyEddi `.heyeddi/` paths — shared with design-handoff."""
+"""HeyEddi `.heyeddi/` paths — shared with heyeddi-handoff."""
 from __future__ import annotations
 
 from pathlib import Path

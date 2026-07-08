@@ -1,6 +1,6 @@
 ---
-name: skill-orchestrator
-description: Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @product-translator when present.
+name: heyeddi-orchestrator
+description: Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @heyeddi-intake when present.
 version: 1.1.0
 ---
 
@@ -13,7 +13,7 @@ Routes work to the right HeyEddi skill — without loading every SKILL.md at onc
 - Session start on a HeyEddi project (`.heyeddi/` present or greenfield app request)
 - User asks "what skills do we have?" or "which skill should handle this?"
 - Before a multi-step pipeline (intake → scaffold → design → handoff → QA)
-- After `@product-translator` — confirm `skill-routing.json` before downstream work
+- After `@heyeddi-intake` — confirm `skill-routing.json` before downstream work
 
 ## Limits (Cursor)
 
@@ -33,7 +33,7 @@ suggest_skills            → ranked @skills for this task
 read one SKILL.md         → follow that skill's pipeline
 ```
 
-If `.heyeddi/docs/intake/skill-routing.json` exists (from `@product-translator`), **follow route order** — suggestions surface it at score 100.
+If `.heyeddi/docs/intake/skill-routing.json` exists (from `@heyeddi-intake`), **follow route order** — suggestions surface it at score 100.
 
 ## Instructions
 
@@ -43,7 +43,7 @@ If `.heyeddi/docs/intake/skill-routing.json` exists (from `@product-translator`)
    Or `--prompt-file USER_PROMPT.md`
 4. Read **one** chosen skill's `SKILL.md` (path in index JSON), then invoke `@skill-name`
 5. Re-run `write_skills_index` after `npx skills add` or hub skill updates
-6. Greenfield with no `.heyeddi/product.md` → top suggestion often `@product-translator`
+6. Greenfield with no `.heyeddi/product.md` → top suggestion often `@heyeddi-intake`
 
 ## Tools
 
@@ -55,5 +55,5 @@ If `.heyeddi/docs/intake/skill-routing.json` exists (from `@product-translator`)
 
 ## Related
 
-- `@product-translator` — writes `skill-routing.json`
+- `@heyeddi-intake` — writes `skill-routing.json`
 - `reference/skill-triggers.md` — how per-skill `reference/triggers.md` works (fully agnostic scoring)

@@ -1,4 +1,4 @@
-Independent **@design-handoff** eval.
+Independent **@heyeddi-handoff** eval.
 
 ## Pipeline
 - Agent-authored `mockup-brief.md` with **`## Implementation spec`** (measurable tokens/CSS — not prose only)

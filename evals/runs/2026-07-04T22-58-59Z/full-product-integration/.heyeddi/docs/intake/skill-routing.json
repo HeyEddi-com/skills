@@ -32,7 +32,7 @@
     {
       "route": "/settings",
       "register": "product",
-      "skill": "design-handoff",
+      "skill": "heyeddi-handoff",
       "feature": "settings",
       "mockups": ".heyeddi/designs/settings/",
       "brief": ".heyeddi/designs/settings/mockup-brief.md",
@@ -44,7 +44,7 @@
     "scaffold_stack --stack full"
   ],
   "post_intake": [
-    "@skill-orchestrator write_skills_index",
+    "@heyeddi-orchestrator write_skills_index",
     "@heyeddi-design document"
   ]
 }

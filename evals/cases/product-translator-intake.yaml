@@ -1,11 +1,11 @@
-id: product-translator-intake
+id: heyeddi-intake-intake
 skills:
-  - product-translator
+  - heyeddi-intake
 project_template: translator-thin
 agent_timeout: 900
-prompt_file: prompts/product-translator-intake.md
+prompt_file: prompts/heyeddi-intake-intake.md
 judge: |
-  @product-translator completed full intake: product-translation.json, product.md via write_product,
+  @heyeddi-intake completed full intake: product-translation.json, product.md via write_product,
   translation log, skill-routing via build_routing, settings mockups + audience brief.
   verify_intake --check passed. No Vue implementation.
   Read all .heyeddi/ files.
@@ -14,7 +14,7 @@ assertions:
     type: command
     cmd:
       - python3
-      - .agents/skills/product-translator/scripts/verify_intake.py
+      - .agents/skills/heyeddi-intake/scripts/verify_intake.py
       - --project-root
       - "{project_root}"
       - --check
@@ -48,7 +48,7 @@ assertions:
   - name: routing-has-settings
     type: file_contains
     path: .heyeddi/docs/intake/skill-routing.json
-    pattern: "design-handoff"
+    pattern: "heyeddi-handoff"
   - name: settings-brief-audience
     type: file_contains
     path: .heyeddi/designs/settings/mockup-brief.md

@@ -548,7 +548,7 @@ def define_visual_auditor() -> None:
 
 
 def define_design_handoff() -> None:
-    name = "design-handoff"
+    name = "heyeddi-handoff"
     SKILLS[name] = {
         "files": {
             "SKILL.md": skill_md(
@@ -621,7 +621,7 @@ def define_design_handoff() -> None:
                 ## Designer prompt
 
                 ```
-                @design-handoff
+                @heyeddi-handoff
                 Route: /settings
                 Attachments: desktop.png, mobile.png
                 Notes: reuse SettingsSection; empty state on mobile
@@ -851,7 +851,7 @@ def define_pre_merge_gate() -> None:
 
 
 def define_pr_review_responder() -> None:
-    name = "pr-review-responder"
+    name = "heyeddi-pr-respond"
     SKILLS[name] = {
         "files": {
             "SKILL.md": skill_md(

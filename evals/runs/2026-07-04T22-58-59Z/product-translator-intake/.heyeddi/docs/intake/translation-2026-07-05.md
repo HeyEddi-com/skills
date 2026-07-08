@@ -17,14 +17,14 @@ We have no mockups yet — generate professional layout references and briefs.
 
 ## Interpretation
 
-TaskFlow is a B2B team task manager for small teams (5–25 people). Four routes: marketing homepage (/), login (/login), team roster dashboard (/dashboard), and settings (/settings). Vue 3 + PrimeVue frontend with FastAPI backend. Modern SaaS aesthetic — not a generic admin template. Settings is the design-handoff feature with generated mockups and brief.
+TaskFlow is a B2B team task manager for small teams (5–25 people). Four routes: marketing homepage (/), login (/login), team roster dashboard (/dashboard), and settings (/settings). Vue 3 + PrimeVue frontend with FastAPI backend. Modern SaaS aesthetic — not a generic admin template. Settings is the heyeddi-handoff feature with generated mockups and brief.
 
 ## Decisions
 
 - Three personas: Sam (buyer/evaluator), Jordan (team lead), Riley (IC contributor)
 - All four page routes have route_intent entries for @heyeddi-design audience gates
 - Competitive positioning: simpler roster view vs Asana/Linear/Trello sprawl
-- Settings route uses design-handoff with generated mockups; other routes use heyeddi-design craft mode
+- Settings route uses heyeddi-handoff with generated mockups; other routes use heyeddi-design craft mode
 - Stack: Vue 3 SPA + FastAPI; PrimeVue for components with custom tokens
 
 ## Open questions

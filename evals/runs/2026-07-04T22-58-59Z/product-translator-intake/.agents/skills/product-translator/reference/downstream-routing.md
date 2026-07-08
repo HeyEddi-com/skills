@@ -24,7 +24,7 @@ After `write_routing.py`, `.heyeddi/docs/intake/skill-routing.json` drives the t
     },
     {
       "route": "/settings",
-      "skill": "design-handoff",
+      "skill": "heyeddi-handoff",
       "feature": "settings",
       "mockups": ".heyeddi/designs/settings/",
       "brief": ".heyeddi/designs/settings/mockup-brief.md"
@@ -38,7 +38,7 @@ After `write_routing.py`, `.heyeddi/docs/intake/skill-routing.json` drives the t
 
 | Surface | Has PNG + brief | Skill |
 |---------|-----------------|-------|
-| Settings / handoff screen | Yes | `@design-handoff` |
+| Settings / handoff screen | Yes | `@heyeddi-handoff` |
 | Marketing / greenfield app page | No PNG | `@heyeddi-design` shape → craft |
 | Flutter app | product.md says flutter | `@flutter-engineering` then handoff-flutter |
 | API types | fastapi in backends | `@dart-type-bridger` or `@backend-type-bridger` |

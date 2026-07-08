@@ -65,7 +65,7 @@ Set `FLUTTER_WEB_URL` (or `DEV_SERVER_URL`) for `@visual-auditor` when auditing 
 - `reference/dev-server.md` — Flutter web + mobile
 - `reference/fastapi-client.md` — Dio + OpenAPI types
 - `reference/firebase-client.md` — firebase_core + Firestore
-- `reference/design-handoff.md` — chain `@design-handoff-flutter`
+- `reference/heyeddi-handoff.md` — chain `@design-handoff-flutter`
 
 ## Related skills
 

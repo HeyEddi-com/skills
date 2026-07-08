@@ -155,7 +155,7 @@ def _hard_gate_mode(visual_cfg: dict, skills: list[str]) -> str:
     explicit = visual_cfg.get("hard_gates")
     if explicit in ("handoff", "visual", "none"):
         return explicit
-    if "design-handoff" in skills:
+    if "heyeddi-handoff" in skills:
         return "handoff"
     return "visual"
 

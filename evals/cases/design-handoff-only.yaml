@@ -1,19 +1,19 @@
-# Independent agentic eval — @design-handoff only (mockups required).
+# Independent agentic eval — @heyeddi-handoff only (mockups required).
 # Template is pre-engineered; no @project-engineering turn.
-id: design-handoff-only
+id: heyeddi-handoff-only
 project_template: vue-handoff
 agent_timeout: 1200
 skills:
-  - design-handoff
+  - heyeddi-handoff
   - primevue-openprops-architect
-prompt_file: prompts/design-handoff/only-settings-handoff.md
-judge_file: prompts/design-handoff/judge-only-handoff.md
+prompt_file: prompts/heyeddi-handoff/only-settings-handoff.md
+judge_file: prompts/heyeddi-handoff/judge-only-handoff.md
 verify_commands:
   - npm test
   - npm run build
-  - python3 .agents/skills/design-handoff/scripts/verify_handoff.py --route /settings --check
-  - python3 .agents/skills/design-handoff/scripts/verify_tokens.py --check
-  - python3 .agents/skills/design-handoff/scripts/verify_theme.py --check
+  - python3 .agents/skills/heyeddi-handoff/scripts/verify_handoff.py --route /settings --check
+  - python3 .agents/skills/heyeddi-handoff/scripts/verify_tokens.py --check
+  - python3 .agents/skills/heyeddi-handoff/scripts/verify_theme.py --check
 visual_audit:
   route: /settings
   widths: [375, 768, 1440]

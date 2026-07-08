@@ -29,4 +29,4 @@ Every skill follows this order when information is missing:
 
 - Guessing API field names → sync OpenAPI instead
 - Dumping 10 questions at once → 2–3 per round
-- Skipping `product.md` personas on design work → run `@product-translator` or `@heyeddi-design discover`
+- Skipping `product.md` personas on design work → run `@heyeddi-intake` or `@heyeddi-design discover`

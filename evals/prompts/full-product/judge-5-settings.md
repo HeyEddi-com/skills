@@ -1,4 +1,4 @@
-@design-handoff implemented /settings from .heyeddi/designs/settings/ per handoff workflow:
+@heyeddi-handoff implemented /settings from .heyeddi/designs/settings/ per handoff workflow:
 
 - load_handoff used; DESIGN.md consulted/updated
 - mockup-brief + Implementation spec; AppShell before route

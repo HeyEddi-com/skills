@@ -1,4 +1,4 @@
-@design-handoff @primevue-openprops-architect
+@heyeddi-handoff @primevue-openprops-architect
 
 **Goal:** Implement `/settings` from mockups in `.heyeddi/designs/settings/`.
 

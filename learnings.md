@@ -31,7 +31,7 @@ Project-specific rules and preferences, appended over time.
 
 **Process:** See `docs/skills-roadmap.md` for phased build plan and `docs/cloud-agent-integration.md` for Pydantic AI / LangChain registration.
 
-**Notes:** `design-handoff` v1 uses screenshots only; Penpot export → API → MCP in later phases. **`heyeddi-design` v2 replaces impeccable** — discovery, web research, explore, wireframes, DESIGN.md, craft (Phase 5, 2026-07-02).
+**Notes:** `heyeddi-handoff` v1 uses screenshots only; Penpot export → API → MCP in later phases. **`heyeddi-design` v2 replaces impeccable** — discovery, web research, explore, wireframes, DESIGN.md, craft (Phase 5, 2026-07-02).
 
 ## 2026-07-02 — All 11 skills scaffolded
 
@@ -87,7 +87,7 @@ Project-specific rules and preferences, appended over time.
 
 **Artifacts:** `designs/<feature>/research.md`, `wireframes/`, `brief.md`; project `PRODUCT.md` + `DESIGN.md`.
 
-**Process:** Uninstall impeccable; use plain language or `@heyeddi-design shape`. Mockups → `@design-handoff` only.
+**Process:** Uninstall impeccable; use plain language or `@heyeddi-design shape`. Mockups → `@heyeddi-handoff` only.
 
 **Notes:** Web search mandatory in shape unless user opts out. Concept images when harness supports generation.
 
@@ -117,12 +117,12 @@ Project-specific rules and preferences, appended over time.
 
 ## 2026-07-03 — Handoff mockups are layout-only
 
-**Context:** `design-handoff-only` eval failed partly because the judge compared button/toggle **color** to mockup PNGs. Captures also showed weak shell (flat sidebar, unstyled cards).
+**Context:** `heyeddi-handoff-only` eval failed partly because the judge compared button/toggle **color** to mockup PNGs. Captures also showed weak shell (flat sidebar, unstyled cards).
 
 **Decision:** Mockup PNGs define **layout regions** (shell topology, cards, field order, CTA placement, responsive structure). **Colors** come from `.heyeddi/design.md` + OpenProps tokens — never sampled from PNG pixels.
 
 **Process:**
-- `design-handoff/reference/mockup-contract.md` — normative handoff contract
+- `heyeddi-handoff/reference/mockup-contract.md` — normative handoff contract
 - App shell (`AppShell`, sidebar, top bar) required before route content when mockup shows in-app UI
 - PrimeVue + `Card`/`InputText`/`Button` — not bare unstyled forms
 - Eval judges compare **hierarchy/structure**, not mockup hue
@@ -130,20 +130,20 @@ Project-specific rules and preferences, appended over time.
 
 **Notes:** `generate-handoff-mockups.py` palette is illustrative for eval fixtures only.
 
-## 2026-07-03 — design-handoff is designer + frontend developer
+## 2026-07-03 — heyeddi-handoff is designer + frontend developer
 
 **Context:** Handoff agent must resolve layout and component architecture, not only map pixels to PrimeVue.
 
-**Decision:** `@design-handoff` explicitly owns **component strategy** per mockup region: reuse catalog | PrimeVue as-is | thin wrapper | custom `.vue`. Document in Decision log under **Component strategy**. Custom when PrimeVue can't match layout; reuse when catalog fits.
+**Decision:** `@heyeddi-handoff` explicitly owns **component strategy** per mockup region: reuse catalog | PrimeVue as-is | thin wrapper | custom `.vue`. Document in Decision log under **Component strategy**. Custom when PrimeVue can't match layout; reuse when catalog fits.
 
 **Process:** `mockup-contract.md` decision table; `SKILL.md` step 6; judge checks strategy is logged.
 
 ## 2026-07-03 — Mockup brief before implementation
 
-**Context:** Eval run `design-handoff-only` produced shell components but ugly layout — agents read PNGs without a designer-eye brief (gray nav pills, poor CTA placement).
+**Context:** Eval run `heyeddi-handoff-only` produced shell components but ugly layout — agents read PNGs without a designer-eye brief (gray nav pills, poor CTA placement).
 
 **Decision:** Handoff pipeline is **interpret (agent writes brief from PNGs) → sync design.md → implement**:
-1. `mockup-brief.md` — **authored by `@design-handoff`** from `desktop.png` / `mobile.png` (designer-eye + region map). Hub `poe mockups` ships PNGs only — **not** the brief.
+1. `mockup-brief.md` — **authored by `@heyeddi-handoff`** from `desktop.png` / `mobile.png` (designer-eye + region map). Hub `poe mockups` ships PNGs only — **not** the brief.
 2. `describe_handoff.py --sync-design` merges agent brief into `.heyeddi/design.md`
 3. `load_handoff.py` sets `interpret_required: true` when brief missing
 
@@ -169,7 +169,7 @@ Project-specific rules and preferences, appended over time.
 
 **Context:** Eval `08-33-59Z` wrote a decent `mockup-brief.md` but sidebar spacing wrong — no `margin-top: auto` on user chip, cramped cards. Designer prose without measurable **Implementation spec**; same pass rushed into Vue.
 
-**Decision:** Two explicit passes in `@design-handoff`: (1) designer → brief + **Implementation spec** table (tokens, flex, PrimeVue overrides); (2) implementer → tokens → shell → `verify_handoff --phase shell` → route → `verify_handoff --phase full`. `describe_handoff --check` requires Implementation spec section.
+**Decision:** Two explicit passes in `@heyeddi-handoff`: (1) designer → brief + **Implementation spec** table (tokens, flex, PrimeVue overrides); (2) implementer → tokens → shell → `verify_handoff --phase shell` → route → `verify_handoff --phase full`. `describe_handoff --check` requires Implementation spec section.
 
 **Process:** `handoff-to-code.md` + `verify_handoff.py` — closes gap between mockup interpretation and CSS.
 
@@ -179,23 +179,23 @@ Project-specific rules and preferences, appended over time.
 
 **Decision:** Detect token source from `package.json`, `tokens.css`, `design.md` before styling. Use OpenProps when already present; custom `:root` semantic vars (`--surface-1`, `--brand`) when not. Never add `open-props` mid-project without user/scaffold intent.
 
-**Process:** `heyeddi-design/reference/token-strategy.md`; updated `design-handoff`, `primevue-openprops-architect`, `foundations.md`.
+**Process:** `heyeddi-design/reference/token-strategy.md`; updated `heyeddi-handoff`, `primevue-openprops-architect`, `foundations.md`.
 
-## 2026-07-03 — Eval hard gates for design-handoff (tokens + rendered spacing)
+## 2026-07-03 — Eval hard gates for heyeddi-handoff (tokens + rendered spacing)
 
 **Context:** Eval `08-45-17Z` passed agentic judge with cramped UI. Root cause: circular `tokens.css` aliases (`--size-6: var(--size-6)`) zeroed padding; `verify_handoff` only matched source strings; pixel similarity 0.97 on mostly-white layouts; LLM judge trusted file contents over PNG spacing.
 
 **Decision:** (1) Remove same-name OpenProps aliases from all eval Vue scaffolds + `project-engineering` scaffold. (2) `verify_tokens.py` skill tool. (3) Eval **hard gates** before agentic judge: `verify_tokens`, `verify_handoff`, Playwright computed spacing (sidebar ≥ 220px, card padding/gap ≥ 16px).
 
-**Process:** `evals/lib/hard_gates.py` + `visual_capture.py` spacing checks; `design-handoff-only.yaml` verify_commands include both scripts.
+**Process:** `evals/lib/hard_gates.py` + `visual_capture.py` spacing checks; `heyeddi-handoff-only.yaml` verify_commands include both scripts.
 
 ## 2026-07-03 — Wireframe handoff evals + theme coherence
 
 **Context:** User wants to test generalization from ASCII/sketch wireframes on other pages; dark-mode mismatch (dark PrimeVue cards on light shell).
 
-**Decision:** `low-fidelity-mockups.md` + `wireframe.md` inputs; eval cases `design-handoff-wireframe-dashboard` / `-team` on `vue-handoff-lowfi` template. `theme-coherence.md` + `verify_theme.py`; tokens use `light-dark()` + global `.p-card`/`.p-inputtext` semantic overrides in scaffolds.
+**Decision:** `low-fidelity-mockups.md` + `wireframe.md` inputs; eval cases `heyeddi-handoff-wireframe-dashboard` / `-team` on `vue-handoff-lowfi` template. `theme-coherence.md` + `verify_theme.py`; tokens use `light-dark()` + global `.p-card`/`.p-inputtext` semantic overrides in scaffolds.
 
-**Process:** `uv run poe eval-design-handoff-wireframe` or per-case poe tasks.
+**Process:** `uv run poe eval-heyeddi-handoff-wireframe` or per-case poe tasks.
 
 ## 2026-07-03 — Subagents default in skills
 
@@ -203,14 +203,14 @@ Project-specific rules and preferences, appended over time.
 
 **Decision:** Multi-phase skills **orchestrate in main chat** and **delegate by default** via Task (`explore`, `shell`, `generalPurpose`, etc.). Hub spec: `docs/subagent-delegation.md`; per-skill `reference/subagents.md`.
 
-**Process:** design-handoff (two-pass), heyeddi-design (critique/craft/visual), visual-auditor (worker target), project-engineering, pre-merge-gate, pr-review-responder, primevue-openprops-architect. Cloud: same prompt → `delegate_to_skill` API.
+**Process:** heyeddi-handoff (two-pass), heyeddi-design (critique/craft/visual), visual-auditor (worker target), project-engineering, pre-merge-gate, heyeddi-pr-respond, primevue-openprops-architect. Cloud: same prompt → `delegate_to_skill` API.
 
 ## 2026-07-03 — PrimeVue Card slot gates (eval hardening)
 
-**Context:** `design-handoff-only` eval @ `22-07-26Z` failed with empty Profile/Notifications cards — fields were direct children of `Card`, not `<template #content>`. `verify_handoff` regex passed; judge caught it.
+**Context:** `heyeddi-handoff-only` eval @ `22-07-26Z` failed with empty Profile/Notifications cards — fields were direct children of `Card`, not `<template #content>`. `verify_handoff` regex passed; judge caught it.
 
 **Decision:** Three-layer fix:
-1. **Skill docs** — `reference/primevue-card-slots.md`; ANTI_PATTERNS in design-handoff + primevue-openprops-architect
+1. **Skill docs** — `reference/primevue-card-slots.md`; ANTI_PATTERNS in heyeddi-handoff + primevue-openprops-architect
 2. **Static verify** — `verify_handoff.py` scans all `<Card>` blocks for loose body elements
 3. **Playwright content gates** — route-specific DOM checks (settings inputs/toggle, dashboard stats/table); optional `color_schemes: [light, dark]` captures
 
@@ -238,7 +238,7 @@ Project-specific rules and preferences, appended over time.
 
 **Context:** After `npm run build` exit 0, agent turn ran 20+ min (`still running` heartbeat). Build was done; agent kept running Playwright/`@visual-auditor` manually while harness also captures post-turn.
 
-**Decision:** Worker prompts for integration steps 5–6: **no dev server / Playwright in agent turn** (same as `design-handoff-only`). Harness runs visual QA + hard gates. Step 6 capped at `agent_timeout: 480`. Fixed `local_agent.py` to enforce timeout during stdout read (was only on `proc.wait` after EOF).
+**Decision:** Worker prompts for integration steps 5–6: **no dev server / Playwright in agent turn** (same as `heyeddi-handoff-only`). Harness runs visual QA + hard gates. Step 6 capped at `agent_timeout: 480`. Fixed `local_agent.py` to enforce timeout during stdout read (was only on `proc.wait` after EOF).
 
 ## 2026-07-03 — Dashboard turn must not bind port 8000
 
@@ -276,21 +276,21 @@ Project-specific rules and preferences, appended over time.
 
 **Process:** Research step cites Linear/Vercel/Stripe/etc.; craft anti-slop checklist before visual-auditor.
 
-## 2026-07-03 — product-translator skill (intake agent)
+## 2026-07-03 — heyeddi-intake skill (intake agent)
 
 **Context:** User wanted an upstream agent that interprets prompts into product docs, professional mockups when none supplied, seeded briefs, and routing for downstream skills.
 
-**Decision:** New `@product-translator` skill — `load_intake`, `write_product`, `write_translation`, `ingest_mockups`, `generate_mockups`, `seed_brief`, `write_routing`. Outputs under `.heyeddi/docs/intake/` + `designs/`. Differs from hub eval mockups (PNG only): translator **seeds mockup-brief.md** for `@design-handoff`.
+**Decision:** New `@heyeddi-intake` skill — `load_intake`, `write_product`, `write_translation`, `ingest_mockups`, `generate_mockups`, `seed_brief`, `write_routing`. Outputs under `.heyeddi/docs/intake/` + `designs/`. Differs from hub eval mockups (PNG only): translator **seeds mockup-brief.md** for `@heyeddi-handoff`.
 
-**Eval:** `product-translator-intake` case + `uv run poe eval-translator` — thin template `evals/projects/translator-thin/`, assertions on product.md, skill-routing.json, settings mockups/brief.
+**Eval:** `heyeddi-intake-intake` case + `uv run poe eval-translator` — thin template `evals/projects/translator-thin/`, assertions on product.md, skill-routing.json, settings mockups/brief.
 
-## 2026-07-03 — skill-orchestrator (skill discovery + routing)
+## 2026-07-03 — heyeddi-orchestrator (skill discovery + routing)
 
 **Context:** Agent needs to know which HeyEddi skills exist and when to use them; Cursor cannot load all SKILL.md bodies at session start.
 
-**Decision:** New `@skill-orchestrator` skill — `load_catalog` (reads `skills-registry.json` + installed SKILL.md paths), `suggest_skills` (prompt keyword triggers + merge `.heyeddi/docs/intake/skill-routing.json`). Broad SKILL.md description for proactive discovery; agent must still **read** chosen skill's SKILL.md before invoking tools.
+**Decision:** New `@heyeddi-orchestrator` skill — `load_catalog` (reads `skills-registry.json` + installed SKILL.md paths), `suggest_skills` (prompt keyword triggers + merge `.heyeddi/docs/intake/skill-routing.json`). Broad SKILL.md description for proactive discovery; agent must still **read** chosen skill's SKILL.md before invoking tools.
 
-**Process:** Session start or ambiguous task → orchestrator → read top 1–3 SKILL.md files → invoke `@skill`. Greenfield without product.md → `@product-translator` first.
+**Process:** Session start or ambiguous task → orchestrator → read top 1–3 SKILL.md files → invoke `@skill`. Greenfield without product.md → `@heyeddi-intake` first.
 
 ## 2026-07-04 — Skills completeness pass (except Penpot)
 
@@ -301,12 +301,12 @@ Project-specific rules and preferences, appended over time.
 - `composable-patterns`: full composable validator (reactivity, auth, loading/error)
 - `design-system-generalizer`: golden-route scan + diff violations (tokens, hex, PrimeVue components)
 - `pre-merge-gate`: wires `no-duplicate-ui` + optional `visual-auditor` per route
-- `product-translator`: vendored `reference/clarify-before-act.md` + `product-translation.template.json`
+- `heyeddi-intake`: vendored `reference/clarify-before-act.md` + `product-translation.template.json`
 - `design-handoff-flutter`: `verify_tokens.py`, `verify_theme.py`, route-generic `verify_handoff.py`
 - `docs/skills-roadmap.md`: added 8 missing skills to inventory
-- Agent eval cases: `engineering-excellence-audit`, `ux-flow-auditor-init`, `skill-orchestrator-suggest`, `design-handoff-flutter-settings`
+- Agent eval cases: `engineering-excellence-audit`, `ux-flow-auditor-init`, `heyeddi-orchestrator-suggest`, `design-handoff-flutter-settings`
 
-**Deferred:** Penpot mode (`design-handoff/reference/penpot-mode.md` Phase 6 only).
+**Deferred:** Penpot mode (`heyeddi-handoff/reference/penpot-mode.md` Phase 6 only).
 
 **Verify:** `python3 scripts/test-skills.py` — 210/210 passed.
 
@@ -314,9 +314,9 @@ Project-specific rules and preferences, appended over time.
 
 **Context:** Too many overlapping poe tasks (composite bundles, wireframe cases, deprecated craft login, 2-turn combined handoff).
 
-**Removed cases:** `heyeddi-design-craft-login`, `design-handoff-settings`, `design-handoff-wireframe-dashboard`, `design-handoff-wireframe-team`.
+**Removed cases:** `heyeddi-design-craft-login`, `heyeddi-handoff-settings`, `heyeddi-handoff-wireframe-dashboard`, `heyeddi-handoff-wireframe-team`.
 
-**Removed poe tasks:** `eval-case`, `eval-design`, `eval-heyeddi-design`, `eval-design-handoff-combined`, `eval-heyeddi-design-craft`, all wireframe tasks.
+**Removed poe tasks:** `eval-case`, `eval-design`, `eval-heyeddi-design`, `eval-heyeddi-handoff-combined`, `eval-heyeddi-design-craft`, all wireframe tasks.
 
 **Kept:** 15 cases — one `uv run poe eval-*` each + `eval-integration`, `eval-all`, `eval-list`, `eval-dry-run`. See `evals/README.md`.
 
@@ -332,16 +332,16 @@ Project-specific rules and preferences, appended over time.
 
 **Decision:** Ten-layer stack documented in `docs/design-excellence.md`:
 
-1. `@product-translator` — extended `product.md` schema: **Personas**, **Per-route intent**, Competitors, Anti-audience, Voice & tone
-2. `@skill-orchestrator` — skills index cache
+1. `@heyeddi-intake` — extended `product.md` schema: **Personas**, **Per-route intent**, Competitors, Anti-audience, Voice & tone
+2. `@heyeddi-orchestrator` — skills index cache
 3. `@heyeddi-design discover/shape/research` — audience sections in brief + research
 4. `reference/audience-design.md` — persona → aesthetic direction map
 5. `reference/audience-fit.md` — post-build rubric (PASS/REVISE)
 6. `load_context.py` — `audience_ready` + `audience_blocker` gates
-7. `@design-handoff` — reads product personas before interpret pass
+7. `@heyeddi-handoff` — reads product personas before interpret pass
 8. `docs/clarify-before-act.md` — hub-wide ask-before-guess convention
 9. Integration eval **step 0 intake** + richer `product-app` product.md; steps 3–4 require shape + audience-fit
-10. `product-translator-intake` asserts Personas + Per-route intent sections
+10. `heyeddi-intake-intake` asserts Personas + Per-route intent sections
 
 **Process:** Read `.heyeddi/product.md` personas → pick direction row → brief with Audience section → craft → audience-fit critique → polish. Decision log cites persona + pattern borrowed.
 
@@ -364,7 +364,7 @@ Project-specific rules and preferences, appended over time.
 
 ## 2026-07-06 — Product-translator mockups: wireframe-first, not cookie-cutter PNGs
 
-**Context:** `@product-translator` always called `generate_mockups` → identical settings-app-shell PNG with only product name changed. Wrong for varied products/routes.
+**Context:** `@heyeddi-intake` always called `generate_mockups` → identical settings-app-shell PNG with only product name changed. Wrong for varied products/routes.
 
 **Decision:**
 - **User images** → `ingest_mockups` (screenshots, sketches, competitor refs)
@@ -379,12 +379,12 @@ Project-specific rules and preferences, appended over time.
 **Context:** Skill should not ship sample PNGs or Pillow template drawers. Testing PNGs belong in hub eval tooling (`poe mockups`), not distributable skills.
 
 **Decision:**
-- Removed `generate_mockups.py` and `_layout_mockups.py` from `skills/product-translator/`
+- Removed `generate_mockups.py` and `_layout_mockups.py` from `skills/heyeddi-intake/`
 - Added `prepare_mockup_prompts.py` + `reference/ai-mockup-images.md` — agent generates PNGs with native image tool when needed
 - Hub `scripts/generate-handoff-mockups.py` remains eval/fixture-only
 - SKILL v1.3.0
 
-**Verify:** `python3 scripts/test-skills.py` product-translator passes; no `.png` under `skills/`.
+**Verify:** `python3 scripts/test-skills.py` heyeddi-intake passes; no `.png` under `skills/`.
 
 ## 2026-07-06 — HeyEddi-design: project-specific ambition bar
 
@@ -418,24 +418,54 @@ Project-specific rules and preferences, appended over time.
 
 **Context:** User wanted PM beyond backlog — verify product works, is useful, suggest better alternatives; delegate UX, design, engineering research in code.
 
-**Decision:** New `@product-manager` — `load_product_context`, `audit_product`, `write_feature_spec`, `check_features`, `write_review_plan`, `verify_product`. Artifacts under `.heyeddi/docs/product/`. Delegates to `@ux-flow-auditor`, `@heyeddi-design critique`, `@visual-auditor`, `@engineering-excellence` per `reference/delegation.md`.
+**Decision:** New `@heyeddi-product` — `load_product_context`, `audit_product`, `write_feature_spec`, `check_features`, `write_review_plan`, `verify_product`. Artifacts under `.heyeddi/docs/product/`. Delegates to `@ux-flow-auditor`, `@heyeddi-design critique`, `@visual-auditor`, `@engineering-excellence` per `reference/delegation.md`.
 
-**Chain:** `@product-translator` → `@product-manager` audit + specs → design/engineering → PM review → `@pre-merge-gate`.
+**Chain:** `@heyeddi-intake` → `@heyeddi-product` audit + specs → design/engineering → PM review → `@pre-merge-gate`.
 
 ## 2026-07-07 — Cross-pillar workflow sync (product · UX · design)
 
 **Context:** User wanted product, UX, and design flows connected — when one runs, others opine and maintain docs.
 
-**Decision:** `@skill-orchestrator` v1.2.0 — `init_workflow_sync`, `load_workflow_context`, `append_pillar_opinion`. Artifacts under `.heyeddi/docs/workflow/opinions/`. Mandatory bookends in `@product-manager`, `@ux-flow-auditor`, `@heyeddi-design`. Hub `docs/cross-pillar-workflow.md`.
+**Decision:** `@heyeddi-orchestrator` v1.2.0 — `init_workflow_sync`, `load_workflow_context`, `append_pillar_opinion`. Artifacts under `.heyeddi/docs/workflow/opinions/`. Mandatory bookends in `@heyeddi-product`, `@ux-flow-auditor`, `@heyeddi-design`. Hub `docs/cross-pillar-workflow.md`.
 
 ## 2026-07-07 — Two PR workflows (submission review vs respond)
 
 **Context:** User needed distinct skills: (1) review submitted PR on committed diff only — product, docs, engineering, tests; (2) respond to human review comments with fix-vs-decline and re-gate.
 
 **Decision:**
-- **`@pr-submission-review`** (new) — `fetch_pr_context`, `check_doc_drift`, `audit_pr_changes`, `write_pr_review`, `verify_pr_review` → `.heyeddi/docs/pr-<N>-review.md`
-- **`@pr-review-responder`** (v1.1) — adds `verify_response`, `reference/workflow.md`, mandatory `pre_merge_gate` before summary
+- **`@heyeddi-pr-review`** (new) — `fetch_pr_context`, `check_doc_drift`, `audit_pr_changes`, `write_pr_review`, `verify_pr_review` → `.heyeddi/docs/pr-<N>-review.md`
+- **`@heyeddi-pr-respond`** (v1.1) — adds `verify_response`, `reference/workflow.md`, mandatory `pre_merge_gate` before summary
 
 **Process:** See `docs/pr-workflows.md`. Evals: `uv run poe eval-pr-submission`, `uv run poe eval-pr`.
 
 **Notes:** Submission review = reviewer/QA; responder = PR author after feedback. Default output is `.heyeddi/docs/` — post `gh pr review` only when user asks.
+
+## 2026-07-07 — v2 skill naming plan (`heyeddi-*` spine)
+
+**Context:** User asked whether to rename all skills to `heyeddi-*` or only main workflows.
+
+**Decision:** **Spine only** (6–8 renames), not all 22. Canonical v2 names: `heyeddi-intake`, `heyeddi-product`, `heyeddi-orchestrator`, `heyeddi-handoff`, `heyeddi-pr-review`, `heyeddi-pr-respond` (+ optional `heyeddi-ship-gate`, `heyeddi-handoff-flutter`). Guardrails stay descriptive (`verify-build`, `engineering-excellence`, …).
+
+**Migration:** v2.0.0 ships alias stub folders (symlink to canonical) + `skills-registry.json` `aliases` map + `migrate-skill-names-v2.py` for `.heyeddi/` routing JSON. Remove aliases in v3.0.0.
+
+**Process:** Full plan in `docs/v2-skill-naming.md`. **Implemented in v2.0.0** (2026-07-07).
+
+**Executed:** `git mv` + alias stubs (`bootstrap-skill-aliases.py`), bulk replace (`apply-v2-skill-names.py`), `migrate-skill-names-v2.py`, registry `aliases`, `_catalog.py` resolution. Smoke **386/386**; `tests/test_skill_aliases.py` **5/5**.
+
+**Notes:** `@heyeddi-design` unchanged. Typing `@heyeddi` in Cursor surfaces the pipeline spine. v1 names remain as deprecated alias folders until v3.0.0.
+
+## 2026-07-07 — Auto `.heyeddi/` migration on session start
+
+**Context:** User expected reinstall to update `.heyeddi/` — skills should migrate project artifacts, not a separate manual script.
+
+**Decision:** `@heyeddi-orchestrator` v2.0.0 — `migrate_heyeddi`, `sync_heyeddi_workspace`; `write_skills_index` and `load_catalog --refresh` run migration first. Writes `.heyeddi/sync-state.json` + `docs/skill-name-migration-2.0.0.json`.
+
+**Process:** Session start → `sync_heyeddi_workspace`. After `npx skills add` → same. Hub `migrate-skill-names-v2.py` delegates to skill script.
+
+## 2026-07-07 — Zero-command auto-sync; tool renamed to `sync`
+
+**Context:** User should not need to run a manual orchestrator command — any HeyEddi skill invocation should keep `.heyeddi/` current.
+
+**Decision:** `_auto_sync.ensure_heyeddi()` runs from every spine skill's `resolve_project_root()` (orchestrator, intake, product, handoff, design, pr-review, pr-respond). Renamed `sync_heyeddi_workspace` → `sync` (`sync.py`).
+
+**Process:** Reinstall skills → use any `@heyeddi-*` skill normally; migration + index refresh happen automatically. Optional explicit full sync: `@heyeddi-orchestrator` `sync`.

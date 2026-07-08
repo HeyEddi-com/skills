@@ -1,4 +1,4 @@
-@product-translator @skill-orchestrator
+@heyeddi-intake @heyeddi-orchestrator
 
 Run the **mandatory translator pipeline** (`reference/pipeline.md`):
 
@@ -8,7 +8,7 @@ Run the **mandatory translator pipeline** (`reference/pipeline.md`):
 4. `write_translation` if missing
 5. **`build_routing --write`** if routing stale
 6. **`verify_intake --check`**
-7. `@skill-orchestrator` → **`write_skills_index --project-root .`**
+7. `@heyeddi-orchestrator` → **`write_skills_index --project-root .`**
 
 No Vue implementation. Read `.heyeddi/product.md`, `skills-index.md`, `skill-routing.json`.
 

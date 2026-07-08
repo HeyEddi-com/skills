@@ -8,4 +8,4 @@ This skill is **usually invoked as a subagent**, not run inline in a long design
 | Layout tree fallback | `shell` | yes | `layout_tree.py` when no Playwright |
 | Compare to reference PNGs | `generalPurpose` | yes | Read captures + mockups; layout hierarchy only |
 
-Parent skill (`design-handoff`, `heyeddi-design`) launches this via Task with route, widths, artifact paths.
+Parent skill (`heyeddi-handoff`, `heyeddi-design`) launches this via Task with route, widths, artifact paths.

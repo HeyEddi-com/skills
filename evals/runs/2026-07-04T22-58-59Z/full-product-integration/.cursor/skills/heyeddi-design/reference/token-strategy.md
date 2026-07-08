@@ -59,5 +59,5 @@ Or:
 | Skill | Behavior |
 |-------|----------|
 | `@heyeddi-design` | Prefer OpenProps on **new** HeyEddi scaffolds; respect existing project token source on brownfield |
-| `@design-handoff` | Match project token strategy; mockups never dictate hex |
+| `@heyeddi-handoff` | Match project token strategy; mockups never dictate hex |
 | `@primevue-openprops-architect` | Enforce PrimeVue + **project** semantic tokens; OpenProps rules apply only when package is present |

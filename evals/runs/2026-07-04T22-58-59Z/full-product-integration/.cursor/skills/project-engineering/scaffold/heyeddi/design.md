@@ -291,7 +291,7 @@ _(App shell, tabs, breadcrumbs — PrimeVue component names.)_
 
 _Append-only — episodic "we chose / we rejected" and handoff mockup → UI mapping. Keep the living system in sections above; do not let the log replace them._
 
-### YYYY-MM-DD — feature or route (@heyeddi-design | @design-handoff)
+### YYYY-MM-DD — feature or route (@heyeddi-design | @heyeddi-handoff)
 
 **Context:** …
 

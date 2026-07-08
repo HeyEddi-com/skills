@@ -1,0 +1,13 @@
+{
+  "skill_names_version": "2.0.0",
+  "migrated_at": "2026-07-08T05:21:13Z",
+  "files_updated": [],
+  "aliases_applied": {
+    "product-translator": "heyeddi-intake",
+    "product-manager": "heyeddi-product",
+    "skill-orchestrator": "heyeddi-orchestrator",
+    "design-handoff": "heyeddi-handoff",
+    "pr-submission-review": "heyeddi-pr-review",
+    "pr-review-responder": "heyeddi-pr-respond"
+  }
+}

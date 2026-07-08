@@ -1,6 +1,6 @@
 # Mockup brief — Settings (TaskFlow)
 
-Authored by `@product-translator` from user intent + layout mockups. Colors from `.heyeddi/design.md` tokens — not PNG pixels.
+Authored by `@heyeddi-intake` from user intent + layout mockups. Colors from `.heyeddi/design.md` tokens — not PNG pixels.
 
 ## Audience (from product.md)
 

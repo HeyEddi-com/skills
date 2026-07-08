@@ -23,7 +23,7 @@ Use the **Task** tool with `subagent_type` and a self-contained prompt (include 
 ### Prompt shape (copy pattern)
 
 ```
-@design-handoff
+@heyeddi-handoff
 Project root: /path/to/app
 Route: /settings
 
@@ -42,13 +42,13 @@ Return: brief path + Implementation spec summary
 
 | Skill | Orchestrator (main) | Delegate by default |
 |-------|---------------------|---------------------|
-| **design-handoff** | Pass sequencing, merge brief + verify results | Pass 1 interpret → `generalPurpose`; catalog scan → `explore`; verify scripts + build → `shell`; visual capture → `shell` + `@visual-auditor` |
+| **heyeddi-handoff** | Pass sequencing, merge brief + verify results | Pass 1 interpret → `generalPurpose`; catalog scan → `explore`; verify scripts + build → `shell`; visual capture → `shell` + `@visual-auditor` |
 | **heyeddi-design** | Routing, brief confirmation, Decision log | `research` / web → `generalPurpose`; `critique` → `generalPurpose`; `craft` (large route) → `generalPurpose`; validate → `shell`; visual → `@visual-auditor` |
 | **visual-auditor** | *(often invoked as subagent)* | Playwright/layout scripts → `shell` |
 | **project-engineering** | Stack choice, audit interpretation | `audit_scaffold`, `scaffold_stack`, tests → `shell` |
 | **pre-merge-gate** | Report triage | `pre_merge_gate.py` → `shell` |
-| **pr-review-responder** | Tracking table, fix vs decline, re-gate | `fetch_pr_comments` + `verify_response` → `shell`; comment analysis → `generalPurpose` |
-| **pr-submission-review** | Verdict on committed diff | `fetch_pr_context` + drift/audit → `shell`; PM delegates → `shell` |
+| **heyeddi-pr-respond** | Tracking table, fix vs decline, re-gate | `fetch_pr_comments` + `verify_response` → `shell`; comment analysis → `generalPurpose` |
+| **heyeddi-pr-review** | Verdict on committed diff | `fetch_pr_context` + drift/audit → `shell`; PM delegates → `shell` |
 | **primevue-openprops-architect** | — | `validate_vue.py` → `shell` |
 | **verify-build** | — | build script → `shell` |
 | **backend-type-bridger** | — | `sync_openapi` / schema scripts → `shell` |
@@ -63,7 +63,7 @@ Same phases; replace Task with `delegate_to_skill`:
 
 ```json
 {
-  "skill": "design-handoff",
+  "skill": "heyeddi-handoff",
   "phase": "interpret",
   "subagent_type": "generalPurpose",
   "prompt": "...",

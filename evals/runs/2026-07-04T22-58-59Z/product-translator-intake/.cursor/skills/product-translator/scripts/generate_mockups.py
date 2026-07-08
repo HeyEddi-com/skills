@@ -59,10 +59,10 @@ def main() -> None:
         "route": args.route,
         "app": args.app_name,
         "mockup_contract": "layout_professional",
-        "generated_by": "product-translator",
+        "generated_by": "heyeddi-intake",
         "notes": [
             "Professional layout reference — colors from .heyeddi/design.md tokens at implement time",
-            "mockup-brief.md seeded by seed_brief.py; refine before @design-handoff if needed",
+            "mockup-brief.md seeded by seed_brief.py; refine before @heyeddi-handoff if needed",
         ],
     }
     (out_dir / "handoff.json").write_text(json.dumps(handoff, indent=2) + "\n")

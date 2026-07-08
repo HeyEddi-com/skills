@@ -1,4 +1,4 @@
-@product-translator
+@heyeddi-intake
 
 Read `USER_PROMPT.md` and run the **full mandatory pipeline** (`reference/pipeline.md`):
 

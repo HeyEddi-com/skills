@@ -8,7 +8,7 @@ Unlike `scripts/test-skills.py` (CLI smoke tests), **agent evals** run a real ag
 ./scripts/setup-evals.sh
 uv run poe test
 uv run poe eval-list
-uv run poe eval-design-handoff   # example: one skill, one command
+uv run poe eval-heyeddi-handoff   # example: one skill, one command
 ```
 
 ### Poe commands
@@ -18,19 +18,19 @@ One command per eval — no generic `eval-case`, no composite bundles.
 | Command | Skill(s) under test |
 |---------|---------------------|
 | `uv run poe eval-integration` | Full pipeline (7 turns, all skills) |
-| `uv run poe eval-translator` | product-translator |
-| `uv run poe eval-orchestrator` | skill-orchestrator |
+| `uv run poe eval-translator` | heyeddi-intake |
+| `uv run poe eval-orchestrator` | heyeddi-orchestrator |
 | `uv run poe eval-scaffold` | project-engineering |
 | `uv run poe eval-api` | backend-type-bridger, composable-patterns |
 | `uv run poe eval-primevue` | primevue-openprops-architect |
-| `uv run poe eval-pr` | pr-review-responder |
-| `uv run poe eval-pr-submission` | pr-submission-review |
+| `uv run poe eval-pr` | heyeddi-pr-respond |
+| `uv run poe eval-pr-submission` | heyeddi-pr-review |
 | `uv run poe eval-engineering` | engineering-excellence |
 | `uv run poe eval-ux-flow` | ux-flow-auditor |
 | `uv run poe eval-flutter` | flutter-engineering |
 | `uv run poe eval-flutter-api` | dart-type-bridger, flutter-patterns |
 | `uv run poe eval-flutter-handoff` | design-handoff-flutter |
-| `uv run poe eval-design-handoff` | design-handoff |
+| `uv run poe eval-heyeddi-handoff` | heyeddi-handoff |
 | `uv run poe eval-heyeddi-design-scratch` | heyeddi-design (greenfield) |
 | `uv run poe eval-heyeddi-design-polish` | heyeddi-design (polish existing) |
 
@@ -46,7 +46,7 @@ One command per eval — no generic `eval-case`, no composite bundles.
 
 ```bash
 ./scripts/setup-evals.sh
-uv run poe eval-design-handoff
+uv run poe eval-heyeddi-handoff
 uv run poe eval-integration
 ```
 
@@ -59,15 +59,15 @@ Design evals use `agent_timeout: 1200` in case YAML (20 min). Worker prompts tel
 By default sandboxes live in `/tmp` and are deleted when the run finishes. To keep them:
 
 ```bash
-uv run poe eval-design-handoff   # add --keep-sandbox via run-evals.py directly:
-python3 scripts/run-evals.py --keep-sandbox design-handoff-only
+uv run poe eval-heyeddi-handoff   # add --keep-sandbox via run-evals.py directly:
+python3 scripts/run-evals.py --keep-sandbox heyeddi-handoff-only
 ```
 
 Sandboxes kept under `evals/runs/<timestamp>/<case-id>/`:
 
 ```bash
-cursor evals/runs/<latest>/design-handoff-only
-cd evals/runs/<latest>/design-handoff-only && npm ci && npm run dev
+cursor evals/runs/<latest>/heyeddi-handoff-only
+cd evals/runs/<latest>/heyeddi-handoff-only && npm ci && npm run dev
 ```
 
 ## Current eval cases (15)
@@ -75,19 +75,19 @@ cd evals/runs/<latest>/design-handoff-only && npm ci && npm run dev
 | Poe command | Case ID |
 |-------------|---------|
 | `eval-integration` | `full-product-integration` |
-| `eval-translator` | `product-translator-intake` |
-| `eval-orchestrator` | `skill-orchestrator-suggest` |
+| `eval-translator` | `heyeddi-intake-intake` |
+| `eval-orchestrator` | `heyeddi-orchestrator-suggest` |
 | `eval-scaffold` | `project-engineering-scaffold-vue` |
 | `eval-api` | `backend-type-bridger-users` |
 | `eval-primevue` | `primevue-fix-violations` |
-| `eval-pr` | `pr-review-responder-workflow` |
-| `eval-pr-submission` | `pr-submission-review-workflow` |
+| `eval-pr` | `heyeddi-pr-respond-workflow` |
+| `eval-pr-submission` | `heyeddi-pr-review-workflow` |
 | `eval-engineering` | `engineering-excellence-audit` |
 | `eval-ux-flow` | `ux-flow-auditor-init` |
 | `eval-flutter` | `flutter-engineering-scaffold` |
 | `eval-flutter-api` | `flutter-backend-bridger-users` |
 | `eval-flutter-handoff` | `design-handoff-flutter-settings` |
-| `eval-design-handoff` | `design-handoff-only` |
+| `eval-heyeddi-handoff` | `heyeddi-handoff-only` |
 | `eval-heyeddi-design-scratch` | `heyeddi-design-from-scratch` |
 | `eval-heyeddi-design-polish` | `heyeddi-design-polish-existing` |
 

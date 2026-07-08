@@ -23,7 +23,7 @@ From this hub:
 ./scripts/install-skills.sh --all --project /path/to/your-app
 
 # Global (every project)
-./scripts/install-skills.sh design-handoff --global
+./scripts/install-skills.sh heyeddi-handoff --global
 ```
 
 Or directly with the skills CLI:

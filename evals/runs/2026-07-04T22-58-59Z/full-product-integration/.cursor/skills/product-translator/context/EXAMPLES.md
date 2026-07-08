@@ -8,7 +8,7 @@ python scripts/write_product.py --project-root . --json .heyeddi/docs/intake/pro
 python scripts/write_translation.py --project-root . \
   --user-prompt "$(cat USER_PROMPT.md)" \
   --summary "TaskFlow B2B task manager for small teams." \
-  --decisions '["Vue+FastAPI","4 routes","settings via design-handoff"]'
+  --decisions '["Vue+FastAPI","4 routes","settings via heyeddi-handoff"]'
 python scripts/generate_mockups.py --project-root . --feature settings --app-name TaskFlow --route /settings
 python scripts/seed_brief.py --project-root . --feature settings --app-name TaskFlow --force
 python scripts/build_routing.py --project-root . --write --save-input

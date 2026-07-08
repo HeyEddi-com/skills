@@ -68,6 +68,6 @@ agent adds friction notes to report
 
 ## Chain
 
-- After `@design-handoff` / `@heyeddi-design` — verify tasks are completable
+- After `@heyeddi-handoff` / `@heyeddi-design` — verify tasks are completable
 - `@visual-auditor` — layout proof; this skill — interaction proof
 - `@engineering-excellence` — separate concern (code structure)

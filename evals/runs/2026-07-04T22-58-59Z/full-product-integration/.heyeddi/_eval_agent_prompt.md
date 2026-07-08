@@ -13,7 +13,7 @@ You receive evidence from a skill eval turn: user goal, worker agent output, **a
    - `Deprecated since` only if it indicates wrong component usage causing broken UI
 3. Read **all changed files** in the evidence — unstyled UI, stub scripts, missing imports, and empty views are failures.
 4. If `.heyeddi/design.md` was incomplete, the design skill should have updated documentation or created `.heyeddi/designs/<feature>/brief.md` before crafting UI.
-5. **Design talk:** `@heyeddi-design` and `@design-handoff` must append to **Decision log** in `.heyeddi/design.md` — conversational rationale (we chose / we rejected). Fail if UI shipped with no new Decision log entry for that feature.
+5. **Design talk:** `@heyeddi-design` and `@heyeddi-handoff` must append to **Decision log** in `.heyeddi/design.md` — conversational rationale (we chose / we rejected). Fail if UI shipped with no new Decision log entry for that feature.
 6. Skill-generated reports belong under `.heyeddi/docs/` — flag if expected reports are missing.
 7. **Untracked files are staged before you judge** — if `SettingsView.vue` appears in changed files, evaluate it. Design PNGs may exist from the eval template baseline under `designs/` or `.heyeddi/designs/` — check "Design / handoff assets on disk" before claiming screenshots are missing.
 8. `@visual-auditor` is required only when the turn prompt or judge criteria explicitly asks for it; do not fail solely for missing `.visual-audit/` if the turn did not require visual audit.
@@ -455,7 +455,7 @@ index 2ece743..07c315b 100644
 +
 +**Open questions:** none
 +
-+### 2026-07-04 — settings `/settings` (@design-handoff)
++### 2026-07-04 — settings `/settings` (@heyeddi-handoff)
 +
 +**Context:** Riley needs clear profile and notification controls with one obvious save action — sidebar app chrome from handoff mockups.
 +
@@ -1089,7 +1089,7 @@ index 0000000..be4bf3f
 +| `/` | `HomeView` | `@heyeddi-design` craft (brand) |
 +| `/login` | `LoginView` | `@heyeddi-design` craft (brand) |
 +| `/dashboard` | `DashboardView` | `@heyeddi-design` craft (product) |
-+| `/settings` | `SettingsView` | `@design-handoff` (mockups in `.heyeddi/designs/settings/`) |
++| `/settings` | `SettingsView` | `@heyeddi-handoff` (mockups in `.heyeddi/designs/settings/`) |
 +
 +## Gaps (by owner)
 +
@@ -1100,7 +1100,7 @@ index 0000000..be4bf3f
 +- [ ] Run `document` to complete `.heyeddi/design.md` (currently draft)
 +- [ ] Dashboard: fetch and display `GET /api/users`
 +
-+### `@design-handoff` — Settings
++### `@heyeddi-handoff` — Settings
 +
 +- [ ] Implement `/settings` from `.heyedd
 ```
@@ -1349,7 +1349,7 @@ index 0000000..be4bf3f
 
 **Open questions:** none
 
-### 2026-07-04 — settings `/settings` (@design-handoff)
+### 2026-07-04 — settings `/settings` (@heyeddi-handoff)
 
 **Context:** Riley needs clear profile and notification controls with one obvious save action — sidebar app chrome from handoff mockups.
 
@@ -1442,8 +1442,8 @@ index 0000000..be4bf3f
   "mockup_contract": "layout_only",
   "notes": [
     "PNG colors are illustrative \u2014 implement colors from .heyeddi/design.md tokens",
-    "mockup-brief.md is NOT shipped \u2014 @design-handoff must write it from these PNGs before coding",
-    "See skills/design-handoff/reference/interpret-mockups.md"
+    "mockup-brief.md is NOT shipped \u2014 @heyeddi-handoff must write it from these PNGs before coding",
+    "See skills/heyeddi-handoff/reference/interpret-mockups.md"
   ]
 }
 
@@ -1979,7 +1979,7 @@ From `.heyeddi/product.md` and `skill-routing.json`:
 | `/` | `HomeView` | `@heyeddi-design` craft (brand) |
 | `/login` | `LoginView` | `@heyeddi-design` craft (brand) |
 | `/dashboard` | `DashboardView` | `@heyeddi-design` craft (product) |
-| `/settings` | `SettingsView` | `@design-handoff` (mockups in `.heyeddi/designs/settings/`) |
+| `/settings` | `SettingsView` | `@heyeddi-handoff` (mockups in `.heyeddi/designs/settings/`) |
 
 ## Gaps (by owner)
 
@@ -1990,7 +1990,7 @@ From `.heyeddi/product.md` and `skill-routing.json`:
 - [ ] Run `document` to complete `.heyeddi/design.md` (currently draft)
 - [ ] Dashboard: fetch and display `GET /api/users`
 
-### `@design-handoff` — Settings
+### `@heyeddi-handoff` — Settings
 
 - [ ] Implement `/settings` from `.heyeddi/designs/settings/` mockups + brief
 
@@ -2030,7 +2030,7 @@ Vite proxies `/api/*` to the API on port 8090.
 
 1. `@heyeddi-design document` — fill design system in `.heyeddi/design.md`
 2. `@heyeddi-design craft` — flagship routes per `skill-routing.json` order (`/` → `/login` → `/dashboard`)
-3. `@design-handoff` — `/settings` from existing mockups
+3. `@heyeddi-handoff` — `/settings` from existing mockups
 4. `@backend-type-bridger` — sync OpenAPI → TypeScript after API expands
 
 ---
@@ -2043,7 +2043,7 @@ _Authored by `@project-engineering` audit workflow._
 ```
 # Intake translations
 
-Session notes from `@product-translator`.
+Session notes from `@heyeddi-intake`.
 
 
 ```
@@ -2187,7 +2187,7 @@ Session notes from `@product-translator`.
     {
       "route": "/settings",
       "register": "product",
-      "skill": "design-handoff",
+      "skill": "heyeddi-handoff",
       "feature": "settings",
       "mockups": ".heyeddi/designs/settings/",
       "brief": ".heyeddi/designs/settings/mockup-brief.md",
@@ -2199,7 +2199,7 @@ Session notes from `@product-translator`.
     "scaffold_stack --stack full"
   ],
   "post_intake": [
-    "@skill-orchestrator write_skills_index",
+    "@heyeddi-orchestrator write_skills_index",
     "@heyeddi-design document"
   ]
 }
@@ -2216,13 +2216,13 @@ TaskFlow integration eval — team task manager for small B2B teams (5–30 peop
 
 ## Interpretation
 
-TaskFlow targets small B2B teams who need lightweight task coordination without enterprise PM sprawl. Three personas: Jordan (team lead), Riley (IC), Sam (buyer/evaluator). Four routes: public marketing (/), sign-in (/login), team roster dashboard (/dashboard), and settings (/settings) with design-handoff mockups. Stack is Vue 3 + PrimeVue + OpenProps frontend with FastAPI backend on port 8090.
+TaskFlow targets small B2B teams who need lightweight task coordination without enterprise PM sprawl. Three personas: Jordan (team lead), Riley (IC), Sam (buyer/evaluator). Four routes: public marketing (/), sign-in (/login), team roster dashboard (/dashboard), and settings (/settings) with heyeddi-handoff mockups. Stack is Vue 3 + PrimeVue + OpenProps frontend with FastAPI backend on port 8090.
 
 ## Decisions
 
 - ≥3 personas including buyer + daily users
 - route_intent covers all four page routes
-- settings routed to design-handoff with existing PNG mockups
+- settings routed to heyeddi-handoff with existing PNG mockups
 - no feature Vue during intake — baseline App.vue shell only
 
 ## Open questions
@@ -2303,7 +2303,7 @@ Plain, confident, no buzzwords. Verb-first buttons (Start free trial, Sign in). 
 
 See `.heyeddi/docs/intake/skill-routing.json` for which `@skill` runs per route.
 
-_Authored by `@product-translator` via `write_product.py` — do not edit structure by hand._
+_Authored by `@heyeddi-intake` via `write_product.py` — do not edit structure by hand._
 
 ```
 
@@ -2351,14 +2351,14 @@ _Authored by `@product-translator` via `write_product.py` — do not edit struct
       "triggers": []
     },
     {
-      "name": "design-handoff",
+      "name": "heyeddi-handoff",
       "description": "Implements screens from designer screenshots and handoff notes. Two-pass workflow \u2014 designer writes mockup-brief with Implementation spec, implementer builds shell then route, verify_handoff checks tokens and layout. Use when approved mockups exist \u2014 not for greenfield design.",
       "scoring_text": "Screenshot-first design implementation (Vue) Implements screens from designer screenshots and handoff notes. Two-pass workflow \u2014 designer writes mockup-brief with Implementation spec, implementer builds shell then route, verify_handoff checks tokens and layout. Use when approved mockups exist \u2014 not for greenfield design.",
       "version": "",
       "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/design-handoff/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/design-handoff",
-      "invoke_as": "@design-handoff",
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-handoff/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-handoff",
+      "invoke_as": "@heyeddi-handoff",
       "has_triggers_file": false,
       "triggers": []
     },
@@ -2424,8 +2424,8 @@ _Authored by `@product-translator` via `write_product.py` — do not edit struct
     },
     {
       "name": "heyeddi-design",
-      "description": "End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens \u2014 OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend \u2014 e.g. \"enterprise view\", \"critique the login page\", \"this UI looks bad\", \"settings page\". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff \u2014 use design-handoff instead.",
-      "scoring_text": "Design from scratch (replaces impeccable) End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens \u2014 OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend \u2014 e.g. \"enterprise view\", \"critique the login page\", \"this UI looks bad\", \"settings page\". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff \u2014 use design-handoff instead.",
+      "description": "End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens \u2014 OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend \u2014 e.g. \"enterprise view\", \"critique the login page\", \"this UI looks bad\", \"settings page\". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff \u2014 use heyeddi-handoff instead.",
+      "scoring_text": "Design from scratch (replaces impeccable) End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens \u2014 OpenProps on scaffold default). Use when the user wants to design, explore, critique, or improve existing frontend \u2014 e.g. \"enterprise view\", \"critique the login page\", \"this UI looks bad\", \"settings page\". Runs discovery, critique, polish, craft, document. Sub-commands init, discover, shape, craft, critique, polish, document. Not for pre-made screenshot handoff \u2014 use heyeddi-handoff instead.",
       "version": "2.0.0",
       "installed": true,
       "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-design/SKILL.md",
@@ -2460,14 +2460,14 @@ _Authored by `@product-translator` via `write_product.py` — do not edit struct
       "triggers": []
     },
     {
-      "name": "pr-review-responder",
+      "name": "heyeddi-pr-respond",
       "description": "Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR review feedback with fix-vs-decline rules \u2014 stricter than built-in /babysit.",
       "scoring_text": "Team PR review response workflow Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR review feedback with fix-vs-decline rules \u2014 stricter than built-in /babysit.",
       "version": "",
       "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/pr-review-responder/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/pr-review-responder",
-      "invoke_as": "@pr-review-responder",
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-pr-respond/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-pr-respond",
+      "invoke_as": "@heyeddi-pr-respond",
       "has_triggers_file": false,
       "triggers": []
     },
@@ -2496,14 +2496,14 @@ _Authored by `@product-translator` via `write_product.py` — do not edit struct
       "triggers": []
     },
     {
-      "name": "product-translator",
-      "description": "Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), professional mockups, mockup briefs, and skill-routing under .heyeddi/. Use first on new projects before @heyeddi-design, @design-handoff, or @flutter-engineering. Never hand-write product.md \u2014 use write_product.",
-      "scoring_text": "User prompt \u2192 product.md, mockups, briefs, skill-routing for downstream agents Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), professional mockups, mockup briefs, and skill-routing under .heyeddi/. Use first on new projects before @heyeddi-design, @design-handoff, or @flutter-engineering. Never hand-write product.md \u2014 use write_product.",
+      "name": "heyeddi-intake",
+      "description": "Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), professional mockups, mockup briefs, and skill-routing under .heyeddi/. Use first on new projects before @heyeddi-design, @heyeddi-handoff, or @flutter-engineering. Never hand-write product.md \u2014 use write_product.",
+      "scoring_text": "User prompt \u2192 product.md, mockups, briefs, skill-routing for downstream agents Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), professional mockups, mockup briefs, and skill-routing under .heyeddi/. Use first on new projects before @heyeddi-design, @heyeddi-handoff, or @flutter-engineering. Never hand-write product.md \u2014 use write_product.",
       "version": "1.1.0",
       "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/product-translator/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/product-translator",
-      "invoke_as": "@product-translator",
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-intake/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-intake",
+      "invoke_as": "@heyeddi-intake",
       "has_triggers_file": false,
       "triggers": []
     },
@@ -2520,14 +2520,14 @@ _Authored by `@product-translator` via `write_product.py` — do not edit struct
       "triggers": []
     },
     {
-      "name": "skill-orchestrator",
-      "description": "Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @product-translator when present.",
-      "scoring_text": "Discover available @skills and suggest which to invoke; reads skill-routing.json Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @product-translator when present.",
+      "name": "heyeddi-orchestrator",
+      "description": "Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @heyeddi-intake when present.",
+      "scoring_text": "Discover available @skills and suggest which to invoke; reads skill-routing.json Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session start, ambiguous requests, multi-skill pipelines, or when the user asks what skills are available. Reads skill-routing.json from @heyeddi-intake when present.",
       "version": "1.1.0",
       "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/skill-orchestrator/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/skill-orchestrator",
-      "invoke_as": "@skill-orchestrator",
+      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-orchestrator/SKILL.md",
+      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-orchestrator",
+      "invoke_as": "@heyeddi-orchestrator",
       "has_triggers_file": true,
       "triggers": [
         {
@@ -2608,7 +2608,7 @@ _Authored by `@product-translator` via `write_product.py` — do not edit struct
   ],
   "index_version": 1,
   "generated_at": "2026-07-04T23:17:31Z",
-  "generator": "skill-orchestrator@1.0.0",
+  "generator": "heyeddi-orchestrator@1.0.0",
   "installed_count": 22
 }
 
@@ -2618,7 +2618,7 @@ _Authored by `@product-translator` via `write_product.py` — do not edit struct
 ```
 # Skills index
 
-**Generated:** 2026-07-04T23:17:31Z · **Maintained by:** `@skill-orchestrator`
+**Generated:** 2026-07-04T23:17:31Z · **Maintained by:** `@heyeddi-orchestrator`
 
 Cached catalog — read this instead of every `SKILL.md` at session start. Refresh after installing skills: `write_skills_index --project-root .`
 
@@ -2629,7 +2629,7 @@ Cached catalog — read this instead of every `SKILL.md` at session start. Refre
 | backend-type-bridger | @backend-type-bridger | yes | Syncs FastAPI OpenAPI schema to TypeScript types and reads Firestore schema hints. Use when writing Vue composables a... |
 | composable-patterns | @composable-patterns | yes | Provides FastAPI JWT and Firebase client composable patterns for consistent auth and data layers. Context-first skill... |
 | dart-type-bridger | @dart-type-bridger | yes | Syncs FastAPI OpenAPI schema to Dart model stubs and reads Firestore schema hints for Flutter projects. Use when writ... |
-| design-handoff | @design-handoff | yes | Implements screens from designer screenshots and handoff notes. Two-pass workflow — designer writes mockup-brief with... |
+| heyeddi-handoff | @heyeddi-handoff | yes | Implements screens from designer screenshots and handoff notes. Two-pass workflow — designer writes mockup-brief with... |
 | design-handoff-flutter | @design-handoff-flutter | yes | Implements Flutter screens from designer screenshots and handoff notes using Material 3. Two-pass workflow — mockup-b... |
 | design-system-generalizer | @design-system-generalizer | yes | Scans token and component usage patterns from a golden reference page and diffs violations on other routes. Use when ... |
 | engineering-excellence | @engineering-excellence | yes | Audits code for KISS, YAGNI, DRY, SOLID, and testability; maintains living engineering notes under .heyeddi/docs/engi... |
@@ -2638,12 +2638,12 @@ Cached catalog — read this instead of every `SKILL.md` at session start. Refre
 | heyeddi-design | @heyeddi-design | yes | End-to-end UI design for HeyEddi stack (PrimeVue, DESIGN.md, semantic tokens — OpenProps on scaffold default). Use wh... |
 | impeccable | @impeccable | yes | Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adap... |
 | no-duplicate-ui | @no-duplicate-ui | yes | Scans Vue files for duplicate component names and similar template overlap. Use during PR review or when refactoring ... |
-| pr-review-responder | @pr-review-responder | yes | Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR... |
+| heyeddi-pr-respond | @heyeddi-pr-respond | yes | Fetches all PR comment types (inline, review, discussion) via gh api for team review workflow. Use when addressing PR... |
 | pre-merge-gate | @pre-merge-gate | yes | Runs pre-merge checks (tests, build, types, optional UI audit) and returns a markdown pass/fail report. Use when QA a... |
 | primevue-openprops-architect | @primevue-openprops-architect | yes | Enforces PrimeVue + project design tokens when editing Vue or CSS. OpenProps rules apply only when the project alread... |
-| product-translator | @product-translator | yes | Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), professional mockups, mockup... |
+| heyeddi-intake | @heyeddi-intake | yes | Translates vague user prompts into HeyEddi product docs (personas, route intent, voice), professional mockups, mockup... |
 | project-engineering | @project-engineering | yes | Ensures HeyEddi projects have the right engineering stack — Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. ... |
-| skill-orchestrator | @skill-orchestrator | yes | Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session s... |
+| heyeddi-orchestrator | @heyeddi-orchestrator | yes | Discover HeyEddi skills, load the catalog, and suggest which @skills to invoke for the current task. Use at session s... |
 | update-pitches | @update-pitches | yes | Audits backend pitch stories in docs/_pitches/ against app/{models,routers,services}/ and syncs Summary.md and priori... |
 | ux-flow-auditor | @ux-flow-auditor | yes | Traces user task flows with Playwright — click depth, step success, friction — and writes reports to .heyeddi/docs/ux... |
 | verify-build | @verify-build | yes | Runs npm run build to catch Vite/Rollup failures before merge. Use when validating frontend changes or in CI pre-merg... |

@@ -4,7 +4,7 @@
 ## Designer prompt
 
 ```
-@design-handoff
+@heyeddi-handoff
 Route: /settings
 Attachments: desktop.png, mobile.png
 Notes: reuse SettingsSection; empty state on mobile

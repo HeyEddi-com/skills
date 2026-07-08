@@ -2,7 +2,7 @@
 
 Every HeyEddi app ships these **by default**. They are not optional upsells — document them in `.heyeddi/design.md` under **## Foundations (always on)** and implement in craft/handoff unless `product.md` explicitly defers one (with reason in Decision log).
 
-Read this file before `craft`, `polish`, `document`, or `@design-handoff` implementation.
+Read this file before `craft`, `polish`, `document`, or `@heyeddi-handoff` implementation.
 
 ---
 
@@ -93,12 +93,12 @@ Every route with async data or user input documents:
 
 ## 8. Handoff mockups (layout only)
 
-When `@design-handoff` receives designer PNGs:
+When `@heyeddi-handoff` receives designer PNGs:
 
 - Mockups define **where** things go — shell topology, cards, field order, CTA placement, responsive structure.
 - Mockups do **not** define brand colors — use this file's **Colors** / **Components** and project semantic tokens (OpenProps-backed or custom — see `token-strategy.md`).
 - Always implement **layout components** + PrimeVue primitives; never flat unstyled forms on a bare page background.
-- See `design-handoff/reference/mockup-contract.md`.
+- See `heyeddi-handoff/reference/mockup-contract.md`.
 
 ## 9. Privacy & safety (UI layer)
 

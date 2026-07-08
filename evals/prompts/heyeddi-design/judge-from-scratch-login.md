@@ -16,4 +16,4 @@ Independent **@heyeddi-design** eval — no mockup PNGs.
 - **FAIL if:** only email + password + button with no utility row; no deferred wiring doc; ugly/cramped captures in `.heyeddi/audits/eval-capture/`
 - Tests/build clean
 
-Do not require @design-handoff.
+Do not require @heyeddi-handoff.

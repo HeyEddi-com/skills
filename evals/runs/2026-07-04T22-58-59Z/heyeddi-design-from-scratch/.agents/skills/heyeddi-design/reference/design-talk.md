@@ -1,6 +1,6 @@
 # Design talk in `.heyeddi/design.md`
 
-Both **@heyeddi-design** and **@design-handoff** document in **one file**: `.heyeddi/design.md`.
+Both **@heyeddi-design** and **@heyeddi-handoff** document in **one file**: `.heyeddi/design.md`.
 
 ## Format reference
 
@@ -31,12 +31,12 @@ That voice is the target. HeyEddi adds **`## Decision log`** at the end for per-
 | `craft` | Components if new primitives | **Required** |
 | `critique` | No | No (report in `.heyeddi/docs/`) |
 | `polish` | Fix drift in Colors/Components | **Required** — cite critique |
-| `@design-handoff` | Components/layout if new patterns | **Required** |
+| `@heyeddi-handoff` | Components/layout if new patterns | **Required** |
 
 ## Decision log entry
 
 ```markdown
-### YYYY-MM-DD — <feature or route> (@heyeddi-design craft | @design-handoff)
+### YYYY-MM-DD — <feature or route> (@heyeddi-design craft | @heyeddi-handoff)
 
 **Context:** …
 

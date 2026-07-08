@@ -31,4 +31,4 @@ OUT="$("${AGENT_BIN}" -p --trust --workspace "${TMP}" --output-format text "Repl
 echo "OK  logged in"
 echo ""
 echo "Run evals:"
-echo "  uv run poe eval-design-handoff"
+echo "  uv run poe eval-heyeddi-handoff"

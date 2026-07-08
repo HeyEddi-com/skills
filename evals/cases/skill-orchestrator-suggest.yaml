@@ -1,18 +1,18 @@
-id: skill-orchestrator-suggest
+id: heyeddi-orchestrator-suggest
 skills:
-  - skill-orchestrator
+  - heyeddi-orchestrator
 project_template: product-app
-prompt_file: prompts/skill-orchestrator-suggest.md
+prompt_file: prompts/heyeddi-orchestrator-suggest.md
 verify_commands: []
 judge: |
-  @skill-orchestrator ran load_catalog + suggest_skills for settings handoff prompt and wrote/refreshed
+  @heyeddi-orchestrator ran load_catalog + suggest_skills for settings handoff prompt and wrote/refreshed
   .heyeddi/skills-index.md with ordered @skill recommendations. No UI implementation.
 assertions:
   - name: suggest-skills
     type: command
     cmd:
       - python3
-      - .agents/skills/skill-orchestrator/scripts/suggest_skills.py
+      - .agents/skills/heyeddi-orchestrator/scripts/suggest_skills.py
       - --project-root
       - "{project_root}"
       - --user-prompt

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate settings handoff mockup PNGs — layout references for evals.
 
-Hub tooling only: writes PNGs + minimal handoff.json. The **@design-handoff skill**
+Hub tooling only: writes PNGs + minimal handoff.json. The **@heyeddi-handoff skill**
 must read those images and **author** `mockup-brief.md` (see reference/interpret-mockups.md).
 """
 from __future__ import annotations
@@ -241,8 +241,8 @@ HANDOFF_JSON = {
     "mockup_contract": "layout_only",
     "notes": [
         "PNG colors are illustrative — implement colors from .heyeddi/design.md tokens",
-        "mockup-brief.md is NOT shipped — @design-handoff must write it from these PNGs before coding",
-        "See skills/design-handoff/reference/interpret-mockups.md",
+        "mockup-brief.md is NOT shipped — @heyeddi-handoff must write it from these PNGs before coding",
+        "See skills/heyeddi-handoff/reference/interpret-mockups.md",
     ],
 }
 

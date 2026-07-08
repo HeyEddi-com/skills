@@ -1,9 +1,9 @@
-"""Unit tests for PrimeVue Card slot verification in design-handoff."""
+"""Unit tests for PrimeVue Card slot verification in heyeddi-handoff."""
 from __future__ import annotations
 
 from _skill_loader import load_skill_script
 
-_vh = load_skill_script("design-handoff", "verify_handoff")
+_vh = load_skill_script("heyeddi-handoff", "verify_handoff")
 find_primevue_card_slot_issues = _vh.find_primevue_card_slot_issues
 
 
