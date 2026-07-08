@@ -27,3 +27,5 @@ build/
 
 # Local npx skills install copy (regenerable; hub source is skills/)
 .agents/
+!.agents/skills/
+.agents/**/__pycache__/
