@@ -206,20 +206,20 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
             args["fixture"] = str(fixture)
     if tool_name in ("check_doc_drift", "audit_pr_changes"):
         args["pr"] = 42
-        fixture = REPO_ROOT / "skills" / "pr-submission-review" / "fixtures" / "sample-pr-diff.json"
+        fixture = REPO_ROOT / "skills" / "heyeddi-pr-review" / "fixtures" / "sample-pr-diff.json"
         if fixture.is_file():
             args["fixture"] = str(fixture)
     if tool_name == "write_pr_review":
         args["pr"] = 42
         args["force"] = True
-        fixture = REPO_ROOT / "skills" / "pr-submission-review" / "fixtures" / "sample-pr-diff.json"
+        fixture = REPO_ROOT / "skills" / "heyeddi-pr-review" / "fixtures" / "sample-pr-diff.json"
         if fixture.is_file():
             args["fixture"] = str(fixture)
     if tool_name == "verify_pr_review":
         args["pr"] = 42
     if tool_name == "verify_response":
         args["pr"] = 42
-        fixture = REPO_ROOT / "skills" / "pr-review-responder" / "fixtures" / "sample-pr-comments.json"
+        fixture = REPO_ROOT / "skills" / "heyeddi-pr-respond" / "fixtures" / "sample-pr-comments.json"
         if fixture.is_file():
             args["fixture"] = str(fixture)
     if tool_name == "validate_composable":
@@ -292,7 +292,7 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
         args["user_prompt"] = "Smoke test app"
         args["summary"] = "Test product for skill smoke"
     if tool_name == "write_routing":
-        args["json"] = '{"routes":[{"route":"/settings","skill":"design-handoff"}]}'
+        args["json"] = '{"routes":[{"route":"/settings","skill":"heyeddi-handoff"}]}'
     if tool_name == "prepare_mockup_prompts":
         args["feature"] = "settings"
         args["route"] = "/settings"
@@ -329,6 +329,11 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
         args["docs_updated"] = ".heyeddi/docs/product/features/settings.md"
     if tool_name == "write_skills_index":
         args["dry_run"] = True
+    if tool_name == "migrate_heyeddi":
+        args["dry_run"] = True
+    if tool_name == "sync":
+        args["dry_run"] = True
+        args["skip_workflow"] = True
     if tool_name == "validate_provider":
         args["path"] = "lib/services/api_client.dart"
     return args
@@ -402,7 +407,7 @@ def smoke_test_tool(skill_dir: Path, tool: dict[str, Any], fixture_root: Path, r
 
 
 def fixture_for_skill(skill_name: str) -> Path:
-    if skill_name in ("product-translator", "product-manager"):
+    if skill_name in ("heyeddi-intake", "heyeddi-product"):
         return PRODUCT_TRANSLATOR_FIXTURE if PRODUCT_TRANSLATOR_FIXTURE.is_dir() else FIXTURE_ROOT
     if skill_name in FLUTTER_SKILLS and FLUTTER_FIXTURE_ROOT.is_dir():
         return FLUTTER_FIXTURE_ROOT
