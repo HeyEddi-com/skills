@@ -6,7 +6,6 @@ paths:
   - "**/use*.ts"
 ---
 
-
 # Composable Patterns
 
 ## When to use

@@ -498,3 +498,13 @@ Project-specific rules and preferences, appended over time.
 - Canonical install command in docs: `npx skills add HeyEddi-com/skills --skill <name>` (hub, not per-skill standalone repos).
 
 **Process:** Install counts = Vercel `npx skills add` only. Share repo page URL, not org page. Re-run `npx skills add` after release to refresh skills.sh cache. No custom HeyEddi usage telemetry in skills.
+
+## 2026-07-08 — Next-skill handoff at task complete — v2.0.6
+
+**Context:** User wants a copy-paste **prompt** for the next `@skill` when a pipeline task finishes (e.g. `@heyeddi-design craft /settings`), not `python scripts/...` paths.
+
+**Decision:**
+- `suggest_next_skill.py` returns `prompt` + `user_block` with **Prompt:** line for chat.
+- `--mode` (shape, craft, audit, sync, …) refines chain (e.g. design shape → craft).
+- 12 pipeline SKILL.md files — task complete only; utilities stripped.
+- `reference/next-skill-handoff.md` — examples table.

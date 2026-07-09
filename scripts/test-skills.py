@@ -109,6 +109,39 @@ def validate_structure(skill_dir: Path, report: RunReport) -> None:
     else:
         report.add(skill=name, tool="(structure)", layer="structure", ok=True, detail="SKILL.md frontmatter")
 
+    body = skill_md.read_text(encoding="utf-8")
+    pipeline_handoff = "## When the task is complete — suggest next skills"
+    if not fm.get("deprecated") and name in {
+        "heyeddi-intake",
+        "heyeddi-product",
+        "heyeddi-orchestrator",
+        "heyeddi-design",
+        "heyeddi-handoff",
+        "design-handoff-flutter",
+        "project-engineering",
+        "flutter-engineering",
+        "visual-auditor",
+        "pre-merge-gate",
+        "heyeddi-pr-review",
+        "heyeddi-pr-respond",
+    }:
+        if pipeline_handoff not in body:
+            report.add(
+                skill=name,
+                tool="(structure)",
+                layer="structure",
+                ok=False,
+                detail="missing task-complete next-skill section",
+            )
+        else:
+            report.add(
+                skill=name,
+                tool="(structure)",
+                layer="structure",
+                ok=True,
+                detail="task-complete next-skill section",
+            )
+
     if not (skill_dir / "context" / "VOCABULARY.md").is_file():
         report.add(skill=name, tool="(structure)", layer="structure", ok=False, detail="missing context/VOCABULARY.md")
     if not (skill_dir / "scripts" / "_skill_cli.py").is_file():

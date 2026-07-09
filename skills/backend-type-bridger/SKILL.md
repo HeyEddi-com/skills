@@ -7,7 +7,6 @@ paths:
   - "openapi.json"
 ---
 
-
 # Backend Type Bridger
 
 ## When to use

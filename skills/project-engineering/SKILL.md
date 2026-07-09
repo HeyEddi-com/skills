@@ -11,7 +11,6 @@ paths:
   - ".heyeddi/**"
 ---
 
-
 # Project Engineering
 
 Baseline **code engineering** for HeyEddi **Vue** apps. For **Flutter** frontends use `@flutter-engineering` instead. Detects which stacks apply and adds the **correct tooling** — not one-size-fits-all.
@@ -85,3 +84,21 @@ Run `dev_server_info` for project-specific steps. Each server needs its **own te
 - `backend-type-bridger` — OpenAPI / Firestore → TypeScript types
 - `composable-patterns` — FastAPI JWT vs Firebase client composables
 - `verify-build` — production frontend build
+## When the task is complete — suggest next skills
+
+When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
+
+1. Run:
+
+   ```bash
+   python .agents/skills/heyeddi-orchestrator/scripts/suggest_next_skill.py --current-skill project-engineering --project-root .
+   ```
+
+   Add `--route /path` if you worked a specific route.
+
+2. Include the script's **`### Next step`** block in your **final** reply. The user copies the **Prompt** line into chat (e.g. `@heyeddi-design craft /settings`).
+
+Pass `--mode shape` (or `craft`, `audit`, etc.) when you know which sub-command just finished.
+
+See `@heyeddi-orchestrator` → `reference/next-skill-handoff.md`.
+

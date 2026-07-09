@@ -57,12 +57,32 @@ If `.heyeddi/docs/intake/skill-routing.json` exists, **follow route order**.
 | `write_skills_index.py` | Scan → `.heyeddi/skills-index.*` (runs migrate first) |
 | `load_catalog.py` | Read cached index |
 | `suggest_skills.py` | Rank skills for a prompt |
+| `suggest_next_skill.py` | Next @skill + command after any skill finishes |
 | `init_workflow_sync.py` | Scaffold `.heyeddi/docs/workflow/` |
 | `load_workflow_context.py` | Sibling opinions + checklist for route |
 | `append_pillar_opinion.py` | Log opinion; request UX/design/product response |
+
+## When the task is complete — suggest next skills
+
+When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
+
+1. Run:
+
+   ```bash
+   python .agents/skills/heyeddi-orchestrator/scripts/suggest_next_skill.py --current-skill heyeddi-orchestrator --project-root .
+   ```
+
+   Add `--route /path` if you worked a specific route.
+
+2. Include the script's **`### Next step`** block in your **final** reply. The user copies the **Prompt** line into chat (e.g. `@heyeddi-design craft /settings`).
+
+Pass `--mode shape` (or `craft`, `audit`, etc.) when you know which sub-command just finished.
+
+See `@heyeddi-orchestrator` → `reference/next-skill-handoff.md`.
 
 ## Related
 
 - `@heyeddi-product` · `@ux-flow-auditor` · `@heyeddi-design` — three pillars
 - `@heyeddi-intake` — upstream intake
+- `reference/next-skill-handoff.md` — next-skill block when a pipeline task completes
 - `docs/cross-pillar-workflow.md` — hub summary

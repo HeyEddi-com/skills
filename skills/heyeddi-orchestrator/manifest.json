@@ -117,6 +117,23 @@
       "readonly": true
     },
     {
+      "name": "suggest_next_skill",
+      "description": "After a skill finishes, return the next @skill and concrete command (uses skill-routing.json when present).",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "project_root": { "type": "string" },
+          "hub_root": { "type": "string" },
+          "current_skill": { "type": "string" },
+          "route": { "type": "string" },
+          "mode": { "type": "string", "description": "Sub-command just finished (shape, craft, audit, sync, …)" }
+        },
+        "required": ["project_root", "current_skill"]
+      },
+      "script": "scripts/suggest_next_skill.py",
+      "readonly": true
+    },
+    {
       "name": "init_workflow_sync",
       "description": "Scaffold .heyeddi/docs/workflow/ for product+UX+design cross-pillar opinions.",
       "parameters": {

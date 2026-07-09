@@ -4,7 +4,6 @@ description: Scans token and component usage patterns from a golden reference pa
 disable-model-invocation: true
 ---
 
-
 # Design System Generalizer
 
 ## When to use
