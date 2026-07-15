@@ -5,7 +5,6 @@ paths:
   - "**/*.vue"
 ---
 
-
 # No Duplicate UI
 
 ## When to use

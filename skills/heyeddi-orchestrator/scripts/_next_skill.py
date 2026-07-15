@@ -4,7 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-from _catalog import load_routing, read_aliases, resolve_canonical
+from _catalog import load_routing
 
 ORCHESTRATOR_SCRIPT = (
     ".agents/skills/heyeddi-orchestrator/scripts/suggest_next_skill.py"
@@ -240,12 +240,10 @@ def _next_from_routing(
     current_skill: str,
     *,
     current_route: str | None,
-    aliases: dict[str, str],
 ) -> dict[str, str] | None:
     routes: list[dict[str, Any]] = list(routing.get("routes") or [])
-    canonical = resolve_canonical(current_skill, aliases)
 
-    if canonical == "heyeddi-intake":
+    if current_skill == "heyeddi-intake":
         scaffold = routing.get("scaffold") or []
         if scaffold:
             return _scaffold_entry(
@@ -255,14 +253,14 @@ def _next_from_routing(
         if routes:
             first = routes[0]
             return _route_entry(
-                resolve_canonical(str(first.get("skill") or ""), aliases),
+                str(first.get("skill") or ""),
                 first,
                 why="First routed surface after intake.",
             )
 
-    if canonical in {"project-engineering", "flutter-engineering"}:
+    if current_skill in {"project-engineering", "flutter-engineering"}:
         scaffold = routing.get("scaffold") or []
-        if len(scaffold) > 1 and canonical == resolve_canonical(str(scaffold[0]).split()[0], aliases):
+        if len(scaffold) > 1 and current_skill == str(scaffold[0]).split()[0]:
             return _scaffold_entry(
                 str(scaffold[1]),
                 why="Second scaffold step from skill-routing.json.",
@@ -270,7 +268,7 @@ def _next_from_routing(
         if routes:
             first = routes[0]
             return _route_entry(
-                resolve_canonical(str(first.get("skill") or ""), aliases),
+                str(first.get("skill") or ""),
                 first,
                 why="First design/handoff route after scaffold.",
             )
@@ -284,8 +282,8 @@ def _next_from_routing(
 
     if index is None:
         for idx, route in enumerate(routes):
-            route_skill = resolve_canonical(str(route.get("skill") or ""), aliases)
-            if route_skill == canonical:
+            route_skill = str(route.get("skill") or "")
+            if route_skill == current_skill:
                 index = idx
                 break
 
@@ -293,7 +291,7 @@ def _next_from_routing(
         nxt = routes[index + 1]
         prev = routes[index]
         return _route_entry(
-            resolve_canonical(str(nxt.get("skill") or ""), aliases),
+            str(nxt.get("skill") or ""),
             nxt,
             why=f"Next route after {prev.get('route', '?')} in skill-routing.json.",
         )
@@ -328,29 +326,24 @@ def suggest_next_skill(
     current_mode: str | None = None,
     hub_root: Path | None = None,
 ) -> dict[str, Any]:
-    from _catalog import find_hub_root  # noqa: PLC0415
-
-    hub = hub_root or find_hub_root(project_root)
-    aliases = read_aliases(hub)
     routing = load_routing(project_root)
 
-    canonical = resolve_canonical(current_skill or "", aliases) if current_skill else ""
+    skill = (current_skill or "").strip()
     mode = (current_mode or "").strip().lower()
     next_step: dict[str, str] | None = None
 
-    if mode and canonical in MODE_NEXT and mode in MODE_NEXT[canonical]:
-        next_step = dict(MODE_NEXT[canonical][mode])
+    if mode and skill in MODE_NEXT and mode in MODE_NEXT[skill]:
+        next_step = dict(MODE_NEXT[skill][mode])
         next_step["source"] = "mode-chain"
 
-    if next_step is None and routing and current_skill:
+    if next_step is None and routing and skill:
         next_step = _next_from_routing(
             routing,
-            canonical,
+            skill,
             current_route=current_route,
-            aliases=aliases,
         )
 
-    if next_step is None and canonical == "heyeddi-design" and not _has_mockups(
+    if next_step is None and skill == "heyeddi-design" and not _has_mockups(
         project_root, current_route, None
     ):
         next_step = {
@@ -360,8 +353,8 @@ def suggest_next_skill(
             "source": "default-chain",
         }
 
-    if next_step is None and canonical and canonical in DEFAULT_NEXT:
-        next_step = dict(DEFAULT_NEXT[canonical])
+    if next_step is None and skill and skill in DEFAULT_NEXT:
+        next_step = dict(DEFAULT_NEXT[skill])
         next_step["source"] = "default-chain"
 
     if next_step is None:
@@ -378,7 +371,7 @@ def suggest_next_skill(
     next_step.pop("command", None)
 
     helper = (
-        f"python {ORCHESTRATOR_SCRIPT} --current-skill {canonical or current_skill or 'heyeddi-orchestrator'} "
+        f"python {ORCHESTRATOR_SCRIPT} --current-skill {skill or 'heyeddi-orchestrator'} "
         f"--project-root ."
     )
     if current_route:
@@ -387,7 +380,7 @@ def suggest_next_skill(
         helper += f' --mode "{mode}"'
 
     return {
-        "current_skill": canonical or current_skill,
+        "current_skill": skill or current_skill,
         "current_mode": mode or None,
         "routing_found": routing is not None,
         "next": next_step,

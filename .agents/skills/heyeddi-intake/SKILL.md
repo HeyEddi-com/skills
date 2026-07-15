@@ -7,9 +7,9 @@ paths:
 version: 1.3.0
 ---
 
-# Product Translator
+# HeyEddi Intake
 
-**Upstream intake agent** — turns user language into structured artifacts other HeyEddi skills consume.
+**Upstream intake agent** — turns vague user language into `.heyeddi/product.md`, handoff artifacts, and skill routing for downstream HeyEddi skills.
 
 You are **not** the implementer. You interpret, document, produce handoff artifacts, route, and **verify**.
 
@@ -71,6 +71,24 @@ See **`reference/pipeline.md`**. Summary:
 ## Clarify before act
 
 Read `reference/clarify-before-act.md`. One round if personas/competitors missing from user prompt.
+
+## When the task is complete — suggest next skills
+
+When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
+
+1. Run:
+
+   ```bash
+   python .agents/skills/heyeddi-orchestrator/scripts/suggest_next_skill.py --current-skill heyeddi-intake --project-root .
+   ```
+
+   Add `--route /path` if you worked a specific route.
+
+2. Include the script's **`### Next step`** block in your **final** reply. The user copies the **Prompt** line into chat (e.g. `@heyeddi-design craft /settings`).
+
+Pass `--mode shape` (or `craft`, `audit`, etc.) when you know which sub-command just finished.
+
+See `@heyeddi-orchestrator` → `reference/next-skill-handoff.md`.
 
 ## Related
 

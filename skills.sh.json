@@ -41,18 +41,6 @@
         "ux-flow-auditor",
         "visual-auditor"
       ]
-    },
-    {
-      "title": "Deprecated v1 aliases",
-      "description": "Backward-compat stubs — use the heyeddi-* names above. Removed in v3.0.0.",
-      "skills": [
-        "product-translator",
-        "product-manager",
-        "skill-orchestrator",
-        "design-handoff",
-        "pr-submission-review",
-        "pr-review-responder"
-      ]
     }
   ]
 }

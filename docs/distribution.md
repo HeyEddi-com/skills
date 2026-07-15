@@ -1,6 +1,6 @@
 # Skill distribution
 
-**Date:** 2026-07-08 · **Release:** v2.0.5
+**Date:** 2026-07-14 · **Release:** v3.0.0
 
 ## Vercel ecosystem (skills.sh + `npx skills`)
 
@@ -10,7 +10,7 @@ There is **no deploy step** and **no submission form**. Distribution is GitHub +
 |---------|--------------------------|-------------------|
 | **CLI** (`npx skills`) | `npx skills add HeyEddi-com/skills -a cursor -y --skill '*'` | Keep repo public; tag releases |
 | **skills.sh** | Same install command; leaderboard from [install telemetry](https://www.skills.sh/privacy) | `skills.sh.json` at repo root; share repo page URL |
-| **Pinned version** | `npx skills add https://github.com/HeyEddi-com/skills/tree/v2.0.5 -a cursor -y --skill '*'` | Tag releases on GitHub |
+| **Pinned version** | `npx skills add https://github.com/HeyEddi-com/skills/tree/v3.0.0 -a cursor -y --skill '*'` | Tag releases on GitHub |
 
 **CLI flag trap:** `--all` = all skills **and all agents** (creates `agent/skills/` for Eve, etc.). For Cursor-only, use `-a cursor --skill '*'`, not `--all`.
 
@@ -23,7 +23,6 @@ There is **no deploy step** and **no submission form**. Distribution is GitHub +
 - **Canonical page:** [skills.sh/heyeddi-com/skills](https://www.skills.sh/heyeddi-com/skills) — install command and GitHub link point at `github.com/HeyEddi-com/skills`.
 - **Org page:** [skills.sh/heyeddi-com](https://www.skills.sh/heyeddi-com) — GitHub button goes to the org profile only (platform limitation).
 - **Customize layout:** root [`skills.sh.json`](../skills.sh.json) groups Pipeline / Engineering / Design & QA ([docs](https://skills.sh/docs/customize)).
-- **Deprecated v1 aliases** (`design-handoff`, `product-translator`, …) are `metadata.internal: true` — hidden from `npx skills add --list` by default.
 - **Install counts** on the leaderboard come from the Vercel CLI's own [install telemetry](https://www.skills.sh/privacy); this repo collects nothing.
 
 ## Cursor Marketplace (separate from Vercel)

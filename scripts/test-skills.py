@@ -362,8 +362,6 @@ def default_args_for_tool(tool_name: str, skill_name: str, fixture_root: Path) -
         args["docs_updated"] = ".heyeddi/docs/product/features/settings.md"
     if tool_name == "write_skills_index":
         args["dry_run"] = True
-    if tool_name == "migrate_heyeddi":
-        args["dry_run"] = True
     if tool_name == "sync":
         args["dry_run"] = True
         args["skip_workflow"] = True

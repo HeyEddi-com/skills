@@ -7,7 +7,6 @@ paths:
   - "**/*.scss"
 ---
 
-
 # PrimeVue + project tokens
 
 Enforces PrimeVue and the project's **semantic token** system. **OpenProps is optional** — detect before enforcing OpenProps-specific rules.

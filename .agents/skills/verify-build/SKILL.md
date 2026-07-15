@@ -7,7 +7,6 @@ paths:
   - "**/*.ts"
 ---
 
-
 # Verify Build
 
 ## When to use

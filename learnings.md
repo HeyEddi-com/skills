@@ -508,3 +508,21 @@ Project-specific rules and preferences, appended over time.
 - `--mode` (shape, craft, audit, sync, …) refines chain (e.g. design shape → craft).
 - 12 pipeline SKILL.md files — task complete only; utilities stripped.
 - `reference/next-skill-handoff.md` — examples table.
+
+## 2026-07-14 — Remove deprecated v1 skill alias folders
+
+**Context:** User asked to remove all deprecated skill names (v1 aliases from v2 rename).
+
+**Planned (awaiting approval):** Delete the 6 deprecated alias install folders (`product-translator`, `product-manager`, `skill-orchestrator`, `design-handoff`, `pr-submission-review`, `pr-review-responder`) from `skills/`, mirrored `.agents/skills/` and `plugins/heyeddi-skills/skills/`. Update `skills.sh.json`, `skills-lock.json`, README/docs counts. Keep `skill-name-aliases.json` + migrate path so consumer `.heyeddi/` artifacts still remap old names (unless user requests full alias-map removal). Leave `design-handoff-flutter` (not deprecated). Leave historical `evals/runs/` snapshots untouched.
+
+## 2026-07-14 — v3.0.0 remove all v1 skill aliases
+
+**Context:** User approved full removal — alias folders, alias map, migrate path, and bootstrap scripts. Only they use these skills.
+
+**Decision / Executed:**
+- Deleted 6 alias stub folders from `skills/` and `.agents/skills/` (`product-translator`, `product-manager`, `skill-orchestrator`, `design-handoff`, `pr-submission-review`, `pr-review-responder`). Kept `design-handoff-flutter`.
+- Removed `scripts/skill-name-aliases.json`, `bootstrap-skill-aliases.py`, `apply-v2-skill-names.py`, `migrate-skill-names-v2.py`, `tests/test_skill_aliases.py`, orchestrator `_heyeddi_migrate.py` / `migrate_heyeddi.py`.
+- Stripped alias resolution from `_catalog.py` / `_next_skill.py`; auto-sync + `sync` only refresh skills index.
+- Bumped registry / README / plugin / orchestrator to **v3.0.0**; cleared deprecated grouping in `skills.sh.json` and lock entries.
+- Regenerated fixture skills index; reinstalled `.agents/skills` from hub.
+- Left historical `evals/runs/` and `learnings.md` history entries as-is.

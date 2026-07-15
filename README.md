@@ -4,7 +4,7 @@
 
 Curated [Cursor Agent Skills](https://cursor.com/docs/context/skills) for HeyEddi product workflows — intake, design, engineering, QA, and merge. **All 22 skills ship as one package** from this repo; install the full set into your app or Cursor global skills with a single command.
 
-**Status:** **v2.0.5** · 22 canonical skills + 6 deprecated aliases · [Release v2.0.5](https://github.com/HeyEddi-com/skills/releases/tag/v2.0.5)
+**Status:** **v3.0.0** · 22 skills · [Release v3.0.0](https://github.com/HeyEddi-com/skills/releases/tag/v3.0.0)
 
 ## About HeyEddi
 
@@ -51,7 +51,7 @@ List names in [skills-registry.json](skills-registry.json) or the catalog below.
 ### Pin a release tag
 
 ```bash
-npx skills add https://github.com/HeyEddi-com/skills/tree/v2.0.5 -a cursor -y --skill '*'
+npx skills add https://github.com/HeyEddi-com/skills/tree/v3.0.0 -a cursor -y --skill '*'
 ```
 
 ### Cursor Team Marketplace (teams / enterprise)
@@ -159,7 +159,7 @@ Evals give the agent a **goal**, not a script. Each skill must run its real work
 |-----|--------|
 | [docs/skills-roadmap.md](docs/skills-roadmap.md) | Build plan |
 | [docs/distribution.md](docs/distribution.md) | Single-package install + marketplaces |
-| [docs/v2-skill-naming.md](docs/v2-skill-naming.md) | v2 `heyeddi-*` spine renames + alias migration |
+| [docs/v2-skill-naming.md](docs/v2-skill-naming.md) | Historical ADR — v2 `heyeddi-*` spine renames (aliases removed in v3.0.0) |
 | [docs/pr-workflows.md](docs/pr-workflows.md) | Two PR workflows — submission review vs respond |
 | [docs/team-cheat-sheet.md](docs/team-cheat-sheet.md) | Designer + QA reference |
 | [docs/cloud-agent-integration.md](docs/cloud-agent-integration.md) | Pydantic AI / LangChain |

@@ -1,9 +1,9 @@
 # v2 skill naming — `heyeddi-*` spine + aliases
 
 **Date:** 2026-07-07  
-**Status:** Planned → **Implemented in v2.0.0** (2026-07-07)  
+**Status:** Historical ADR — v2 implemented 2026-07-07; **aliases removed in v3.0.0** (2026-07-14)  
 **Target release:** v2.0.0  
-**Current release:** v2.0.0 (22 canonical skills + 6 deprecated aliases)
+**Current release:** v3.0.0 (22 skills; no v1 alias folders or alias map)
 
 ## Goal
 
@@ -146,14 +146,12 @@ Generated JSON in app repos must migrate or dual-read:
 
 **Migration (automatic):** Any HeyEddi skill tool call auto-syncs `.heyeddi/` (v1 → v2 names, skills index). Optional: `@heyeddi-orchestrator` `sync` for full sync + workflow scaffold. Hub CLI: `scripts/migrate-skill-names-v2.py` (delegates to skill).
 
-### Phase D — v3.0.0 (remove aliases)
+### Phase D — v3.0.0 (remove aliases) — **DONE 2026-07-14**
 
-- Remove alias stub folders from hub
-- Remove alias keys from registry
-- Eval cases and docs use canonical names only
+- [x] Remove alias stub folders from hub (`product-translator`, `product-manager`, `skill-orchestrator`, `design-handoff`, `pr-submission-review`, `pr-review-responder`)
+- [x] Remove alias keys / `skill-name-aliases.json` / migrate path / `bootstrap-skill-aliases.py`
+- [x] Eval cases and docs use canonical names only
 - Release note: "v1 skill names removed; use heyeddi-* spine"
-
-**Deprecation window:** v2.0.0 → v2.x (minimum one minor cycle, ~3–6 months).
 
 ---
 

@@ -4,10 +4,9 @@ description: Implements screens from designer screenshots and handoff notes. Two
 disable-model-invocation: true
 ---
 
+# HeyEddi Handoff
 
-# Design Handoff
-
-**Designer then implementer** — same agent, two explicit passes. See `reference/handoff-to-code.md`.
+**Screenshot-first Vue implementation** — designer then implementer in two explicit passes (mockup-brief → shell → route). See `reference/handoff-to-code.md`.
 
 ## Subagents (default)
 
@@ -54,3 +53,21 @@ Gate each phase before launching the next subagent.
 - Wireframe / ASCII: `reference/low-fidelity-mockups.md` + `wireframe.md` (no PNG required)
 - PrimeVue Card slots: `reference/primevue-card-slots.md` — body content in `<template #content>`
 - Penpot (future): `reference/penpot-mode.md`
+## When the task is complete — suggest next skills
+
+When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
+
+1. Run:
+
+   ```bash
+   python .agents/skills/heyeddi-orchestrator/scripts/suggest_next_skill.py --current-skill heyeddi-handoff --project-root .
+   ```
+
+   Add `--route /path` if you worked a specific route.
+
+2. Include the script's **`### Next step`** block in your **final** reply. The user copies the **Prompt** line into chat (e.g. `@heyeddi-design craft /settings`).
+
+Pass `--mode shape` (or `craft`, `audit`, etc.) when you know which sub-command just finished.
+
+See `@heyeddi-orchestrator` → `reference/next-skill-handoff.md`.
+

@@ -5,9 +5,9 @@ version: 1.0.0
 disable-model-invocation: true
 ---
 
-# PR Submission Review
+# HeyEddi PR Review
 
-**Review what was committed — not local WIP.**
+**Submitted PR review workflow** — judges only committed changes (`base...head`), not local WIP.
 
 You are the **reviewer** workflow. Scope every judgment to the PR diff (`base...head`). Ignore uncommitted files.
 
@@ -72,3 +72,21 @@ Optional: post GitHub review via `gh pr review` when user asks — default is re
 | `@engineering-excellence` | Deeper audit when `audit_pr_changes` flags issues |
 | `@pre-merge-gate` | Final hard gate |
 | `@heyeddi-pr-respond` | **After** review — address human feedback |
+## When the task is complete — suggest next skills
+
+When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
+
+1. Run:
+
+   ```bash
+   python .agents/skills/heyeddi-orchestrator/scripts/suggest_next_skill.py --current-skill heyeddi-pr-review --project-root .
+   ```
+
+   Add `--route /path` if you worked a specific route.
+
+2. Include the script's **`### Next step`** block in your **final** reply. The user copies the **Prompt** line into chat (e.g. `@heyeddi-design craft /settings`).
+
+Pass `--mode shape` (or `craft`, `audit`, etc.) when you know which sub-command just finished.
+
+See `@heyeddi-orchestrator` → `reference/next-skill-handoff.md`.
+

@@ -112,25 +112,7 @@ STOP_WORDS = frozenset(
 )
 
 INDEX_VERSION = 1
-GENERATOR = "heyeddi-orchestrator@2.0.0"
-
-
-def read_aliases(hub_root: Path | None) -> dict[str, str]:
-    """Map deprecated alias name -> canonical skill name."""
-    if hub_root:
-        aliases_path = hub_root / "scripts" / "skill-name-aliases.json"
-        if aliases_path.is_file():
-            data = json.loads(aliases_path.read_text(encoding="utf-8"))
-            return dict(data.get("aliases", {}))
-        registry_path = hub_root / "skills-registry.json"
-        if registry_path.is_file():
-            data = json.loads(registry_path.read_text(encoding="utf-8"))
-            return dict(data.get("aliases", {}))
-    return {}
-
-
-def resolve_canonical(name: str, aliases: dict[str, str]) -> str:
-    return aliases.get(name, name)
+GENERATOR = "heyeddi-orchestrator@3.0.0"
 
 
 def skills_index_json(project_root: Path) -> Path:
@@ -192,11 +174,6 @@ def render_skills_index_md(catalog: dict[str, Any]) -> str:
 
 
 def write_skills_index(project_root: Path, hub_root: Path | None = None) -> dict[str, Any]:
-    from _heyeddi_migrate import migrate_heyeddi
-
-    skill_dir = Path(__file__).resolve().parent
-    migration = migrate_heyeddi(project_root, hub_root=hub_root, skill_dir=skill_dir)
-
     catalog = build_catalog(project_root, hub_root)
     catalog["index_version"] = INDEX_VERSION
     catalog["generated_at"] = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -217,7 +194,6 @@ def write_skills_index(project_root: Path, hub_root: Path | None = None) -> dict
         "generated_at": catalog["generated_at"],
         "skill_count": catalog["skill_count"],
         "installed_count": catalog["installed_count"],
-        "heyeddi_migration": migration,
     }
 
 
@@ -229,12 +205,6 @@ def get_catalog(
     write_if_missing: bool = True,
 ) -> dict[str, Any]:
     """Prefer `.heyeddi/skills-index.json`; scan filesystem when missing or refresh."""
-    if refresh:
-        from _heyeddi_migrate import migrate_heyeddi
-
-        skill_dir = Path(__file__).resolve().parent
-        migrate_heyeddi(project_root, hub_root=hub_root, skill_dir=skill_dir)
-
     if not refresh:
         cached = load_skills_index(project_root)
         if cached:
@@ -434,8 +404,6 @@ def build_catalog(project_root: Path, hub_root: Path | None = None) -> dict[str,
         registry_desc = registry_description or ""
         scoring_text = " ".join(part for part in (registry_desc, fm_desc) if part).strip()
         trigger_list = load_skill_triggers(skill_md.parent if skill_md else None)
-        canonical = frontmatter.get("canonical") or ""
-        deprecated = frontmatter.get("deprecated", "").lower() in ("true", "yes", "1")
         item: dict[str, Any] = {
             "name": name,
             "description": fm_desc or registry_desc,
@@ -448,11 +416,6 @@ def build_catalog(project_root: Path, hub_root: Path | None = None) -> dict[str,
             "has_triggers_file": bool(trigger_list),
             "triggers": [{"pattern": pattern, "regex": is_regex} for pattern, is_regex in trigger_list],
         }
-        if canonical:
-            item["alias_of"] = canonical
-            item["deprecated"] = True
-        elif deprecated:
-            item["deprecated"] = True
         if source:
             item["source"] = source
         entries.append(item)
@@ -511,7 +474,6 @@ def suggest_skills(
 ) -> dict[str, Any]:
     catalog = get_catalog(project_root, hub_root, refresh=refresh_index)
     routing = load_routing(project_root)
-    aliases = read_aliases(hub_root or find_hub_root(project_root))
     suggestions: list[dict[str, Any]] = []
 
     if routing:
@@ -519,36 +481,30 @@ def suggest_skills(
             skill = route.get("skill")
             if not skill:
                 continue
-            canonical = resolve_canonical(skill, aliases)
             suggestions.append(
                 {
-                    "skill": canonical,
+                    "skill": skill,
                     "score": 100,
                     "reason": f"skill-routing.json route {route.get('route', '?')}",
                     "route": route.get("route"),
                     "feature": route.get("feature"),
                     "source": "skill-routing.json",
-                    **({"alias_from": skill} if canonical != skill else {}),
                 }
             )
         for scaffold_skill in routing.get("scaffold", []):
             name = scaffold_skill.split()[0] if isinstance(scaffold_skill, str) else ""
             if name:
-                canonical = resolve_canonical(name, aliases)
                 suggestions.append(
                     {
-                        "skill": canonical,
+                        "skill": name,
                         "score": 90,
                         "reason": "skill-routing.json scaffold step",
                         "source": "skill-routing.json",
-                        **({"alias_from": name} if canonical != name else {}),
                     }
                 )
 
     for entry in catalog["skills"]:
         if not entry.get("installed"):
-            continue
-        if entry.get("deprecated") and entry.get("alias_of"):
             continue
         score, reasons = score_entry(entry, user_prompt)
         if score <= 0:
@@ -564,9 +520,7 @@ def suggest_skills(
 
     merged: dict[str, dict[str, Any]] = {}
     for item in suggestions:
-        skill = resolve_canonical(item["skill"], aliases)
-        item = dict(item)
-        item["skill"] = skill
+        skill = item["skill"]
         existing = merged.get(skill)
         if existing is None or item["score"] > existing["score"]:
             merged[skill] = item

@@ -11,7 +11,7 @@ _ENSURED: set[str] = set()
 
 def _orchestrator_scripts(project_root: Path) -> Path | None:
     here = Path(__file__).resolve().parent
-    if (here / "_heyeddi_migrate.py").is_file():
+    if (here / "_catalog.py").is_file():
         return here
 
     candidates: list[Path] = []
@@ -24,7 +24,7 @@ def _orchestrator_scripts(project_root: Path) -> Path | None:
     candidates.append(here.parent.parent / "heyeddi-orchestrator" / "scripts")
 
     for path in candidates:
-        if path.is_dir() and (path / "_heyeddi_migrate.py").is_file():
+        if path.is_dir() and (path / "_catalog.py").is_file():
             return path
     return None
 
@@ -35,7 +35,7 @@ def ensure_heyeddi(
     refresh_index: bool = True,
     once_per_process: bool = True,
 ) -> dict[str, Any] | None:
-    """Migrate v1 skill names and refresh skills index when needed."""
+    """Refresh skills index when missing."""
     key = str(project_root.resolve())
     if once_per_process and key in _ENSURED:
         return None
@@ -52,13 +52,10 @@ def ensure_heyeddi(
         sys.path.insert(0, scripts_key)
 
     from _catalog import find_hub_root, write_skills_index  # noqa: PLC0415
-    from _heyeddi_migrate import migrate_heyeddi  # noqa: PLC0415
 
     hub_root = find_hub_root(project_root)
-    migration = migrate_heyeddi(project_root, hub_root=hub_root, skill_dir=scripts)
-
-    result: dict[str, Any] = {"heyeddi_migration": migration}
+    result: dict[str, Any] = {"status": "ok"}
     index_path = project_root / ".heyeddi" / "skills-index.json"
-    if refresh_index and (not index_path.is_file() or migration.get("files_changed", 0) > 0):
+    if refresh_index and not index_path.is_file():
         result.update(write_skills_index(project_root, hub_root))
     return result

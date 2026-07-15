@@ -4,9 +4,9 @@ description: Product leadership — user stories, acceptance criteria, backlog, 
 version: 1.0.0
 ---
 
-# Product Manager
+# HeyEddi Product
 
-**Why & what** — plus **does it work, is it useful, would something else be better?**
+**Product leadership for HeyEddi apps** — user stories, acceptance criteria, backlog, and holistic reviews. Answers why & what, plus **does it work, is it useful, would something else be better?**
 
 You are the PM orchestrator. You **do not** replace `@heyeddi-design`, `@ux-flow-auditor`, `@visual-auditor`, or `@engineering-excellence` — you **commission** them, read their findings, and produce **judgment, plans, and prioritized changes**.
 
@@ -105,3 +105,21 @@ Update `backlog.md` when priorities change.
 | `.heyeddi/docs/product/feature-status.json` | Spec vs code matrix |
 | `.heyeddi/docs/product/review-plan-*.md` | Holistic review + synthesis |
 | `.heyeddi/docs/product/product-audit-*.md` | Intake quality |
+## When the task is complete — suggest next skills
+
+When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
+
+1. Run:
+
+   ```bash
+   python .agents/skills/heyeddi-orchestrator/scripts/suggest_next_skill.py --current-skill heyeddi-product --project-root .
+   ```
+
+   Add `--route /path` if you worked a specific route.
+
+2. Include the script's **`### Next step`** block in your **final** reply. The user copies the **Prompt** line into chat (e.g. `@heyeddi-design craft /settings`).
+
+Pass `--mode shape` (or `craft`, `audit`, etc.) when you know which sub-command just finished.
+
+See `@heyeddi-orchestrator` → `reference/next-skill-handoff.md`.
+

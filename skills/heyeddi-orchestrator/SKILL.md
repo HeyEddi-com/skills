@@ -1,7 +1,7 @@
 ---
 name: heyeddi-orchestrator
-description: Discover HeyEddi skills, auto-sync .heyeddi/ (skill names + index), cross-pillar opinions, and suggest @skills. Use at session start, after reinstalling skills, or when connecting heyeddi-product, ux-flow-auditor, and heyeddi-design on a route.
-version: 2.0.0
+description: Discover HeyEddi skills, auto-sync .heyeddi/ (skills index), cross-pillar opinions, and suggest @skills. Use at session start, after reinstalling skills, or when connecting heyeddi-product, ux-flow-auditor, and heyeddi-design on a route.
+version: 3.0.0
 ---
 
 # HeyEddi Orchestrator
@@ -20,8 +20,7 @@ version: 2.0.0
 
 **You do not need a manual sync command.** Every HeyEddi skill tool call runs auto-sync first:
 
-1. **Migrates** v1 skill names in `.heyeddi/` → v2 `heyeddi-*` (routing JSON, index, docs)
-2. **Refreshes** `.heyeddi/skills-index.{json,md}` when missing or after migration changes
+1. **Refreshes** `.heyeddi/skills-index.{json,md}` when missing
 
 Reinstall skills (`npx skills add`) and keep working — the next `@heyeddi-intake`, `@heyeddi-product`, or orchestrator tool updates `.heyeddi/` automatically.
 
@@ -51,10 +50,9 @@ If `.heyeddi/docs/intake/skill-routing.json` exists, **follow route order**.
 
 | Script | Purpose |
 |--------|---------|
-| *(auto)* | Every tool — migrate skill names + refresh index when needed |
+| *(auto)* | Every tool — refresh index when missing |
 | `sync.py` | Optional full sync + workflow scaffold |
-| `migrate_heyeddi.py` | Migrate v1 `@skill` names in `.heyeddi/` only |
-| `write_skills_index.py` | Scan → `.heyeddi/skills-index.*` (runs migrate first) |
+| `write_skills_index.py` | Scan → `.heyeddi/skills-index.*` |
 | `load_catalog.py` | Read cached index |
 | `suggest_skills.py` | Rank skills for a prompt |
 | `suggest_next_skill.py` | Next @skill + command after any skill finishes |

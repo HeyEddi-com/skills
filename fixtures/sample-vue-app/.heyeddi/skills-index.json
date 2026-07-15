@@ -1,7 +1,7 @@
 {
   "hub_root": "/home/eddi/Projects/heyeddi/skills",
   "project_root": "/home/eddi/Projects/heyeddi/skills/fixtures/sample-vue-app",
-  "skill_count": 30,
+  "skill_count": 23,
   "skills": [
     {
       "name": "backend-type-bridger",
@@ -38,21 +38,6 @@
       "invoke_as": "@dart-type-bridger",
       "has_triggers_file": false,
       "triggers": []
-    },
-    {
-      "name": "design-handoff",
-      "description": "Deprecated alias for @heyeddi-handoff. Use @heyeddi-handoff \u2014 renamed in v2.0.0.",
-      "scoring_text": "Deprecated alias for @heyeddi-handoff. Use @heyeddi-handoff \u2014 renamed in v2.0.0.",
-      "version": "",
-      "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/design-handoff/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/design-handoff",
-      "invoke_as": "@design-handoff",
-      "has_triggers_file": false,
-      "triggers": [],
-      "alias_of": "heyeddi-handoff",
-      "deprecated": true,
-      "source": "local-only"
     },
     {
       "name": "design-handoff-flutter",
@@ -152,9 +137,9 @@
     },
     {
       "name": "heyeddi-orchestrator",
-      "description": "Discover HeyEddi skills, auto-sync .heyeddi/ (skill names + index), cross-pillar opinions, and suggest @skills. Use at session start, after reinstalling skills, or when connecting heyeddi-product, ux-flow-auditor, and heyeddi-design on a route.",
-      "scoring_text": "Discover available @skills and suggest which to invoke; reads skill-routing.json Discover HeyEddi skills, auto-sync .heyeddi/ (skill names + index), cross-pillar opinions, and suggest @skills. Use at session start, after reinstalling skills, or when connecting heyeddi-product, ux-flow-auditor, and heyeddi-design on a route.",
-      "version": "2.0.0",
+      "description": "Discover HeyEddi skills, auto-sync .heyeddi/ (skills index), cross-pillar opinions, and suggest @skills. Use at session start, after reinstalling skills, or when connecting heyeddi-product, ux-flow-auditor, and heyeddi-design on a route.",
+      "scoring_text": "Discover available @skills and suggest which to invoke; reads skill-routing.json Discover HeyEddi skills, auto-sync .heyeddi/ (skills index), cross-pillar opinions, and suggest @skills. Use at session start, after reinstalling skills, or when connecting heyeddi-product, ux-flow-auditor, and heyeddi-design on a route.",
+      "version": "3.0.0",
       "installed": true,
       "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-orchestrator/SKILL.md",
       "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/heyeddi-orchestrator",
@@ -224,19 +209,6 @@
       "triggers": []
     },
     {
-      "name": "impeccable",
-      "description": "Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing pages, dashboards, product UI, app shells, components, forms, settings, onboarding, and empty states. Handles UX review, visual hierarchy, information architecture, cognitive load, accessibility, performance, responsive behavior, theming, anti-patterns, typography, fonts, spacing, layout, alignment, color, motion, micro-interactions, UX copy, error states, edge cases, i18n, and reusable design systems or tokens. Also use for bland designs that need to become bolder or more delightful, loud designs that should become quieter, live browser iteration on UI elements, or ambitious visual effects that should feel technically extraordinary. Not for backend-only or non-UI tasks.",
-      "scoring_text": "Use when the user wants to design, redesign, shape, critique, audit, polish, clarify, distill, harden, optimize, adapt, animate, colorize, extract, or otherwise improve a frontend interface. Covers websites, landing pages, dashboards, product UI, app shells, components, forms, settings, onboarding, and empty states. Handles UX review, visual hierarchy, information architecture, cognitive load, accessibility, performance, responsive behavior, theming, anti-patterns, typography, fonts, spacing, layout, alignment, color, motion, micro-interactions, UX copy, error states, edge cases, i18n, and reusable design systems or tokens. Also use for bland designs that need to become bolder or more delightful, loud designs that should become quieter, live browser iteration on UI elements, or ambitious visual effects that should feel technically extraordinary. Not for backend-only or non-UI tasks.",
-      "version": "3.8.0",
-      "installed": true,
-      "skill_md": "/home/eddi/.cursor/skills/impeccable/SKILL.md",
-      "skill_dir": "/home/eddi/.cursor/skills/impeccable",
-      "invoke_as": "@impeccable",
-      "has_triggers_file": false,
-      "triggers": [],
-      "source": "local-only"
-    },
-    {
       "name": "no-duplicate-ui",
       "description": "Scans Vue files for duplicate component names and similar template overlap. Use during PR review or when refactoring UI to enforce DRY architecture.",
       "scoring_text": "Detect duplicate Vue UI Scans Vue files for duplicate component names and similar template overlap. Use during PR review or when refactoring UI to enforce DRY architecture.",
@@ -247,36 +219,6 @@
       "invoke_as": "@no-duplicate-ui",
       "has_triggers_file": false,
       "triggers": []
-    },
-    {
-      "name": "pr-review-responder",
-      "description": "Deprecated alias for @heyeddi-pr-respond. Use @heyeddi-pr-respond \u2014 renamed in v2.0.0.",
-      "scoring_text": "Deprecated alias for @heyeddi-pr-respond. Use @heyeddi-pr-respond \u2014 renamed in v2.0.0.",
-      "version": "",
-      "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/pr-review-responder/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/pr-review-responder",
-      "invoke_as": "@pr-review-responder",
-      "has_triggers_file": false,
-      "triggers": [],
-      "alias_of": "heyeddi-pr-respond",
-      "deprecated": true,
-      "source": "local-only"
-    },
-    {
-      "name": "pr-submission-review",
-      "description": "Deprecated alias for @heyeddi-pr-review. Use @heyeddi-pr-review \u2014 renamed in v2.0.0.",
-      "scoring_text": "Deprecated alias for @heyeddi-pr-review. Use @heyeddi-pr-review \u2014 renamed in v2.0.0.",
-      "version": "",
-      "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/pr-submission-review/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/pr-submission-review",
-      "invoke_as": "@pr-submission-review",
-      "has_triggers_file": false,
-      "triggers": [],
-      "alias_of": "heyeddi-pr-review",
-      "deprecated": true,
-      "source": "local-only"
     },
     {
       "name": "pre-merge-gate",
@@ -303,36 +245,6 @@
       "triggers": []
     },
     {
-      "name": "product-manager",
-      "description": "Deprecated alias for @heyeddi-product. Use @heyeddi-product \u2014 renamed in v2.0.0.",
-      "scoring_text": "Deprecated alias for @heyeddi-product. Use @heyeddi-product \u2014 renamed in v2.0.0.",
-      "version": "",
-      "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/product-manager/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/product-manager",
-      "invoke_as": "@product-manager",
-      "has_triggers_file": false,
-      "triggers": [],
-      "alias_of": "heyeddi-product",
-      "deprecated": true,
-      "source": "local-only"
-    },
-    {
-      "name": "product-translator",
-      "description": "Deprecated alias for @heyeddi-intake. Use @heyeddi-intake \u2014 renamed in v2.0.0.",
-      "scoring_text": "Deprecated alias for @heyeddi-intake. Use @heyeddi-intake \u2014 renamed in v2.0.0.",
-      "version": "",
-      "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/product-translator/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/product-translator",
-      "invoke_as": "@product-translator",
-      "has_triggers_file": false,
-      "triggers": [],
-      "alias_of": "heyeddi-intake",
-      "deprecated": true,
-      "source": "local-only"
-    },
-    {
       "name": "project-engineering",
       "description": "Ensures HeyEddi projects have the right engineering stack \u2014 Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, installs deps, runs tests, documents local dev servers. Use when the repo is thin or before design/feature work on any HeyEddi app.",
       "scoring_text": "Vue + FastAPI + Firebase scaffold, deps, dev servers, tests Ensures HeyEddi projects have the right engineering stack \u2014 Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, installs deps, runs tests, documents local dev servers. Use when the repo is thin or before design/feature work on any HeyEddi app.",
@@ -343,46 +255,6 @@
       "invoke_as": "@project-engineering",
       "has_triggers_file": false,
       "triggers": []
-    },
-    {
-      "name": "skill-orchestrator",
-      "description": "Deprecated alias for @heyeddi-orchestrator. Use @heyeddi-orchestrator \u2014 renamed in v2.0.0.",
-      "scoring_text": "Deprecated alias for @heyeddi-orchestrator. Use @heyeddi-orchestrator \u2014 renamed in v2.0.0.",
-      "version": "",
-      "installed": true,
-      "skill_md": "/home/eddi/Projects/heyeddi/skills/skills/skill-orchestrator/SKILL.md",
-      "skill_dir": "/home/eddi/Projects/heyeddi/skills/skills/skill-orchestrator",
-      "invoke_as": "@skill-orchestrator",
-      "has_triggers_file": true,
-      "triggers": [
-        {
-          "pattern": "which skill",
-          "regex": false
-        },
-        {
-          "pattern": "what skill",
-          "regex": false
-        },
-        {
-          "pattern": "available skills",
-          "regex": false
-        },
-        {
-          "pattern": "route to",
-          "regex": false
-        },
-        {
-          "pattern": "orchestrat",
-          "regex": false
-        },
-        {
-          "pattern": "skill catalog",
-          "regex": false
-        }
-      ],
-      "alias_of": "heyeddi-orchestrator",
-      "deprecated": true,
-      "source": "local-only"
     },
     {
       "name": "update-pitches",
@@ -435,7 +307,7 @@
     }
   ],
   "index_version": 1,
-  "generated_at": "2026-07-08T22:46:43Z",
-  "generator": "heyeddi-orchestrator@2.0.0",
-  "installed_count": 30
+  "generated_at": "2026-07-15T04:42:41Z",
+  "generator": "heyeddi-orchestrator@3.0.0",
+  "installed_count": 23
 }

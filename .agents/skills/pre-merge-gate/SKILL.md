@@ -4,7 +4,6 @@ description: Runs pre-merge checks (tests, build, types, optional UI audit) and 
 disable-model-invocation: true
 ---
 
-
 # Pre-merge Gate
 
 ## Subagents (default)
@@ -34,3 +33,21 @@ Run gate via **Task** `shell` subagent — `pre_merge_gate.py`. Main chat triage
 - visual audit on product routes (`visual-auditor` when installed; skips if Playwright missing)
 
 Use `--skip-duplicate-ui` or `--skip-visual-audit` to omit optional UI gates.
+## When the task is complete — suggest next skills
+
+When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
+
+1. Run:
+
+   ```bash
+   python .agents/skills/heyeddi-orchestrator/scripts/suggest_next_skill.py --current-skill pre-merge-gate --project-root .
+   ```
+
+   Add `--route /path` if you worked a specific route.
+
+2. Include the script's **`### Next step`** block in your **final** reply. The user copies the **Prompt** line into chat (e.g. `@heyeddi-design craft /settings`).
+
+Pass `--mode shape` (or `craft`, `audit`, etc.) when you know which sub-command just finished.
+
+See `@heyeddi-orchestrator` → `reference/next-skill-handoff.md`.
+

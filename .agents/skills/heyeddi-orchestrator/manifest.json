@@ -1,38 +1,21 @@
 {
   "skill": "heyeddi-orchestrator",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "tools": [
     {
       "name": "sync",
-      "description": "Full .heyeddi/ sync — migrate skill names, refresh skills index, init workflow if missing.",
+      "description": "Full .heyeddi/ sync — refresh skills index, init workflow if missing.",
       "parameters": {
         "type": "object",
         "properties": {
           "project_root": { "type": "string" },
           "hub_root": { "type": "string" },
-          "force_migrate": { "type": "boolean" },
           "skip_workflow": { "type": "boolean" },
           "dry_run": { "type": "boolean" }
         },
         "required": ["project_root"]
       },
       "script": "scripts/sync.py",
-      "readonly": false
-    },
-    {
-      "name": "migrate_heyeddi",
-      "description": "Migrate deprecated v1 skill names in .heyeddi/ to v2 heyeddi-* canonical names.",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "project_root": { "type": "string" },
-          "hub_root": { "type": "string" },
-          "dry_run": { "type": "boolean" },
-          "force": { "type": "boolean" }
-        },
-        "required": ["project_root"]
-      },
-      "script": "scripts/migrate_heyeddi.py",
       "readonly": false
     },
     {
@@ -114,6 +97,23 @@
         ]
       },
       "script": "scripts/suggest_skills.py",
+      "readonly": true
+    },
+    {
+      "name": "suggest_next_skill",
+      "description": "After a skill finishes, return the next @skill and concrete command (uses skill-routing.json when present).",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "project_root": { "type": "string" },
+          "hub_root": { "type": "string" },
+          "current_skill": { "type": "string" },
+          "route": { "type": "string" },
+          "mode": { "type": "string", "description": "Sub-command just finished (shape, craft, audit, sync, …)" }
+        },
+        "required": ["project_root", "current_skill"]
+      },
+      "script": "scripts/suggest_next_skill.py",
       "readonly": true
     },
     {
