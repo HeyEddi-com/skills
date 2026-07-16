@@ -8,6 +8,7 @@ import re
 from pathlib import Path
 
 from _skill_cli import emit, resolve_project_root
+from _untrusted_doc import UNTRUSTED_NOTE, wrap_untrusted_doc
 from _workflow_paths import (
     PILLARS,
     active_context_path,
@@ -67,7 +68,10 @@ def _tail_opinions(path: Path, route: str | None, limit: int = 5) -> list[dict]:
         body = "\n".join(lines[1:]).strip()
         if route and route not in header and route not in body:
             continue
-        entries.append({"header": header, "body": body[:500]})
+        wrapped = wrap_untrusted_doc(
+            f"opinion:{header[:80]}", body[:500], max_chars=500
+        )
+        entries.append({"header": header, "body": wrapped or body[:500]})
     return entries[-limit:]
 
 
@@ -141,6 +145,7 @@ def main() -> None:
             "append_pillar_opinion with opinion + docs updated",
             "Delegate sibling pillars per sibling_matrix (do not close alone)",
         ],
+        "untrusted_content_note": UNTRUSTED_NOTE,
     }
     emit(json.dumps(payload, indent=2))
 

@@ -10,6 +10,7 @@ from datetime import date
 from _heyeddi_paths import product_docs_dir, product_md
 from _product_scan import build_feature_matrix, parse_pages_from_product
 from _skill_cli import emit, fail, resolve_project_root
+from _untrusted_doc import UNTRUSTED_NOTE, wrap_purpose_fields
 
 
 def main() -> None:
@@ -23,10 +24,10 @@ def main() -> None:
         fail("missing .heyeddi/product.md")
 
     pages = parse_pages_from_product(pm.read_text(encoding="utf-8"))
-    matrix = build_feature_matrix(root, pages)
+    matrix_raw = build_feature_matrix(root, pages)
+    matrix = wrap_purpose_fields(matrix_raw)
 
     blockers = [r for r in matrix if r["status"] in {"missing", "placeholder"}]
-    useful_flags = [r for r in matrix if r["status"] == "implemented" and not r.get("flags")]
 
     payload = {
         "status": "fail" if blockers else "ok",
@@ -35,7 +36,8 @@ def main() -> None:
         "placeholder": sum(1 for r in matrix if r["status"] == "placeholder"),
         "missing": sum(1 for r in matrix if r["status"] == "missing"),
         "matrix": matrix,
-        "pm_questions": _pm_questions(matrix, pages),
+        "pm_questions": _pm_questions(matrix_raw, pages),
+        "untrusted_content_note": UNTRUSTED_NOTE,
     }
 
     out_dir = product_docs_dir(root)

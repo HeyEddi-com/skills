@@ -4,7 +4,7 @@
   "tools": [
     {
       "name": "sync_openapi",
-      "description": "Generate TypeScript interfaces from openapi.json into src/types/api.ts.",
+      "description": "Generate TypeScript interfaces from a local openapi.json into src/types/api.ts (no network fetch).",
       "parameters": {
         "type": "object",
         "properties": {
@@ -12,9 +12,9 @@
             "type": "string",
             "description": "Workspace root path"
           },
-          "url": {
+          "openapi": {
             "type": "string",
-            "description": "OpenAPI URL (optional)"
+            "description": "OpenAPI file relative to project root (default: openapi.json)"
           }
         },
         "required": [

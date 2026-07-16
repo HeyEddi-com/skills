@@ -1,0 +1,15 @@
+{
+  "name": "heyeddi-skills-hub",
+  "private": true,
+  "description": "Dev tooling for CI skill security scans (not published)",
+  "scripts": {
+    "skill-security": "bash scripts/skill-security-scan.sh"
+  },
+  "devDependencies": {
+    "@mnvsk97/skill-trust": "0.3.0",
+    "skills-check": "1.2.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

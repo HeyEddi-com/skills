@@ -553,3 +553,85 @@ Project-specific rules and preferences, appended over time.
 ## 2026-07-15 — Release gate tooling (v3.0.1)
 
 **Implemented:** `scripts/release-gate.sh`, default judge timeout 900s, `--all` continues on case errors, eval prompt-path pytest, `evals/runs/` gitignored, poe `eval-all` / `release-gate` tasks with `PYTHONUNBUFFERED=1`.
+
+## 2026-07-15 — Snyk auto-sync / prompt-injection hardening
+
+**Context:** skills.sh / Snyk flagged `_auto_sync.py` as high-risk (search home + env paths, `sys.path.insert`, dynamic import) and `load_context.py` for untrusted PRODUCT.md/DESIGN.md ingestion.
+
+**Triage:**
+- **Real:** auto-sync path search + `sys.path` mutation — supply-chain shaped.
+- **Stale:** findings mentioning `_heyeddi_migrate.py` (removed in v3.0.0).
+- **Mostly capability FP:** agent running `npm test` / skill scripts (expected for engineering skills).
+- **Prompt injection:** legitimate risk surface; wrap project docs as data.
+
+**Fix:** Allowlist-only orchestrator script roots (skill sibling + project `.agents`/`.cursor` only); load `_catalog.py` via `importlib.util.spec_from_file_location` (no `sys.path`); wrap product/design markdown in `UNTRUSTED_PROJECT_DOC` delimiters.
+
+## 2026-07-15 — OpenAPI sync local-file only (Snyk third-party content)
+
+**Context:** Snyk flagged `sync_openapi.py --url` as third-party content exposure (fetch → JSON → agent context).
+
+**Decision:** Remove all network fetch from backend + dart type-bridgers. Sync only from a local file under project root (`openapi.json` or `--openapi <relpath>`). SKILL.md instructs agents to refresh with `curl … -o openapi.json` when needed. Stdout remains a summary (counts/names), never raw schema dump.
+
+## 2026-07-15 — Handoff brief third-party content wrapping
+
+**Context:** Snyk flagged `load_handoff.py` reading outsider-authored `mockup-brief.md` (and possibly wireframe/design) into agent JSON as third-party content exposure.
+
+**Fix:** Shared `_untrusted_doc.wrap_untrusted_doc()` used by:
+- `heyeddi-handoff` `load_handoff.py` / `describe_handoff.py`
+- `design-handoff-flutter` `load_handoff.py`
+- `heyeddi-design` `load_context.py` (same helper; product/design already wrapped)
+
+Emitted `mockup_brief_text`, `wireframe_md_text`, and `design_md_excerpt` are delimited as `UNTRUSTED_PROJECT_DOC` with an explicit data-only note. Paths remain unwrapped.
+
+## 2026-07-15 — PR review third-party content wrapping
+
+**Context:** Snyk flagged `fetch_pr_context` (`gh pr view` / `gh pr diff`) ingesting outsider PR title/body/author/file list into JSON that `write_pr_review` embeds in `.heyeddi/docs/pr-<N>-review.md`.
+
+**Decision:** Cannot remove `gh` fetch (core of the skill). Bound free text instead:
+- `heyeddi-pr-review`: wrap title/body/author (+ `changed_files_text`) as `UNTRUSTED_EXTERNAL_CONTENT`; report H1 is only `PR #N` (title not in heading); metadata section is DATA-only.
+- `heyeddi-pr-respond`: wrap comment/review `body` fields the same way in `fetch_pr_comments`.
+
+## 2026-07-15 — Product skill: auto-sync tighten + prompt boundaries + verify allowlist
+
+**Context:** Scanner flagged (1) `_auto_sync` loading catalog from project `.agents`/`.cursor`, (2) `load_product_context` / `audit_product` / `check_features` ingesting `product.md` + feature specs without boundaries, (3) `verify_product` subprocess as execution vector.
+
+**Fixes:**
+1. `_auto_sync` allowlist = skill-tree sibling `heyeddi-orchestrator/scripts` only (plus self when running as orchestrator). No project-root path search, no env, no `sys.path`, no migrate.
+2. Product scripts emit `product_md_text` / `feature_spec_texts` / wrapped `purpose` with `UNTRUSTED_PROJECT_DOC`.
+3. `verify_product` only execs allowlisted sibling basenames (`audit_product.py`, `check_features.py`) with fixed `--check` flag filtering.
+
+## 2026-07-15 — PR respond comment fetch wrapping (reinforced)
+
+**Context:** Snyk flagged `fetch_pr_comments.py` emitting outsider review/discussion/inline bodies into the agent “analyze vs PR goals” step.
+
+**Status:** Wrapping was already applied earlier in this security batch; reinforced with:
+- Also wrap `diff_hunk` free text
+- Explicit DATA-only notes in SKILL.md / workflow.md / ANTI_PATTERNS
+- `tests/test_fetch_pr_comments_untrusted.py`
+
+## 2026-07-15 — Handoff SUSPICIOUS trust-chain (triage + docs)
+
+**Context:** Scanner marked screenshot-to-code handoff SUSPICIOUS: untrusted design inputs + code/shell subagents + chained skills without stated provenance. No exfiltration/malware shown.
+
+**Triage:** Accepted as **elevated agent-safety / trust-chain risk**, not malware. Core workflow is coherent and intentional.
+
+**Mitigations documented/enforced:**
+- Existing `UNTRUSTED_PROJECT_DOC` wraps on brief/wireframe/design excerpts
+- New `heyeddi-handoff/reference/trust-boundaries.md` — DATA-only inputs, Pass 1/2 separation, same-install-tree skill provenance allowlist
+- Subagent worker trust preamble; ANTI_PATTERNS against mockup-driven installs
+- Flutter handoff SKILL.md points at the same policy
+
+## 2026-07-15 — CI skill security: skill-trust (+ skills-check), not skills.sh CLI
+
+**Context:** User asked to run skills.sh-adjacent security tools in CI. `npx skills` has no test/audit command.
+
+**Decision (avoid duplication):**
+- **Primary:** `@mnvsk97/skill-trust` `lint` on each `skills/*/`.
+- **Secondary:** `skills-check audit --fail-on high` (injection/command). Do **not** also run `skills-check lint` (overlaps skill-trust; noisy `product-version` metadata).
+- **Skip** `--include-registry-audits` in CI (local hub → skills.sh API 400; platform audits refresh after publish).
+
+**Added:** `scripts/skill-security-scan.sh`, root `package.json` + lockfile, `.github/workflows/ci.yml` (pytest + smoke + scan), `poe skill-security`, release-gate step.
+
+## 2026-07-15 — v3.0.2 security hardening + CI + release
+
+**Shipped:** Untrusted-doc wraps (handoff, design, product, PR review/respond, orchestrator opinions), auto-sync skill-tree-only allowlist, OpenAPI local-only, verify_product allowlist, trust-boundaries docs, CI skill-security scans. Merge PR #1 → tag **v3.0.2**.

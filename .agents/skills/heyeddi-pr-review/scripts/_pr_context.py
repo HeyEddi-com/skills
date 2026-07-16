@@ -6,6 +6,7 @@ from pathlib import Path
 
 from _heyeddi_paths import pr_context_cache
 from _skill_cli import fail
+from _untrusted_doc import wrap_pr_free_text
 
 
 UI_EXTENSIONS = {".vue", ".css", ".scss"}
@@ -23,7 +24,7 @@ def load_fixture(root: Path, fixture_arg: str, pr: int) -> dict:
     data = json.loads(fixture_path.read_text(encoding="utf-8"))
     if "pr" not in data:
         data["pr"] = pr
-    return data
+    return wrap_pr_free_text(data)
 
 
 def load_context(root: Path, pr: int, context_arg: str | None, fixture: str | None) -> dict:
@@ -33,11 +34,11 @@ def load_context(root: Path, pr: int, context_arg: str | None, fixture: str | No
             path = root / path
         if not path.is_file():
             fail(f"context file not found: {path}")
-        return json.loads(path.read_text(encoding="utf-8"))
+        return wrap_pr_free_text(json.loads(path.read_text(encoding="utf-8")))
 
     cache = pr_context_cache(root, pr)
     if cache.is_file():
-        return json.loads(cache.read_text(encoding="utf-8"))
+        return wrap_pr_free_text(json.loads(cache.read_text(encoding="utf-8")))
 
     if fixture:
         payload = load_fixture(root, fixture, pr)

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Pre-release verification gate for HeyEddi Skills.
 # Usage:
-#   ./scripts/release-gate.sh           # pytest + smoke + full eval-all
-#   ./scripts/release-gate.sh --quick   # pytest + smoke + orchestrator eval only
+#   ./scripts/release-gate.sh           # pytest + skill-security + smoke + full eval-all
+#   ./scripts/release-gate.sh --quick   # pytest + skill-security + smoke + orchestrator eval only
 set -euo pipefail
 export PYTHONUNBUFFERED=1
 
@@ -21,13 +21,16 @@ for arg in "$@"; do
   esac
 done
 
-echo "==> 1/3 pytest"
+echo "==> 1/4 pytest"
 uv run pytest tests/ -q --tb=line
 
-echo "==> 2/3 skill smoke (poe test)"
+echo "==> 2/4 skill security (skill-trust + skills-check)"
+./scripts/skill-security-scan.sh
+
+echo "==> 3/4 skill smoke (poe test)"
 uv run poe test
 
-echo "==> 3/3 agent evals"
+echo "==> 4/4 agent evals"
 if $QUICK; then
   uv run python scripts/run-evals.py --keep-sandbox --judge-timeout 900 heyeddi-orchestrator-suggest
 else

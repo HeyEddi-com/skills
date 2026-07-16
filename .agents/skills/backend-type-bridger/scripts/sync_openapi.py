@@ -1,34 +1,33 @@
 #!/usr/bin/env python3
-"""Sync OpenAPI schema to TypeScript types under src/types/api.ts."""
+"""Sync local OpenAPI schema to TypeScript types under src/types/api.ts.
+
+Security: reads only a local file under the project root. Never fetches remote
+URLs (avoids SSRF / third-party content in agent context). Agents must place
+``openapi.json`` on disk first (scaffold, export, or curl to a file).
+"""
 from __future__ import annotations
 
 import argparse
 import json
 import re
-import urllib.error
-import urllib.request
 from pathlib import Path
-from urllib.parse import urlparse
 
 from _skill_cli import emit, resolve_project_root
 
-ALLOWED_URL_SCHEMES = ("http", "https")
 
-
-def validate_fetch_url(url: str) -> str | None:
-    """Return an error string if the URL is unsafe to fetch, else None.
-
-    Guards against SSRF vectors: only http/https, no embedded credentials,
-    and a host must be present. Blocks file://, ftp://, gopher:// and similar.
-    """
-    parsed = urlparse(url)
-    if parsed.scheme not in ALLOWED_URL_SCHEMES:
-        return f"refusing URL scheme '{parsed.scheme or '(none)'}': only http/https allowed"
-    if not parsed.hostname:
-        return "refusing URL without a host"
-    if parsed.username or parsed.password:
-        return "refusing URL with embedded credentials"
-    return None
+def resolve_openapi_path(root: Path, relative: str) -> Path | None:
+    """Return an openapi file path if it exists and stays under project root."""
+    candidate = (root / relative).resolve()
+    try:
+        candidate.relative_to(root.resolve())
+    except ValueError:
+        return None
+    if not candidate.is_file():
+        return None
+    # Refuse URL-shaped arguments that somehow landed in --openapi
+    if "://" in relative:
+        return None
+    return candidate
 
 
 def ts_type(openapi_type: str | None, fmt: str | None = None) -> str:
@@ -81,42 +80,40 @@ def resolve_refs(spec: dict, schema: dict) -> dict:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Sync OpenAPI to TypeScript types")
+    parser = argparse.ArgumentParser(
+        description="Sync local openapi.json to TypeScript types (no network fetch)"
+    )
     parser.add_argument("--project-root", default=None)
-    parser.add_argument("--url", default=None)
+    parser.add_argument(
+        "--openapi",
+        default="openapi.json",
+        help="Path relative to project root (default: openapi.json)",
+    )
     parser.add_argument("--output", default="src/types/api.ts")
     args = parser.parse_args()
     root = resolve_project_root(args.project_root)
-    local = root / "openapi.json"
-    spec = None
-    source = None
 
-    if local.is_file():
-        spec = json.loads(local.read_text())
-        source = str(local)
-    elif args.url:
-        url_error = validate_fetch_url(args.url)
-        if url_error:
-            emit(json.dumps({"error": url_error, "hint": "Pass an http(s) URL such as http://localhost:8090/openapi.json"}, indent=2))
-            return
-        try:
-            request = urllib.request.Request(args.url, method="GET")
-            with urllib.request.urlopen(request, timeout=10) as resp:
-                spec = json.loads(resp.read().decode())
-            source = args.url
-        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
-            emit(json.dumps({"error": str(exc), "hint": "Start FastAPI or place openapi.json in project root"}, indent=2))
-            return
-    else:
+    openapi_path = resolve_openapi_path(root, args.openapi)
+    if openapi_path is None:
         emit(
             json.dumps(
                 {
-                    "error": "no openapi source",
-                    "hint": "Add openapi.json to project root or pass --url http://localhost:8090/openapi.json",
+                    "error": "no local openapi file",
+                    "hint": (
+                        "Place OpenAPI JSON at openapi.json (or pass --openapi <relpath>). "
+                        "Do not fetch URLs inside this skill — export from FastAPI or: "
+                        "curl -fsS http://127.0.0.1:8090/openapi.json -o openapi.json"
+                    ),
                 },
                 indent=2,
             )
         )
+        return
+
+    try:
+        spec = json.loads(openapi_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        emit(json.dumps({"error": f"invalid openapi JSON: {exc}", "source": str(openapi_path)}, indent=2))
         return
 
     schemas = spec.get("components", {}).get("schemas", {})
@@ -125,7 +122,7 @@ def main() -> None:
 
     parts = [
         "/** Generated from OpenAPI — refine types as needed. */",
-        f"// Source: {source}",
+        f"// Source: {openapi_path.name}",
         "",
     ]
     written: list[str] = []
@@ -142,14 +139,15 @@ def main() -> None:
     content = "\n".join(parts).rstrip() + "\n"
     out_file.write_text(content)
 
+    # Emit summary only — never dump raw OpenAPI into agent context
     emit(
         json.dumps(
             {
-                "source": source,
+                "source": str(openapi_path.relative_to(root)),
                 "schema_count": len(schemas),
-                "written": str(out_file),
-                "interfaces": written,
                 "path_count": len(spec.get("paths", {})),
+                "written": str(out_file.relative_to(root)),
+                "interfaces": written,
             },
             indent=2,
         )

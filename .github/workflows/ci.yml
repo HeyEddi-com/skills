@@ -1,0 +1,47 @@
+# CI for HeyEddi skills hub — unit tests, smoke, static skill security.
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: pytest + smoke + skill-security
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Sync Python deps
+        run: uv sync --group dev
+
+      - name: pytest
+        run: uv run pytest tests/ -q --tb=line
+
+      - name: Skill smoke (poe test)
+        run: uv run poe test
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install skill security CLIs
+        run: npm ci
+
+      - name: skill-trust + skills-check
+        run: ./scripts/skill-security-scan.sh
