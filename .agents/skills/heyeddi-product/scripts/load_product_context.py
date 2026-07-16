@@ -16,6 +16,7 @@ from _product_scan import (
     vue_routes,
 )
 from _skill_cli import emit, resolve_project_root
+from _untrusted_doc import UNTRUSTED_NOTE, wrap_purpose_fields, wrap_untrusted_doc
 
 
 def main() -> None:
@@ -26,10 +27,21 @@ def main() -> None:
 
     pm_path = product_md(root)
     product_text = pm_path.read_text(encoding="utf-8") if pm_path else ""
-    pages = parse_pages_from_product(product_text) if product_text else []
+    pages = wrap_purpose_fields(parse_pages_from_product(product_text)) if product_text else []
     sections = product_sections_present(product_text) if product_text else {}
     specs = feature_spec_paths(root, features_dir(root))
-    matrix = build_feature_matrix(root, pages) if pages else []
+    # Parse matrix from raw text so status logic sees unwrapped purpose; wrap for emit.
+    raw_pages = parse_pages_from_product(product_text) if product_text else []
+    matrix = wrap_purpose_fields(build_feature_matrix(root, raw_pages)) if raw_pages else []
+
+    feature_spec_texts: dict[str, str] = {}
+    for spec in specs:
+        rel = str(spec.relative_to(root))
+        feature_spec_texts[rel] = wrap_untrusted_doc(
+            f"feature-spec:{spec.name}",
+            spec.read_text(encoding="utf-8", errors="replace"),
+            max_chars=6000,
+        ) or ""
 
     delegation = []
     if pages:
@@ -70,15 +82,20 @@ def main() -> None:
         "product_md": str(pm_path.relative_to(root)) if pm_path else None,
         "product_json": str(product_json(root).relative_to(root)) if product_json(root) else None,
         "skill_routing": str(routing_json(root).relative_to(root)) if routing_json(root) else None,
+        "product_md_text": wrap_untrusted_doc("product.md", product_text, max_chars=12000)
+        if product_text
+        else None,
         "sections": sections,
         "pages": pages,
         "feature_specs": [str(p.relative_to(root)) for p in specs],
+        "feature_spec_texts": feature_spec_texts,
         "code_routes": vue_routes(root),
         "feature_matrix": matrix,
         "ux_flow_tasks": ux_flow_tasks(root),
         "delegation": delegation,
         "gaps": _gaps(sections, pages, specs, matrix),
         "next": "audit_product → delegate per delegation → write_review_plan",
+        "untrusted_content_note": UNTRUSTED_NOTE,
     }
     emit(json.dumps(payload, indent=2))
 

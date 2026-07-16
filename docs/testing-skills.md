@@ -1,6 +1,6 @@
 # Testing skills in this hub
 
-**Date:** 2026-07-02
+**Date:** 2026-07-15
 
 Skills are **installable packages** in `skills/` — they are tested here against a **fixture project**, not by opening this repo as a Cursor app.
 
@@ -64,7 +64,28 @@ Some behaviour needs a **real app** or **live services** — run these in a Vue 
 4. If default args are non-obvious, add cases in `default_args_for_tool()` in `scripts/test-skills.py`
 5. Run `./scripts/test-skills.py my-skill`
 
-## CI (suggested)
+## CI (GitHub Actions)
+
+Workflow: `.github/workflows/ci.yml` on push/PR.
+
+| Step | Command | Notes |
+|------|---------|-------|
+| Unit | `uv run pytest tests/ -q` | Includes security wrap tests |
+| Smoke | `uv run poe test` | Structure + script smoke |
+| Skill security | `./scripts/skill-security-scan.sh` | **skill-trust** lint (primary) + **skills-check** audit fail-on high |
+
+**Why not both full stacks?** `skills-check lint` and `skill-trust lint` overlap on metadata/schema. We use **skill-trust** as the schema/security gate (deterministic, no LLM). **skills-check audit** is secondary for injection/command patterns at high+ only. We do **not** run `--include-registry-audits` in CI — skills.sh Snyk/Socket/Gen need published coordinates and refresh after release; local hub folders return API 400s.
+
+Local:
+
+```bash
+npm install
+uv run poe skill-security
+# or trust-only:
+./scripts/skill-security-scan.sh --trust-only
+```
+
+## CI (suggested) — legacy snippet
 
 ```yaml
 - run: python3 scripts/test-skills.py --structure-only   # always

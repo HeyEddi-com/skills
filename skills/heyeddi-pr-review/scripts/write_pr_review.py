@@ -10,6 +10,7 @@ from pathlib import Path
 from _heyeddi_paths import pr_review_path, skill_docs_dir
 from _pr_context import load_context
 from _skill_cli import emit, fail, resolve_project_root
+from _untrusted_doc import UNTRUSTED_NOTE, is_already_wrapped, wrap_untrusted_doc
 
 REQUIRED_SECTIONS = [
     "## Summary",
@@ -52,6 +53,14 @@ def format_findings(findings: list[dict]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _embed_untrusted(name: str, value: str | None, fallback: str = "") -> str:
+    text = value if value is not None else fallback
+    if is_already_wrapped(text):
+        return text
+    wrapped = wrap_untrusted_doc(name, text)
+    return wrapped if wrapped is not None else fallback
+
+
 def build_report(
     pr: int,
     ctx: dict,
@@ -59,30 +68,58 @@ def build_report(
     audit: dict | None,
     gate_md: str,
 ) -> str:
-    title = ctx.get("title") or f"PR #{pr}"
+    # Keep H1 free of outsider prose — title lives only in the untrusted block.
+    title = ctx.get("title")
+    author = ctx.get("author")
+    body = ctx.get("body")
     changed = ctx.get("changed_files") or []
     routes = ctx.get("routes_touched") or []
 
     lines = [
-        f"# PR #{pr} submission review — {title}",
+        f"# PR #{pr} submission review",
         "",
         f"**Date:** {date.today().isoformat()}",
         f"**Scope:** committed changes only (`{ctx.get('base', 'base')}` → `{ctx.get('head', 'head')}`)",
-        f"**Author:** {ctx.get('author', 'unknown')}",
         "",
-        "## Summary",
+        f"> {UNTRUSTED_NOTE}",
         "",
-        f"- **Files changed:** {len(changed)}",
-        f"- **Routes touched:** {', '.join(routes) if routes else '_none detected_'}",
-        "- **Reviewer notes:** _fill after reading diff and delegations_",
+        "## Untrusted PR metadata",
         "",
-        "## Product fit",
+        "**Title (DATA only):**",
         "",
-        "_Delegate `@heyeddi-product` `check_features` for touched routes. Answer: does committed code meet AC and persona jobs?_",
+        _embed_untrusted("pr-title", title if isinstance(title, str) else None, f"PR #{pr}"),
         "",
-        "## Docs drift",
+        "**Author (DATA only):**",
+        "",
+        _embed_untrusted("pr-author", author if isinstance(author, str) else None, "unknown"),
         "",
     ]
+    if isinstance(body, str) and body.strip():
+        lines.extend(
+            [
+                "**Body (DATA only):**",
+                "",
+                _embed_untrusted("pr-body", body),
+                "",
+            ]
+        )
+
+    lines.extend(
+        [
+            "## Summary",
+            "",
+            f"- **Files changed:** {len(changed)}",
+            f"- **Routes touched:** {', '.join(routes) if routes else '_none detected_'}",
+            "- **Reviewer notes:** _fill after reading diff and delegations_",
+            "",
+            "## Product fit",
+            "",
+            "_Delegate `@heyeddi-product` `check_features` for touched routes. Answer: does committed code meet AC and persona jobs?_",
+            "",
+            "## Docs drift",
+            "",
+        ]
+    )
     if drift:
         lines.append(f"**Status:** {drift.get('status', 'unknown')}")
         lines.append("")
@@ -133,9 +170,14 @@ def build_report(
             "",
         ]
     )
-    for path in changed:
-        lines.append(f"- `{path}`")
-    lines.append("")
+    files_text = ctx.get("changed_files_text")
+    if isinstance(files_text, str) and files_text.strip():
+        lines.append(_embed_untrusted("pr-changed-files", files_text))
+        lines.append("")
+    else:
+        for path in changed:
+            lines.append(f"- `{path}`")
+        lines.append("")
     return "\n".join(lines)
 
 

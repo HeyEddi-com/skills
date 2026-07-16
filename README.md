@@ -99,7 +99,7 @@ Browse the bundle at [skills.sh/heyeddi-com/skills](https://www.skills.sh/heyedd
 
 ## Hub development (this repo)
 
-**Requirements:** Python 3.11+, [uv](https://docs.astral.sh/uv/), Node.js 20+ (eval templates), [Cursor agent CLI](https://cursor.com) for agent evals.
+**Requirements:** Python 3.11+, [uv](https://docs.astral.sh/uv/), Node.js 18+ (skill-security CLIs + eval templates), [Cursor agent CLI](https://cursor.com) for agent evals.
 
 ```bash
 git clone git@github.com:HeyEddi-com/skills.git
@@ -107,9 +107,10 @@ cd skills
 uv sync --group dev --group evals
 
 uv run poe test                    # smoke tests (no agent API)
+uv run poe skill-security          # skill-trust lint + skills-check audit
 uv run poe eval-list               # list eval cases
 uv run poe eval-heyeddi-handoff     # one agent eval
-./scripts/release-gate.sh          # pytest + smoke + eval-all (before tagging)
+./scripts/release-gate.sh          # pytest + skill-security + smoke + eval-all
 
 # Full suite (~50+ min; continues on case errors; judge timeout 900s)
 PYTHONUNBUFFERED=1 uv run poe eval-all
@@ -170,7 +171,7 @@ Evals give the agent a **goal**, not a script. Each skill must run its real work
 ## Contributing
 
 1. Branch from `main`, keep changes focused.
-2. Run `uv run poe test` before opening a PR.
+2. Run `uv run poe test` and `uv run poe skill-security` before opening a PR (CI runs both).
 3. For skill behavior changes, run the relevant `uv run poe eval-*` case or the full suite.
 
 ---

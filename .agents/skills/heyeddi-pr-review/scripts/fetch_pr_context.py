@@ -11,6 +11,7 @@ from pathlib import Path
 from _heyeddi_paths import pr_context_cache, skill_docs_dir
 from _pr_context import categorize_file, load_fixture, routes_from_files
 from _skill_cli import emit, resolve_project_root, run_command
+from _untrusted_doc import wrap_pr_free_text
 
 def fetch_live(root: Path, pr: int) -> dict:
     if not shutil.which("gh"):
@@ -93,6 +94,9 @@ def main() -> None:
         payload = load_fixture(root, args.fixture, args.pr)
     else:
         payload = fetch_live(root, args.pr)
+
+    if "error" not in payload:
+        payload = wrap_pr_free_text(payload)
 
     if args.write_cache and "error" not in payload:
         out_dir = skill_docs_dir(root)

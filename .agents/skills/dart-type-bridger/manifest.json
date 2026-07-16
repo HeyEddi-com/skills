@@ -4,12 +4,15 @@
   "tools": [
     {
       "name": "sync_openapi",
-      "description": "Sync OpenAPI schema to Dart model stub under lib/models/.",
+      "description": "Sync local openapi.json to Dart model stubs under lib/models/ (no network fetch).",
       "parameters": {
         "type": "object",
         "properties": {
           "project_root": { "type": "string" },
-          "url": { "type": "string" }
+          "openapi": {
+            "type": "string",
+            "description": "OpenAPI file relative to project root (default: openapi.json)"
+          }
         },
         "required": ["project_root"]
       },

@@ -11,6 +11,7 @@ from pathlib import Path
 from _heyeddi_paths import features_dir, product_docs_dir, product_md
 from _product_scan import feature_spec_paths, parse_pages_from_product, product_sections_present
 from _skill_cli import emit, fail, resolve_project_root
+from _untrusted_doc import UNTRUSTED_NOTE, wrap_untrusted_doc
 
 
 def main() -> None:
@@ -78,6 +79,8 @@ def main() -> None:
                 "warnings": warns,
                 "report": str(report_path.relative_to(root)),
                 "findings": findings,
+                "product_md_text": wrap_untrusted_doc("product.md", text, max_chars=12000),
+                "untrusted_content_note": UNTRUSTED_NOTE,
             },
             indent=2,
         )
