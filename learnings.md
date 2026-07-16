@@ -631,3 +631,7 @@ Emitted `mockup_brief_text`, `wireframe_md_text`, and `design_md_excerpt` are de
 - **Skip** `--include-registry-audits` in CI (local hub → skills.sh API 400; platform audits refresh after publish).
 
 **Added:** `scripts/skill-security-scan.sh`, root `package.json` + lockfile, `.github/workflows/ci.yml` (pytest + smoke + scan), `poe skill-security`, release-gate step.
+
+## 2026-07-15 — v3.0.2 security hardening + CI + release
+
+**Shipped:** Untrusted-doc wraps (handoff, design, product, PR review/respond, orchestrator opinions), auto-sync skill-tree-only allowlist, OpenAPI local-only, verify_product allowlist, trust-boundaries docs, CI skill-security scans. Merge PR #1 → tag **v3.0.2**.

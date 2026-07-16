@@ -112,7 +112,7 @@ STOP_WORDS = frozenset(
 )
 
 INDEX_VERSION = 1
-GENERATOR = "heyeddi-orchestrator@3.0.1"
+GENERATOR = "heyeddi-orchestrator@3.0.2"
 
 
 def skills_index_json(project_root: Path) -> Path:
