@@ -30,6 +30,7 @@ hub-tools = [
 # Task runner (poe test, poe eval, …)
 dev = [
     "poethepoet>=0.31.0",
+    "pytest>=8.0",
 ]
 
 [tool.uv]
