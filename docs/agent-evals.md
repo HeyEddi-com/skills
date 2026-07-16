@@ -1,6 +1,6 @@
 # Agent-based skill evals
 
-**Date:** 2026-07-02
+**Date:** 2026-07-15
 
 Skill **instructions** are only validated when a real agent follows them on a fresh project. This doc complements [testing-skills.md](./testing-skills.md) (script smoke tests).
 
@@ -11,18 +11,30 @@ Skill **instructions** are only validated when a real agent follows them on a fr
 ```
 scripts/test-skills.py     →  "Does the package run?"     (no agent)
 scripts/run-evals.py       →  "Does the agent obey?"      (real agent)
+scripts/release-gate.sh    →  "Ship-ready?" (pytest + smoke + evals)
 ```
 
 ## Running agent evals (local PC)
 
 Uses your installed `agent` CLI — default backend, no SDK, no cloud VM.
 
+Always use `set -o pipefail` and `PYTHONUNBUFFERED=1` when piping logs (so timeouts are not masked by `tee`).
+
 ```bash
 ./scripts/verify-agent-cli.sh
 ./scripts/setup-evals.sh              # uv: pyyaml + playwright + pillow + chromium
 uv run python scripts/run-evals.py --dry-run --all
 uv run python scripts/run-evals.py heyeddi-handoff-only
+
+# Full suite — continues on case errors by default; judge timeout 900s
+PYTHONUNBUFFERED=1 uv run poe eval-all
+
+# Pre-release gate (required before tagging)
+./scripts/release-gate.sh             # full
+./scripts/release-gate.sh --quick     # pytest + smoke + orchestrator only
 ```
+
+Default judge timeout is **900s** (`EVAL_JUDGE_TIMEOUT`). Use `--fail-fast` to abort the suite on the first case crash.
 
 See [evals/README.md](../evals/README.md) for case format, backends, and adding new evals.
 
@@ -30,8 +42,9 @@ See [evals/README.md](../evals/README.md) for case format, backends, and adding 
 
 | Job | Command | When |
 |-----|---------|------|
-| smoke | `python3 scripts/test-skills.py` | Every PR |
-| agent eval | `python3 scripts/run-evals.py --all` | Manual / nightly on your PC |
+| smoke | `uv run poe test` + `uv run pytest tests/ -q` | Every PR |
+| release gate | `./scripts/release-gate.sh` | Before every release tag |
+| agent eval | `PYTHONUNBUFFERED=1 uv run poe eval-all` | Manual / nightly on your PC |
 | agent eval (CI) | `python3 scripts/run-evals.py --backend cursor --all` | Optional; needs `CURSOR_API_KEY` + cursor-sdk |
 | cloud parity | `python3 scripts/run-evals.py --backend pydantic --all` | Before Cloud Run deploy |
 

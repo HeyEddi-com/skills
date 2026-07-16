@@ -415,3 +415,31 @@ Append-only log. Each entry: route, opinion, docs updated, sibling requests.
 **Docs updated:** `.heyeddi/docs/product/features/settings.md`
 
 **Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-15T16:38:03 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-15T16:38:03 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-15T19:30:19 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route
+### 2026-07-15T19:30:19 — `/settings` (product)
+
+**Opinion:** Smoke test — settings AC look complete
+
+**Docs updated:** `.heyeddi/docs/product/features/settings.md`
+
+**Requests:** `@ux`, `@design` must append opinion for this route

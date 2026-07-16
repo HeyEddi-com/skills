@@ -132,8 +132,16 @@ help = "@primevue-openprops-architect fix token violations"
 cmd = "python scripts/run-evals.py --keep-sandbox primevue-fix-violations"
 
 [tool.poe.tasks.eval-all]
-help = "Run all agent evals (slow)"
-cmd = "python scripts/run-evals.py --all --keep-sandbox"
+help = "Run all agent evals (slow; continues on case errors by default)"
+shell = "PYTHONUNBUFFERED=1 python scripts/run-evals.py --all --keep-sandbox --judge-timeout 900"
+
+[tool.poe.tasks.release-gate]
+help = "Pre-release: pytest + smoke + eval-all"
+shell = "./scripts/release-gate.sh"
+
+[tool.poe.tasks.release-gate-quick]
+help = "Pre-release quick: pytest + smoke + orchestrator eval"
+shell = "./scripts/release-gate.sh --quick"
 
 # --- Hub utilities ---
 [tool.poe.tasks.mockups]

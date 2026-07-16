@@ -526,3 +526,30 @@ Project-specific rules and preferences, appended over time.
 - Bumped registry / README / plugin / orchestrator to **v3.0.0**; cleared deprecated grouping in `skills.sh.json` and lock entries.
 - Regenerated fixture skills index; reinstalled `.agents/skills` from hub.
 - Left historical `evals/runs/` and `learnings.md` history entries as-is.
+
+## 2026-07-15 — Run tests before release (missed on v3.0.0)
+
+**Context:** Shipped v3.0.0 without full pytest / `poe test` / agent evals; user asked afterward.
+
+**Rule:** Before tagging a release, always run:
+1. `uv run pytest tests/ -q`
+2. `uv run poe test` (skill smoke)
+3. At least `uv run poe eval-orchestrator` (or `eval-all` for major)
+
+**Note:** `evals/prompts/design-handoff/` must match case paths (`heyeddi-handoff/`) — rename drift broke `eval-list` after v2 rename.
+
+## 2026-07-15 — Full verification after v3.0.0
+
+**Ran:** pytest 15/15; `poe test` 293/293; all 16 agent evals eventually PASS.
+
+**Issues found:**
+1. `evals/prompts/design-handoff/` vs cases expecting `heyeddi-handoff/` — fixed by rename (uncommitted at time of run).
+2. `eval-all | tee` without `pipefail` reported exit 0 after judge `RuntimeError` timeout — suite aborted mid-run.
+3. Default judge timeout 300s too low for some cases; `--judge-timeout 900` fixed retries.
+4. `design-handoff-flutter-settings` flaked once (missing `verify_tokens` in evidence); passed on retry.
+
+**Improvements to pursue:** release checklist script; `set -o pipefail` in eval docs/poe; raise default `EVAL_JUDGE_TIMEOUT`; structure test that prompt_file paths exist; continue-on-error for eval-all.
+
+## 2026-07-15 — Release gate tooling (v3.0.1)
+
+**Implemented:** `scripts/release-gate.sh`, default judge timeout 900s, `--all` continues on case errors, eval prompt-path pytest, `evals/runs/` gitignored, poe `eval-all` / `release-gate` tasks with `PYTHONUNBUFFERED=1`.

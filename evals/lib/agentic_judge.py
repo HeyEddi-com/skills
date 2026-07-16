@@ -14,7 +14,7 @@ from evals.lib.visual_capture import append_process_manifest, run_visual_audit
 from evals.backends.results import AgentRunResult
 
 JUDGE_PROMPT_PATH = Path(__file__).resolve().parents[1] / "prompts" / "judge-turn.md"
-DEFAULT_JUDGE_TIMEOUT = 300
+DEFAULT_JUDGE_TIMEOUT = 900
 
 
 @dataclass

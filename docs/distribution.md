@@ -1,6 +1,6 @@
 # Skill distribution
 
-**Date:** 2026-07-14 · **Release:** v3.0.0
+**Date:** 2026-07-15 · **Release:** v3.0.1
 
 ## Vercel ecosystem (skills.sh + `npx skills`)
 
@@ -10,7 +10,7 @@ There is **no deploy step** and **no submission form**. Distribution is GitHub +
 |---------|--------------------------|-------------------|
 | **CLI** (`npx skills`) | `npx skills add HeyEddi-com/skills -a cursor -y --skill '*'` | Keep repo public; tag releases |
 | **skills.sh** | Same install command; leaderboard from [install telemetry](https://www.skills.sh/privacy) | `skills.sh.json` at repo root; share repo page URL |
-| **Pinned version** | `npx skills add https://github.com/HeyEddi-com/skills/tree/v3.0.0 -a cursor -y --skill '*'` | Tag releases on GitHub |
+| **Pinned version** | `npx skills add https://github.com/HeyEddi-com/skills/tree/v3.0.1 -a cursor -y --skill '*'` | Tag releases on GitHub |
 
 **CLI flag trap:** `--all` = all skills **and all agents** (creates `agent/skills/` for Eve, etc.). For Cursor-only, use `-a cursor --skill '*'`, not `--all`.
 

@@ -224,7 +224,18 @@ def main() -> int:
         "--judge-timeout",
         type=int,
         default=None,
-        help="Judge agent timeout seconds (default: EVAL_JUDGE_TIMEOUT or 300)",
+        help="Judge agent timeout seconds (default: EVAL_JUDGE_TIMEOUT or 900)",
+    )
+    parser.add_argument(
+        "--continue-on-error",
+        action="store_true",
+        default=None,
+        help="On case crash/timeout, continue remaining cases (default: on with --all)",
+    )
+    parser.add_argument(
+        "--fail-fast",
+        action="store_true",
+        help="Stop the suite on first case crash/timeout (overrides --continue-on-error)",
     )
     parser.add_argument(
         "--timeout",
@@ -277,113 +288,134 @@ def main() -> int:
     failed = 0
     work_root, cleanup = resolve_work_root(args)
     kept = cleanup is None
+    continue_on_error = (
+        False
+        if args.fail_fast
+        else (True if args.continue_on_error is None and args.all else bool(args.continue_on_error))
+    )
 
     try:
         for case_path in cases_paths:
-            case = load_case(case_path, EVALS_DIR)
-            eval_id = case["id"]
-            turns = iter_turns(case)
-            if len(turns) > MAX_STEPS:
-                print(f"Case {eval_id} exceeds {MAX_STEPS} turns", file=sys.stderr)
-                failed += 1
-                continue
-
-            gate_label = "agentic judge" if agentic else "deterministic"
-            print(f"\n=== Eval: {eval_id} ({args.backend}, {gate_label}) ===")
-            if eval_id == "full-product-integration":
-                warn_busy_eval_ports()
-            if is_stepped(case):
-                print(f"  mode: {len(turns)} sequential @skill turns (max {MAX_STEPS})")
-            else:
-                print("  mode: single turn")
-
-            if args.dry_run:
-                print(f"  skills installed: {case_skill_names(case)}")
-                print(f"  template: {case['project_template']}")
-                for i, turn in enumerate(turns, 1):
-                    skills = ", ".join(turn["skills"])
-                    cmds = turn.get("verify_commands") or "(auto: npm test/build, pytest)"
-                    print(f"  turn {i}: {turn['name']} [@{skills}]")
-                    print(f"    verify: {cmds}")
-                    if turn.get("visual_audit"):
-                        va = turn["visual_audit"]
-                        routes = va.get("routes") or [va.get("route", "/")]
-                        print(f"    visual QA: {routes} → .heyeddi/audits/eval-process/{turn['name']}/")
-                    if agentic:
-                        j = (turn.get("judge") or "")[:80]
-                        print(f"    judge: {j}...")
-                    else:
-                        print(f"    assertions: {len(turn.get('assertions', []))}")
-                if kept:
-                    print(f"  would keep at: {work_root / eval_id}")
-                continue
-
-            sandbox = create_sandbox(
-                REPO_ROOT,
-                case["project_template"],
-                case_skill_names(case),
-                work_root,
-                eval_id,
-            )
-            init_baseline(sandbox)
             try:
-                ensure_npm_deps(sandbox, quiet=args.quiet)
-            except RuntimeError as exc:
-                print(f"  SANDBOX SETUP FAILED: {exc}")
-                failed += 1
-                continue
-            print_sandbox_hint(sandbox, kept=kept)
+                case = load_case(case_path, EVALS_DIR)
+                eval_id = case["id"]
+                turns = iter_turns(case)
+                if len(turns) > MAX_STEPS:
+                    print(f"Case {eval_id} exceeds {MAX_STEPS} turns", file=sys.stderr)
+                    failed += 1
+                    continue
 
-            case_ok = True
-            agent_retries = (
-                args.agent_retries
-                if args.agent_retries is not None
-                else int(os.environ.get("EVAL_AGENT_RETRIES", "2"))
-            )
-            for i, turn in enumerate(turns, 1):
-                print_turn_header(i, len(turns), turn)
+                gate_label = "agentic judge" if agentic else "deterministic"
+                print(f"\n=== Eval: {eval_id} ({args.backend}, {gate_label}) ===")
+                if eval_id == "full-product-integration":
+                    warn_busy_eval_ports()
+                if is_stepped(case):
+                    print(f"  mode: {len(turns)} sequential @skill turns (max {MAX_STEPS})")
+                else:
+                    print("  mode: single turn")
+
+                if args.dry_run:
+                    print(f"  skills installed: {case_skill_names(case)}")
+                    print(f"  template: {case['project_template']}")
+                    for i, turn in enumerate(turns, 1):
+                        skills = ", ".join(turn["skills"])
+                        cmds = turn.get("verify_commands") or "(auto: npm test/build, pytest)"
+                        print(f"  turn {i}: {turn['name']} [@{skills}]")
+                        print(f"    verify: {cmds}")
+                        if turn.get("visual_audit"):
+                            va = turn["visual_audit"]
+                            routes = va.get("routes") or [va.get("route", "/")]
+                            print(f"    visual QA: {routes} → .heyeddi/audits/eval-process/{turn['name']}/")
+                        if agentic:
+                            j = (turn.get("judge") or "")[:80]
+                            print(f"    judge: {j}...")
+                        else:
+                            print(f"    assertions: {len(turn.get('assertions', []))}")
+                    if kept:
+                        print(f"  would keep at: {work_root / eval_id}")
+                    continue
+
+                sandbox = create_sandbox(
+                    REPO_ROOT,
+                    case["project_template"],
+                    case_skill_names(case),
+                    work_root,
+                    eval_id,
+                )
+                init_baseline(sandbox)
                 try:
-                    agent_result = run_agent_turn_with_retries(
-                        backend=args.backend,
-                        skills=turn["skills"],
-                        user_prompt=turn["prompt"],
-                        sandbox=sandbox,
-                        hub_root=REPO_ROOT,
-                        model=args.model,
-                        timeout=turn.get("agent_timeout") or case.get("agent_timeout") or args.timeout,
-                        max_retries=agent_retries,
-                    )
-                    print(f"  agent status: {agent_result.status}")
-                    print(f"  agent output: {str(agent_result.output)[:200]}...")
-                except Exception as exc:  # noqa: BLE001
-                    print(f"  AGENT FAILED: {exc}")
-                    case_ok = False
-                    break
+                    ensure_npm_deps(sandbox, quiet=args.quiet)
+                except RuntimeError as exc:
+                    print(f"  SANDBOX SETUP FAILED: {exc}")
+                    failed += 1
+                    continue
+                print_sandbox_hint(sandbox, kept=kept)
 
-                if not run_turn_gate(
-                    agentic=agentic,
-                    backend=args.backend,
-                    case_id=eval_id,
-                    turn=turn,
-                    sandbox=sandbox,
-                    hub_root=REPO_ROOT,
-                    worker_result=agent_result,
-                    model=args.model,
-                    judge_timeout=args.judge_timeout,
-                    quiet=args.quiet,
-                    turn_index=i,
-                ):
-                    print(f"  === turn {turn['name']}: FAILED ===")
-                    case_ok = False
-                    break
-                print(f"  === turn {turn['name']}: PASSED ===")
+                case_ok = True
+                agent_retries = (
+                    args.agent_retries
+                    if args.agent_retries is not None
+                    else int(os.environ.get("EVAL_AGENT_RETRIES", "2"))
+                )
+                for i, turn in enumerate(turns, 1):
+                    print_turn_header(i, len(turns), turn)
+                    try:
+                        agent_result = run_agent_turn_with_retries(
+                            backend=args.backend,
+                            skills=turn["skills"],
+                            user_prompt=turn["prompt"],
+                            sandbox=sandbox,
+                            hub_root=REPO_ROOT,
+                            model=args.model,
+                            timeout=turn.get("agent_timeout") or case.get("agent_timeout") or args.timeout,
+                            max_retries=agent_retries,
+                        )
+                        print(f"  agent status: {agent_result.status}")
+                        print(f"  agent output: {str(agent_result.output)[:200]}...")
+                    except Exception as exc:  # noqa: BLE001
+                        print(f"  AGENT FAILED: {exc}")
+                        case_ok = False
+                        break
 
-            if not case_ok:
+                    try:
+                        gate_ok = run_turn_gate(
+                            agentic=agentic,
+                            backend=args.backend,
+                            case_id=eval_id,
+                            turn=turn,
+                            sandbox=sandbox,
+                            hub_root=REPO_ROOT,
+                            worker_result=agent_result,
+                            model=args.model,
+                            judge_timeout=args.judge_timeout,
+                            quiet=args.quiet,
+                            turn_index=i,
+                        )
+                    except Exception as exc:  # noqa: BLE001
+                        print(f"  JUDGE/GATE ERROR: {exc}")
+                        case_ok = False
+                        break
+
+                    if not gate_ok:
+                        print(f"  === turn {turn['name']}: FAILED ===")
+                        case_ok = False
+                        break
+                    print(f"  === turn {turn['name']}: PASSED ===")
+
+                if not case_ok:
+                    failed += 1
+                    if kept:
+                        print(f"  sandbox kept for debugging: {sandbox}")
+                    print(f"  === {eval_id}: FAILED ===")
+                else:
+                    print(f"  === {eval_id}: PASSED ({len(turns)} turns) ===")
+            except Exception as exc:  # noqa: BLE001
                 failed += 1
-                if kept:
-                    print(f"  sandbox kept for debugging: {sandbox}")
-            else:
-                print(f"  === {eval_id}: PASSED ({len(turns)} turns) ===")
+                print(f"  CASE ERROR: {exc}")
+                if not continue_on_error:
+                    raise
+                print("  continuing (--continue-on-error / --all default)…")
+                continue
     finally:
         if cleanup is not None:
             cleanup.cleanup()

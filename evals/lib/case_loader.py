@@ -17,7 +17,12 @@ def load_yaml(path: Path) -> dict:
 
 
 def _read_prompt(evals_dir: Path, prompt_file: str) -> str:
-    return (evals_dir / prompt_file).read_text().strip()
+    path = evals_dir / prompt_file
+    if not path.is_file():
+        raise FileNotFoundError(
+            f"Eval prompt/judge file missing: {prompt_file} (expected at {path})"
+        )
+    return path.read_text().strip()
 
 
 def _resolve_step_prompts(evals_dir: Path, steps: list[dict]) -> None:

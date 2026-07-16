@@ -4,7 +4,7 @@
 
 Curated [Cursor Agent Skills](https://cursor.com/docs/context/skills) for HeyEddi product workflows — intake, design, engineering, QA, and merge. **All 22 skills ship as one package** from this repo; install the full set into your app or Cursor global skills with a single command.
 
-**Status:** **v3.0.0** · 22 skills · [Release v3.0.0](https://github.com/HeyEddi-com/skills/releases/tag/v3.0.0)
+**Status:** **v3.0.1** · 22 skills · [Release v3.0.1](https://github.com/HeyEddi-com/skills/releases/tag/v3.0.1)
 
 ## About HeyEddi
 
@@ -51,7 +51,7 @@ List names in [skills-registry.json](skills-registry.json) or the catalog below.
 ### Pin a release tag
 
 ```bash
-npx skills add https://github.com/HeyEddi-com/skills/tree/v3.0.0 -a cursor -y --skill '*'
+npx skills add https://github.com/HeyEddi-com/skills/tree/v3.0.1 -a cursor -y --skill '*'
 ```
 
 ### Cursor Team Marketplace (teams / enterprise)
@@ -109,9 +109,10 @@ uv sync --group dev --group evals
 uv run poe test                    # smoke tests (no agent API)
 uv run poe eval-list               # list eval cases
 uv run poe eval-heyeddi-handoff     # one agent eval
+./scripts/release-gate.sh          # pytest + smoke + eval-all (before tagging)
 
-# Full suite (~50 min; use --model auto on usage limits)
-uv run python scripts/run-evals.py --all --keep-sandbox --timeout 1500 --model auto
+# Full suite (~50+ min; continues on case errors; judge timeout 900s)
+PYTHONUNBUFFERED=1 uv run poe eval-all
 ```
 
 See [docs/agent-evals.md](docs/agent-evals.md) and [docs/agent-eval-results.md](docs/agent-eval-results.md).

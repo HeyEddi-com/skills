@@ -25,6 +25,9 @@ build/
 .env.*
 !.env*.example
 
+# Local eval sandboxes (regenerable; do not commit)
+evals/runs/
+
 # Local npx skills install copy (regenerable; hub source is skills/)
 .agents/
 !.agents/skills/
