@@ -671,3 +671,11 @@ Emitted `mockup_brief_text`, `wireframe_md_text`, and `design_md_excerpt` are de
 - Structure bans (emoji theater, triad padding, hedge stacks)
 - Replacement table + Slack smell test
 - Stronger ANTI_PATTERNS NEVER line on all skills
+
+## 2026-07-16: Automated GitHub releases on main
+
+**Context:** Merge to main only ran CI; tagging was manual.
+
+**Decision:** `.github/workflows/release.yml` on push to `main` reads `skills-registry.json` version and creates `vX.Y.Z` GitHub Release if the tag is missing. Version bumps stay in PRs. No full eval gate on release (PR CI is the gate).
+
+**Maintainer:** bump version in PR → merge → auto-tag.
