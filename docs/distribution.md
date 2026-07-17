@@ -1,6 +1,6 @@
 # Skill distribution
 
-**Date:** 2026-07-15 · **Release:** v3.0.3
+**Date:** 2026-07-16 · **Release:** v3.0.3
 
 ## Vercel ecosystem (skills.sh + `npx skills`)
 
@@ -11,6 +11,16 @@ There is **no deploy step** and **no submission form**. Distribution is GitHub +
 | **CLI** (`npx skills`) | `npx skills add HeyEddi-com/skills -a cursor -y --skill '*'` | Keep repo public; tag releases |
 | **skills.sh** | Same install command; leaderboard from [install telemetry](https://www.skills.sh/privacy) | `skills.sh.json` at repo root; share repo page URL |
 | **Pinned version** | `npx skills add https://github.com/HeyEddi-com/skills/tree/v3.0.3 -a cursor -y --skill '*'` | Tag releases on GitHub |
+
+### Automated releases
+
+On every push to `main` (and via **Actions → Release → Run workflow**), [`.github/workflows/release.yml`](../.github/workflows/release.yml):
+
+1. Reads hub version from `skills-registry.json`
+2. If tag `vX.Y.Z` is **missing**, creates a GitHub Release for that tag at the push SHA
+3. If the tag **already exists**, no-ops (idempotent)
+
+**Maintainer flow:** bump version in the PR (`skills-registry.json`, README, plugin `plugin.json`, orchestrator when needed) → merge to `main` → release workflow tags. CI on the PR is the quality gate; release does **not** re-run the full eval suite.
 
 **CLI flag trap:** `--all` = all skills **and all agents** (creates `agent/skills/` for Eve, etc.). For Cursor-only, use `-a cursor --skill '*'`, not `--all`.
 
