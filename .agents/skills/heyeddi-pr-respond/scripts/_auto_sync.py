@@ -87,7 +87,7 @@ def _write_minimal_index(project_root: Path, skills_root: Path) -> dict[str, Any
         "|-------|---------|",
     ]
     for entry in skills:
-        md_lines.append(f"| `{entry['name']}` | {entry.get('version') or '—'} |")
+        md_lines.append(f"| `{entry['name']}` | {entry.get('version') or ' - '} |")
     md_lines.append("")
     (heyeddi / "skills-index.md").write_text("\n".join(md_lines), encoding="utf-8")
     return {
