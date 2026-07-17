@@ -1,4 +1,4 @@
-"""Extract product + design context for a route — visual auditor."""
+"""Extract product + design context for a route: visual auditor."""
 from __future__ import annotations
 
 import json
@@ -70,7 +70,7 @@ def list_screenshots(screenshot_dir: Path, slug: str) -> list[str]:
 def design_excerpt(design_text: str, limit: int = 2500) -> str:
     if len(design_text) <= limit:
         return design_text
-    return design_text[:limit] + "\n\n…(truncated — read full design.md for tokens)"
+    return design_text[:limit] + "\n\n…(truncated: read full design.md for tokens)"
 
 
 def load_route_context(
@@ -125,7 +125,7 @@ def load_route_context(
         "review_checklist": [
             "Screenshot matches page purpose and route_intent success_feeling",
             "Hierarchy matches mockup-brief or wireframe regions",
-            "Colors follow design.md semantic tokens — not mockup PNG pixels",
+            "Colors follow design.md semantic tokens: not mockup PNG pixels",
             "Contrast errors from audit_contrast are fixed in code",
             "375px capture has no horizontal scroll or clipped CTAs",
         ],

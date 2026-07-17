@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-07
 
-One feature route is owned by **three pillars**. They stay connected through `.heyeddi/docs/workflow/` — not siloed skill runs.
+One feature route is owned by **three pillars**. They stay connected through `.heyeddi/docs/workflow/`: not siloed skill runs.
 
 ## Pillars
 
@@ -12,7 +12,7 @@ One feature route is owned by **three pillars**. They stay connected through `.h
 | UX | `@ux-flow-auditor` | `docs/ux-flows/`, click budgets, friction |
 | Design | `@heyeddi-design` | `design.md`, `designs/`, briefs, Decision log |
 
-`@heyeddi-intake` seeds product.md upstream; `@visual-auditor` supports design legibility — not a fourth pillar, but design runs it.
+`@heyeddi-intake` seeds product.md upstream; `@visual-auditor` supports design legibility: not a fourth pillar, but design runs it.
 
 ## Mandatory session bookends (every pillar)
 
@@ -28,9 +28,9 @@ One feature route is owned by **three pillars**. They stay connected through `.h
 
 | You run | You maintain | UX must | Design must | Product must |
 |---------|--------------|---------|-------------|--------------|
-| **heyeddi-product** | feature specs, backlog | `trace_flow` or friction opinion | `critique` or persona opinion | — |
-| **ux-flow-auditor** | flow reports | — | layout/IA note if friction is visual | AC update if flow fails |
-| **heyeddi-design** | design.md, briefs | flow note if IA blocks tasks | — | scope/persona note if drift |
+| **heyeddi-product** | feature specs, backlog | `trace_flow` or friction opinion | `critique` or persona opinion |: |
+| **ux-flow-auditor** | flow reports |: | layout/IA note if friction is visual | AC update if flow fails |
+| **heyeddi-design** | design.md, briefs | flow note if IA blocks tasks |: | scope/persona note if drift |
 
 **Opinion** = short conclusion for this route, not full re-run. **Full sibling run** when opinion flags P0 or first time on route.
 

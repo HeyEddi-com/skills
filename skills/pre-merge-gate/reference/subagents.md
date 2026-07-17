@@ -1,4 +1,4 @@
-# Subagent delegation — pre-merge-gate
+# Subagent delegation: pre-merge-gate
 
 | Step | Subagent | Readonly |
 |------|----------|----------|

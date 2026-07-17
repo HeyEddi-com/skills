@@ -23,8 +23,8 @@ paths:
    curl -fsS http://127.0.0.1:8090/openapi.json -o openapi.json
    ```
 
-2. FastAPI types: `python scripts/sync_openapi.py --project-root <root>` — writes `src/types/api.ts` from local `openapi.json` only (optional `--openapi path/rel.json`).
+2. FastAPI types: `python scripts/sync_openapi.py --project-root <root>`: writes `src/types/api.ts` from local `openapi.json` only (optional `--openapi path/rel.json`).
 
 3. Firebase: `python scripts/fetch_firestore_schema.py --project-root <root>`
 
-4. Import generated types in composables — never guess field names. Refine generated interfaces if OpenAPI uses `$ref` heavily.
+4. Import generated types in composables: never guess field names. Refine generated interfaces if OpenAPI uses `$ref` heavily.

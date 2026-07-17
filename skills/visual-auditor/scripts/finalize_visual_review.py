@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Finalize visual review after fixes — re-capture, contrast check, close review doc."""
+"""Finalize visual review after fixes: re-capture, contrast check, close review doc."""
 from __future__ import annotations
 
 import argparse
@@ -39,7 +39,7 @@ def main() -> None:
             result = subprocess.run(cmd, cwd=scripts)
             if script == "audit_contrast.py" and result.returncode != 0:
                 if args.check:
-                    fail("contrast check failed after fixes — review fix-log.md")
+                    fail("contrast check failed after fixes: review fix-log.md")
                 emit(json.dumps({"status": "contrast_fail", "route": args.route}, indent=2))
                 return
 

@@ -26,7 +26,7 @@ def main() -> None:
 
     today = date.today().isoformat()
     block = f"""
-### {today} — {args.title}
+### {today}: {args.title}
 
 **Context:** {args.context}
 

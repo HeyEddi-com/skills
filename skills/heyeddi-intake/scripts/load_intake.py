@@ -66,14 +66,14 @@ def main() -> None:
 
     gaps: list[str] = []
     if not p_path:
-        gaps.append("missing .heyeddi/product.md — run write_product (never hand-write)")
+        gaps.append("missing .heyeddi/product.md: run write_product (never hand-write)")
     elif p_path.is_file():
         ok, errs = validate_product_md(p_path.read_text(errors="replace"))
         if not ok:
             gaps.extend(errs)
 
     if not json_path.is_file():
-        gaps.append(f"missing {json_path.relative_to(root)} — write_product saves this automatically")
+        gaps.append(f"missing {json_path.relative_to(root)}: write_product saves this automatically")
     else:
         try:
             data = json.loads(json_path.read_text())
@@ -84,17 +84,17 @@ def main() -> None:
             gaps.append("product-translation.json is invalid JSON")
 
     if not d_path:
-        gaps.append("missing .heyeddi/design.md — chain @heyeddi-design document after translate")
+        gaps.append("missing .heyeddi/design.md: chain @heyeddi-design document after translate")
     if not (intake / "skill-routing.json").is_file():
-        gaps.append("missing skill-routing.json — run build_routing --write")
+        gaps.append("missing skill-routing.json: run build_routing --write")
     if not list(intake.glob("translation-*.md")):
-        gaps.append("missing translation-*.md — run write_translation")
+        gaps.append("missing translation-*.md: run write_translation")
     settings = designs_dir(root) / "settings"
     has_wireframe = (settings / "wireframe.md").is_file()
     has_png_pair = (settings / "desktop.png").is_file() and (settings / "mobile.png").is_file()
     if not has_wireframe and not has_png_pair:
         gaps.append(
-            "missing designs/settings handoff — run generate_wireframe, ingest_mockups, or prepare_mockup_prompts + AI PNGs"
+            "missing designs/settings handoff: run generate_wireframe, ingest_mockups, or prepare_mockup_prompts + AI PNGs"
         )
 
     emit(

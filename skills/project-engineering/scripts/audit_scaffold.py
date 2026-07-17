@@ -65,10 +65,10 @@ def _audit_vue(root: Path) -> dict:
             if name not in pkg.get("scripts", {}):
                 missing_required.append(f"package.json scripts.{name}")
             elif str(script).strip().startswith("echo "):
-                warnings.append(f"scripts.{name} is a stub — run scaffold_stack --stack vue")
+                warnings.append(f"scripts.{name} is a stub: run scaffold_stack --stack vue")
 
     if pkg and not (root / "node_modules").is_dir():
-        warnings.append("node_modules missing — run ensure_npm")
+        warnings.append("node_modules missing: run ensure_npm")
 
     status = "ok" if not missing_required else "incomplete"
     if status == "ok" and (warnings or missing_recommended):
@@ -96,7 +96,7 @@ def _audit_fastapi(root: Path) -> dict:
 
     api = fastapi_root(root)
     if not (api / ".venv").is_dir() and not list(api.glob("**/site-packages")):
-        warnings.append("Python venv/deps may be missing — run ensure_python")
+        warnings.append("Python venv/deps may be missing: run ensure_python")
 
     status = "ok" if not missing_required else "incomplete"
     return {

@@ -28,7 +28,7 @@ OLD_HEADINGS = (
     "## End every turn — next skill",
     "## End every turn - next skill",
 )
-NEW_HEADING = "## When the task is complete — suggest next skills"
+NEW_HEADING = "## When the task is complete: suggest next skills"
 ORCH = ".agents/skills/heyeddi-orchestrator/scripts/suggest_next_skill.py"
 
 

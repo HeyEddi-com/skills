@@ -57,7 +57,7 @@ def audit_file(root: Path, rel: str) -> list[dict]:
                 "principle": "KISS",
                 "severity": "warn",
                 "file": rel,
-                "message": f"Changed file has {len(lines)} lines (>{MAX_FILE_LINES}) — consider splitting",
+                "message": f"Changed file has {len(lines)} lines (>{MAX_FILE_LINES}): consider splitting",
             }
         )
     if ABSTRACTION_HINTS.search(text):
@@ -66,7 +66,7 @@ def audit_file(root: Path, rel: str) -> list[dict]:
                 "principle": "YAGNI",
                 "severity": "info",
                 "file": rel,
-                "message": "Abstraction naming in changed file — confirm reuse justifies it",
+                "message": "Abstraction naming in changed file: confirm reuse justifies it",
             }
         )
     return findings

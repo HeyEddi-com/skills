@@ -39,4 +39,4 @@ confirm review plan P0 rows resolved or waived in backlog
 
 ## Waiver
 
-If shipping with known gaps, document in `backlog.md` under **Out of scope** with persona impact — not silent debt.
+If shipping with known gaps, document in `backlog.md` under **Out of scope** with persona impact: not silent debt.

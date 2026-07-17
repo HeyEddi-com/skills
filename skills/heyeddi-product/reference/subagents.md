@@ -1,4 +1,4 @@
-# Subagents — heyeddi-product
+# Subagents: heyeddi-product
 
 | Phase | Subagent | Script / delegate |
 |-------|----------|-------------------|
@@ -11,4 +11,4 @@
 | Engineering research | `shell` | `@engineering-excellence` `audit_engineering` |
 | Synthesis | **main chat** | Fill `review-plan-*.md`, update `backlog.md` |
 
-Main chat owns PM judgment — specialists supply evidence.
+Main chat owns PM judgment: specialists supply evidence.

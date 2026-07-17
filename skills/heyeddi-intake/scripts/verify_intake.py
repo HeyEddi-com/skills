@@ -17,7 +17,7 @@ from _product_schema import (
 )
 from _skill_cli import emit, resolve_project_root
 
-# Baseline Vue shell files allowed on scaffolded repos — intake must not add feature UI.
+# Baseline Vue shell files allowed on scaffolded repos: intake must not add feature UI.
 ALLOWED_VUE_REL = frozenset(
     {
         Path("src/App.vue"),
@@ -39,12 +39,12 @@ def _disallowed_vue(root: Path) -> list[str]:
 
 def _check_repo_buildable(root: Path) -> tuple[bool, str]:
     if not (root / "package.json").is_file():
-        return True, "no package.json — skip build gate"
+        return True, "no package.json: skip build gate"
     if not (root / "node_modules").is_dir():
-        return True, "node_modules missing — skip build gate"
+        return True, "node_modules missing: skip build gate"
     npm = shutil.which("npm")
     if npm is None:
-        return True, "npm not found — skip build gate"
+        return True, "npm not found: skip build gate"
     try:
         proc = subprocess.run(
             [npm, "run", "build"],
@@ -146,7 +146,7 @@ def main() -> None:
         record(
             "no-vue-implementation",
             True,
-            "no feature views — baseline App.vue shell OK" if (root / "src/App.vue").is_file() else "no src/**/*.vue",
+            "no feature views: baseline App.vue shell OK" if (root / "src/App.vue").is_file() else "no src/**/*.vue",
         )
 
     build_ok, build_detail = _check_repo_buildable(root)

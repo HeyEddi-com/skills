@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify PR review response workflow — tracking complete and optional gate."""
+"""Verify PR review response workflow: tracking complete and optional gate."""
 from __future__ import annotations
 
 import argparse

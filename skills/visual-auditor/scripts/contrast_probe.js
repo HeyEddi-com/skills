@@ -1,6 +1,6 @@
 /**
  * In-page WCAG contrast + motion-over-text probe.
- * Invoked via Playwright page.evaluate — returns violation list.
+ * Invoked via Playwright page.evaluate: returns violation list.
  */
 function runContrastProbe() {
   function parseCssColor(value) {

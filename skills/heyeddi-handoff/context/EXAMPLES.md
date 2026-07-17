@@ -1,5 +1,5 @@
 
-# Examples — Design handoff
+# Examples: Design handoff
 
 ## Designer prompt
 

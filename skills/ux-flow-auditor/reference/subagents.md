@@ -1,4 +1,4 @@
-# Subagents — ux-flow-auditor
+# Subagents: ux-flow-auditor
 
 | Phase | Subagent | Notes |
 |-------|----------|-------|

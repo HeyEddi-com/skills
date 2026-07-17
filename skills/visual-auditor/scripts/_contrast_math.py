@@ -1,4 +1,4 @@
-"""WCAG 2.x contrast math — shared by audit_contrast and unit tests."""
+"""WCAG 2.x contrast math: shared by audit_contrast and unit tests."""
 from __future__ import annotations
 
 import math

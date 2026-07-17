@@ -635,3 +635,39 @@ Emitted `mockup_brief_text`, `wireframe_md_text`, and `design_md_excerpt` are de
 ## 2026-07-15 — v3.0.2 security hardening + CI + release
 
 **Shipped:** Untrusted-doc wraps (handoff, design, product, PR review/respond, orchestrator opinions), auto-sync skill-tree-only allowlist, OpenAPI local-only, verify_product allowlist, trust-boundaries docs, CI skill-security scans. Merge PR #1 → tag **v3.0.2**.
+
+## 2026-07-16: v3.0.3 path-only emit (Snyk W011)
+
+**Context:** skills.sh still showed Med/Critical-class badges on v3.0.2 installs for skills that emit project/PR free text (W011 third-party content exposure). Wrapping alone did not clear scanners.
+
+**Change:** Loaders no longer put outsider free text on stdout.
+- Handoff / flutter / design / product / orchestrator → paths + `agent_read_paths`; agent uses Read tool
+- PR review/respond → wrapped payload written under `.heyeddi/docs/`; stdout is path + counts/structure
+- Also: filesystem-only `_auto_sync` (no `exec_module`), no home/env catalog roots, bridger schema summaries, handoff_meta whitelist
+
+**Ship:** bump hub to **v3.0.3**; platform rescans after tag/release.
+
+## 2026-07-16: Prose anti-slop (no em dashes / AI filler)
+
+**Context:** Skills had UI anti-slop (`modern-reference.md`) and Cursor `deslop` for code, but no shared ban on em dashes or AI prose filler. Skill docs themselves were full of `—`.
+
+**Decision:**
+- Canonical: `docs/prose-anti-slop.md`
+- Copied to every skill as `context/PROSE_ANTI_SLOP.md` (+ template)
+- Every `context/ANTI_PATTERNS.md` gets NEVER + pointer
+- Scrubbed em/en dashes from skill docs and scripts
+- Design craft checklist also gates UI copy via PROSE_ANTI_SLOP
+
+**Note:** ASCII ` - ` is allowed; Unicode em/en dashes are not.
+
+## 2026-07-16: Expanded AI prose slop ban list
+
+**Context:** User demanded stronger prevention of obvious AI slop beyond em dashes.
+
+**Expanded `docs/prose-anti-slop.md` / every `context/PROSE_ANTI_SLOP.md` with:**
+- Soft-focus verbs/nouns/adjectives (delve, tapestry, realm, robust, seamless, …)
+- Corporate sludge and chatbot residue
+- Blog filler phrases and fake profundity patterns
+- Structure bans (emoji theater, triad padding, hedge stacks)
+- Replacement table + Slack smell test
+- Stronger ANTI_PATTERNS NEVER line on all skills

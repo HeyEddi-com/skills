@@ -46,15 +46,15 @@ def _write_review_template(root: Path, route: str, ctx: dict) -> Path:
 
     intent = ctx.get("route_intent") or {}
     lines = [
-        f"# Visual review — `{route}`",
+        f"# Visual review: `{route}`",
         "",
         f"**Date:** {date.today().isoformat()}",
         "",
         "## Specification",
         "",
         f"- **Page purpose:** {ctx.get('page_purpose') or '_(see product.md)_'}",
-        f"- **Primary persona:** {intent.get('primary_persona', '—')}",
-        f"- **Success feeling:** {intent.get('success_feeling', '—')}",
+        f"- **Primary persona:** {intent.get('primary_persona', ' - ')}",
+        f"- **Success feeling:** {intent.get('success_feeling', ' - ')}",
         f"- **Product:** `{ctx.get('product_md')}`",
         f"- **Design:** `{ctx.get('design_md')}`",
         f"- **Mockup brief:** `{ctx.get('mockup_brief')}`",
@@ -79,7 +79,7 @@ def _write_review_template(root: Path, route: str, ctx: dict) -> Path:
             "",
             "## Automated contrast",
             "",
-            f"Report: `{ctx.get('contrast', {}).get('path', '—')}`",
+            f"Report: `{ctx.get('contrast', {}).get('path', ' - ')}`",
             "",
             "## Issues found",
             "",
@@ -88,7 +88,7 @@ def _write_review_template(root: Path, route: str, ctx: dict) -> Path:
             "",
             "## Fixes applied",
             "",
-            "_Use append_fix_log.py per fix — entries mirror below._",
+            "_Use append_fix_log.py per fix: entries mirror below._",
             "",
             "## Re-verify",
             "",
@@ -126,7 +126,7 @@ def main() -> None:
 
     ctx["next"] = [
         "1. Read captures + product.md route intent + design.md + mockup-brief",
-        "2. Fix issues in Vue/CSS immediately — do not only list them",
+        "2. Fix issues in Vue/CSS immediately: do not only list them",
         "3. append_fix_log.py per fix",
         "4. Re-run capture_screenshots + audit_contrast --check",
         "5. finalize_visual_review.py",

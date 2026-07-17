@@ -15,6 +15,6 @@ When `.heyeddi/docs/intake/skill-routing.json` lists `/settings` → `@heyeddi-h
 
 ## Greenfield
 
-Prompt: "Build TaskFlow — Vue + FastAPI, no mockups yet"
+Prompt: "Build TaskFlow: Vue + FastAPI, no mockups yet"
 
 → `@heyeddi-intake` first (intake), then follow generated routing.

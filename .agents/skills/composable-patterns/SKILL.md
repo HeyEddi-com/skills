@@ -1,6 +1,6 @@
 ---
 name: composable-patterns
-description: Provides FastAPI JWT and Firebase client composable patterns for consistent auth and data layers. Context-first skill — use when writing or reviewing Vue composables for API access.
+description: "Provides FastAPI JWT and Firebase client composable patterns for consistent auth and data layers. Context-first skill: use when writing or reviewing Vue composables for API access."
 paths:
   - "**/composables/**"
   - "**/use*.ts"

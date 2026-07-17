@@ -16,11 +16,11 @@ INDEX = """# UX flows index
 
 **Last updated:** {today}
 
-Task-oriented flow audits — click depth, friction, ease of use. Maintained by `@ux-flow-auditor`.
+Task-oriented flow audits: click depth, friction, ease of use. Maintained by `@ux-flow-auditor`.
 
 | Task ID | Goal | Route | Max clicks | Last run | Report |
 |---------|------|-------|------------|----------|--------|
-| update-profile | Change display name and save | /settings | 4 | — | [update-profile.md](ux-flows/update-profile.md) |
+| update-profile | Change display name and save | /settings | 4 |: | [update-profile.md](ux-flows/update-profile.md) |
 
 ## How to add a flow
 
@@ -30,9 +30,9 @@ Task-oriented flow audits — click depth, friction, ease of use. Maintained by 
 
 ## Metrics
 
-- **Click depth** — interactions from landing to success
-- **Friction** — failed steps, hidden controls, extra navigation
-- **Pass** — within `max_clicks` and all steps succeed
+- **Click depth**: interactions from landing to success
+- **Friction**: failed steps, hidden controls, extra navigation
+- **Pass**: within `max_clicks` and all steps succeed
 """
 
 EXAMPLE_FLOW = {

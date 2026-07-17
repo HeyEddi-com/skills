@@ -70,7 +70,7 @@ def main() -> None:
                 {
                     "route": args.route,
                     "files": [],
-                    "hint": "No matching Vue files — check route slug or views/ naming",
+                    "hint": "No matching Vue files: check route slug or views/ naming",
                 },
                 indent=2,
             )

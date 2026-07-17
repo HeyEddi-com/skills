@@ -1,5 +1,5 @@
 
-# Examples — PR submission review
+# Examples: PR submission review
 
 ## Fetch context (live)
 

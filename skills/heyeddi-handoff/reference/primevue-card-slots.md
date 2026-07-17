@@ -27,7 +27,7 @@
 </Card>
 ```
 
-Symptom: Playwright/screenshots show title + subtitle only — no inputs, toggles, or stat values.
+Symptom: Playwright/screenshots show title + subtitle only: no inputs, toggles, or stat values.
 
 ## Named slots
 
@@ -35,12 +35,12 @@ Symptom: Playwright/screenshots show title + subtitle only — no inputs, toggle
 |------|-----|
 | `#title` | Card heading |
 | `#subtitle` | Muted hint under title |
-| `#content` | **All body UI** — fields, toggles, stat values, tables |
+| `#content` | **All body UI**: fields, toggles, stat values, tables |
 | `#footer` | Optional actions row |
 
 ## Verification
 
-- `verify_handoff.py --check` — fails when any `<Card>` has loose elements outside named slots
-- Playwright content gates — `/settings` requires ≥2 inputs in `.settings`; `/dashboard` requires stat values
+- `verify_handoff.py --check`: fails when any `<Card>` has loose elements outside named slots
+- Playwright content gates: `/settings` requires ≥2 inputs in `.settings`; `/dashboard` requires stat values
 
 See also `handoff-to-code.md` common failures.

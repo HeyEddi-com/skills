@@ -71,7 +71,7 @@ def test_pipeline_skills_have_handoff_section() -> None:
         "heyeddi-pr-review",
         "heyeddi-pr-respond",
     }
-    heading = "## When the task is complete — suggest next skills"
+    heading = "## When the task is complete: suggest next skills"
     missing: list[str] = []
     for name in pipeline:
         skill_md = ROOT / "skills" / name / "SKILL.md"

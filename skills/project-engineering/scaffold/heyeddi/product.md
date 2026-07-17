@@ -17,7 +17,7 @@ Skills read this file from `.heyeddi/product.md` (canonical). Legacy root `PRODU
 
 ## Foundations waivers
 
-_List only if explicitly out of scope for this product — each needs a one-line reason._
+_List only if explicitly out of scope for this product: each needs a one-line reason._
 
 | Foundation | Waived? | Reason |
 |------------|---------|--------|

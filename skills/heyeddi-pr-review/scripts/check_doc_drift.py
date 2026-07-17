@@ -78,7 +78,7 @@ def main() -> None:
                     {
                         "severity": "info",
                         "doc": str(dm.relative_to(root)),
-                        "message": f"`{path}` changed — confirm design.md or Decision log mentions the UI change",
+                        "message": f"`{path}` changed: confirm design.md or Decision log mentions the UI change",
                         "suggestion": "Append Decision log entry citing component/token choices",
                     }
                 )
@@ -93,7 +93,7 @@ def main() -> None:
                         {
                             "severity": "info",
                             "doc": str(arch.relative_to(root)),
-                            "message": f"API file `{path}` changed — architecture.md may need module map update",
+                            "message": f"API file `{path}` changed: architecture.md may need module map update",
                             "suggestion": "Update architecture.md or append engineering ADR",
                         }
                     )
@@ -102,7 +102,7 @@ def main() -> None:
                 {
                     "severity": "info",
                     "doc": str(eng_dir.relative_to(root)),
-                    "message": "API changed but no engineering docs folder — run @engineering-excellence init",
+                    "message": "API changed but no engineering docs folder: run @engineering-excellence init",
                     "suggestion": "init_engineering_docs then document API surface",
                 }
             )
@@ -113,7 +113,7 @@ def main() -> None:
             {
                 "severity": "info",
                 "doc": "PR description",
-                "message": "PR body is empty — reviewers need product intent and test plan",
+                "message": "PR body is empty: reviewers need product intent and test plan",
                 "suggestion": "Add summary, routes affected, and how to verify",
             }
         )

@@ -2,7 +2,7 @@
 version: alpha
 name: Project-name-design-system
 description: >-
-  One paragraph in designer voice — mood, density, register (product app vs marketing),
+  One paragraph in designer voice: mood, density, register (product app vs marketing),
   how OpenProps surfaces and PrimeVue components should feel together. Name the north star
   and the one thing agents must not get wrong.
 
@@ -106,7 +106,7 @@ components:
 
 ## Overview
 
-_(Open with how the app should **feel** — density, register, primary surfaces. Reference tokens inline like `{colors.canvas}` and `{typography.display-lg}`.)_
+_(Open with how the app should **feel**: density, register, primary surfaces. Reference tokens inline like `{colors.canvas}` and `{typography.display-lg}`.)_
 
 **Key Characteristics:**
 
@@ -116,7 +116,7 @@ _(Open with how the app should **feel** — density, register, primary surfaces.
 
 ## Foundations (always on)
 
-_Non-negotiable HeyEddi defaults — see `heyeddi-design/reference/foundations.md`. Summarize here; do not delete this section._
+_Non-negotiable HeyEddi defaults: see `heyeddi-design/reference/foundations.md`. Summarize here; do not delete this section._
 
 ### Responsive
 
@@ -133,7 +133,7 @@ Mobile-first; audit at **375 / 768 / 1024 / 1440**. Touch targets ≥ 44px. Stac
 | `en` | English | shipped (fallback) |
 | `es` | Spanish | shipped |
 
-Detect `navigator.language` on first visit; user picker overrides. `vue-i18n`; `html lang` synced. Expandable — add rows when scoping new locales.
+Detect `navigator.language` on first visit; user picker overrides. `vue-i18n`; `html lang` synced. Expandable: add rows when scoping new locales.
 
 ### Accessibility
 
@@ -143,7 +143,7 @@ Keyboard + `:focus-visible`; skip link; semantic landmarks; form labels; `prefer
 
 | Mode | Trigger | Typography |
 |------|---------|------------|
-| Default | — | `{typography.body-md}` |
+| Default |: | `{typography.body-md}` |
 | Dyslexia-friendly | Settings toggle → `data-reading-mode="dyslexia"` | Atkinson Hyperlegible or OpenDyslexic; line-height 1.75; wider letter/word spacing; max-width 65ch |
 
 ### UI states
@@ -152,11 +152,11 @@ Loading, empty, error, and success patterns required on data views and forms.
 
 ## Colors
 
-> **Source:** scan from code, seed interview, or design interview — **not** mockup PNG colors (handoff mockups are layout-only).
+> **Source:** scan from code, seed interview, or design interview: **not** mockup PNG colors (handoff mockups are layout-only).
 
 ### Token source
 
-Document once per project: **OpenProps** (HeyEddi scaffold — `tokens.css` aliases) | **custom** (`:root` vars only) | **other** (document waiver). See `heyeddi-design/reference/token-strategy.md`.
+Document once per project: **OpenProps** (HeyEddi scaffold: `tokens.css` aliases) | **custom** (`:root` vars only) | **other** (document waiver). See `heyeddi-design/reference/token-strategy.md`.
 
 ### Brand & Accent
 
@@ -211,7 +211,7 @@ _(System stack or project fonts. Note substitutes if brand fonts are unavailable
 
 ### Whitespace philosophy
 
-_(One short paragraph — comfortable enterprise vs dense dashboard.)_
+_(One short paragraph: comfortable enterprise vs dense dashboard.)_
 
 ## Elevation & Depth
 
@@ -235,29 +235,29 @@ Map **frontmatter component tokens** to **PrimeVue** primitives. Name variants (
 
 ### Buttons
 
-**`button-primary`** — …
+**`button-primary`**: …
 
 - PrimeVue: `Button` severity `primary`, size `normal`.
 - Background `{colors.primary}`, type `{typography.button-md}`, rounded `{rounded.sm}`.
 
-**`button-secondary`** — …
+**`button-secondary`**: …
 
 ### Inputs & forms
 
-**`text-input`** — …
+**`text-input`**: …
 
 - PrimeVue: `InputText`, `Password`, `InputMask` as needed.
 - Never native unstyled `<input>` on production routes.
 
 ### Cards & sections
 
-**`card-section`** — …
+**`card-section`**: …
 
 - PrimeVue: `Card` with title slot + content.
 
 ### Navigation
 
-_(App shell, tabs, breadcrumbs — PrimeVue component names.)_
+_(App shell, tabs, breadcrumbs: PrimeVue component names.)_
 
 ## Do's and Don'ts
 
@@ -271,7 +271,7 @@ _(App shell, tabs, breadcrumbs — PrimeVue component names.)_
 
 - Raw hex in components unless listed here as an exception.
 - Duplicate PrimeVue wrappers without updating this file.
-- Dump code in Decision log — write designer talk.
+- Dump code in Decision log: write designer talk.
 
 ## Responsive Behavior
 
@@ -280,7 +280,7 @@ _(App shell, tabs, breadcrumbs — PrimeVue component names.)_
 | Name | Width | Key changes |
 |------|-------|-------------|
 | Mobile | < 768px | Stack forms; full-width CTAs |
-| Tablet | 768–1023px | … |
+| Tablet | 768-1023px | … |
 | Desktop | ≥ 1024px | … |
 
 ### Touch targets
@@ -289,9 +289,9 @@ _(App shell, tabs, breadcrumbs — PrimeVue component names.)_
 
 ## Decision log
 
-_Append-only — episodic "we chose / we rejected" and handoff mockup → UI mapping. Keep the living system in sections above; do not let the log replace them._
+_Append-only: episodic "we chose / we rejected" and handoff mockup → UI mapping. Keep the living system in sections above; do not let the log replace them._
 
-### YYYY-MM-DD — feature or route (@heyeddi-design | @heyeddi-handoff)
+### YYYY-MM-DD: feature or route (@heyeddi-design | @heyeddi-handoff)
 
 **Context:** …
 

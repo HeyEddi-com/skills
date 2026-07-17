@@ -1,4 +1,4 @@
-"""HeyEddi `.heyeddi/` folder conventions — metadata and skill artifacts."""
+"""HeyEddi `.heyeddi/` folder conventions: metadata and skill artifacts."""
 from __future__ import annotations
 
 from pathlib import Path

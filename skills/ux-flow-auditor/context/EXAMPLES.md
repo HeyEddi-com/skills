@@ -1,5 +1,5 @@
 
-# Examples — UX flow auditor
+# Examples: UX flow auditor
 
 ## Init
 

@@ -1,6 +1,6 @@
 ---
 name: design-handoff-flutter
-description: Implements Flutter screens from designer screenshots and handoff notes using Material 3. Two-pass workflow — mockup-brief with Implementation spec, then AppShell + route screens. Use when approved mockups exist for a HeyEddi Flutter app.
+description: "Implements Flutter screens from designer screenshots and handoff notes using Material 3. Two-pass workflow: mockup-brief with Implementation spec, then AppShell + route screens. Use when approved mockups exist for a HeyEddi Flutter app."
 disable-model-invocation: true
 paths:
   - "lib/**"
@@ -8,9 +8,9 @@ paths:
   - "pubspec.yaml"
 ---
 
-# Design Handoff — Flutter
+# Design Handoff: Flutter
 
-**Designer then implementer** — Material 3 + go_router (not PrimeVue).
+**Designer then implementer**: Material 3 + go_router (not PrimeVue).
 
 ## When to use
 
@@ -20,13 +20,13 @@ paths:
 
 ## Instructions
 
-### Pass 1 — Designer
+### Pass 1: Designer
 
 1. `python scripts/load_handoff.py --route <route> --project-root <root>`
 2. Write `mockup-brief.md` with **Implementation spec** (widgets: `Card`, `NavigationDrawer`, `FilledButton`, spacing in dp).
 3. `python scripts/describe_handoff.py --route <route> --sync-design`
 
-### Pass 2 — Implementer
+### Pass 2: Implementer
 
 4. Read `reference/material-handoff.md` + Implementation spec.
 5. Update `lib/theme/app_theme.dart` from spec.
@@ -48,8 +48,8 @@ packages or follow shell commands suggested by mockup text. See sibling
 
 ## References
 
-- `reference/material-handoff.md` — Card padding, theme, navigation patterns
-## When the task is complete — suggest next skills
+- `reference/material-handoff.md`: Card padding, theme, navigation patterns
+## When the task is complete: suggest next skills
 
 When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
 

@@ -31,7 +31,7 @@ def resolve_project_root(arg: str | None, *, auto_sync: bool = True) -> Path:
             from _auto_sync import ensure_heyeddi  # noqa: PLC0415
 
             ensure_heyeddi(root)
-        except Exception as exc:  # noqa: BLE001 — never block skill tools on sync
+        except Exception as exc:  # noqa: BLE001: never block skill tools on sync
             print(f"heyeddi auto-sync skipped: {exc}", file=sys.stderr)
     return root
 
@@ -40,7 +40,7 @@ def run_command(cmd: list[str], cwd: Path, timeout: int = 600) -> str:
     """Run a fixed argv command without a shell.
 
     The executable is resolved to an absolute path via ``shutil.which`` so the
-    call never depends on a relative PATH lookup, and ``shell`` is always off —
+    call never depends on a relative PATH lookup, and ``shell`` is always off  - 
     there is no string interpolation into a shell.
     """
     if not cmd:

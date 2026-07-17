@@ -112,7 +112,7 @@ def main() -> None:
     root = resolve_project_root(args.project_root)
     json_path = Path(args.json) if args.json else product_json_path(root)
     if not json_path.is_file():
-        fail(f"product JSON not found: {json_path} — run write_product first")
+        fail(f"product JSON not found: {json_path}: run write_product first")
 
     data = load_json(json_path)
     ok, errors = validate_product_json(data)

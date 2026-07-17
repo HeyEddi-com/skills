@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scaffold `.heyeddi/docs/product/` — backlog, feature specs, review index."""
+"""Scaffold `.heyeddi/docs/product/`: backlog, feature specs, review index."""
 from __future__ import annotations
 
 import argparse
@@ -14,7 +14,7 @@ BACKLOG = """# Product backlog
 
 **Last updated:** {today}
 
-Prioritized by user value. PM owns order — engineering estimates inform but do not override user pain.
+Prioritized by user value. PM owns order: engineering estimates inform but do not override user pain.
 
 | Priority | Feature / route | User story (summary) | Status | Notes |
 |----------|-----------------|--------------------|--------|-------|
@@ -27,7 +27,7 @@ Prioritized by user value. PM owns order — engineering estimates inform but do
 
 FEATURES_README = """# Feature specs
 
-Per-route **user stories** and **acceptance criteria** — testable Definition of Done.
+Per-route **user stories** and **acceptance criteria**: testable Definition of Done.
 
 Create with `write_feature_spec.py` or author `features/<slug>.md` manually.
 
@@ -43,7 +43,7 @@ REVIEWS_INDEX = """# Product reviews
 
 **Last updated:** {today}
 
-Holistic PM reviews — usefulness, gaps, delegated findings, recommended changes.
+Holistic PM reviews: usefulness, gaps, delegated findings, recommended changes.
 
 | Date | Type | Report |
 |------|------|--------|

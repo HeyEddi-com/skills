@@ -1,4 +1,4 @@
-# Examples — TaskFlow dashboard review
+# Examples: TaskFlow dashboard review
 
 ```bash
 python scripts/init_product_docs.py --project-root .

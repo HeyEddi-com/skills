@@ -2,7 +2,7 @@
 # FastAPI JWT composable pattern
 
 ```ts
-// useApi.ts — attach Bearer token, handle 401 refresh
+// useApi.ts: attach Bearer token, handle 401 refresh
 export function useApi() {
   const auth = useAuthStore();
   async function fetchApi<T>(path: string, init?: RequestInit): Promise<T> {

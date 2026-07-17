@@ -1,4 +1,4 @@
-# Explore — concept images and wireframes
+# Explore: concept images and wireframes
 
 **Scope:** Visual direction probes and wireframe-level layouts. No production Vue code.
 
@@ -10,13 +10,13 @@ Skip explore (announce in one line why) when:
 
 - Fidelity is **sketch-only** planning, or
 - User explicitly said no images / no wireframes, or
-- Image generation is unavailable in the harness — proceed to brief with text-only wireframes (ASCII or markdown blocks).
+- Image generation is unavailable in the harness: proceed to brief with text-only wireframes (ASCII or markdown blocks).
 
 Do not ask the user to install image APIs.
 
-## Phase A — Visual direction probes (when available)
+## Phase A: Visual direction probes (when available)
 
-Generate **2–4** distinct direction probes differing in hierarchy, density, nav topology, typographic voice, or color strategy — **not** palette swaps or the same layout with different hues.
+Generate **2-4** distinct direction probes differing in hierarchy, density, nav topology, typographic voice, or color strategy: **not** palette swaps or the same layout with different hues.
 
 Each probe should answer: *Would this feel like a different product identity, or the same template recolored?* Reject lanes that only change primary color.
 
@@ -30,9 +30,9 @@ Base probes on:
 After generating:
 
 - Ask which direction feels closest, what's off, what should carry forward
-- Do not treat images as final spec — they test lanes for the brief
+- Do not treat images as final spec: they test lanes for the brief
 
-## Phase B — Wireframes
+## Phase B: Wireframes
 
 Produce wireframes for **key screens/states** in the scoped breadth:
 
@@ -49,7 +49,7 @@ Include at minimum:
 
 Wireframes must label:
 
-- Regions and component intent (e.g. "DataTable — recent orders", "Sidebar — org nav")
+- Regions and component intent (e.g. "DataTable: recent orders", "Sidebar: org nav")
 - Primary action per screen
 - PrimeVue component mapping hints where obvious
 

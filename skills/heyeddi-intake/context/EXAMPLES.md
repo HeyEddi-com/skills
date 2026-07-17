@@ -1,4 +1,4 @@
-# Examples — TaskFlow intake
+# Examples: TaskFlow intake
 
 Copy `reference/product-translation.template.json` as starting point, then:
 

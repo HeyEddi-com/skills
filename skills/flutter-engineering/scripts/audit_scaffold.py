@@ -52,7 +52,7 @@ def _audit_flutter(root: Path) -> dict:
             missing_recommended.append(rel)
 
     if not (root / ".dart_tool").is_dir() and not (root / "pubspec.lock").is_file():
-        warnings.append("Flutter deps may be missing — run ensure_flutter")
+        warnings.append("Flutter deps may be missing: run ensure_flutter")
 
     status = "ok" if not missing_required else "incomplete"
     if status == "ok" and (warnings or missing_recommended):
@@ -80,7 +80,7 @@ def _audit_fastapi(root: Path) -> dict:
 
     api = fastapi_root(root)
     if not (api / ".venv").is_dir():
-        warnings.append("Python venv/deps may be missing — run ensure_python via @project-engineering")
+        warnings.append("Python venv/deps may be missing: run ensure_python via @project-engineering")
 
     status = "ok" if not missing_required else "incomplete"
     return {

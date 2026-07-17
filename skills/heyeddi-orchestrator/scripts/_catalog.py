@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import json
-import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -143,7 +142,7 @@ def render_skills_index_md(catalog: dict[str, Any]) -> str:
         "",
         f"**Generated:** {generated} · **Maintained by:** `@heyeddi-orchestrator`",
         "",
-        "Cached catalog — read this instead of every `SKILL.md` at session start. "
+        "Cached catalog: read this instead of every `SKILL.md` at session start. "
         "Refresh after installing skills: `write_skills_index --project-root .`",
         "",
         f"**Installed:** {catalog.get('installed_count', 0)} / {catalog.get('skill_count', 0)} skills",
@@ -164,7 +163,7 @@ def render_skills_index_md(catalog: dict[str, Any]) -> str:
             "",
             "## Quick use",
             "",
-            "1. `suggest_skills --user-prompt \"...\"` — rank skills for the task",
+            "1. `suggest_skills --user-prompt \"...\"`: rank skills for the task",
             "2. Read **one** chosen skill's `SKILL.md` (path in JSON index)",
             "3. Follow `docs/intake/skill-routing.json` when present",
             "",
@@ -239,11 +238,7 @@ def parse_frontmatter(skill_md: Path) -> dict[str, str]:
 
 
 def find_hub_root(start: Path | None = None) -> Path | None:
-    env = os.environ.get("HEYEDDI_SKILLS_ROOT")
-    if env:
-        hub = Path(env).resolve()
-        if (hub / "skills-registry.json").is_file():
-            return hub
+    """Locate hub root from cwd / start only: no env, no home directory."""
     for candidate in (start, Path.cwd()) if start else (Path.cwd(),):
         if candidate is None:
             continue
@@ -256,15 +251,16 @@ def find_hub_root(start: Path | None = None) -> Path | None:
 
 
 def skill_search_roots(project_root: Path, hub_root: Path | None) -> list[Path]:
+    """Install-tree roots only: never user-home or env-controlled paths."""
     roots: list[Path] = []
     if hub_root:
         roots.append(hub_root / "skills")
     agents = project_root / ".agents" / "skills"
     if agents.is_dir():
         roots.append(agents)
-    cursor = Path.home() / ".cursor" / "skills"
-    if cursor.is_dir():
-        roots.append(cursor)
+    cursor_project = project_root / ".cursor" / "skills"
+    if cursor_project.is_dir():
+        roots.append(cursor_project)
     return roots
 
 
@@ -338,7 +334,7 @@ def load_skill_triggers(skill_dir: Path | None) -> list[tuple[str, bool]]:
 
 
 def score_entry(entry: dict[str, Any], prompt: str) -> tuple[int, list[str]]:
-    """Score one catalog entry against a prompt — no hardcoded skill map."""
+    """Score one catalog entry against a prompt: no hardcoded skill map."""
     prompt_lower = prompt.lower()
     prompt_tokens = tokenize(prompt)
     score = 0
@@ -533,7 +529,7 @@ def suggest_skills(
     elif not product_md_exists(project_root) and ranked:
         top = ranked[0]
         workflow.append(
-            f"No product.md yet — top match @{top['skill']} ({top['reason']}). "
+            f"No product.md yet: top match @{top['skill']} ({top['reason']}). "
             "Confirm intake/product doc skill before implementation."
         )
     elif ranked:
@@ -542,7 +538,7 @@ def suggest_skills(
         workflow.append("Run load_catalog and pick a skill whose description fits the task.")
 
     return {
-        "prompt_excerpt": user_prompt.strip()[:240],
+        "prompt_char_count": len(user_prompt.strip()),
         "routing_found": routing is not None,
         "product_md_found": product_md_exists(project_root),
         "catalog_skill_count": catalog["skill_count"],
@@ -553,6 +549,7 @@ def suggest_skills(
         "recommended_workflow": workflow,
         "note": (
             "Read `.heyeddi/skills-index.md` for the full catalog without opening every SKILL.md. "
-            "Refresh index after skill installs. Read one chosen SKILL.md before invoking tools."
+            "Refresh index after skill installs. Read one chosen SKILL.md before invoking tools. "
+            "Caller prompt text is not echoed (prompt-injection boundary)."
         ),
     }

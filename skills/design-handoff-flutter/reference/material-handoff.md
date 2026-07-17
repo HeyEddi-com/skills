@@ -1,4 +1,4 @@
-# Material handoff — Flutter
+# Material handoff: Flutter
 
 ## Shell
 

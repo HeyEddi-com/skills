@@ -1,5 +1,5 @@
 
-# Examples — HeyEddi design
+# Examples: HeyEddi design
 
 ## Vague brief (no sub-command)
 
@@ -14,10 +14,10 @@ Agent runs **discover** → asks about users, density, nav, data → **shape** p
 ```
 @heyeddi-design shape
 Feature: enterprise-settings
-Brief: B2B admin settings — org profile, members, billing, danger zone
+Brief: B2B admin settings: org profile, members, billing, danger zone
 ```
 
-Produces `designs/enterprise-settings/research.md`, wireframes, `brief.md` — waits for confirmation.
+Produces `designs/enterprise-settings/research.md`, wireframes, `brief.md`: waits for confirmation.
 
 ## Build after confirmation
 
@@ -40,9 +40,9 @@ Then `document` → `shape` → `craft`.
 @heyeddi-design critique the login page
 ```
 
-Or plain language: *"this login screen looks terrible — what's wrong?"*
+Or plain language: *"this login screen looks terrible: what's wrong?"*
 
-Writes `.heyeddi/docs/login-critique.md` — no code unless you ask to fix.
+Writes `.heyeddi/docs/login-critique.md`: no code unless you ask to fix.
 
 ## Critique then polish
 
@@ -56,7 +56,7 @@ Runs **critique** first if needed, then fixes P0/P1 issues.
 
 ```
 @heyeddi-design polish
-Route: /settings — tighten mobile spacing
+Route: /settings: tighten mobile spacing
 ```
 
 ## Wrong skill (has mockups)

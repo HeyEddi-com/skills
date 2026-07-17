@@ -35,7 +35,7 @@ def main() -> None:
 
     root = resolve_project_root(args.project_root)
     if not workflow_dir(root).is_dir():
-        fail("missing .heyeddi/docs/workflow/ — run init_workflow_sync first")
+        fail("missing .heyeddi/docs/workflow/: run init_workflow_sync first")
 
     docs = [d.strip() for d in args.docs_updated.split(",") if d.strip()]
     requested = [p.strip() for p in args.request_pillars.split(",") if p.strip()]
@@ -46,11 +46,11 @@ def main() -> None:
     feature = args.feature or args.route.strip("/").replace("/", "-") or "home"
 
     block = [
-        f"### {ts} — `{args.route}` ({args.pillar})",
+        f"### {ts}: `{args.route}` ({args.pillar})",
         "",
         f"**Opinion:** {args.opinion}",
         "",
-        f"**Docs updated:** {', '.join(f'`{d}`' for d in docs) if docs else '—'}",
+        f"**Docs updated:** {', '.join(f'`{d}`' for d in docs) if docs else ' - '}",
         "",
         f"**Requests:** {', '.join(f'`@{p}`' for p in requested)} must append opinion for this route",
         "",

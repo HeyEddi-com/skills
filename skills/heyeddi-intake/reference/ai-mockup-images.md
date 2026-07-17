@@ -19,9 +19,9 @@ Use when the user attaches screenshots, Figma exports, sketches, or competitor r
 3. **Generate images** with the agent harness image tool (same pattern as `@heyeddi-design` `explore`)
 4. Save as `desktop.png` and `mobile.png` in `.heyeddi/designs/<feature>/`
 5. Update `handoff.json` → `fidelity: ai_generated`
-6. `seed_brief --force` — interpret layout from images; tailor brief to **this product**
+6. `seed_brief --force`: interpret layout from images; tailor brief to **this product**
 
-Prompts must reflect **page purpose** from `product-translation.json` — not a reusable settings template.
+Prompts must reflect **page purpose** from `product-translation.json`: not a reusable settings template.
 
 ## 3. Wireframe only (default when no images)
 
@@ -29,11 +29,11 @@ Prompts must reflect **page purpose** from `product-translation.json` — not a 
 generate_wireframe.py --feature <name> --route /path --force
 ```
 
-Use for `@heyeddi-handoff` wireframe mode — no PNG required.
+Use for `@heyeddi-handoff` wireframe mode: no PNG required.
 
 ## Hub eval tooling (not in skill package)
 
-Eval/fixture projects may use **`uv run poe mockups`** (`scripts/generate-handoff-mockups.py` at repo root). That script is **hub maintainer tooling only** — never bundled in `skills/heyeddi-intake/` and never the default consumer path.
+Eval/fixture projects may use **`uv run poe mockups`** (`scripts/generate-handoff-mockups.py` at repo root). That script is **hub maintainer tooling only**: never bundled in `skills/heyeddi-intake/` and never the default consumer path.
 
 ## Anti-patterns
 
@@ -43,5 +43,5 @@ Eval/fixture projects may use **`uv run poe mockups`** (`scripts/generate-handof
 
 ## Related
 
-- `mockup-strategy.md` — decision tree
-- `heyeddi-design/reference/explore.md` — visual direction probes
+- `mockup-strategy.md`: decision tree
+- `heyeddi-design/reference/explore.md`: visual direction probes

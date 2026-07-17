@@ -1,4 +1,4 @@
-# Subagent delegation — project-engineering
+# Subagent delegation: project-engineering
 
 | Step | Subagent | Readonly | Worker prompt |
 |------|----------|----------|---------------|

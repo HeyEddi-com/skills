@@ -1,4 +1,4 @@
-# Review checklist — PR submission review
+# Review checklist: PR submission review
 
 **Date:** 2026-07-07
 
@@ -6,7 +6,7 @@ Use this rubric when reviewing a **submitted** PR. Scope = committed diff only.
 
 ## 1. Context
 
-- [ ] `fetch_pr_context` run — file list and categories recorded
+- [ ] `fetch_pr_context` run: file list and categories recorded
 - [ ] PR title/body explain **why** and **how to verify**
 - [ ] Changed files match PR description (no surprise files)
 
@@ -14,12 +14,12 @@ Use this rubric when reviewing a **submitted** PR. Scope = committed diff only.
 
 - [ ] `load_product_context` + `check_features` for `routes_touched`
 - [ ] Acceptance criteria met for affected routes
-- [ ] Change is **useful** for primary persona — not scope creep
+- [ ] Change is **useful** for primary persona: not scope creep
 - [ ] PM judgment written in report (not just tool JSON)
 
 ## 3. Documentation
 
-- [ ] `check_doc_drift` — no warn-level findings unresolved
+- [ ] `check_doc_drift`: no warn-level findings unresolved
 - [ ] `product.md` route intent matches behavior change
 - [ ] `design.md` Decision log updated when UI changes
 - [ ] `docs/engineering/` updated when API/modules change
@@ -33,13 +33,13 @@ Use this rubric when reviewing a **submitted** PR. Scope = committed diff only.
 
 ## 5. UI (when `categories.ui` non-empty)
 
-- [ ] `@no-duplicate-ui` — no forked components
-- [ ] `@primevue-openprops-architect` — tokens, no raw hex
+- [ ] `@no-duplicate-ui`: no forked components
+- [ ] `@primevue-openprops-architect`: tokens, no raw hex
 - [ ] `@visual-auditor` on touched routes (contrast + layout)
 
 ## 6. Hard gate
 
-- [ ] `@pre-merge-gate` — Overall OK (or documented SKIP with reason)
+- [ ] `@pre-merge-gate`: Overall OK (or documented SKIP with reason)
 - [ ] Gate markdown pasted in **Gate results** section
 
 ## 7. Verdict

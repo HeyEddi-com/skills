@@ -1,4 +1,4 @@
-"""Product-specific wireframe scaffolds — layout varies by route purpose, not one PNG template."""
+"""Product-specific wireframe scaffolds: layout varies by route purpose, not one PNG template."""
 from __future__ import annotations
 
 import re
@@ -47,7 +47,7 @@ def _regions_table(rows: list[tuple[str, str, str, str]]) -> str:
 
 def wireframe_marketing(ctx: PageContext) -> str:
     title = _slug_title(ctx.feature)
-    return f"""# Wireframe — {title} ({ctx.product_name})
+    return f"""# Wireframe: {title} ({ctx.product_name})
 
 Fidelity: wireframe (layout only). Colors from `.heyeddi/design.md`.
 Route: `{ctx.route}` · Purpose: {ctx.purpose}
@@ -59,7 +59,7 @@ Route: `{ctx.route}` · Purpose: {ctx.purpose}
 | {ctx.product_name:<20}                    [Features] [Pricing] [Sign in] |
 +------------------------------------------------------------------+
 |                                                                  |
-|     {ctx.product_name} — headline from product voice              |
+|     {ctx.product_name}: headline from product voice              |
 |     Subhead: {ctx.success_feeling or 'clear value for primary persona'} |
 |                                                                  |
 |     [ Primary CTA → /login ]    [ Secondary learn more ]         |
@@ -93,7 +93,7 @@ Subhead
 
 def wireframe_login(ctx: PageContext) -> str:
     title = _slug_title(ctx.feature)
-    return f"""# Wireframe — {title} ({ctx.product_name})
+    return f"""# Wireframe: {title} ({ctx.product_name})
 
 Fidelity: wireframe (layout only). Colors from `.heyeddi/design.md`.
 Route: `{ctx.route}` · Purpose: {ctx.purpose}
@@ -109,7 +109,7 @@ Route: `{ctx.route}` · Purpose: {ctx.purpose}
 |                    | Email [....................] |                 |
 |                    | Password [................] |                 |
 |                    | [ ] Remember me              |                 |
-|                    | [ Sign in — primary ]       |                 |
+|                    | [ Sign in: primary ]       |                 |
 |                    | Forgot password?             |                 |
 |                    +---------------------------+                 |
 +------------------------------------------------------------------+
@@ -136,7 +136,7 @@ Password [...........]
 def wireframe_dashboard(ctx: PageContext) -> str:
     title = _slug_title(ctx.feature)
     persona = ctx.primary_persona or "team lead"
-    return f"""# Wireframe — {title} ({ctx.product_name})
+    return f"""# Wireframe: {title} ({ctx.product_name})
 
 Fidelity: wireframe (layout only). Colors from `.heyeddi/design.md`.
 Route: `{ctx.route}` · Purpose: {ctx.purpose}
@@ -151,7 +151,7 @@ Derive columns and rows from `{ctx.purpose}`.
 | {ctx.product_name:<10}| Topbar [ search........ ] [+ Invite] [avatar]|
 | Nav        | {title}: {ctx.success_feeling or 'status at a glance'} |
 | - Dash *   | +--------------------------------------------------+ |
-| - Settings | | Team roster (DataTable — NOT default stat cards) | |
+| - Settings | | Team roster (DataTable: NOT default stat cards) | |
 |            | | Name      | Role    | Status   | Last active    | |
 |            | | Alex      | Lead    | Active   | Today          | |
 |            | | Jordan    | IC      | Away     | Yesterday      | |
@@ -185,7 +185,7 @@ Derive columns and rows from `{ctx.purpose}`.
 
 def wireframe_settings(ctx: PageContext) -> str:
     title = _slug_title(ctx.feature)
-    return f"""# Wireframe — {title} ({ctx.product_name})
+    return f"""# Wireframe: {title} ({ctx.product_name})
 
 Fidelity: wireframe (layout only). Colors from `.heyeddi/design.md`.
 Route: `{ctx.route}` · Purpose: {ctx.purpose}
@@ -219,7 +219,7 @@ Route: `{ctx.route}` · Purpose: {ctx.purpose}
 +-- Notifications --------+
 | Email alerts    [toggle]|
 +--------------------------+
-[ Save changes — full width ]
+[ Save changes: full width ]
 ```
 
 {_regions_table([
@@ -234,7 +234,7 @@ Route: `{ctx.route}` · Purpose: {ctx.purpose}
 def wireframe_generic(ctx: PageContext) -> str:
     title = _slug_title(ctx.feature)
     safe_purpose = re.sub(r"\s+", " ", ctx.purpose.strip()) or "Page content from product.md"
-    return f"""# Wireframe — {title} ({ctx.product_name})
+    return f"""# Wireframe: {title} ({ctx.product_name})
 
 Fidelity: wireframe (layout only). Colors from `.heyeddi/design.md`.
 Route: `{ctx.route}` · Purpose: {ctx.purpose}

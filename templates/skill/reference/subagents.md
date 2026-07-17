@@ -1,4 +1,4 @@
-# Subagent delegation — `<skill-name>`
+# Subagent delegation: `<skill-name>`
 
 **Default in Cursor:** delegate rows below via the **Task** tool unless the user asks for a single-thread run.
 

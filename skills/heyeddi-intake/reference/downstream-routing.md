@@ -20,7 +20,7 @@ After `write_routing.py`, `.heyeddi/docs/intake/skill-routing.json` drives the t
       "skill": "heyeddi-design",
       "mode": "craft",
       "feature": "taskflow-dashboard",
-      "notes": "Team roster table — not 3 KPI wireframe"
+      "notes": "Team roster table: not 3 KPI wireframe"
     },
     {
       "route": "/settings",

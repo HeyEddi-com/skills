@@ -32,7 +32,7 @@ def main() -> None:
     except json.JSONDecodeError as exc:
         fail(f"invalid JSON: {exc}")
 
-    body = f"""# Product translation — {today}
+    body = f"""# Product translation: {today}
 
 ## User prompt
 
@@ -52,7 +52,7 @@ def main() -> None:
         for q in questions:
             body += f"- {q}\n"
     else:
-        body += "_None — proceed to mockups and routing._\n"
+        body += "_None: proceed to mockups and routing._\n"
     body += "\n## Next\n\nRun `write_routing.py` then chain skills listed in `skill-routing.json`.\n"
 
     if args.dry_run:

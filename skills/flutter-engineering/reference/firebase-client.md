@@ -1,4 +1,4 @@
-# Firebase client — Flutter
+# Firebase client: Flutter
 
 Add to `pubspec.yaml` when `backends` includes `firebase`:
 

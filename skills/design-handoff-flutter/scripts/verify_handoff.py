@@ -163,7 +163,7 @@ def main() -> None:
     result["mockup_brief"] = str(fdir / BRIEF_FILENAME) if (fdir / BRIEF_FILENAME).is_file() else None
     emit(json.dumps(result, indent=2))
     if args.check and not result.get("ok"):
-        fail(f"{len(result.get('failed') or [])} check(s) failed — see checks[]")
+        fail(f"{len(result.get('failed') or [])} check(s) failed: see checks[]")
 
 
 if __name__ == "__main__":

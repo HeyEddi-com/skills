@@ -5,14 +5,14 @@
 Read with `product.md` **Personas** and **Per-route intent** before `research`, `shape`, `craft`, or `polish`.
 
 `modern-reference.md` = **how** (CSS, surfaces, type).  
-This file = **who** and **why** — which direction fits this product.
+This file = **who** and **why**: which direction fits this product.
 
-## Step 1 — Identify primary persona for this route
+## Step 1: Identify primary persona for this route
 
 From `product.md` → **Per-route intent** → `primary_persona`.  
 If missing, stop and run `discover` or `@heyeddi-intake`.
 
-## Step 2 — Map signals → direction
+## Step 2: Map signals → direction
 
 | Audience signal | Design direction | Borrow (pattern) | Avoid |
 |-----------------|------------------|------------------|-------|
@@ -25,7 +25,7 @@ If missing, stop and run `discover` or `@heyeddi-intake`.
 
 Pick **one primary row** + at most **one secondary** for the route. Document in brief + Decision log.
 
-## Step 3 — Register × persona
+## Step 3: Register × persona
 
 | Register | Persona mindset | Layout | Copy |
 |----------|-----------------|--------|------|
@@ -33,15 +33,15 @@ Pick **one primary row** + at most **one secondary** for the route. Document in 
 | **product** (app routes) | Task-focused, time-poor | Shell + focused main | Verbs, status, no fluff |
 | **handoff** (settings) | Wants control, low anxiety | Card stack, one save | Labels plain, errors helpful |
 
-## Step 4 — Competitors (differentiate, don't clone)
+## Step 4: Competitors (differentiate, don't clone)
 
 From `product.md` **Competitors**:
 
 - Name **one thing** users like about each competitor
 - Name **one thing** TaskFlow/your product does differently for **this persona**
-- Reflect differentiation in hero copy, dashboard density, or settings IA — not logo colors
+- Reflect differentiation in hero copy, dashboard density, or settings IA: not logo colors
 
-## Step 5 — Voice & tone
+## Step 5: Voice & tone
 
 From `product.md` **Voice & tone**:
 
@@ -49,7 +49,7 @@ From `product.md` **Voice & tone**:
 - Buttons: verb-first (`Start free trial` not `Submit`)
 - Empty states: speak to persona anxiety from the Personas table
 
-## Step 6 — Research queries (audience-aware)
+## Step 6: Research queries (audience-aware)
 
 Form searches like:
 
@@ -81,6 +81,6 @@ Every `designs/<feature>/brief.md` must include:
 
 ## Related
 
-- `modern-reference.md` — technique execution
-- `audience-fit.md` — post-build critique rubric
-- `discover.md` — fill gaps in product.md
+- `modern-reference.md`: technique execution
+- `audience-fit.md`: post-build critique rubric
+- `discover.md`: fill gaps in product.md

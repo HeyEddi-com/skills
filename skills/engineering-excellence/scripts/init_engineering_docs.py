@@ -15,7 +15,7 @@ ARCHITECTURE = """# Architecture
 
 **Last updated:** {today}
 
-How this system works — modules, data flow, and boundaries. Update when structure changes.
+How this system works: modules, data flow, and boundaries. Update when structure changes.
 
 ## Stack
 
@@ -25,11 +25,11 @@ Read `.heyeddi/stack.json` and summarize here after `@project-engineering` scaff
 
 | Layer | Location | Responsibility |
 |-------|----------|----------------|
-| Views / pages | `src/views/` | Route UI only — no business rules |
+| Views / pages | `src/views/` | Route UI only: no business rules |
 | Components | `src/components/` | Reusable UI; layout vs feature |
 | Composables | `src/composables/` | Client state + API calls |
 | Services / API | `src/services/` or `backend/` | Business logic, persistence |
-| Router | `src/router/` | Paths only — thin |
+| Router | `src/router/` | Paths only: thin |
 
 ## Data flow
 
@@ -42,7 +42,7 @@ Read `.heyeddi/stack.json` and summarize here after `@project-engineering` scaff
 
 - **Single responsibility:** one reason to change per file
 - **Open/closed:** extend via composables/wrappers, not forks
-- **Dependency direction:** views → composables → services — not the reverse
+- **Dependency direction:** views → composables → services: not the reverse
 
 ## What not to build
 
@@ -57,13 +57,13 @@ REUSE_CATALOG = """# Reuse catalog
 
 | Name | Path | Use when |
 |------|------|----------|
-| *(empty — agent fills after audit)* | | |
+| *(empty: agent fills after audit)* | | |
 
 ## Patterns to prefer
 
 - Shared UI: `src/components/ui/` before new PrimeVue wrappers
 - API access: one composable per domain (`useUsers`, `useTasks`)
-- Layout: `AppShell`, `AppSidebar`, `AppTopBar` — do not duplicate shell markup per route
+- Layout: `AppShell`, `AppSidebar`, `AppTopBar`: do not duplicate shell markup per route
 
 ## Anti-patterns
 
@@ -75,12 +75,12 @@ DECISIONS = """# Engineering decisions
 
 **Last updated:** {today}
 
-Engineering ADRs — separate from the **Design Decision log** in `.heyeddi/design.md`.
+Engineering ADRs: separate from the **Design Decision log** in `.heyeddi/design.md`.
 
 ## Template
 
 ```markdown
-### YYYY-MM-DD — Title
+### YYYY-MM-DD: Title
 
 **Context:** …
 **Decision:** …
@@ -90,12 +90,12 @@ Engineering ADRs — separate from the **Design Decision log** in `.heyeddi/desi
 
 README = """# Engineering docs
 
-Living notes for **KISS, YAGNI, DRY, SOLID** — maintained by `@engineering-excellence`.
+Living notes for **KISS, YAGNI, DRY, SOLID**: maintained by `@engineering-excellence`.
 
 | File | Purpose |
 |------|---------|
-| `architecture.md` | How the system works — modules and data flow |
-| `reuse-catalog.md` | What already exists — do not rebuild |
+| `architecture.md` | How the system works: modules and data flow |
+| `reuse-catalog.md` | What already exists: do not rebuild |
 | `decisions.md` | Engineering ADRs |
 
 Run `audit_engineering.py --check` before merge on non-trivial changes.

@@ -2,17 +2,17 @@
 
 **Date:** 2026-07-04
 
-Run after `reference/critique.md` visual/UX pass — or merge into the same report under **## Audience fit**.
+Run after `reference/critique.md` visual/UX pass: or merge into the same report under **## Audience fit**.
 
 Answers: *Was this designed for our persona, or generic SaaS?*
 
 ## Prerequisites
 
-1. Read `product.md` — **Personas**, **Per-route intent**, **Competitors**, **Voice & tone**
-2. Read route's `designs/<feature>/brief.md` — **Audience** section
+1. Read `product.md`: **Personas**, **Per-route intent**, **Competitors**, **Voice & tone**
+2. Read route's `designs/<feature>/brief.md`: **Audience** section
 3. View route (code + optional `@visual-auditor`)
 
-## Rubric (score each 1–5)
+## Rubric (score each 1-5)
 
 | Dimension | 1 (fail) | 5 (excellent) |
 |-----------|----------|---------------|
@@ -50,8 +50,8 @@ Answers: *Was this designed for our persona, or generic SaaS?*
 
 ## Verdict rules
 
-- **PASS** — all ≥ 3, avg ≥ 4 → `@heyeddi-design polish` for P1 visual issues only
-- **REVISE** — any ≤ 2 → `shape` or persona update in `@heyeddi-intake`; do not polish over wrong IA/tone
+- **PASS**: all ≥ 3, avg ≥ 4 → `@heyeddi-design polish` for P1 visual issues only
+- **REVISE**: any ≤ 2 → `shape` or persona update in `@heyeddi-intake`; do not polish over wrong IA/tone
 
 ## Eval / integration
 

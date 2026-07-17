@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Full `.heyeddi/` sync — refresh index, init workflow if new."""
+"""Full `.heyeddi/` sync: refresh index, init workflow if new."""
 from __future__ import annotations
 
 import argparse

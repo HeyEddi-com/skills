@@ -1,6 +1,6 @@
-# Low-fidelity mockups — wireframe / ASCII / sketch
+# Low-fidelity mockups: wireframe / ASCII / sketch
 
-Handoff works from **layout intent**, not only polished PNGs. The agent **interprets** structure and produces the same `mockup-brief.md` + Implementation spec — then implements with `design.md` tokens.
+Handoff works from **layout intent**, not only polished PNGs. The agent **interprets** structure and produces the same `mockup-brief.md` + Implementation spec: then implements with `design.md` tokens.
 
 ## Supported inputs
 
@@ -14,9 +14,9 @@ Handoff works from **layout intent**, not only polished PNGs. The agent **interp
 
 ## Workflow (wireframe)
 
-1. `load_handoff` — note `fidelity: wireframe`, `interpret_required: true`.
+1. `load_handoff`: note `fidelity: wireframe`, `interpret_required: true`.
 2. Read `wireframe.md` (+ optional sketch PNG). **Do not expect pixel color or polish.**
-3. Write `mockup-brief.md` — **extra detail** on regions, spacing, and component choices because wireframes are ambiguous.
+3. Write `mockup-brief.md`: **extra detail** on regions, spacing, and component choices because wireframes are ambiguous.
 4. In brief, state **assumptions** explicitly (e.g. "ASCII shows table → PrimeVue DataTable").
 5. `describe_handoff --sync-design` → implementer pass per `handoff-to-code.md`.
 6. Theme coherence per `theme-coherence.md`.
@@ -24,7 +24,7 @@ Handoff works from **layout intent**, not only polished PNGs. The agent **interp
 ## Wireframe.md template
 
 ```markdown
-# Wireframe — <Feature>
+# Wireframe: <Feature>
 
 Fidelity: wireframe (layout only). Colors from design.md.
 
@@ -67,4 +67,4 @@ Wireframes test whether the agent can **infer** production UI from sparse input:
 - `[ search ]` → `InputText` in top bar
 - `*` on nav → active route styling
 
-Wireframe inputs are supported by the skill; run handoff manually or extend `eval-integration` — dedicated wireframe eval cases were removed (2026-07-04).
+Wireframe inputs are supported by the skill; run handoff manually or extend `eval-integration`: dedicated wireframe eval cases were removed (2026-07-04).

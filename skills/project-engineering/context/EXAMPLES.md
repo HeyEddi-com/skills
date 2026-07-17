@@ -1,4 +1,4 @@
-# Examples — Project engineering
+# Examples: Project engineering
 
 ## Thin eval project
 

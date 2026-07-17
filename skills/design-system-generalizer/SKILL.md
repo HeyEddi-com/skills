@@ -17,4 +17,4 @@ disable-model-invocation: true
 1. `python scripts/scan_patterns.py --route /golden --project-root <root>`
 2. `python scripts/diff_violations.py --golden /golden --target /other --project-root <root>`
 3. Use `--check` on diff to exit non-zero when target has hex colors or missing route files.
-4. Propose small PRs — never whole-app rewrite in one shot.
+4. Propose small PRs: never whole-app rewrite in one shot.

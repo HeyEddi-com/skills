@@ -1,4 +1,4 @@
-# Examples — settings route visual pass
+# Examples: settings route visual pass
 
 ```bash
 # Dev server running on :5173

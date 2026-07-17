@@ -1,5 +1,5 @@
 
-# Examples — Engineering excellence
+# Examples: Engineering excellence
 
 ## Init docs
 

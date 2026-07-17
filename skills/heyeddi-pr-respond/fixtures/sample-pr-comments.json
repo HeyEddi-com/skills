@@ -4,7 +4,7 @@
   "inline": [
     {
       "id": 9001001,
-      "body": "Pagination logic is wrong — `page` is 0-indexed but the API expects 1-based. Please fix `fetchUsers`.",
+      "body": "Pagination logic is wrong: `page` is 0-indexed but the API expects 1-based. Please fix `fetchUsers`.",
       "path": "src/composables/useUsers.ts",
       "line": 24,
       "user": { "login": "qa-reviewer" },
@@ -12,7 +12,7 @@
     },
     {
       "id": 9001002,
-      "body": "This `Depends()` wrapper is redundant — FastAPI already injects it.",
+      "body": "This `Depends()` wrapper is redundant: FastAPI already injects it.",
       "path": "backend/app/routers/users.py",
       "line": 12,
       "user": { "login": "backend-lead" },
@@ -32,7 +32,7 @@
   "reviews": [
     {
       "id": 8001,
-      "body": "Overall looks good — please address the inline notes on pagination and Depends.",
+      "body": "Overall looks good: please address the inline notes on pagination and Depends.",
       "author": { "login": "backend-lead" },
       "state": "CHANGES_REQUESTED",
       "submittedAt": "2026-07-01T12:00:00Z"

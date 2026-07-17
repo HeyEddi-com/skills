@@ -1,4 +1,4 @@
-# Visual review — screenshots vs specification
+# Visual review: screenshots vs specification
 
 **Date:** 2026-07-06
 
@@ -6,10 +6,10 @@ You **see** the UI through captures. Compare against **two** specs:
 
 | Spec | Source | Check |
 |------|--------|-------|
-| **Product** | `.heyeddi/product.md` — route intent, page purpose, persona success feeling | Does this screen deliver the job? |
+| **Product** | `.heyeddi/product.md`: route intent, page purpose, persona success feeling | Does this screen deliver the job? |
 | **Design** | `.heyeddi/design.md` + `designs/<feature>/mockup-brief.md` | Hierarchy, spacing, tokens, components |
 
-Mockup PNG colors are **layout only** — implementation colors come from `design.md` tokens.
+Mockup PNG colors are **layout only**: implementation colors come from `design.md` tokens.
 
 ## Review steps
 

@@ -18,25 +18,25 @@ That voice is the target. HeyEddi adds **`## Decision log`** at the end for per-
 
 | Content | Location |
 |---------|----------|
-| Tokens, typography scale, component definitions | YAML frontmatter + sections 1–9 |
+| Tokens, typography scale, component definitions | YAML frontmatter + sections 1-9 |
 | Living system rules, PrimeVue catalog | **Components**, **Do's and Don'ts** |
 | One feature's handoff mapping, polish before/after | **Decision log** only |
 
 ## When to update
 
-| Skill | Update sections 1–9 | Append Decision log |
+| Skill | Update sections 1-9 | Append Decision log |
 |-------|-------------------|---------------------|
 | `document` | Yes | Optional on seed |
 | `shape` | Overview if north star set | After brief confirmed |
 | `craft` | Components if new primitives | **Required** |
 | `critique` | No | No (report in `.heyeddi/docs/`) |
-| `polish` | Fix drift in Colors/Components | **Required** — cite critique |
+| `polish` | Fix drift in Colors/Components | **Required**: cite critique |
 | `@heyeddi-handoff` | Components/layout if new patterns | **Required** |
 
 ## Decision log entry
 
 ```markdown
-### YYYY-MM-DD — <feature or route> (@heyeddi-design craft | @heyeddi-handoff)
+### YYYY-MM-DD: <feature or route> (@heyeddi-design craft | @heyeddi-handoff)
 
 **Context:** …
 
@@ -44,7 +44,7 @@ That voice is the target. HeyEddi adds **`## Decision log`** at the end for per-
 - …
 
 **Component strategy:**
-- Sidebar → `AppSidebar` (custom — PrimeVue has no app shell)
+- Sidebar → `AppSidebar` (custom: PrimeVue has no app shell)
 - Profile section → PrimeVue `Card` + `InputText` (sufficient)
 - …
 
@@ -60,7 +60,7 @@ That voice is the target. HeyEddi adds **`## Decision log`** at the end for per-
 
 Good (Superhuman-style):
 
-> We went with `{colors.canvas-soft}` cards and `{rounded.md}` because the settings mockup stacks two raised panels — not full-bleed white bands. Mockup blue buttons were ignored; primary uses `{colors.primary}` from the design system.
+> We went with `{colors.canvas-soft}` cards and `{rounded.md}` because the settings mockup stacks two raised panels: not full-bleed white bands. Mockup blue buttons were ignored; primary uses `{colors.primary}` from the design system.
 
 Bad:
 

@@ -21,7 +21,7 @@ def main() -> None:
         sections.append(
             run_command(["npx", "vue-tsc", "--noEmit"], root)
             if (root / "node_modules").is_dir()
-            else "[skip] node_modules not found — run npm install first"
+            else "[skip] node_modules not found: run npm install first"
         )
         if shutil.which("stylelint") or (root / "node_modules" / ".bin" / "stylelint").exists():
             sections.append("## stylelint")
@@ -34,7 +34,7 @@ def main() -> None:
         else:
             sections.append("## stylelint\n[skip] stylelint not installed")
     else:
-        sections.append("[skip] npx not found — install Node.js to run vue-tsc/stylelint")
+        sections.append("[skip] npx not found: install Node.js to run vue-tsc/stylelint")
 
     emit("\n\n".join(sections))
 
