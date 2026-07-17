@@ -1,6 +1,6 @@
 ---
 name: heyeddi-pr-respond
-description: Addresses PR review feedback: fetch all comment types, fix-vs-decline decisions, apply fixes, re-run pre-merge gate, threaded replies. Use when responding to human review comments as the PR author. For reviewing a submitted PR use heyeddi-pr-review.
+description: "Addresses PR review feedback: fetch all comment types, fix-vs-decline decisions, apply fixes, re-run pre-merge gate, threaded replies. Use when responding to human review comments as the PR author. For reviewing a submitted PR use heyeddi-pr-review."
 disable-model-invocation: true
 ---
 

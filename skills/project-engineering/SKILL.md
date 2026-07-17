@@ -1,6 +1,6 @@
 ---
 name: project-engineering
-description: Ensures HeyEddi projects have the right engineering stack: Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, installs deps, runs tests, documents local dev servers. Use when the repo is thin or before design/feature work on any HeyEddi app.
+description: "Ensures HeyEddi projects have the right engineering stack: Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, installs deps, runs tests, documents local dev servers. Use when the repo is thin or before design/feature work on any HeyEddi app."
 paths:
   - "package.json"
   - "pyproject.toml"

@@ -1,6 +1,6 @@
 ---
 name: heyeddi-handoff
-description: Implements screens from designer screenshots and handoff notes. Two-pass workflow: designer writes mockup-brief with Implementation spec, implementer builds shell then route, verify_handoff checks tokens and layout. Use when approved mockups exist: not for greenfield design.
+description: "Implements screens from designer screenshots and handoff notes. Two-pass workflow: designer writes mockup-brief with Implementation spec, implementer builds shell then route, verify_handoff checks tokens and layout. Use when approved mockups exist: not for greenfield design."
 disable-model-invocation: true
 ---
 

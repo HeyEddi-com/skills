@@ -41,6 +41,7 @@ def main() -> None:
                         "mode",
                         "fidelity",
                         "generated_by",
+                        "mockup_contract",
                     }:
                         handoff_meta[key] = raw[key][:80]
         except json.JSONDecodeError as exc:
