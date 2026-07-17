@@ -1,21 +1,21 @@
-# Surface completeness — design the full screen
+# Surface completeness: design the full screen
 
 **When:** Any `discover`, `shape`, `craft`, or `critique` for a route or feature.
 
-Agents often ship the **happy-path minimum** (two fields + button, a table with no empty state, settings with no save affordance). Users expect a **complete surface at the scope you're working on** — spacing, related actions, edge states, and a clear backlog for unwired backend work.
+Agents often ship the **happy-path minimum** (two fields + button, a table with no empty state, settings with no save affordance). Users expect a **complete surface at the scope you're working on**: spacing, related actions, edge states, and a clear backlog for unwired backend work.
 
-## Scope — what “complete” means
+## Scope: what “complete” means
 
 **Complete the unit of work, not the entire product every time.**
 
 | You were asked to… | Completeness means… |
 |--------------------|---------------------|
 | **One view / route** (e.g. `/login`) | That screen is production-complete: all regions, affordances, states, spacing for *that* archetype |
-| **One feature** (e.g. settings, onboarding flow) | Every screen in the feature brief — or document which routes are in/out of scope |
+| **One feature** (e.g. settings, onboarding flow) | Every screen in the feature brief: or document which routes are in/out of scope |
 | **Whole product** (`init` → multiple `shape`/`craft`) | `product.md` + `design.md` north star; each feature still gets its own complete brief before craft |
 
 **In scope:** everything a user would expect **on the screen(s) you're designing now**.  
-**Out of scope:** other routes — unless the brief explicitly includes them (e.g. settings inside app shell).
+**Out of scope:** other routes: unless the brief explicitly includes them (e.g. settings inside app shell).
 
 Unwired backend is fine; **missing UI** for in-scope affordances is not. Record gaps in **`## Deferred wiring`**, not by omitting controls.
 
@@ -39,12 +39,12 @@ Optional backlog file: `.heyeddi/docs/<feature>-backlog.md` for engineering foll
 Before brief sign-off or craft, walk this list. Skip only what **product.md** explicitly waives.
 
 ### 1. Context & hierarchy
-- **Page title + subtitle** — what is this screen, who is it for?
-- **Primary action** — one obvious CTA; secondary actions visually subordinate
-- **Wayfinding** — breadcrumbs, back, or nav context when not a standalone auth/marketing page
+- **Page title + subtitle**: what is this screen, who is it for?
+- **Primary action**: one obvious CTA; secondary actions visually subordinate
+- **Wayfinding**: breadcrumbs, back, or nav context when not a standalone auth/marketing page
 
 ### 2. Content regions
-- Map **every visible block** (ASCII or region table) — not just the main form/table
+- Map **every visible block** (ASCII or region table): not just the main form/table
 - **Related actions** users expect on this *type* of screen (see archetypes below)
 - **Help / learn more** when the task is non-obvious
 
@@ -62,11 +62,11 @@ Before brief sign-off or craft, walk this list. Skip only what **product.md** ex
 ### 4. Spacing & layout
 Use project semantic scale (`--size-*` / design.md spacing tokens):
 
-- **Container padding** — cards and panels need room to breathe (`--size-5`–`--size-6` internal)
-- **Section gaps** — between title block and content, between cards (`--size-4`–`--size-6`)
-- **Field stacks** — labels, inputs, helpers; verify components don't visually merge
-- **CTA separation** — primary button not glued to last field (`--size-4`+ above)
-- **Max-width** — constrain line length and form width on large viewports
+- **Container padding**: cards and panels need room to breathe (`--size-5`-`--size-6` internal)
+- **Section gaps**: between title block and content, between cards (`--size-4`-`--size-6`)
+- **Field stacks**: labels, inputs, helpers; verify components don't visually merge
+- **CTA separation**: primary button not glued to last field (`--size-4`+ above)
+- **Max-width**: constrain line length and form width on large viewports
 
 ### 5. Affordances & escape hatches
 Ask: *"What else would a user look for here?"*
@@ -74,7 +74,7 @@ Ask: *"What else would a user look for here?"*
 - Links to **recovery** (forgot password, undo, cancel)
 - **Persistence** options (remember me, save draft, auto-save indicator)
 - **Alternate paths** (sign up, import, skip, use demo)
-- **Destructive actions** — confirm pattern, not surprise
+- **Destructive actions**: confirm pattern, not surprise
 
 ### 6. Deferred wiring (required in brief)
 
@@ -94,7 +94,7 @@ Craft implements the **Shipped as** column. Engineering picks up **Wire later**.
 
 ## Surface archetypes (apply the audit)
 
-Use these as **completeness prompts** — not separate skill files. Combine with discover Q&A.
+Use these as **completeness prompts**: not separate skill files. Combine with discover Q&A.
 
 | Archetype | Users also expect… |
 |-----------|-------------------|
@@ -115,12 +115,12 @@ If the surface doesn't match one row, **invent a checklist** in the brief using 
 Every shape brief should include:
 
 1. **Feature summary** + primary user action  
-2. **Layout regions** — all blocks, not just core fields  
-3. **Component map** — PrimeVue / catalog per region  
-4. **Key states** — from audit §3  
-5. **Copy** — labels, buttons, errors, helper text  
-6. **`## Deferred wiring`** — table (audit §6)  
-7. **Open questions** — only genuinely unresolved  
+2. **Layout regions**: all blocks, not just core fields  
+3. **Component map**: PrimeVue / catalog per region  
+4. **Key states**: from audit §3  
+5. **Copy**: labels, buttons, errors, helper text  
+6. **`## Deferred wiring`**: table (audit §6)  
+7. **Open questions**: only genuinely unresolved  
 
 ---
 
@@ -130,7 +130,7 @@ Every shape brief should include:
 
 **Critique:** Flag **missing archetype affordances**, **missing states**, and **spacing violations** as P0/P1 before polish.
 
-**Polish:** Addresses critique findings — does not invent missing regions; if IA is incomplete, recommend `shape` + brief update.
+**Polish:** Addresses critique findings: does not invent missing regions; if IA is incomplete, recommend `shape` + brief update.
 
 ---
 
@@ -142,4 +142,4 @@ Every shape brief should include:
 | `critique` sparse existing UI | Compare against audit + archetype |
 | `discover` vague "build X page" | Use archetypes to drive questions |
 
-Auth, settings, and dashboards are **examples** of completeness thinking — not separate rule files.
+Auth, settings, and dashboards are **examples** of completeness thinking: not separate rule files.

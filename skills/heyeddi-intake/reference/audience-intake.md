@@ -1,4 +1,4 @@
-# Audience intake — product.md schema
+# Audience intake: product.md schema
 
 **Date:** 2026-07-04
 
@@ -40,7 +40,7 @@ One paragraph: plain/confident/technical; verb-first buttons; error voice.
 ```json
 {
   "product_name": "TaskFlow",
-  "audience_summary": "Small B2B teams (5–30 people) coordinating work.",
+  "audience_summary": "Small B2B teams (5-30 people) coordinating work.",
   "personas": [
     {
       "name": "Jordan",
@@ -78,10 +78,10 @@ One paragraph: plain/confident/technical; verb-first buttons; error voice.
 
 ## Clarify round
 
-If user prompt lacks audience hints, ask **one round** (2–3 questions):
+If user prompt lacks audience hints, ask **one round** (2-3 questions):
 
 - Who uses this daily vs who buys/evaluates?
 - What do they compare you to?
 - What should it **not** feel like?
 
-Then write product.md — do not guess personas silently.
+Then write product.md: do not guess personas silently.

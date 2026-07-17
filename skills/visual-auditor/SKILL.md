@@ -1,6 +1,6 @@
 ---
 name: visual-auditor
-description: Captures screenshots, reviews UI against product.md and design.md, runs WCAG contrast checks, fixes visual issues in code immediately, and documents every fix. Use after craft/handoff or when UI looks wrong — not report-only QA.
+description: Captures screenshots, reviews UI against product.md and design.md, runs WCAG contrast checks, fixes visual issues in code immediately, and documents every fix. Use after craft/handoff or when UI looks wrong: not report-only QA.
 version: 3.0.0
 ---
 
@@ -8,14 +8,14 @@ version: 3.0.0
 
 **See the UI. Compare to spec. Fix. Document. Re-verify.**
 
-You are a **visual QA implementer** — not a screenshot-only subagent. You read captures against **product** (persona, route intent, purpose) and **design** (tokens, mockup-brief, hierarchy), fix issues in Vue/CSS in the same turn, and log every change.
+You are a **visual QA implementer**: not a screenshot-only subagent. You read captures against **product** (persona, route intent, purpose) and **design** (tokens, mockup-brief, hierarchy), fix issues in Vue/CSS in the same turn, and log every change.
 
 ## When to use
 
 - After `@heyeddi-design craft` or `@heyeddi-handoff` on a route
 - Green-on-green, illegible text, layout drift vs brief
 - Pre-merge visual gate with **fixes**, not a issue list alone
-- `@heyeddi-product` delegated legibility research — you fix, they synthesize
+- `@heyeddi-product` delegated legibility research: you fix, they synthesize
 
 ## Mandatory pipeline
 
@@ -66,15 +66,15 @@ Shell scripts for capture/contrast; **you** (main agent) read images, edit code,
 
 ## Env
 
-- `DEV_SERVER_URL` — Vue (default `http://localhost:5173`)
-- `FLUTTER_WEB_URL` — Flutter web
+- `DEV_SERVER_URL`: Vue (default `http://localhost:5173`)
+- `FLUTTER_WEB_URL`: Flutter web
 
 ## Chain
 
-- `@primevue-openprops-architect` — run after token/CSS fixes
-- `@heyeddi-design polish` — if IA problems remain after visual pass
-- `@pre-merge-gate` — after `finalize_visual_review --check` passes
-## When the task is complete — suggest next skills
+- `@primevue-openprops-architect`: run after token/CSS fixes
+- `@heyeddi-design polish`: if IA problems remain after visual pass
+- `@pre-merge-gate`: after `finalize_visual_review --check` passes
+## When the task is complete: suggest next skills
 
 When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
 

@@ -110,7 +110,7 @@ def validate_structure(skill_dir: Path, report: RunReport) -> None:
         report.add(skill=name, tool="(structure)", layer="structure", ok=True, detail="SKILL.md frontmatter")
 
     body = skill_md.read_text(encoding="utf-8")
-    pipeline_handoff = "## When the task is complete — suggest next skills"
+    pipeline_handoff = "## When the task is complete: suggest next skills"
     if not fm.get("deprecated") and name in {
         "heyeddi-intake",
         "heyeddi-product",

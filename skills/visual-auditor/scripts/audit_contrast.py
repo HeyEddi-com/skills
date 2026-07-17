@@ -37,7 +37,7 @@ def _audit_page(page, url: str, viewport_width: int) -> dict:
 
 def _render_report(route: str, results: list[dict]) -> str:
     lines = [
-        f"# Visual contrast audit — {route}",
+        f"# Visual contrast audit: {route}",
         "",
         f"**Date:** {date.today().isoformat()}",
         "",
@@ -55,7 +55,7 @@ def _render_report(route: str, results: list[dict]) -> str:
         for v in block.get("violations", []):
             sev = v.get("severity", "error").upper()
             code = v.get("code", "issue")
-            lines.append(f"### [{sev}] `{code}` — `{v.get('selector', '?')}`")
+            lines.append(f"### [{sev}] `{code}`: `{v.get('selector', '?')}`")
             lines.append("")
             lines.append(f"- **Text:** {v.get('text', '')[:100]}")
             if "ratio" in v:

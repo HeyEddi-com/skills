@@ -1,5 +1,5 @@
 
-# Vocabulary — Build verification
+# Vocabulary: Build verification
 
 - Standard command: `npm run build` (Vite static build).
 - Success means zero exit code and no Rollup resolution errors.

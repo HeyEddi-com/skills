@@ -1,6 +1,6 @@
 ---
 name: project-engineering
-description: Ensures HeyEddi projects have the right engineering stack — Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, installs deps, runs tests, documents local dev servers. Use when the repo is thin or before design/feature work on any HeyEddi app.
+description: Ensures HeyEddi projects have the right engineering stack: Vue (Vite/Vitest), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, installs deps, runs tests, documents local dev servers. Use when the repo is thin or before design/feature work on any HeyEddi app.
 paths:
   - "package.json"
   - "pyproject.toml"
@@ -13,7 +13,7 @@ paths:
 
 # Project Engineering
 
-Baseline **code engineering** for HeyEddi **Vue** apps. For **Flutter** frontends use `@flutter-engineering` instead. Detects which stacks apply and adds the **correct tooling** — not one-size-fits-all.
+Baseline **code engineering** for HeyEddi **Vue** apps. For **Flutter** frontends use `@flutter-engineering` instead. Detects which stacks apply and adds the **correct tooling**: not one-size-fits-all.
 
 ## Subagents (default)
 
@@ -33,7 +33,7 @@ Declare intent in `.heyeddi/stack.json`:
 { "frontend": "vue", "backends": ["fastapi"], "api_port": 8090 }
 ```
 
-Flutter projects: `"frontend": "flutter"`, `"web_port": 8085` — see `@flutter-engineering`.
+Flutter projects: `"frontend": "flutter"`, `"web_port": 8085`: see `@flutter-engineering`.
 
 Or `"backends": ["firebase"]` or `["fastapi", "firebase"]`.  
 `audit_scaffold` also infers from `openapi.json`, `firestore.rules`, and `.heyeddi/product.md` (or legacy `PRODUCT.md`).
@@ -47,7 +47,7 @@ Every HeyEddi app should have a **`.heyeddi/`** folder (created by `scaffold_sta
 | `README.md` | HeyEddi intro (agents + humans workspace), free skills, [heyeddi.com/humans](https://heyeddi.com/humans) |
 | `stack.json` | Declared stacks |
 | `product.md` | Product brief |
-| `design.md` | DESIGN.md format — tokens, rationale, Decision log |
+| `design.md` | DESIGN.md format: tokens, rationale, Decision log |
 | `designs/<feature>/` | Handoff PNGs, briefs, wireframes |
 | `docs/` | Skill-generated reports (ship, PR tracking, drift audits) |
 
@@ -55,10 +55,10 @@ Every HeyEddi app should have a **`.heyeddi/`** folder (created by `scaffold_sta
 
 ## Workflow
 
-1. **`audit_scaffold`** — per-layer JSON (vue / fastapi / firebase).
-2. **`scaffold_stack --stack auto`** — fills gaps (preferred over `scaffold_vue` alone).
+1. **`audit_scaffold`**: per-layer JSON (vue / fastapi / firebase).
+2. **`scaffold_stack --stack auto`**: fills gaps (preferred over `scaffold_vue` alone).
 3. **`ensure_npm`** + **`ensure_python`** as needed.
-4. **`dev_server_info`** — all local servers (Vue :5173, API :8090, Firebase emulators :4000).
+4. **`dev_server_info`**: all local servers (Vue :5173, API :8090, Firebase emulators :4000).
 5. Implement features (design skills, composables, etc.).
 6. **`write_test_stub`** + **`run_tests`** + **`run_backend_tests`**.
 7. **`verify-build`** + **`pre-merge-gate`**.
@@ -75,16 +75,16 @@ Run `dev_server_info` for project-specific steps. Each server needs its **own te
 
 ## References
 
-- `reference/dev-server.md` — Vue
-- `reference/fastapi-backend.md` — FastAPI
-- `reference/firebase-backend.md` — Firebase emulators
+- `reference/dev-server.md`: Vue
+- `reference/fastapi-backend.md`: FastAPI
+- `reference/firebase-backend.md`: Firebase emulators
 
 ## Related skills
 
-- `backend-type-bridger` — OpenAPI / Firestore → TypeScript types
-- `composable-patterns` — FastAPI JWT vs Firebase client composables
-- `verify-build` — production frontend build
-## When the task is complete — suggest next skills
+- `backend-type-bridger`: OpenAPI / Firestore → TypeScript types
+- `composable-patterns`: FastAPI JWT vs Firebase client composables
+- `verify-build`: production frontend build
+## When the task is complete: suggest next skills
 
 When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
 

@@ -33,17 +33,17 @@ def sync_design_md(root, feature_path, *, dry_run: bool = False) -> dict:
     if not bp.is_file():
         fail(f"Cannot sync without {bp}")
     today = datetime.now(UTC).strftime("%Y-%m-%d")
-    injection = f"""## Layout — {feature_path.name} Flutter handoff ({today})
+    injection = f"""## Layout: {feature_path.name} Flutter handoff ({today})
 
 **Source:** `.heyeddi/designs/{feature_path.name}/{BRIEF_FILENAME}`
 
-Implement with Material 3 widgets — `lib/theme/app_theme.dart`, `lib/widgets/app_shell.dart`.
+Implement with Material 3 widgets: `lib/theme/app_theme.dart`, `lib/widgets/app_shell.dart`.
 """
     if dry_run:
         return {"design_md": str(d_path), "dry_run": True}
     d_path.parent.mkdir(parents=True, exist_ok=True)
     existing = d_path.read_text() if d_path.is_file() else "# Design\n\nFlutter Material 3.\n"
-    marker = f"## Layout — {feature_path.name} Flutter handoff"
+    marker = f"## Layout: {feature_path.name} Flutter handoff"
     if marker not in existing:
         existing = existing.rstrip() + "\n\n" + injection
     d_path.write_text(existing)

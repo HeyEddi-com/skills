@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""List installed HeyEddi skills — reads `.heyeddi/skills-index.json` when present."""
+"""List installed HeyEddi skills: reads `.heyeddi/skills-index.json` when present."""
 from __future__ import annotations
 
 import argparse

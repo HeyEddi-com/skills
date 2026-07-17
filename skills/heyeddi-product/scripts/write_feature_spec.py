@@ -54,11 +54,11 @@ def render_spec(data: dict) -> str:
         [
             "## PM review checklist",
             "",
-            "- [ ] `@ux-flow-auditor` — task completes within click budget",
-            "- [ ] `@heyeddi-design critique` — fits primary persona",
-            "- [ ] `@visual-auditor audit_contrast --check` — legible",
-            "- [ ] `@engineering-excellence` — no over-engineering",
-            "- [ ] `check_features` — status not placeholder",
+            "- [ ] `@ux-flow-auditor`: task completes within click budget",
+            "- [ ] `@heyeddi-design critique`: fits primary persona",
+            "- [ ] `@visual-auditor audit_contrast --check`: legible",
+            "- [ ] `@engineering-excellence`: no over-engineering",
+            "- [ ] `check_features`: status not placeholder",
             "",
         ]
     )

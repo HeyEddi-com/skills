@@ -1,15 +1,15 @@
 ---
 name: ux-flow-auditor
-description: Traces user task flows with Playwright — click depth, step success, friction — and writes reports to .heyeddi/docs/ux-flows/. Use when measuring ease of use, clicks to complete a task, or onboarding friction. Not for static visual critique (use heyeddi-design critique) or layout screenshots (use visual-auditor).
+description: Traces user task flows with Playwright: click depth, step success, friction: and writes reports to .heyeddi/docs/ux-flows/. Use when measuring ease of use, clicks to complete a task, or onboarding friction. Not for static visual critique (use heyeddi-design critique) or layout screenshots (use visual-auditor).
 version: 1.0.0
 disable-model-invocation: true
 ---
 
 # UX Flow Auditor
 
-Task-oriented UX — how many clicks to achieve a goal, where users get stuck.
+Task-oriented UX: how many clicks to achieve a goal, where users get stuck.
 
-**All artifacts go under `.heyeddi/docs/` and `.heyeddi/audits/`** — never repo root.
+**All artifacts go under `.heyeddi/docs/` and `.heyeddi/audits/`**: never repo root.
 
 ## Cross-pillar sync (mandatory)
 
@@ -80,6 +80,6 @@ agent adds friction notes to report
 
 ## Chain
 
-- After `@heyeddi-handoff` / `@heyeddi-design` — verify tasks are completable
-- `@visual-auditor` — layout proof; this skill — interaction proof
-- `@engineering-excellence` — separate concern (code structure)
+- After `@heyeddi-handoff` / `@heyeddi-design`: verify tasks are completable
+- `@visual-auditor`: layout proof; this skill: interaction proof
+- `@engineering-excellence`: separate concern (code structure)

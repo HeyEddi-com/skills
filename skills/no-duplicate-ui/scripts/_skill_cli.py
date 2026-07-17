@@ -33,7 +33,7 @@ def run_command(cmd: list[str], cwd: Path, timeout: int = 600) -> str:
     """Run a fixed argv command without a shell.
 
     The executable is resolved to an absolute path via ``shutil.which`` so the
-    call never depends on a relative PATH lookup, and ``shell`` is always off —
+    call never depends on a relative PATH lookup, and ``shell`` is always off  - 
     there is no string interpolation into a shell.
     """
     if not cmd:

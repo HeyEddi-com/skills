@@ -6,7 +6,7 @@ const stubRoute = { template: "<div />" };
 const STUB_PATHS = ["/", "/login", "/dashboard", "/settings"] as const;
 
 /**
- * Isolated view tests must use memory history — createWebHistory() resolves the
+ * Isolated view tests must use memory history: createWebHistory() resolves the
  * browser URL (often "/") and emits Vue Router warnings when routes are missing.
  */
 export function createViewRouter(path: string, component: Component) {

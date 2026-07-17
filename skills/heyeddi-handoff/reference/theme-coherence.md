@@ -1,4 +1,4 @@
-# Theme coherence — light / dark / PrimeVue
+# Theme coherence: light / dark / PrimeVue
 
 **Problem:** Custom shell uses `tokens.css` grays while PrimeVue Aura follows `prefers-color-scheme` independently → dark Cards on a light page, unreadable labels, black search inputs.
 
@@ -8,9 +8,9 @@
 
 ## Implementation checklist
 
-1. **`tokens.css`** — use OpenProps `light-dark()` (or `@media (prefers-color-scheme: dark)`) for `--surface-0`…`--text-2`, `--brand`, `--brand-subtle`. Set `color-scheme: light dark` on `:root`.
-2. **`main.ts`** — Aura preset with `primary` wired to `{brand}`; `darkModeSelector: 'system'` (default) **only after** tokens flip together.
-3. **PrimeVue overrides** — Card, InputText, Button surfaces in views or `src/styles/primevue-surfaces.css`:
+1. **`tokens.css`**: use OpenProps `light-dark()` (or `@media (prefers-color-scheme: dark)`) for `--surface-0`…`--text-2`, `--brand`, `--brand-subtle`. Set `color-scheme: light dark` on `:root`.
+2. **`main.ts`**: Aura preset with `primary` wired to `{brand}`; `darkModeSelector: 'system'` (default) **only after** tokens flip together.
+3. **PrimeVue overrides**: Card, InputText, Button surfaces in views or `src/styles/primevue-surfaces.css`:
    ```css
    .settings__card :deep(.p-card) {
      background: var(--surface-2);
@@ -22,8 +22,8 @@
      border-color: var(--surface-3);
    }
    ```
-4. **Labels** — never hardcode `#333` / `#666`; use `var(--text-2)` on the same surface as the control.
-5. **Verify** — `verify_theme.py --check` before handoff done; visual pass at **light and dark** (toggle OS or `prefers-color-scheme` in Playwright).
+4. **Labels**: never hardcode `#333` / `#666`; use `var(--text-2)` on the same surface as the control.
+5. **Verify**: `verify_theme.py --check` before handoff done; visual pass at **light and dark** (toggle OS or `prefers-color-scheme` in Playwright).
 
 ## mockup-brief.md
 

@@ -18,7 +18,7 @@ from _workflow_paths import (
     workflow_dir,
 )
 
-README = """# Workflow sync — product · UX · design
+README = """# Workflow sync: product · UX · design
 
 **Date:** {today}
 
@@ -41,7 +41,7 @@ append_pillar_opinion --pillar product|ux|design --route /path --opinion "…"
 ## Rules
 
 1. **Start** any pillar workflow with `load_workflow_context`.
-2. **End** with `append_pillar_opinion` — cite docs you updated.
+2. **End** with `append_pillar_opinion`: cite docs you updated.
 3. **Siblings** must respond: product run → UX + design opinions; UX run → product AC + design layout; design run → product scope + UX flow notes.
 4. Read `opinions/*.md` before changing a route another pillar touched recently.
 
@@ -58,7 +58,7 @@ Append-only log. Each entry: route, opinion, docs updated, sibling requests.
 def scaffold_workflow(root: Path, *, force: bool = False) -> dict:
     """Create the cross-pillar workflow docs under `.heyeddi/docs/workflow/`.
 
-    Importable so callers (e.g. `sync.py`) run it in-process — no child
+    Importable so callers (e.g. `sync.py`) run it in-process: no child
     process is spawned.
     """
     out = workflow_dir(root)

@@ -10,7 +10,7 @@ while [[ $# -gt 0 ]]; do
 done
 cd "$PROJECT_ROOT"
 if ! command -v npm >/dev/null 2>&1; then
-  echo "[error] npm not found — install Node.js"
+  echo "[error] npm not found: install Node.js"
   exit 0
 fi
 if [[ ! -f package.json ]]; then

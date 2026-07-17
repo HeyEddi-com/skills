@@ -10,9 +10,9 @@ from _heyeddi_paths import designs_dir, product_md
 from _product_schema import format_audience_block
 from _skill_cli import emit, fail, resolve_project_root
 
-BRIEF_TEMPLATE = """# Mockup brief — {feature_title} ({app_name})
+BRIEF_TEMPLATE = """# Mockup brief: {feature_title} ({app_name})
 
-Authored by `@heyeddi-intake` from user intent + layout mockups. Colors from `.heyeddi/design.md` tokens — not PNG pixels.
+Authored by `@heyeddi-intake` from user intent + layout mockups. Colors from `.heyeddi/design.md` tokens: not PNG pixels.
 
 ## Audience (from product.md)
 
@@ -51,7 +51,7 @@ Authored by `@heyeddi-intake` from user intent + layout mockups. Colors from `.h
 ## Spacing & alignment (designer rules)
 
 - Card internal padding: **≥ 16px** (`var(--size-4)` or `--size-5`)
-- Gap between cards: **16–24px**
+- Gap between cards: **16-24px**
 - Sidebar width token: **248px** (`--sidebar-width`)
 - Save button **outside** card stack, not inside Profile card
 
@@ -67,7 +67,7 @@ Authored by `@heyeddi-intake` from user intent + layout mockups. Colors from `.h
 
 ## Theme notes
 
-- Light/dark coherent with app shell — see `heyeddi-design/reference/modern-reference.md`
+- Light/dark coherent with app shell: see `heyeddi-design/reference/modern-reference.md`
 - Avoid flat admin-template look: borders + surface-2 cards
 
 ## Responsive
@@ -85,7 +85,7 @@ def main() -> None:
     parser.add_argument("--feature", required=True)
     parser.add_argument("--route", default=None)
     parser.add_argument("--app-name", default="HeyEddi App")
-    parser.add_argument("--designer-read", default="Calm in-app settings — clear hierarchy, generous card padding, modern SaaS (Linear/Stripe density).")
+    parser.add_argument("--designer-read", default="Calm in-app settings: clear hierarchy, generous card padding, modern SaaS (Linear/Stripe density).")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
@@ -105,7 +105,7 @@ def main() -> None:
     if wireframe_path.is_file() and "## Regions" in wireframe_path.read_text(errors="replace"):
         designer_read = (
             args.designer_read
-            + " Wireframe in wireframe.md — expand Implementation spec regions to match ASCII, not generic settings cards."
+            + " Wireframe in wireframe.md: expand Implementation spec regions to match ASCII, not generic settings cards."
         )
     if handoff_path.is_file():
         try:

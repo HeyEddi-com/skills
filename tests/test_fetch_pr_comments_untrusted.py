@@ -1,4 +1,4 @@
-"""fetch_pr_comments wraps outsider review text before agent analysis."""
+"""fetch_pr_comments writes bodies to cache; stdout is path-only."""
 from __future__ import annotations
 
 import json
@@ -36,12 +36,11 @@ def test_wrap_comment_bodies_unit() -> None:
     assert "<<<UNTRUSTED_EXTERNAL_CONTENT name=pr-comment-diff_hunk>>>" in inline0["diff_hunk"]
     assert OPEN_BODY in payload["discussion"]["comments"][0]["body"]
     assert OPEN_BODY in payload["reviews"][0]["body"]
-    # Idempotent
     again = wrap_comment_bodies(payload)
     assert again["inline"][0]["body"].count(OPEN_BODY) == 1
 
 
-def test_fetch_pr_comments_fixture_wraps_all_types(tmp_path: Path) -> None:
+def test_fetch_pr_comments_fixture_path_only(tmp_path: Path) -> None:
     proc = subprocess.run(
         [
             sys.executable,
@@ -59,7 +58,12 @@ def test_fetch_pr_comments_fixture_wraps_all_types(tmp_path: Path) -> None:
     )
     data = json.loads(proc.stdout)
     assert data["untrusted_content_note"]
-    assert OPEN_BODY in data["inline"][0]["body"]
-    assert OPEN_BODY in data["discussion"]["comments"][0]["body"]
-    assert OPEN_BODY in data["reviews"][0]["body"]
-    assert CLOSE in data["reviews"][0]["body"]
+    assert "inline" not in data
+    assert "discussion" not in data
+    assert "reviews" not in data
+    assert INJECT not in proc.stdout
+    cached = json.loads((tmp_path / data["untrusted_payload_path"]).read_text(encoding="utf-8"))
+    assert OPEN_BODY in cached["inline"][0]["body"]
+    assert OPEN_BODY in cached["discussion"]["comments"][0]["body"]
+    assert OPEN_BODY in cached["reviews"][0]["body"]
+    assert CLOSE in cached["reviews"][0]["body"]

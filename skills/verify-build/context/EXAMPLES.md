@@ -1,7 +1,7 @@
 
-# Examples — Build verification
+# Examples: Build verification
 
-## Typical failure — unresolved import
+## Typical failure: unresolved import
 
 ```
 [exit 1]

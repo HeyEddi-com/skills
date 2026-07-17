@@ -2,7 +2,7 @@
 # Firebase client composable pattern
 
 ```ts
-// useFirestoreCollection.ts — rules-aware reads
+// useFirestoreCollection.ts: rules-aware reads
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { useFirebase } from "./useFirebase";
 

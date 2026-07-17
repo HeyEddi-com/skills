@@ -31,4 +31,4 @@ final usersProvider = FutureProvider<List<User>>((ref) async {
 });
 ```
 
-Attach JWT in `ApiClient` interceptor when auth is required — refresh on 401.
+Attach JWT in `ApiClient` interceptor when auth is required: refresh on 401.

@@ -1,17 +1,17 @@
 ---
 name: heyeddi-pr-review
-description: Reviews submitted PRs using only committed changes — product fit, docs drift, engineering quality, test coverage, and pre-merge gate. Use when approving a PR, doing reviewer QA, or self-checking before requesting review. Not for replying to review comments (use heyeddi-pr-respond).
+description: Reviews submitted PRs using only committed changes: product fit, docs drift, engineering quality, test coverage, and pre-merge gate. Use when approving a PR, doing reviewer QA, or self-checking before requesting review. Not for replying to review comments (use heyeddi-pr-respond).
 version: 1.0.0
 disable-model-invocation: true
 ---
 
 # HeyEddi PR Review
 
-**Submitted PR review workflow** — judges only committed changes (`base...head`), not local WIP.
+**Submitted PR review workflow**: judges only committed changes (`base...head`), not local WIP.
 
 You are the **reviewer** workflow. Scope every judgment to the PR diff (`base...head`). Ignore uncommitted files.
 
-**Artifacts:** `.heyeddi/docs/pr-<N>-review.md` — never repo root.
+**Artifacts:** `.heyeddi/docs/pr-<N>-review.md`: never repo root.
 
 ## When to use
 
@@ -32,7 +32,7 @@ See `reference/subagents.md`. Main chat owns the verdict; delegate fetches and s
 Read **`reference/review-checklist.md`**.
 
 ```
-fetch_pr_context --pr <N>              → committed diff + changed files
+fetch_pr_context --pr <N>              → cache + paths; title/body not in stdout
 check_doc_drift --pr <N>               → product.md / design.md / engineering docs
 audit_pr_changes --pr <N>              → engineering + test gaps on changed files only
 load_product_context                   → @heyeddi-product (read JSON; scope to touched routes)
@@ -55,7 +55,7 @@ verify_pr_review --pr <N> --check      → report complete before posting
 | **Request changes** | Docs drift, missing tests, product/AC gaps, gate failures |
 | **Block** | Breaks flagship route, security concern, or contradicts `product.md` |
 
-Optional: post GitHub review via `gh pr review` when user asks — default is report in `.heyeddi/docs/` only.
+Optional: post GitHub review via `gh pr review` when user asks: default is report in `.heyeddi/docs/` only.
 
 ## Never
 
@@ -71,8 +71,8 @@ Optional: post GitHub review via `gh pr review` when user asks — default is re
 | `@heyeddi-product` | Product context, feature matrix, AC |
 | `@engineering-excellence` | Deeper audit when `audit_pr_changes` flags issues |
 | `@pre-merge-gate` | Final hard gate |
-| `@heyeddi-pr-respond` | **After** review — address human feedback |
-## When the task is complete — suggest next skills
+| `@heyeddi-pr-respond` | **After** review: address human feedback |
+## When the task is complete: suggest next skills
 
 When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
 

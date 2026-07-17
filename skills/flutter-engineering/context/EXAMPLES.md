@@ -1,4 +1,4 @@
-# Examples — Flutter engineering
+# Examples: Flutter engineering
 
 ```bash
 python scripts/audit_scaffold.py --project-root .

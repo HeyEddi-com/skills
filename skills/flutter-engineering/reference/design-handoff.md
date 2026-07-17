@@ -1,4 +1,4 @@
-# Design handoff — Flutter
+# Design handoff: Flutter
 
 Use `@design-handoff-flutter` when implementing from `.heyeddi/designs/<feature>/` PNGs.
 

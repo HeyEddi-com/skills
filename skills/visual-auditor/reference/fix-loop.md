@@ -1,4 +1,4 @@
-# Fix loop — visual auditor
+# Fix loop: visual auditor
 
 **Date:** 2026-07-06
 
@@ -25,7 +25,7 @@ finalize_visual_review --route /settings --check
 | Wrong hierarchy vs brief | Template structure, heading order, card layout |
 | Spacing vs design.md rhythm | `--size-*` padding/gap, `.p-card-body` overrides |
 | Missing states | Add empty/loading/error per surface-completeness |
-| Product copy wrong register | Microcopy in view — align voice_tone |
+| Product copy wrong register | Microcopy in view: align voice_tone |
 
 ## What to escalate (do not guess)
 
@@ -43,4 +43,4 @@ finalize_visual_review --route /settings --check
 
 ## Chain validation
 
-After fixes, `finalize_visual_review --check` must pass contrast. Re-read widest + narrowest capture — confirm persona success feeling visually.
+After fixes, `finalize_visual_review --check` must pass contrast. Re-read widest + narrowest capture: confirm persona success feeling visually.

@@ -1,4 +1,4 @@
-"""HeyEddi path helpers — visual audit artifacts under `.heyeddi/audits/visual/`."""
+"""HeyEddi path helpers: visual audit artifacts under `.heyeddi/audits/visual/`."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -18,5 +18,5 @@ def screenshot_dir(root: Path) -> Path:
 
 
 def legacy_screenshot_dir(root: Path) -> Path:
-    """Deprecated repo-root path — do not write here."""
+    """Deprecated repo-root path: do not write here."""
     return root / ".visual-audit"

@@ -1,4 +1,4 @@
-# Subagents — engineering-excellence
+# Subagents: engineering-excellence
 
 | Phase | Subagent | Script |
 |-------|----------|--------|

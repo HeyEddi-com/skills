@@ -1,5 +1,5 @@
 
-# Examples — PR review
+# Examples: PR review
 
 ## Fetch comments
 

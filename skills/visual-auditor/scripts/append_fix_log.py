@@ -43,12 +43,12 @@ def main() -> None:
         log_path.write_text(f"# Visual auditor fix log\n\n**Started:** {date.today().isoformat()}\n\n", encoding="utf-8")
 
     block = [
-        f"### {entry['timestamp']} — `{args.route}` [{args.severity}]",
+        f"### {entry['timestamp']}: `{args.route}` [{args.severity}]",
         "",
         f"- **Issue:** {args.issue}",
-        f"- **Spec:** {args.spec_ref or '—'}",
+        f"- **Spec:** {args.spec_ref or ' - '}",
         f"- **Fix:** {args.fix}",
-        f"- **Files:** {', '.join(f'`{f}`' for f in files) if files else '—'}",
+        f"- **Files:** {', '.join(f'`{f}`' for f in files) if files else ' - '}",
         "",
     ]
     with log_path.open("a", encoding="utf-8") as fh:
@@ -60,7 +60,7 @@ def main() -> None:
     if review_files:
         review = review_files[0]
         text = review.read_text(encoding="utf-8")
-        row = f"| {date.today().isoformat()} | {args.issue[:60]} | {args.spec_ref or '—'} | {args.severity} |"
+        row = f"| {date.today().isoformat()} | {args.issue[:60]} | {args.spec_ref or ' - '} | {args.severity} |"
         fix_line = f"- **{args.issue}** → {args.fix} (`{', '.join(files)}`)"
         if "## Issues found" in text and row not in text:
             text = text.replace(
@@ -70,8 +70,8 @@ def main() -> None:
             )
         if "## Fixes applied" in text and fix_line not in text:
             text = text.replace(
-                "_Use append_fix_log.py per fix — entries mirror below._",
-                fix_line + "\n\n_Use append_fix_log.py per fix — entries mirror below._",
+                "_Use append_fix_log.py per fix: entries mirror below._",
+                fix_line + "\n\n_Use append_fix_log.py per fix: entries mirror below._",
                 1,
             )
         review.write_text(text, encoding="utf-8")

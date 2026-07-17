@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scaffold `.heyeddi/` — README, stack config, and folders for skill artifacts."""
+"""Scaffold `.heyeddi/`: README, stack config, and folders for skill artifacts."""
 from __future__ import annotations
 
 import argparse

@@ -1,6 +1,6 @@
 ---
 name: flutter-engineering
-description: Ensures HeyEddi Flutter projects have the right engineering stack — Flutter (Riverpod, go_router, Material 3), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, runs flutter test/analyze, documents local dev servers. Use when frontend is Flutter or before design/feature work on a HeyEddi mobile/web app.
+description: Ensures HeyEddi Flutter projects have the right engineering stack: Flutter (Riverpod, go_router, Material 3), FastAPI backend, or Firebase tooling. Audits gaps, scaffolds as needed, runs flutter test/analyze, documents local dev servers. Use when frontend is Flutter or before design/feature work on a HeyEddi mobile/web app.
 paths:
   - "pubspec.yaml"
   - "lib/**"
@@ -13,7 +13,7 @@ paths:
 
 # Flutter Engineering
 
-Baseline **Flutter engineering** for HeyEddi apps. Detects which stacks apply and adds the correct tooling — Vue projects should use `@project-engineering` instead.
+Baseline **Flutter engineering** for HeyEddi apps. Detects which stacks apply and adds the correct tooling: Vue projects should use `@project-engineering` instead.
 
 ## Subagents (default)
 
@@ -42,10 +42,10 @@ Or `"backends": ["firebase"]` or `["fastapi", "firebase"]`.
 
 ## Workflow
 
-1. **`audit_scaffold`** — per-layer JSON (flutter / fastapi / firebase).
-2. **`scaffold_stack --stack auto`** — fills gaps (`flutter`, `fastapi`, `firebase`, or `full`).
+1. **`audit_scaffold`**: per-layer JSON (flutter / fastapi / firebase).
+2. **`scaffold_stack --stack auto`**: fills gaps (`flutter`, `fastapi`, `firebase`, or `full`).
 3. **`ensure_flutter`** + **`ensure_python`** (via `@project-engineering`) as needed.
-4. **`dev_server_info`** — Flutter web `:8085`, API `:8090`, Firebase emulators `:4000`.
+4. **`dev_server_info`**: Flutter web `:8085`, API `:8090`, Firebase emulators `:4000`.
 5. Implement features (`@design-handoff-flutter`, `@flutter-patterns`, `@dart-type-bridger`).
 6. **`run_tests`** + **`run_backend_tests`** + **`verify_build`**.
 
@@ -62,18 +62,18 @@ Set `FLUTTER_WEB_URL` (or `DEV_SERVER_URL`) for `@visual-auditor` when auditing 
 
 ## References
 
-- `reference/dev-server.md` — Flutter web + mobile
-- `reference/fastapi-client.md` — Dio + OpenAPI types
-- `reference/firebase-client.md` — firebase_core + Firestore
-- `reference/heyeddi-handoff.md` — chain `@design-handoff-flutter`
+- `reference/dev-server.md`: Flutter web + mobile
+- `reference/fastapi-client.md`: Dio + OpenAPI types
+- `reference/firebase-client.md`: firebase_core + Firestore
+- `reference/heyeddi-handoff.md`: chain `@design-handoff-flutter`
 
 ## Related skills
 
-- `@dart-type-bridger` — OpenAPI / Firestore → Dart models
-- `@flutter-patterns` — repositories, Riverpod providers, auth
-- `@design-handoff-flutter` — screenshot → Material widgets
-- `@project-engineering` — shared FastAPI/Firebase scaffolds (invoked by `scaffold_stack`)
-## When the task is complete — suggest next skills
+- `@dart-type-bridger`: OpenAPI / Firestore → Dart models
+- `@flutter-patterns`: repositories, Riverpod providers, auth
+- `@design-handoff-flutter`: screenshot → Material widgets
+- `@project-engineering`: shared FastAPI/Firebase scaffolds (invoked by `scaffold_stack`)
+## When the task is complete: suggest next skills
 
 When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
 

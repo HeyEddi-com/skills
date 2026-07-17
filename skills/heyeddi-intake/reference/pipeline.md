@@ -35,9 +35,9 @@ verify_intake --check
 | `seed_brief` after wireframe or ingest | Fills Audience from product.md |
 | `build_routing` after product + handoff artifacts | Settings → heyeddi-handoff when wireframe or PNG exists |
 | `verify_intake --check` last | Single pass/fail for eval and CI |
-| No feature Vue in intake | Block `src/views/**` and components — **keep** baseline `src/App.vue` shell |
+| No feature Vue in intake | Block `src/views/**` and components: **keep** baseline `src/App.vue` shell |
 | Repo must build | When `node_modules` exists, `verify_intake` runs `npm run build` |
-| **No bundled PNG templates** | Skill does not ship or draw preset PNGs — wireframe, ingest, or AI |
+| **No bundled PNG templates** | Skill does not ship or draw preset PNGs: wireframe, ingest, or AI |
 
 ## Optional overrides
 

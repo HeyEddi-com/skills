@@ -60,7 +60,7 @@ def main() -> None:
             fail(msg)
         emit(msg)
         return
-    emit("Flutter theme verification OK — Material 3 light/dark themes and router wired.")
+    emit("Flutter theme verification OK: Material 3 light/dark themes and router wired.")
 
 
 if __name__ == "__main__":

@@ -6,9 +6,9 @@ When a **pipeline skill** finishes the user's requested work, suggest what `@ski
 
 | Do | Don't |
 |----|-------|
-| `@heyeddi-design shape` finished — brief confirmed | After `load_context.py` |
-| `@heyeddi-handoff` — route built and verified | After pass 1 interpret only |
-| `@heyeddi-intake` — product.md + routing ready | After `write_product` alone |
+| `@heyeddi-design shape` finished: brief confirmed | After `load_context.py` |
+| `@heyeddi-handoff`: route built and verified | After pass 1 interpret only |
+| `@heyeddi-intake`: product.md + routing ready | After `write_product` alone |
 
 ## Agent workflow
 
@@ -22,8 +22,8 @@ When a **pipeline skill** finishes the user's requested work, suggest what `@ski
    ```
 
    Optional:
-   - `--route /settings` — route you finished
-   - `--mode shape` — sub-command you just ran (improves suggestion, e.g. shape → craft)
+   - `--route /settings`: route you finished
+   - `--mode shape`: sub-command you just ran (improves suggestion, e.g. shape → craft)
 
 3. Include the JSON **`user_block`** in your **final** reply. The user should be able to **copy the Prompt line** into chat.
 
@@ -33,10 +33,10 @@ When a **pipeline skill** finishes the user's requested work, suggest what `@ski
 ### Next step
 **Skill:** `@heyeddi-design`
 **Prompt:** @heyeddi-design craft /settings from the confirmed brief
-**Why:** Brief is confirmed — build the Vue screen before handoff or visual QA.
+**Why:** Brief is confirmed: build the Vue screen before handoff or visual QA.
 ```
 
-The **Prompt** is the main deliverable — natural language with `@skill` and sub-command, not a `python scripts/...` path unless the user explicitly asked for CLI-only work.
+The **Prompt** is the main deliverable: natural language with `@skill` and sub-command, not a `python scripts/...` path unless the user explicitly asked for CLI-only work.
 
 ## Examples by pipeline
 
@@ -48,17 +48,17 @@ The **Prompt** is the main deliverable — natural language with `@skill` and su
 | `@heyeddi-design craft` | `@visual-auditor review and fix /dashboard against product.md and design.md` |
 | `@heyeddi-handoff` | `@visual-auditor review and fix /settings against product.md and design.md` |
 | `@visual-auditor` | `@pre-merge-gate run the merge readiness checklist` |
-| `@heyeddi-orchestrator sync` | `@heyeddi-intake — describe the app in plain language` |
+| `@heyeddi-orchestrator sync` | `@heyeddi-intake: describe the app in plain language` |
 
 ## Priority order
 
 1. **`--mode`** sub-command chain (e.g. design `shape` → `craft`)
-2. **`.heyeddi/docs/intake/skill-routing.json`** — next route
+2. **`.heyeddi/docs/intake/skill-routing.json`**: next route
 3. **Default pipeline** in `_next_skill.py`
-4. **Fallback** — `@heyeddi-orchestrator`
+4. **Fallback**: `@heyeddi-orchestrator`
 
 ## Pipeline skills
 
 `heyeddi-intake`, `heyeddi-product`, `heyeddi-orchestrator`, `heyeddi-design`, `heyeddi-handoff`, `design-handoff-flutter`, `project-engineering`, `flutter-engineering`, `visual-auditor`, `pre-merge-gate`, `heyeddi-pr-review`, `heyeddi-pr-respond`
 
-Utility skills (`verify-build`, `backend-type-bridger`, …) are mid-pipeline — no handoff unless that was the whole user request.
+Utility skills (`verify-build`, `backend-type-bridger`, …) are mid-pipeline: no handoff unless that was the whole user request.

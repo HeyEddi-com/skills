@@ -1,14 +1,14 @@
-# Modern reference — beyond default PrimeVue
+# Modern reference: beyond default PrimeVue
 
 **Date:** 2026-07-03
 
 HeyEddi scaffolds use PrimeVue + semantic tokens. That stack is **fast to ship** but defaults to an **admin-template** look unless the designer deliberately adds depth, typography, and layout character.
 
-Read this during **`research`**, **`shape`**, **`craft`**, and **`polish`**. Tie choices to `product.md` — do not paste trends unrelated to the product.
+Read this during **`research`**, **`shape`**, **`craft`**, and **`polish`**. Tie choices to `product.md`: do not paste trends unrelated to the product.
 
 **Audience first:** read `reference/audience-design.md` + `product.md` **Personas** before picking references from the table below.
 
-**Ambition:** read `reference/design-ambition.md` — impressive craft is the default for flagship routes; borrow techniques below into a **project-specific signature**, not a reusable template.
+**Ambition:** read `reference/design-ambition.md`: impressive craft is the default for flagship routes; borrow techniques below into a **project-specific signature**, not a reusable template.
 
 ## The problem we are fixing
 
@@ -20,7 +20,7 @@ Read this during **`research`**, **`shape`**, **`craft`**, and **`polish`**. Tie
 | Generic blue primary everywhere | Brand seed + semantic roles (success/warn/muted) |
 | Every page looks like `/admin` | Marketing pages feel editorial; app pages feel focused |
 
-## Named references (what to borrow — never clone)
+## Named references (what to borrow: never clone)
 
 Use these in `research.md` and briefs as **direction anchors**. Describe *what* to borrow in one line each.
 
@@ -32,16 +32,16 @@ Use these in `research.md` and briefs as **direction anchors**. Describe *what* 
 | **Raycast** | Soft radius, pill nav, subtle glass/blur on shell (web-safe fallbacks) |
 | **Notion (marketing)** | Large headlines, feature grids, muted illustration placeholders |
 | **Superhuman** | Confident single-column settings, strong section labels, one primary action |
-| **Arc / Dia (marketing)** | Bold color blocks, personality in hero — sparingly for B2B |
+| **Arc / Dia (marketing)** | Bold color blocks, personality in hero: sparingly for B2B |
 
-During **`research`**, web-search 2–3 of the above plus your product category (e.g. "B2B team dashboard UI 2026").
+During **`research`**, web-search 2-3 of the above plus your product category (e.g. "B2B team dashboard UI 2026").
 
 ## Concrete techniques (PrimeVue + CSS tokens)
 
 ### Typography
 
 ```css
-/* tokens.css — example semantic scale */
+/* tokens.css: example semantic scale */
 --font-display: var(--font-sans, system-ui);
 --text-display: clamp(1.75rem, 2vw + 1rem, 2.25rem);
 --text-body: 1rem;
@@ -73,18 +73,18 @@ During **`research`**, web-search 2–3 of the above plus your product category 
 
 - Hero: headline + subcopy + **one** primary CTA + optional secondary link
 - Feature row: 3 columns with icon or simple SVG, not lorem blocks
-- Background: subtle gradient mesh or noise via CSS (`radial-gradient` at low opacity) — not full-bleed stock photo unless brief asks
+- Background: subtle gradient mesh or noise via CSS (`radial-gradient` at low opacity): not full-bleed stock photo unless brief asks
 
 ### App dashboard (TaskFlow-style)
 
 - Header row: title + subtitle + **one** secondary action (Refresh)
-- Optional **1–2** stat cards, not mandatory 3-tile KPI grid
+- Optional **1-2** stat cards, not mandatory 3-tile KPI grid
 - Table in elevated card; striped rows OK; column headers with muted color
-- Banner for offline/demo state — not silent failure
+- Banner for offline/demo state: not silent failure
 
 ### Settings
 
-- Card stack with 16–24px gap; Save **outside** cards, right-aligned
+- Card stack with 16-24px gap; Save **outside** cards, right-aligned
 - Inputs filled + rounded per theme; toggle in its own card section
 
 ### Motion (light touch)
@@ -101,6 +101,9 @@ Before calling a screen done:
 - [ ] Do cards have padding ≥ 16px and visible separation from background?
 - [ ] Does dark mode look intentional (not inverted gray mush)?
 - [ ] Decision log entry cites which reference pattern you borrowed **and this project's memorable detail** (`design-ambition.md`)
+- [ ] UI **copy** follows `context/PROSE_ANTI_SLOP.md` (no em dashes, no AI filler)
+- [ ] Smell test: would this copy survive Slack without an eye-roll?
+- [ ] Smell test: would this copy survive Slack without an eye-roll?
 
 ## When plain is OK
 
@@ -110,6 +113,7 @@ Before calling a screen done:
 
 ## Related
 
-- `reference/research.md` — synthesize trends into `research.md`
-- `reference/surface-completeness.md` — full states and affordances
-- `context/ANTI_PATTERNS.md` — plain admin template called out
+- `reference/research.md`: synthesize trends into `research.md`
+- `reference/surface-completeness.md`: full states and affordances
+- `context/ANTI_PATTERNS.md`: plain admin template called out
+- `context/PROSE_ANTI_SLOP.md`: writing / copy anti-slop (em dashes, filler phrases)

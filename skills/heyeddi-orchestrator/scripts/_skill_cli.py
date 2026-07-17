@@ -29,6 +29,6 @@ def resolve_project_root(arg: str | None, *, auto_sync: bool = True) -> Path:
             from _auto_sync import ensure_heyeddi  # noqa: PLC0415
 
             ensure_heyeddi(root)
-        except Exception as exc:  # noqa: BLE001 — never block skill tools on sync
+        except Exception as exc:  # noqa: BLE001: never block skill tools on sync
             print(f"heyeddi auto-sync skipped: {exc}", file=sys.stderr)
     return root

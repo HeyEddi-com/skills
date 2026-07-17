@@ -26,7 +26,7 @@ def main() -> None:
                 {
                     "route": args.route,
                     "mode": "stub",
-                    "message": "Playwright not installed — returning placeholder layout tree",
+                    "message": "Playwright not installed: returning placeholder layout tree",
                     "elements": [
                         {"tag": "body", "width": 375, "height": 800, "note": "install playwright for real data"}
                     ],

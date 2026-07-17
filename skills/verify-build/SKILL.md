@@ -24,4 +24,4 @@ paths:
 
 ## Scripts
 
-- `verify_build.sh` — executes `npm run build` and returns combined output
+- `verify_build.sh`: executes `npm run build` and returns combined output

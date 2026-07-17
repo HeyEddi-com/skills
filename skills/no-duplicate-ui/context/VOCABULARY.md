@@ -1,5 +1,5 @@
 
-# Vocabulary — No duplicate UI
+# Vocabulary: No duplicate UI
 
 - Shared primitives live in `@/components/ui/`.
 - Duplicate: same component name in two paths, or >60% template token overlap.

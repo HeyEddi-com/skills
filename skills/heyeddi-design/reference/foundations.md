@@ -1,6 +1,6 @@
-# Foundations — always on (HeyEddi)
+# Foundations: always on (HeyEddi)
 
-Every HeyEddi app ships these **by default**. They are not optional upsells — document them in `.heyeddi/design.md` under **## Foundations (always on)** and implement in craft/handoff unless `product.md` explicitly defers one (with reason in Decision log).
+Every HeyEddi app ships these **by default**. They are not optional upsells: document them in `.heyeddi/design.md` under **## Foundations (always on)** and implement in craft/handoff unless `product.md` explicitly defers one (with reason in Decision log).
 
 Read this file before `craft`, `polish`, `document`, or `@heyeddi-handoff` implementation.
 
@@ -8,19 +8,19 @@ Read this file before `craft`, `polish`, `document`, or `@heyeddi-handoff` imple
 
 ## 1. Responsive (mobile-first)
 
-- **Mobile-first CSS** — base styles for narrow; enhance at breakpoints.
+- **Mobile-first CSS**: base styles for narrow; enhance at breakpoints.
 - **Audit widths:** 375, 768, 1024, 1440 (match `@visual-auditor`).
-- **Fluid layouts** — no fixed desktop-only widths; forms and CTAs stack on small screens.
+- **Fluid layouts**: no fixed desktop-only widths; forms and CTAs stack on small screens.
 - **Touch targets** ≥ 44×44px on coarse pointers.
 - **No horizontal scroll** on primary content at 375px unless intentional (data tables → scroll container with caption).
 
-## 2. Color scheme — system default
+## 2. Color scheme: system default
 
 - **Default:** follow `prefers-color-scheme` (light / dark / no-preference).
-- **Implementation:** semantic CSS variables from project `tokens.css` / `design.md` (`var(--surface-*)`, `var(--text-*)`). **OpenProps** is the HeyEddi scaffold default — use it when the project already imports `open-props`; otherwise custom `:root` vars are fine. See `heyeddi-design/reference/token-strategy.md`.
+- **Implementation:** semantic CSS variables from project `tokens.css` / `design.md` (`var(--surface-*)`, `var(--text-*)`). **OpenProps** is the HeyEddi scaffold default: use it when the project already imports `open-props`; otherwise custom `:root` vars are fine. See `heyeddi-design/reference/token-strategy.md`.
 - **Light/dark:** `prefers-color-scheme` via project tokens; set `color-scheme: light dark` on `:root` when supporting both schemes.
 - **User override (optional in Settings):** `system` | `light` | `dark`; persist in `localStorage`; default **`system`**.
-- **Contrast:** WCAG **2.2 AA** minimum in both schemes — document exceptions in Decision log.
+- **Contrast:** WCAG **2.2 AA** minimum in both schemes: document exceptions in Decision log.
 
 ## 3. Internationalization (i18n)
 
@@ -29,8 +29,8 @@ Read this file before `craft`, `polish`, `document`, or `@heyeddi-handoff` imple
 - **User override:** language picker in Settings or header; persist preference; beats browser on next visit.
 - **Implementation:** `vue-i18n` (or project standard); no hard-coded user-facing strings in Vue templates.
 - **HTML:** `lang` on `<html>` matches active locale; update on switch.
-- **RTL-ready:** when adding `ar`, `he`, etc., set `dir="rtl"` and mirror layout — plan in `product.md` locales table.
-- **Copy:** dates/numbers/currency via `Intl` APIs — not hand-formatted.
+- **RTL-ready:** when adding `ar`, `he`, etc., set `dir="rtl"` and mirror layout: plan in `product.md` locales table.
+- **Copy:** dates/numbers/currency via `Intl` APIs: not hand-formatted.
 
 ### Locale table (in `product.md` + `design.md`)
 
@@ -51,8 +51,8 @@ Target **WCAG 2.2 AA** for product UI.
 | **Semantics** | Landmarks (`header`, `nav`, `main`, `footer`); headings in order |
 | **Forms** | `<label>` or `aria-label`; errors linked with `aria-describedby` |
 | **Color** | Never color-only meaning; icons/text reinforce state |
-| **Motion** | Respect `prefers-reduced-motion` — disable non-essential animation |
-| **Contrast** | `prefers-contrast: more` — avoid ultra-light grey on white |
+| **Motion** | Respect `prefers-reduced-motion`: disable non-essential animation |
+| **Contrast** | `prefers-contrast: more`: avoid ultra-light grey on white |
 | **Modals** | Focus trap, `aria-modal`, restore focus on close |
 | **Live regions** | Toasts/async status use `aria-live` appropriately |
 | **PrimeVue** | Use built-in a11y props; don’t strip `aria-*` from wrappers |
@@ -61,12 +61,12 @@ Target **WCAG 2.2 AA** for product UI.
 
 **Default reading mode** uses project `{typography.body-md}`.
 
-**Optional dyslexia-friendly mode** — user toggle in Settings (and optionally quick toggle in reading-heavy views):
+**Optional dyslexia-friendly mode**: user toggle in Settings (and optionally quick toggle in reading-heavy views):
 
 | Setting | Default | Dyslexia-friendly |
 |---------|---------|-------------------|
 | Font | system / project body | **Atkinson Hyperlegible** or **OpenDyslexic** (document choice in Typography) |
-| Line height | 1.5 | **1.7–1.8** |
+| Line height | 1.5 | **1.7-1.8** |
 | Letter spacing | normal | **+0.05em** |
 | Word spacing | normal | **+0.1em** |
 | Paragraph width | ≤ 75ch | **≤ 65ch** |
@@ -79,10 +79,10 @@ Target **WCAG 2.2 AA** for product UI.
 
 Every route with async data or user input documents:
 
-- **Loading** — skeleton or spinner; no layout jump
-- **Empty** — helpful copy + primary action
-- **Error** — plain language + retry; no raw stack traces
-- **Success** — confirm destructive/save actions
+- **Loading**: skeleton or spinner; no layout jump
+- **Empty**: helpful copy + primary action
+- **Error**: plain language + retry; no raw stack traces
+- **Success**: confirm destructive/save actions
 
 ## 7. Performance & media defaults
 
@@ -95,8 +95,8 @@ Every route with async data or user input documents:
 
 When `@heyeddi-handoff` receives designer PNGs:
 
-- Mockups define **where** things go — shell topology, cards, field order, CTA placement, responsive structure.
-- Mockups do **not** define brand colors — use this file's **Colors** / **Components** and project semantic tokens (OpenProps-backed or custom — see `token-strategy.md`).
+- Mockups define **where** things go: shell topology, cards, field order, CTA placement, responsive structure.
+- Mockups do **not** define brand colors: use this file's **Colors** / **Components** and project semantic tokens (OpenProps-backed or custom: see `token-strategy.md`).
 - Always implement **layout components** + PrimeVue primitives; never flat unstyled forms on a bare page background.
 - See `heyeddi-handoff/reference/mockup-contract.md`.
 

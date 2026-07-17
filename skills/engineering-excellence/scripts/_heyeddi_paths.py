@@ -1,4 +1,4 @@
-"""HeyEddi `.heyeddi/` path helpers — engineering docs live under `.heyeddi/docs/`."""
+"""HeyEddi `.heyeddi/` path helpers: engineering docs live under `.heyeddi/docs/`."""
 from __future__ import annotations
 
 from pathlib import Path

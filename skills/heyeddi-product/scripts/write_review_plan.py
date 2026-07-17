@@ -50,7 +50,7 @@ REVIEW_PLAN = """# {title}
 {route_line}
 
 PM-owned review: **does the product work, is it useful, is something else better?**  
-You orchestrate specialists — you do not replace them.
+You orchestrate specialists: you do not replace them.
 
 ## 1. Context (tools)
 
@@ -80,7 +80,7 @@ You orchestrate specialists — you do not replace them.
 
 ### Would something else be better?
 - Simpler scope, different route structure, cut a feature, merge screens?
-- Cite evidence from delegated findings — not gut feel alone.
+- Cite evidence from delegated findings: not gut feel alone.
 
 ## 4. Recommendations
 

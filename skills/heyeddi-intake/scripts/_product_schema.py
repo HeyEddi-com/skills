@@ -129,7 +129,7 @@ def format_audience_block(product_text: str | None, route: str) -> str:
     row = parse_route_intent_row(product_text or "", route) if product_text else None
     if not row:
         return (
-            f"- **Primary persona:** _(missing in product.md for `{route}` — run write_product)_\n"
+            f"- **Primary persona:** _(missing in product.md for `{route}`: run write_product)_\n"
             f"- **Mindset / success:** _\n"
             f"- **Direction:** See `heyeddi-design/reference/audience-design.md`"
         )

@@ -67,7 +67,7 @@ def verify_theme(root: Path, tokens_path: Path) -> list[str]:
         if not view_overrides:
             errors.append(
                 "PrimeVue in use but no .p-card/.p-inputtext semantic overrides "
-                "in tokens.css or :deep() in views — risk of dark/light mismatch"
+                "in tokens.css or :deep() in views: risk of dark/light mismatch"
             )
 
     return errors
@@ -89,7 +89,7 @@ def main() -> None:
             fail(msg)
         emit(msg)
         return
-    emit("Theme verification OK — semantic light/dark tokens and PrimeVue surfaces aligned.")
+    emit("Theme verification OK: semantic light/dark tokens and PrimeVue surfaces aligned.")
 
 
 if __name__ == "__main__":

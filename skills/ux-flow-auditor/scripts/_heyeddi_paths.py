@@ -1,4 +1,4 @@
-"""HeyEddi `.heyeddi/` path helpers — UX flow docs live under `.heyeddi/docs/ux-flows/`."""
+"""HeyEddi `.heyeddi/` path helpers: UX flow docs live under `.heyeddi/docs/ux-flows/`."""
 from __future__ import annotations
 
 from pathlib import Path

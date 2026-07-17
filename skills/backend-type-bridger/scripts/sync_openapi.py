@@ -101,7 +101,7 @@ def main() -> None:
                     "error": "no local openapi file",
                     "hint": (
                         "Place OpenAPI JSON at openapi.json (or pass --openapi <relpath>). "
-                        "Do not fetch URLs inside this skill — export from FastAPI or: "
+                        "Do not fetch URLs inside this skill: export from FastAPI or: "
                         "curl -fsS http://127.0.0.1:8090/openapi.json -o openapi.json"
                     ),
                 },
@@ -121,7 +121,7 @@ def main() -> None:
     out_file.parent.mkdir(parents=True, exist_ok=True)
 
     parts = [
-        "/** Generated from OpenAPI — refine types as needed. */",
+        "/** Generated from OpenAPI: refine types as needed. */",
         f"// Source: {openapi_path.name}",
         "",
     ]
@@ -139,7 +139,7 @@ def main() -> None:
     content = "\n".join(parts).rstrip() + "\n"
     out_file.write_text(content)
 
-    # Emit summary only — never dump raw OpenAPI into agent context
+    # Emit summary only: never dump raw OpenAPI into agent context
     emit(
         json.dumps(
             {

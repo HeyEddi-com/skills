@@ -1,5 +1,5 @@
 
-# Examples — Pre-merge gate
+# Examples: Pre-merge gate
 
 ## Sample report
 

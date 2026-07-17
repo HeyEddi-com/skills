@@ -24,7 +24,7 @@ def main() -> None:
     root = resolve_project_root(args.project_root)
     json_path = product_json_path(root)
     if not json_path.is_file():
-        fail(f"missing {json_path.relative_to(root)} — run write_product first")
+        fail(f"missing {json_path.relative_to(root)}: run write_product first")
 
     data = load_json(json_path)
     ctx = page_context_from_product(data, feature=args.feature, route=args.route)
@@ -51,7 +51,7 @@ def main() -> None:
         "mockup_contract": "wireframe_layout",
         "generated_by": "heyeddi-intake",
         "notes": [
-            "Layout derived from product-translation.json page purpose — not a generic PNG template",
+            "Layout derived from product-translation.json page purpose: not a generic PNG template",
             "Refine regions in wireframe.md before @heyeddi-handoff if product intent changed",
             "mockup-brief.md seeded by seed_brief.py; expand Implementation spec from wireframe",
         ],

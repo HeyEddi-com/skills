@@ -1,20 +1,20 @@
 ---
 name: heyeddi-orchestrator
 description: Discover HeyEddi skills, auto-sync .heyeddi/ (skills index), cross-pillar opinions, and suggest @skills. Use at session start, after reinstalling skills, or when connecting heyeddi-product, ux-flow-auditor, and heyeddi-design on a route.
-version: 3.0.2
+version: 3.0.3
 ---
 
 # HeyEddi Orchestrator
 
-**Skill discovery and workspace sync** — routes work to the right `@skill`, refreshes `.heyeddi/`, and **keeps product, UX, and design pillars in sync**.
+**Skill discovery and workspace sync**: routes work to the right `@skill`, refreshes `.heyeddi/`, and **keeps product, UX, and design pillars in sync**.
 
 ## When to use
 
 - Session start on a HeyEddi project (`.heyeddi/` present or greenfield app request)
 - User asks "what skills do we have?" or "which skill should handle this?"
 - Before a multi-step pipeline (intake → scaffold → design → handoff → QA)
-- **Any time one pillar runs** — bookend with `load_workflow_context` / `append_pillar_opinion`
-- After `@heyeddi-intake` — confirm `skill-routing.json` before downstream work
+- **Any time one pillar runs**: bookend with `load_workflow_context` / `append_pillar_opinion`
+- After `@heyeddi-intake`: confirm `skill-routing.json` before downstream work
 
 ## Automatic `.heyeddi/` upkeep
 
@@ -22,7 +22,7 @@ version: 3.0.2
 
 1. **Refreshes** `.heyeddi/skills-index.{json,md}` when missing
 
-Reinstall skills (`npx skills add`) and keep working — the next `@heyeddi-intake`, `@heyeddi-product`, or orchestrator tool updates `.heyeddi/` automatically.
+Reinstall skills (`npx skills add`) and keep working: the next `@heyeddi-intake`, `@heyeddi-product`, or orchestrator tool updates `.heyeddi/` automatically.
 
 Optional explicit full sync (includes workflow scaffold): `sync --project-root .`
 
@@ -34,7 +34,7 @@ Read **`reference/cross-pillar-workflow.md`**.
 init_workflow_sync                    (once per project)
 load_workflow_context --route /path   (start of pillar session)
 … @heyeddi-product | @ux-flow-auditor | @heyeddi-design work …
-append_pillar_opinion --pillar …      (end — triggers sibling opinions)
+append_pillar_opinion --pillar …      (end: triggers sibling opinions)
 ```
 
 ## Skill discovery pipeline
@@ -50,7 +50,7 @@ If `.heyeddi/docs/intake/skill-routing.json` exists, **follow route order**.
 
 | Script | Purpose |
 |--------|---------|
-| *(auto)* | Every tool — refresh index when missing |
+| *(auto)* | Every tool: refresh index when missing |
 | `sync.py` | Optional full sync + workflow scaffold |
 | `write_skills_index.py` | Scan → `.heyeddi/skills-index.*` |
 | `load_catalog.py` | Read cached index |
@@ -60,7 +60,7 @@ If `.heyeddi/docs/intake/skill-routing.json` exists, **follow route order**.
 | `load_workflow_context.py` | Sibling opinions + checklist for route |
 | `append_pillar_opinion.py` | Log opinion; request UX/design/product response |
 
-## When the task is complete — suggest next skills
+## When the task is complete: suggest next skills
 
 When you have **finished the user's request** for this skill (not after every tool call or subagent phase), suggest what to run next:
 
@@ -80,7 +80,7 @@ See `@heyeddi-orchestrator` → `reference/next-skill-handoff.md`.
 
 ## Related
 
-- `@heyeddi-product` · `@ux-flow-auditor` · `@heyeddi-design` — three pillars
-- `@heyeddi-intake` — upstream intake
-- `reference/next-skill-handoff.md` — next-skill block when a pipeline task completes
-- `docs/cross-pillar-workflow.md` — hub summary
+- `@heyeddi-product` · `@ux-flow-auditor` · `@heyeddi-design`: three pillars
+- `@heyeddi-intake`: upstream intake
+- `reference/next-skill-handoff.md`: next-skill block when a pipeline task completes
+- `docs/cross-pillar-workflow.md`: hub summary

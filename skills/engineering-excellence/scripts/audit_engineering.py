@@ -48,7 +48,7 @@ def _scan_src(root: Path) -> list[dict]:
                     "principle": "KISS",
                     "severity": "warn",
                     "file": rel,
-                    "message": f"File has {lines} lines (>{MAX_FILE_LINES}) — consider splitting",
+                    "message": f"File has {lines} lines (>{MAX_FILE_LINES}): consider splitting",
                 }
             )
         text = path.read_text(encoding="utf-8", errors="replace")
@@ -58,7 +58,7 @@ def _scan_src(root: Path) -> list[dict]:
                     "principle": "YAGNI",
                     "severity": "info",
                     "file": rel,
-                    "message": "Abstraction naming detected — confirm it serves multiple call sites",
+                    "message": "Abstraction naming detected: confirm it serves multiple call sites",
                 }
             )
 
@@ -71,7 +71,7 @@ def _scan_src(root: Path) -> list[dict]:
                     "principle": "SOLID",
                     "severity": "warn",
                     "file": str(router.relative_to(root)),
-                    "message": "Router file is large — keep routes thin; move logic to views/composables",
+                    "message": "Router file is large: keep routes thin; move logic to views/composables",
                 }
             )
 
@@ -86,7 +86,7 @@ def _scan_src(root: Path) -> list[dict]:
                         "principle": "SOLID",
                         "severity": "warn",
                         "file": str(path.relative_to(root)),
-                        "message": "Fat route handler — prefer service layer",
+                        "message": "Fat route handler: prefer service layer",
                     }
                 )
                 break
@@ -102,7 +102,7 @@ def _scan_src(root: Path) -> list[dict]:
                     "principle": "Testable",
                     "severity": "info",
                     "file": str(view.relative_to(root)),
-                    "message": f"No unit test reference for {name} — add smoke spec",
+                    "message": f"No unit test reference for {name}: add smoke spec",
                 }
             )
 
@@ -121,7 +121,7 @@ def _check_docs(root: Path) -> list[dict]:
                     "principle": "Documentation",
                     "severity": "warn",
                     "file": str(path.relative_to(root)) if path.is_file() else f".heyeddi/docs/engineering/{name}",
-                    "message": "Missing or stub — run init_engineering_docs.py",
+                    "message": "Missing or stub: run init_engineering_docs.py",
                 }
             )
     return issues
@@ -132,7 +132,7 @@ def _write_report(root: Path, findings: list[dict]) -> Path:
     today = date.today().isoformat()
     report = skill_docs_dir(root) / f"engineering-audit-{today}.md"
     lines = [
-        f"# Engineering audit — {today}",
+        f"# Engineering audit: {today}",
         "",
         "Principles: **KISS**, **YAGNI**, **DRY**, **SOLID**, **Testable**.",
         "",
@@ -185,9 +185,9 @@ def main() -> None:
     emit(json.dumps(result, indent=2))
 
     if args.check and not result.get("ok"):
-        fail("Engineering audit failed — see report")
+        fail("Engineering audit failed: see report")
     if args.strict and result.get("warn_count", 0) > 0:
-        fail(f"Engineering audit: {result['warn_count']} warning(s) — see {result['report']}")
+        fail(f"Engineering audit: {result['warn_count']} warning(s): see {result['report']}")
 
 
 if __name__ == "__main__":

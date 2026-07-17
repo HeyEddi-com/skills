@@ -1,4 +1,4 @@
-# Subagents — Flutter engineering
+# Subagents: Flutter engineering
 
 | Script | Delegate to |
 |--------|-------------|

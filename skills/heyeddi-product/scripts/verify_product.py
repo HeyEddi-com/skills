@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify PM artifacts — audit + feature matrix gate.
+"""Verify PM artifacts: audit + feature matrix gate.
 
 Security: only execs allowlisted sibling scripts under this skill's scripts/
 directory (no path args from the user, no shell).
@@ -15,7 +15,7 @@ from pathlib import Path
 from _heyeddi_paths import product_md
 from _skill_cli import emit, fail, resolve_project_root
 
-# Exact basenames only — never accept a caller-supplied script path.
+# Exact basenames only: never accept a caller-supplied script path.
 _ALLOWED_SCRIPTS = frozenset({"audit_product.py", "check_features.py"})
 
 

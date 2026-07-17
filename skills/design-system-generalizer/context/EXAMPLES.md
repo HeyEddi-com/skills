@@ -1,5 +1,5 @@
 
-# Examples — Generalizer
+# Examples: Generalizer
 
 ```bash
 python scripts/scan_patterns.py --route /settings --project-root .

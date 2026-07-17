@@ -1,20 +1,20 @@
 ---
 name: engineering-excellence
-description: Audits code for KISS, YAGNI, DRY, SOLID, and testability; maintains living engineering notes under .heyeddi/docs/engineering/. Use when refactoring, before merge, or when the user asks for simple scalable design, architecture notes, reuse catalog, or engineering ADRs — not for visual UX (use ux-flow-auditor) or CI gates (use pre-merge-gate).
+description: Audits code for KISS, YAGNI, DRY, SOLID, and testability; maintains living engineering notes under .heyeddi/docs/engineering/. Use when refactoring, before merge, or when the user asks for simple scalable design, architecture notes, reuse catalog, or engineering ADRs: not for visual UX (use ux-flow-auditor) or CI gates (use pre-merge-gate).
 version: 1.0.0
 ---
 
 # Engineering Excellence
 
-Simple solutions that scale — documented so the next agent does not over-build or repeat work.
+Simple solutions that scale: documented so the next agent does not over-build or repeat work.
 
-**All artifacts go under `.heyeddi/docs/`** — never repo root.
+**All artifacts go under `.heyeddi/docs/`**: never repo root.
 
 ## When to use
 
-- After a feature ships — capture how it works
-- Before adding abstractions — check reuse catalog
-- Refactor / architecture review — KISS, YAGNI, SOLID
+- After a feature ships: capture how it works
+- Before adding abstractions: check reuse catalog
+- Refactor / architecture review: KISS, YAGNI, SOLID
 - User asks: "don't over-engineer", "document the system", "engineering notes"
 
 ## Subagents (default)
@@ -53,14 +53,14 @@ append_decision         → ADR when trade-off is non-obvious
 | Path | Purpose |
 |------|---------|
 | `.heyeddi/docs/engineering/architecture.md` | System map, data flow, boundaries |
-| `.heyeddi/docs/engineering/reuse-catalog.md` | What exists — do not rebuild |
+| `.heyeddi/docs/engineering/reuse-catalog.md` | What exists: do not rebuild |
 | `.heyeddi/docs/engineering/decisions.md` | Engineering ADRs (not design log) |
 | `.heyeddi/docs/engineering-audit-<date>.md` | Point-in-time audit report |
 
-Design decisions stay in `.heyeddi/design.md` Decision log — do not mix.
+Design decisions stay in `.heyeddi/design.md` Decision log: do not mix.
 
 ## Chain
 
-- `@project-engineering` — scaffold first
-- `@composable-patterns` / `@backend-type-bridger` — after architecture notes exist
-- `@pre-merge-gate` — final CI; this skill is advisory + docs
+- `@project-engineering`: scaffold first
+- `@composable-patterns` / `@backend-type-bridger`: after architecture notes exist
+- `@pre-merge-gate`: final CI; this skill is advisory + docs

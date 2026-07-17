@@ -1,7 +1,7 @@
 
-# Examples — PrimeVue + OpenProps
+# Examples: PrimeVue + OpenProps
 
-## Good — token-based card
+## Good: token-based card
 
 ```vue
 <template>
@@ -23,7 +23,7 @@
 </style>
 ```
 
-## Bad — hardcoded styles
+## Bad: hardcoded styles
 
 ```vue
 <template>

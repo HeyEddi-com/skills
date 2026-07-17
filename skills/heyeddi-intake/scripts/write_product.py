@@ -72,7 +72,7 @@ def render_product(data: dict[str, Any]) -> str:
     stack = data.get("stack_note", "Vue or Flutter frontend; FastAPI and/or Firebase backend.")
     pages = data.get("pages") or []
     personality = data.get("brand_personality", data.get("voice_tone", "Clear, confident, modern SaaS."))
-    references = data.get("design_references") or ["Linear — crisp borders", "Stripe Dashboard — calm data UI"]
+    references = data.get("design_references") or ["Linear: crisp borders", "Stripe Dashboard: calm data UI"]
     anti = data.get("anti_references") or ["Generic unstyled PrimeVue admin template"]
     personas = data.get("personas") or []
     route_intent = data.get("route_intent") or []
@@ -125,7 +125,7 @@ def render_product(data: dict[str, Any]) -> str:
             "",
             "See `.heyeddi/docs/intake/skill-routing.json` for which `@skill` runs per route.",
             "",
-            "_Authored by `@heyeddi-intake` via `write_product.py` — do not edit structure by hand._",
+            "_Authored by `@heyeddi-intake` via `write_product.py`: do not edit structure by hand._",
             "",
         ]
     )
@@ -143,7 +143,7 @@ def main() -> None:
     root = resolve_project_root(args.project_root)
 
     if not args.json:
-        fail("--json required — never hand-write product.md; see reference/audience-intake.md")
+        fail("--json required: never hand-write product.md; see reference/audience-intake.md")
 
     try:
         data = json.loads(args.json)
@@ -162,7 +162,7 @@ def main() -> None:
 
     target = canonical_product_path(root)
     if target.is_file() and args.merge and not args.force:
-        emit({"skipped": True, "path": str(target), "reason": "exists — use --force"})
+        emit({"skipped": True, "path": str(target), "reason": "exists: use --force"})
         return
 
     content = render_product(data)

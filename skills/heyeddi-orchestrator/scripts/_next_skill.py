@@ -25,8 +25,8 @@ DEFAULT_NEXT: dict[str, dict[str, str]] = {
     },
     "heyeddi-orchestrator": {
         "skill": "heyeddi-intake",
-        "prompt": "@heyeddi-intake — describe the app or feature in plain language",
-        "why": "No locked task yet — intake when product.md is thin or the goal is greenfield.",
+        "prompt": "@heyeddi-intake: describe the app or feature in plain language",
+        "why": "No locked task yet: intake when product.md is thin or the goal is greenfield.",
     },
     "heyeddi-design": {
         "skill": "heyeddi-handoff",
@@ -36,7 +36,7 @@ DEFAULT_NEXT: dict[str, dict[str, str]] = {
     "heyeddi-handoff": {
         "skill": "visual-auditor",
         "prompt": "@visual-auditor review and fix <route> against product.md and design.md",
-        "why": "Visual QA after implementation — capture, contrast, fix, document.",
+        "why": "Visual QA after implementation: capture, contrast, fix, document.",
     },
     "design-handoff-flutter": {
         "skill": "visual-auditor",
@@ -46,12 +46,12 @@ DEFAULT_NEXT: dict[str, dict[str, str]] = {
     "project-engineering": {
         "skill": "heyeddi-design",
         "prompt": "@heyeddi-design shape the first user-facing route now that the stack is scaffolded",
-        "why": "Scaffold is up — design the first surface before more engineering.",
+        "why": "Scaffold is up: design the first surface before more engineering.",
     },
     "flutter-engineering": {
         "skill": "heyeddi-design",
         "prompt": "@heyeddi-design shape the first Flutter route from product.md",
-        "why": "Flutter scaffold is up — brief the first screen before handoff.",
+        "why": "Flutter scaffold is up: brief the first screen before handoff.",
     },
     "visual-auditor": {
         "skill": "pre-merge-gate",
@@ -66,7 +66,7 @@ DEFAULT_NEXT: dict[str, dict[str, str]] = {
     "heyeddi-pr-review": {
         "skill": "heyeddi-pr-respond",
         "prompt": "@heyeddi-pr-respond address all review comments on PR #<number>",
-        "why": "PR author — fix or decline each thread, then re-gate.",
+        "why": "PR author: fix or decline each thread, then re-gate.",
     },
     "heyeddi-pr-respond": {
         "skill": "pre-merge-gate",
@@ -81,54 +81,54 @@ MODE_NEXT: dict[str, dict[str, dict[str, str]]] = {
         "shape": {
             "skill": "heyeddi-design",
             "prompt": "@heyeddi-design craft <route> from the confirmed brief",
-            "why": "Brief is confirmed — build the Vue screen before handoff or visual QA.",
+            "why": "Brief is confirmed: build the Vue screen before handoff or visual QA.",
         },
         "critique": {
             "skill": "heyeddi-design",
             "prompt": "@heyeddi-design polish <route> using the critique report",
-            "why": "Critique is written — polish applies fixes from the report.",
+            "why": "Critique is written: polish applies fixes from the report.",
         },
         "craft": {
             "skill": "visual-auditor",
             "prompt": "@visual-auditor review and fix <route> against product.md and design.md",
-            "why": "Screen is built — visual QA before merge gate.",
+            "why": "Screen is built: visual QA before merge gate.",
         },
         "polish": {
             "skill": "visual-auditor",
             "prompt": "@visual-auditor re-check <route> after polish",
-            "why": "Polish changed UI — confirm contrast and layout vs spec.",
+            "why": "Polish changed UI: confirm contrast and layout vs spec.",
         },
         "document": {
             "skill": "heyeddi-design",
             "prompt": "@heyeddi-design shape <route> for the next surface",
-            "why": "Design system is documented — shape the next route.",
+            "why": "Design system is documented: shape the next route.",
         },
     },
     "heyeddi-product": {
         "audit": {
             "skill": "heyeddi-design",
             "prompt": "@heyeddi-design shape <route> from the audit findings",
-            "why": "Product audit is done — design the highest-priority route.",
+            "why": "Product audit is done: design the highest-priority route.",
         },
         "review": {
             "skill": "pre-merge-gate",
             "prompt": "@pre-merge-gate run the merge readiness checklist",
-            "why": "Holistic PM review is complete — confirm gates before ship.",
+            "why": "Holistic PM review is complete: confirm gates before ship.",
         },
     },
     "heyeddi-orchestrator": {
         "sync": {
             "skill": "heyeddi-intake",
-            "prompt": "@heyeddi-intake — continue product intake for this project",
-            "why": "Workspace synced — intake if product context is still thin.",
+            "prompt": "@heyeddi-intake: continue product intake for this project",
+            "why": "Workspace synced: intake if product context is still thin.",
         },
     },
 }
 
 DONE_NEXT: dict[str, str] = {
     "skill": "heyeddi-orchestrator",
-    "prompt": "@heyeddi-orchestrator — what skill should handle: <describe next task>",
-    "why": "Pipeline step complete — orchestrator picks the next @skill.",
+    "prompt": "@heyeddi-orchestrator: what skill should handle: <describe next task>",
+    "why": "Pipeline step complete: orchestrator picks the next @skill.",
 }
 
 
@@ -163,7 +163,7 @@ def _prompt_for_route(route: dict[str, Any]) -> str:
 
     if skill == "heyeddi-design":
         sub = mode or "craft"
-        return f"@heyeddi-design {sub} {route_path} — feature `{feature}`"
+        return f"@heyeddi-design {sub} {route_path}: feature `{feature}`"
     if skill == "heyeddi-handoff":
         return (
             f"@heyeddi-handoff implement {route_path} from "
@@ -178,7 +178,7 @@ def _prompt_for_route(route: dict[str, Any]) -> str:
         return f"@visual-auditor review and fix {route_path}"
     if skill == "heyeddi-product":
         return f"@heyeddi-product holistic review for {route_path}"
-    return f"@{skill} — work on `{feature}` at {route_path}"
+    return f"@{skill}: work on `{feature}` at {route_path}"
 
 
 def _entry(
@@ -218,9 +218,9 @@ def _scaffold_entry(step: str, *, why: str) -> dict[str, str]:
     if skill in {"project-engineering", "flutter-engineering"}:
         prompt = f"@{skill} scaffold the full stack for this project"
     elif tail.startswith("scaffold_stack"):
-        prompt = f"@{skill.split('-')[0] if '-' in skill else skill} scaffold — run stack setup"
+        prompt = f"@{skill.split('-')[0] if '-' in skill else skill} scaffold: run stack setup"
     else:
-        prompt = f"@{skill} {tail}" if tail else f"@{skill} — read SKILL.md"
+        prompt = f"@{skill} {tail}" if tail else f"@{skill}: read SKILL.md"
     return _entry(skill, prompt, why=why, source="skill-routing.json")
 
 
@@ -349,7 +349,7 @@ def suggest_next_skill(
         next_step = {
             "skill": "heyeddi-design",
             "prompt": "@heyeddi-design craft <route> from the confirmed brief",
-            "why": "No mockup PNGs yet — craft the screen before handoff.",
+            "why": "No mockup PNGs yet: craft the screen before handoff.",
             "source": "default-chain",
         }
 
@@ -388,6 +388,6 @@ def suggest_next_skill(
         "user_block": format_user_block(next_step),
         "instruction": (
             "When the user's task for this skill is complete, end your final reply with user_block. "
-            "The Prompt is what they paste in chat — @skill plus sub-command (shape, craft, sync, audit, etc.)."
+            "The Prompt is what they paste in chat: @skill plus sub-command (shape, craft, sync, audit, etc.)."
         ),
     }

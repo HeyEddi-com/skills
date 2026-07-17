@@ -15,7 +15,7 @@ from _skill_cli import emit, fail, resolve_project_root
 def _load_flow(root: Path, task_id: str) -> dict:
     path = ux_flows_dir(root) / f"{task_id}.flow.json"
     if not path.is_file():
-        fail(f"Flow definition missing: {path.relative_to(root)} — run init_ux_flows.py")
+        fail(f"Flow definition missing: {path.relative_to(root)}: run init_ux_flows.py")
     return json.loads(path.read_text(encoding="utf-8"))
 
 
@@ -26,7 +26,7 @@ def _run_playwright(flow: dict, root: Path) -> dict:
         return {
             "ok": False,
             "skipped": True,
-            "error": "Playwright not installed — pip install playwright && playwright install chromium",
+            "error": "Playwright not installed: pip install playwright && playwright install chromium",
             "click_count": 0,
             "steps": [],
         }
@@ -168,7 +168,7 @@ def main() -> None:
     result = trace_flow(root, args.task_id)
     emit(json.dumps(result, indent=2))
     if args.check and not result.get("ok"):
-        fail(f"UX flow {args.task_id} failed — see {result.get('report', 'report')}")
+        fail(f"UX flow {args.task_id} failed: see {result.get('report', 'report')}")
 
 
 if __name__ == "__main__":

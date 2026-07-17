@@ -23,8 +23,8 @@ paths:
    curl -fsS http://127.0.0.1:8090/openapi.json -o openapi.json
    ```
 
-2. FastAPI models: `python scripts/sync_openapi.py --project-root <root>` — writes `lib/models/api_models.dart` from local `openapi.json` only (optional `--openapi path/rel.json`).
+2. FastAPI models: `python scripts/sync_openapi.py --project-root <root>`: writes `lib/models/api_models.dart` from local `openapi.json` only (optional `--openapi path/rel.json`).
 
 3. Firebase: `python scripts/fetch_firestore_schema.py --project-root <root>`
 
-4. Import generated models in repositories — never guess field names.
+4. Import generated models in repositories: never guess field names.

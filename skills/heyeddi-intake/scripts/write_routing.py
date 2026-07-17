@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write skill-routing.json — which @skills run per route/feature."""
+"""Write skill-routing.json: which @skills run per route/feature."""
 from __future__ import annotations
 
 import argparse

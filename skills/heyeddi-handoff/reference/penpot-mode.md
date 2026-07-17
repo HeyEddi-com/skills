@@ -1,5 +1,5 @@
 
-# Penpot mode (stub — Phase 6)
+# Penpot mode (stub: Phase 6)
 
 Future integration:
 

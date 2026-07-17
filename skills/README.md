@@ -1,6 +1,6 @@
 # Installable skills
 
-Each subdirectory here is a **standalone, distributable skill** — the same layout as an independent GitHub repo after `git subtree push`.
+Each subdirectory here is a **standalone, distributable skill**: the same layout as an independent GitHub repo after `git subtree push`.
 
 ```
 skills/
@@ -33,7 +33,7 @@ npx skills add /path/to/heyeddi/skills/visual-auditor -a cursor
 npx skills add heyeddi/visual-auditor -a cursor   # after subtree push to GitHub
 ```
 
-Skills install to `.agents/skills/` or `~/.cursor/skills/` — Cursor loads both.
+Skills install to `.agents/skills/` or `~/.cursor/skills/`: Cursor loads both.
 
 ## Publish a skill to its own repo
 

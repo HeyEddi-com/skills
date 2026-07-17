@@ -45,7 +45,7 @@ def format_findings(findings: list[dict]) -> str:
         file = item.get("file") or item.get("doc", "")
         prefix = f"**{sev}**"
         if file:
-            lines.append(f"- {prefix} `{file}` — {msg}")
+            lines.append(f"- {prefix} `{file}`: {msg}")
         else:
             lines.append(f"- {prefix} {msg}")
         if item.get("suggestion"):
@@ -68,7 +68,7 @@ def build_report(
     audit: dict | None,
     gate_md: str,
 ) -> str:
-    # Keep H1 free of outsider prose — title lives only in the untrusted block.
+    # Keep H1 free of outsider prose: title lives only in the untrusted block.
     title = ctx.get("title")
     author = ctx.get("author")
     body = ctx.get("body")
@@ -125,7 +125,7 @@ def build_report(
         lines.append("")
         lines.append(format_findings(drift.get("findings") or []))
     else:
-        lines.append("_Run `check_doc_drift` — no drift JSON provided._\n")
+        lines.append("_Run `check_doc_drift`: no drift JSON provided._\n")
 
     lines.extend(["## Engineering", ""])
     if audit:
@@ -139,7 +139,7 @@ def build_report(
             lines.append("")
         lines.append(format_findings(audit.get("findings") or []))
     else:
-        lines.append("_Run `audit_pr_changes` — no audit JSON provided._\n")
+        lines.append("_Run `audit_pr_changes`: no audit JSON provided._\n")
 
     lines.extend(["## Tests", ""])
     test_files = (ctx.get("categories") or {}).get("tests", [])
@@ -149,14 +149,14 @@ def build_report(
             lines.append(f"- `{path}`")
         lines.append("")
     else:
-        lines.append("_No test files in this PR — confirm behavior is covered elsewhere or add tests._\n")
+        lines.append("_No test files in this PR: confirm behavior is covered elsewhere or add tests._\n")
 
     lines.extend(["## Gate results", ""])
     if gate_md.strip():
         lines.append(gate_md.strip())
         lines.append("")
     else:
-        lines.append("_Run `@pre-merge-gate` — paste report here._\n")
+        lines.append("_Run `@pre-merge-gate`: paste report here._\n")
 
     lines.extend(
         [
