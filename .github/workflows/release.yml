@@ -1,0 +1,90 @@
+# Create a GitHub Release when main advances and the hub version is untagged.
+#
+# Version source of truth: skills-registry.json → .version
+# Example: "3.0.3" → tag/release v3.0.3
+#
+# Does NOT bump the version for you. Bump in the PR (README, registry, plugin),
+# merge to main; this workflow tags if the tag is missing.
+# Idempotent: no-op when vX.Y.Z already exists.
+name: Release
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Tag and publish GitHub Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read hub version
+        id: ver
+        run: |
+          set -euo pipefail
+          VERSION="$(python3 -c "import json; print(json.load(open('skills-registry.json'))['version'])")"
+          if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.-][A-Za-z0-9.]+)?$ ]]; then
+            echo "Invalid skills-registry.json version: $VERSION" >&2
+            exit 1
+          fi
+          TAG="v${VERSION}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "Hub version ${VERSION} -> tag ${TAG}"
+
+      - name: Check whether tag exists
+        id: tag
+        env:
+          TAG: ${{ steps.ver.outputs.tag }}
+        run: |
+          set -euo pipefail
+          if git rev-parse -q --verify "refs/tags/${TAG}" >/dev/null; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Tag ${TAG} already exists; skipping release"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+            echo "Tag ${TAG} does not exist yet"
+          fi
+
+      - name: Create GitHub Release
+        if: steps.tag.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.ver.outputs.tag }}
+          VERSION: ${{ steps.ver.outputs.version }}
+        run: |
+          set -euo pipefail
+          NOTES_FILE="$(mktemp)"
+          cat > "$NOTES_FILE" <<EOF
+          ## Install
+
+          \`\`\`bash
+          npx skills add https://github.com/HeyEddi-com/skills/tree/${TAG} -a cursor -y --skill '*'
+          \`\`\`
+
+          Hub version **${VERSION}** from \`skills-registry.json\`.
+
+          ## Changelog
+
+          See generated commit notes below / on the release page.
+          EOF
+          # Strip leading indentation from heredoc body
+          sed -i 's/^          //' "$NOTES_FILE"
+          gh release create "$TAG" \
+            --title "HeyEddi Skills ${TAG}" \
+            --notes-file "$NOTES_FILE" \
+            --generate-notes \
+            --target "${{ github.sha }}"
+          echo "Created release ${TAG} at ${{ github.sha }}"
